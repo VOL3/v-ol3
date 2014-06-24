@@ -1,0 +1,11 @@
+<module>
+
+	<!-- WS Compiler: manually edited -->
+
+	<!-- Inherit DefaultWidgetSet -->
+	<inherits name="com.vaadin.DefaultWidgetSet" />
+    <inherits name="org.vaadin.gwtol3.WidgetSet" />
+	<!-- Widget styles in public -directory -->
+	<stylesheet src="vol3/styles.css"/>
+
+</module>
