@@ -18,3 +18,4 @@ public interface OL3ClientBundle extends ClientBundle {
     CssResource css();
 
 }
+
