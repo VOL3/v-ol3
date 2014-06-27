@@ -14,11 +14,4 @@ public class Coordinate extends JavaScriptObject{
     public static native Coordinate create(double x, double y)/*-{
         return [x,y];
     }-*/;
-
-    public native final double setTarget()/*-{
-
-    }-*/;
-
-
-
 }

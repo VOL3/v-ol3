@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
+import org.vaadin.addon.vol3.client.OLMapState;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -28,5 +29,8 @@ public class OLMap extends AbstractComponentContainer{
         return children.iterator();
     }
 
-
+    @Override
+    protected OLMapState getState() {
+        return (OLMapState) super.getState();
+    }
 }

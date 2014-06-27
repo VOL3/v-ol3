@@ -10,6 +10,7 @@ import com.vaadin.client.ui.layout.ElementResizeListener;
 import com.vaadin.shared.AbstractComponentState;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLMap;
+import org.vaadin.gwtol3.client.Coordinate;
 import org.vaadin.gwtol3.client.MapWidget;
 import org.vaadin.gwtol3.client.View2D;
 import org.vaadin.gwtol3.client.layer.Tile;
@@ -29,7 +30,7 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     @Override
     protected void init() {
         super.init();
-        getLayoutManager().addElementResizeListener(getWidget().getElement(),this);
+        getLayoutManager().addElementResizeListener(getWidget().getElement(), this);
     }
 
     @Override
@@ -46,8 +47,7 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         widget.getMap().addLayer(tile);
         View2D view=View2D.create();
         view.setZoom(1);
-        double [] centerPoint=new double[]{0d,0d};
-        view.setCenter(centerPoint);
+        view.setCenter(Coordinate.create(0,0));
         widget.getMap().setView(view);
         // END OF DEMO
         return widget;
