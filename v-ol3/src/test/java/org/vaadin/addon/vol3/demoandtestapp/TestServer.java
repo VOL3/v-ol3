@@ -114,7 +114,7 @@ public class TestServer {
                 "org.vaadin.addon.vol3.demoandtestapp.TestWidgetSet");
         servletHolder.setInitParameter("ui",
                 "org.vaadin.addon.vol3.demoandtestapp.MapTestUI");
-        File file = new File("v-ol3/target/testwebapp");
+        File file = new File("target/testwebapp");
         context.setWar(file.getPath());
         context.setContextPath("/");
 
