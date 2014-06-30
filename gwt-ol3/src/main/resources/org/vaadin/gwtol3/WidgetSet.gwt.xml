@@ -2,4 +2,6 @@
     <inherits name="com.google.gwt.user.User" />
     <inherits name="com.google.gwt.json.JSON" />
     <inherits name="com.google.gwt.resources.Resources" />
+
+    <stylesheet src="gwtol3/gwt-ol3.css"/>
 </module>

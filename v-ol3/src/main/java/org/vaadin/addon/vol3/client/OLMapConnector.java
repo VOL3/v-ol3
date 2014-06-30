@@ -1,7 +1,5 @@
 package org.vaadin.addon.vol3.client;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
@@ -10,12 +8,11 @@ import com.vaadin.client.ui.layout.ElementResizeListener;
 import com.vaadin.shared.AbstractComponentState;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLMap;
-import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
 import org.vaadin.gwtol3.client.MapWidget;
-import org.vaadin.gwtol3.client.View2D;
-import org.vaadin.gwtol3.client.layer.Tile;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
-import org.vaadin.gwtol3.client.source.MapQuest;
+
+import java.util.List;
 
 /**
  * Created by mjhosio on 24/06/14.
@@ -39,28 +36,33 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     }
 
     @Override
-    protected Widget createWidget() {
-        MapWidget widget=GWT.create(MapWidget.class);
-        // DEMO code, will get rid of this in next commit
-        MapQuest source=MapQuest.create(MapQuest.LAYER_OSM);
-        Tile tile= Tile.create(source);
-        widget.getMap().addLayer(tile);
-        View2D view=View2D.create();
-        view.setZoom(1);
-        view.setCenter(Coordinate.create(0,0));
-        widget.getMap().setView(view);
-        // END OF DEMO
-        return widget;
-    }
-
-    @Override
     public AbstractComponentState getState() {
         return super.getState();
     }
 
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {
-        // TODO: handle children
+        List<ComponentConnector> oldChildren=connectorHierarchyChangeEvent.getOldChildren();
+        List<ComponentConnector> currentChildren=getChildComponents();
+        // remove old layers
+        for(ComponentConnector oldConnector : oldChildren){
+            if(!currentChildren.contains(oldConnector) && oldConnector instanceof OLLayerConnector){
+                OLLayerConnector layer=(OLLayerConnector) oldConnector;
+                getWidget().getMap().removeLayer(layer.getLayer());
+            }
+        }
+        // add new layers and possibly view
+        for(ComponentConnector connector : this.getChildComponents()) {
+            if (!oldChildren.contains(connector)) {
+                if (connector instanceof OLLayerConnector) {
+                    OLLayerConnector layer = (OLLayerConnector) connector;
+                    getWidget().getMap().addLayer(layer.getLayer());
+                } else if(connector instanceof OLViewConnector){
+                    OLViewConnector view = (OLViewConnector) connector;
+                    getWidget().getMap().setView(view.getView());
+                }
+            }
+        }
     }
 
     @Override

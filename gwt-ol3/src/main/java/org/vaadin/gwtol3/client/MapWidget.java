@@ -13,6 +13,7 @@ public class MapWidget extends Widget {
     public MapWidget(){
         setElement(Document.get().createDivElement());
         setHeight("450px");
+        setStylePrimaryName(getElement(), "ol3map");
         map = Map.create(getElement());
     }
 
