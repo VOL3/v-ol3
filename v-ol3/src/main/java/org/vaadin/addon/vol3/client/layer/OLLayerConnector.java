@@ -4,6 +4,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
+import com.vaadin.client.annotations.OnStateChange;
 import com.vaadin.client.ui.AbstractSingleComponentContainerConnector;
 import org.vaadin.addon.vol3.client.source.OLSourceConnector;
 import org.vaadin.gwtol3.client.layer.Layer;
@@ -42,6 +43,11 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
         // no-op
     }
 
+    @Override
+    public OLLayerState getState() {
+        return (OLLayerState) super.getState();
+    }
+
     /** Returns the underlying wrapped javascript source implementation
      *
      * @return the source implementation
@@ -59,5 +65,61 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {
         // no-op
+    }
+
+    @OnStateChange("brightness")
+    void updateBrightness(){
+        if(getState().brightness!=null){
+            getLayer().setBrightness(getState().brightness.doubleValue());
+        }
+    }
+
+    @OnStateChange("contrast")
+    void updateContrast(){
+        if(getState().contrast!=null){
+            getLayer().setContrast(getState().contrast.doubleValue());
+        }
+    }
+
+    @OnStateChange("hue")
+    void updateHue(){
+        if(getState().hue!=null){
+            getLayer().setHue(getState().hue.doubleValue());
+        }
+    }
+
+    @OnStateChange("maxResolution")
+    void updateMaxResolution(){
+        if(getState().maxResolution!=null){
+            getLayer().setMaxResolution(getState().maxResolution.doubleValue());
+        }
+    }
+
+    @OnStateChange("minResolution")
+    void updateMinResolution(){
+        if(getState().minResolution!=null){
+            getLayer().setMinResolution(getState().minResolution.doubleValue());
+        }
+    }
+
+    @OnStateChange("opacity")
+    void updateOpacity(){
+        if(getState().opacity!=null){
+            getLayer().setOpacity(getState().opacity.doubleValue());
+        }
+    }
+
+    @OnStateChange("saturation")
+    void updateSaturation(){
+        if(getState().saturation!=null){
+            getLayer().setSaturation(getState().saturation.doubleValue());
+        }
+    }
+
+    @OnStateChange("visible")
+    void updateVisible(){
+        if(getState().visible!=null){
+            getLayer().setVisible(getState().visible.booleanValue());
+        }
     }
 }

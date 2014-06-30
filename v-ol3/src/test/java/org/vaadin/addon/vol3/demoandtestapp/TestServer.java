@@ -115,6 +115,10 @@ public class TestServer {
         servletHolder.setInitParameter("ui",
                 "org.vaadin.addon.vol3.demoandtestapp.MapTestUI");
         File file = new File("target/testwebapp");
+        if(!file.exists()){
+            // we may be running this from the root module, lets try that instead
+            file = new File("v-ol3/target/testwebapp");
+        }
         context.setWar(file.getPath());
         context.setContextPath("/");
 
