@@ -9,4 +9,8 @@ public class Projection extends JavaScriptObject {
 
     protected Projection() {
     }
+
+    public static final native Projection get(String crsString)/*-{
+        $wnd.ol.proj.get(crsString);
+    }-*/;
 }

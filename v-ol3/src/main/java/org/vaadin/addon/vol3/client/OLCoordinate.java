@@ -1,9 +1,11 @@
 package org.vaadin.addon.vol3.client;
 
+import java.io.Serializable;
+
 /**
  * Created by mjhosio on 30/06/14.
  */
-public class OLCoordinate {
+public class OLCoordinate implements Serializable{
 
     public OLCoordinate(){}
 

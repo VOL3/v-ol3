@@ -9,15 +9,28 @@ import com.google.gwt.user.client.ui.Widget;
 public class MapWidget extends Widget {
 
     private Map map;
+    private MapOptions options;
 
     public MapWidget(){
         setElement(Document.get().createDivElement());
-        setHeight("450px");
         setStylePrimaryName(getElement(), "ol3map");
-        map = Map.create(getElement());
+    }
+
+    public void initMap(MapOptions options){
+        map = Map.create(options);
+        if(map.getTarget()==null){
+            map.setTarget(getElement());
+        }
+    }
+
+    public boolean isMapInitialized(){
+        return map!=null;
     }
 
     public Map getMap(){
+        if(!isMapInitialized()){
+            initMap(new MapOptions());
+        }
         return map;
     }
 }

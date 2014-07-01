@@ -2,7 +2,9 @@ package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
+import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLMapState;
+import org.vaadin.addon.vol3.client.OLRendererType;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
 import java.util.Iterator;
@@ -18,11 +20,24 @@ public class OLMap extends AbstractComponentContainer{
     private OLView view;
 
     public OLMap(){
-        this(new OLView2D());
+        this(null,null);
     }
 
     public OLMap(OLView view){
-        this.view=view;
+        this(view, null);
+    }
+
+    public OLMap(OLMapOptions options){
+        this(null, options);
+    }
+
+    public OLMap(OLView view, OLMapOptions options){
+        if(view!=null){
+            setView(view);
+        }
+        if(options != null){
+            setOptions(options);
+        }
     }
 
     /** Adds layer to the map
@@ -64,6 +79,11 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     @Override
+    protected OLMapState getState(boolean markAsDirty) {
+        return (OLMapState) super.getState(markAsDirty);
+    }
+
+    @Override
     public void addComponent(Component c) {
         if(c instanceof OLLayer){
             super.addComponent(c);
@@ -98,5 +118,28 @@ public class OLMap extends AbstractComponentContainer{
     @Override
     public void replaceComponent(Component component, Component component2) {
         throw new UnsupportedOperationException("Replace component not implemented");
+    }
+
+    public Boolean getShowOl3Logo() {
+        return getState(false).showOl3Logo;
+    }
+
+    public OLRendererType getRenderer() {
+        return getState(false).renderer;
+    }
+
+    public Double getPixelRatio() {
+        return getState(false).pixelRatio;
+    }
+
+    public OLDeviceOptions getDeviceOptions() {
+        return getState(false).deviceOptions;
+    }
+
+    private void setOptions(OLMapOptions options) {
+        getState().showOl3Logo=options.getShowOl3Logo();
+        getState().renderer=options.getRenderer();
+        getState().pixelRatio=options.getPixelRatio();
+        getState().deviceOptions=options.getDeviceOptions();
     }
 }

@@ -5,10 +5,11 @@ import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
 import com.vaadin.client.ui.layout.ElementResizeListener;
-import com.vaadin.shared.AbstractComponentState;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
+import org.vaadin.gwtol3.client.DeviceOptions;
+import org.vaadin.gwtol3.client.MapOptions;
 import org.vaadin.gwtol3.client.MapWidget;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
@@ -36,12 +37,15 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     }
 
     @Override
-    public AbstractComponentState getState() {
-        return super.getState();
+    public OLMapState getState() {
+        return (OLMapState) super.getState();
     }
 
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {
+        if(!getWidget().isMapInitialized()){
+            initMap();
+        }
         List<ComponentConnector> oldChildren=connectorHierarchyChangeEvent.getOldChildren();
         List<ComponentConnector> currentChildren=getChildComponents();
         // remove old layers
@@ -63,6 +67,28 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                 }
             }
         }
+    }
+
+    /** Initializes the map object
+     *
+     */
+    private void initMap() {
+        MapOptions options=MapOptions.create();
+        options.setTarget(getWidget().getElement());
+        if(getState().showOl3Logo!=null){
+            options.setOl3Logo(getState().showOl3Logo);
+        }
+        if(getState().pixelRatio!=null){
+            options.setPixelRatio(getState().pixelRatio);
+        }
+        if(getState().renderer!=null){
+            options.setRenderer(getState().renderer.name().toLowerCase());
+        }
+        if(getState().deviceOptions!=null){
+            DeviceOptions opts=DeviceOptions.create(getState().deviceOptions.loadTilesWhileAnimating, getState().deviceOptions.loadTilesWhileInteracting);
+            options.setDeviceOptions(opts);
+        }
+        getWidget().initMap(options);
     }
 
     @Override

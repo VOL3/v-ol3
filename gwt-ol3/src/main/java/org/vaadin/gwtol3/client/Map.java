@@ -18,7 +18,7 @@ public class Map extends JavaScriptObject{
     }
 
     /**
-     * Initializes Open Layer v3 map to the given element
+     * Initializes Open Layer v3 map to the given element with default options
      *
      * @param root the element root for the map
      * @return the OL3 map instance
@@ -26,6 +26,17 @@ public class Map extends JavaScriptObject{
     public static native Map create(Element root)
     /*-{
         return new $wnd.ol.Map({target: root});
+    }-*/;
+
+    /**
+     * Initializes Open Layer v3 map using the given map options
+     *
+     * @param options the map options
+     * @return the OL3 map instance
+     */
+    public static native Map create(MapOptions options)
+    /*-{
+        return new $wnd.ol.Map(options);
     }-*/;
 
     /**
