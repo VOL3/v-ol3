@@ -12,10 +12,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
+ *
  * Created by mjhosio on 24/06/14.
  */
 public class OLMap extends AbstractComponentContainer{
-
     private List<Component> components=new LinkedList<Component>();
     private OLView view;
 
@@ -40,7 +41,7 @@ public class OLMap extends AbstractComponentContainer{
         }
     }
 
-    /** Adds layer to the map
+    /** Adds a new layer to the map
      *
      * @param layer the layer to be added
      */
@@ -48,10 +49,18 @@ public class OLMap extends AbstractComponentContainer{
         addComponent(layer);
     }
 
+    /** Removes the specified layer from the map
+     *
+     * @param layer the layer to be removed
+     */
     public void removeLayer(OLLayer layer){
         removeComponent(layer);
     }
 
+    /** Sets the view of the map. The view can not be null
+     *
+     * @param view the view
+     */
     public void setView(OLView view){
         if(view==null){
             throw new IllegalArgumentException("The view instance can not be null");
@@ -59,7 +68,11 @@ public class OLMap extends AbstractComponentContainer{
         doSetView(view);
     }
 
-    public OLView getView(OLView view){
+    /** Gets the view associated with the map
+     *
+     * @return the view associated with the map
+     */
+    public OLView getView(){
         return view;
     }
 
@@ -120,18 +133,34 @@ public class OLMap extends AbstractComponentContainer{
         throw new UnsupportedOperationException("Replace component not implemented");
     }
 
+    /** Returns true if the ol3 logo is shown
+     *
+     * @return
+     */
     public Boolean getShowOl3Logo() {
         return getState(false).showOl3Logo;
     }
 
+    /** Gets the renderer type used by the map
+     *
+     * @return
+     */
     public OLRendererType getRenderer() {
         return getState(false).renderer;
     }
 
+    /** Gets the device pixel ratio used by the map
+     *
+     * @return
+     */
     public Double getPixelRatio() {
         return getState(false).pixelRatio;
     }
 
+    /** Gets the device options used by the map
+     *
+     * @return
+     */
     public OLDeviceOptions getDeviceOptions() {
         return getState(false).deviceOptions;
     }

@@ -29,7 +29,7 @@ public class MapWidget extends Widget {
 
     public Map getMap(){
         if(!isMapInitialized()){
-            initMap(new MapOptions());
+            initMap(MapOptions.create());
         }
         return map;
     }

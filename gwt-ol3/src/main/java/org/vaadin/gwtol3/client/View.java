@@ -17,6 +17,10 @@ public class View extends JavaScriptObject {
         return new $wnd.ol.View({});
     }-*/;
 
+    public static final native View create(ViewOptions options)/*-{
+        return new $wnd.ol.View(options);
+    }-*/;
+
     public native final Extent calculateExtent(Size size)/*-{
         return this.calculateExtent(size);
     }-*/;
@@ -149,13 +153,13 @@ public class View extends JavaScriptObject {
         this.setCenter(coordinate);
     }-*/;
 
-    /** Set the projection of this view.
+    /** Set the projection of this view. Currently not implemented by the library
      *
      * @param projection
      */
-    public native final void setProjection(Projection projection)/*-{
-        this.setProjection(projection);
-    }-*/;
+//    public native final void setProjection(Projection projection)/*-{
+//        this.setProjection(projection);
+//    }-*/;
 
     /** Set the resolution of this view.
      *

@@ -7,8 +7,9 @@ import com.vaadin.client.ui.AbstractComponentConnector;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.View;
-import org.vaadin.gwtol3.client.proj.Projection;
+import org.vaadin.gwtol3.client.ViewOptions;
 
 /**
  * Created by mjhosio on 30/06/14.
@@ -28,7 +29,7 @@ public class OLViewConnector extends AbstractComponentConnector{
 
     public View getView() {
         if(view==null){
-            view= View.create();
+            view = createView();
         }
         return view;
     }
@@ -66,11 +67,49 @@ public class OLViewConnector extends AbstractComponentConnector{
         }
     }
 
-    @OnStateChange("projection")
-    void updateProjection(){
-        if(getState().projection!=null){
-            getView().setProjection(Projection.get(getState().projection));
-        }
-    }
+//    @OnStateChange("projection")
+//    void updateProjection(){
+//        if(getState().projection!=null){
+//            getView().setProjection(Projection.get(getState().projection));
+//        }
+//    }
 
+    private View createView(){
+        ViewOptions options=ViewOptions.create();
+        if(getState().rotationConstraint!=null){
+            if(getState().rotationConstraint.constrainTo!=null){
+                options.setConstrainRotation(getState().rotationConstraint.constrainTo);
+            } else{
+                options.setConstrainRotation(getState().rotationConstraint.constrained);
+            }
+        }
+        if(getState().enableRotation!=null){
+            options.setEnableRotation(getState().enableRotation);
+        }
+        if(getState().extent!=null){
+            OLExtent ext=getState().extent;
+            Extent extent=Extent.create(ext.minX,ext.minY, ext.maxX, ext.maxY);
+            options.setExtent(extent);
+        }
+        if(getState().maxResolution!=null){
+            options.setMaxResolution(getState().maxResolution);
+        }
+        if(getState().minResolution!=null){
+            options.setMinResolution(getState().minResolution);
+        }
+        if(getState().minZoom!=null){
+            options.setMinZoom(getState().minZoom);
+        }
+        if(getState().maxZoom!=null){
+            options.setMaxZoom(getState().maxZoom);
+        }
+        if(getState().zoomFactor!=null){
+            options.setZoomFactor(getState().zoomFactor);
+        }
+        if(getState().projection!=null){
+            options.setProjection(getState().projection);
+        }
+        View view=View.create(options);
+        return view;
+    }
 }
