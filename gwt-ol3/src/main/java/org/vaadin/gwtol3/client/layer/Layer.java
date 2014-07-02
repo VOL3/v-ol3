@@ -5,7 +5,7 @@ import org.vaadin.gwtol3.client.source.Source;
 /**
  * Created by mjhosio on 24/06/14.
  */
-public abstract class Layer extends Base{
+public abstract class Layer extends LayerBase {
 
     protected Layer() {
     }

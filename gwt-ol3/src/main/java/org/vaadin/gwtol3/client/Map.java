@@ -5,8 +5,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
-import org.vaadin.gwtol3.client.layer.Base;
-import org.vaadin.gwtol3.client.layer.Group;
+import org.vaadin.gwtol3.client.layer.LayerBase;
+import org.vaadin.gwtol3.client.layer.LayerGroup;
 
 /**
  * Created by mjhosio on 24/06/14.
@@ -62,7 +62,7 @@ public class Map extends JavaScriptObject{
      *
      * @param layer
      */
-    public native final void addLayer(Base layer)/*-{
+    public native final void addLayer(LayerBase layer)/*-{
         this.addLayer(layer);
     }-*/;
 
@@ -125,7 +125,7 @@ public class Map extends JavaScriptObject{
      *
      * @return
      */
-    public native final Group getLayerGroup()/*-{
+    public native final LayerGroup getLayerGroup()/*-{
         return this.getLayerGroup();
     }-*/;
 
@@ -200,7 +200,7 @@ public class Map extends JavaScriptObject{
      *
      * @param layer
      */
-    public native final void removeLayer(Base layer)/*-{
+    public native final void removeLayer(LayerBase layer)/*-{
         this.removeLayer(layer);
     }-*/;
 
@@ -234,7 +234,7 @@ public class Map extends JavaScriptObject{
      *
      * @param layerGroup
      */
-    public native final void setLayerGroup(Group layerGroup)/*-{
+    public native final void setLayerGroup(LayerGroup layerGroup)/*-{
         this.setLayerGroup(layerGroup);
     }-*/;
 

@@ -5,25 +5,25 @@ import java.util.logging.Logger;
 /**
  * Created by mjhosio on 24/06/14.
  */
-public class MapQuest extends XYZ {
+public class MapQuestSource extends XYZSource {
 
-    private static Logger logger= Logger.getLogger(MapQuest.class.getName());
+    private static Logger logger= Logger.getLogger(MapQuestSource.class.getName());
 
     public static final String LAYER_OSM="osm";
     public static final String LAYER_SAT="sat";
     public static final String LAYER_HYB="hyb";
 
-    protected MapQuest() {
+    protected MapQuestSource() {
     }
 
-    public static MapQuest create(String layer){
+    public static MapQuestSource create(String layer){
         logger.info("Creating MapQuest source "+layer);
-        MapQuest source=createNative(layer);
+        MapQuestSource source=createNative(layer);
         logger.info("MapQuest source created");
         return source;
     }
 
-    private static native MapQuest createNative(String layerString)
+    private static native MapQuestSource createNative(String layerString)
     /*-{
         return new $wnd.ol.source.MapQuest({layer: layerString});
     }-*/;

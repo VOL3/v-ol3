@@ -1,6 +1,6 @@
 package org.vaadin.addon.vol3.layer;
 
-import org.vaadin.addon.vol3.client.layer.OLTileState;
+import org.vaadin.addon.vol3.client.layer.OLTileLayerState;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
@@ -8,13 +8,13 @@ import org.vaadin.addon.vol3.source.OLSource;
  * Layer for layer sources that provide pre-rendered, tiled images in grids that are organized by zoom levels for specific resolutions.
  * Created by mjhosio on 30/06/14.
  */
-public class OLTile extends OLLayer {
+public class OLTileLayer extends OLLayer {
 
-    public OLTile(OLSource source){
+    public OLTileLayer(OLSource source){
         this(source,null);
     }
 
-    public OLTile(OLSource source, OLTileOptions options) {
+    public OLTileLayer(OLSource source, OLTileOptions options) {
         super(source);
         if(options!=null){
             setOptions(options);
@@ -22,13 +22,13 @@ public class OLTile extends OLLayer {
     }
 
     @Override
-    protected OLTileState getState() {
-        return (OLTileState) super.getState();
+    protected OLTileLayerState getState() {
+        return (OLTileLayerState) super.getState();
     }
 
     @Override
-    protected OLTileState getState(boolean markAsDirty) {
-        return (OLTileState) super.getState(markAsDirty);
+    protected OLTileLayerState getState(boolean markAsDirty) {
+        return (OLTileLayerState) super.getState(markAsDirty);
     }
 
     private void setOptions(OLTileOptions options) {

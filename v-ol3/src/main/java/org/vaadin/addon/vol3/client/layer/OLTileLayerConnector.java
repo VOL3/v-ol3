@@ -1,27 +1,27 @@
 package org.vaadin.addon.vol3.client.layer;
 
 import com.vaadin.shared.ui.Connect;
-import org.vaadin.addon.vol3.layer.OLTile;
-import org.vaadin.gwtol3.client.layer.Tile;
+import org.vaadin.addon.vol3.layer.OLTileLayer;
+import org.vaadin.gwtol3.client.layer.TileLayer;
 import org.vaadin.gwtol3.client.layer.TileOptions;
 
 /**
  * Created by mjhosio on 30/06/14.
  */
-@Connect (OLTile.class)
-public class OLTileConnector extends OLLayerConnector {
+@Connect (OLTileLayer.class)
+public class OLTileLayerConnector extends OLLayerConnector {
 
-    private Tile tile;
+    private TileLayer tile;
 
     @Override
-    public Tile getLayer() {
+    public TileLayer getLayer() {
         if(tile==null){
             tile=createTile();
         }
         return tile;
     }
 
-    private Tile createTile(){
+    private TileLayer createTile(){
         TileOptions opts=TileOptions.create();
         if(getState().useInterimTilesOnError!=null){
             opts.setUseInterimTilesOnError(getState().useInterimTilesOnError);
@@ -30,11 +30,11 @@ public class OLTileConnector extends OLLayerConnector {
             opts.setPreload(getState().preload);
         }
         opts.setSource(super.getSource());
-        return Tile.create(opts);
+        return TileLayer.create(opts);
     }
 
     @Override
-    public OLTileState getState() {
-        return (OLTileState) super.getState();
+    public OLTileLayerState getState() {
+        return (OLTileLayerState) super.getState();
     }
 }

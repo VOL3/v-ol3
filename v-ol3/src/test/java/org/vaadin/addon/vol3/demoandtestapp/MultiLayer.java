@@ -1,8 +1,8 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
 import org.vaadin.addon.vol3.OLMap;
-import org.vaadin.addon.vol3.layer.OLTile;
-import org.vaadin.addon.vol3.source.OLMapQuest;
+import org.vaadin.addon.vol3.layer.OLTileLayer;
+import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
@@ -12,11 +12,11 @@ public class MultiLayer extends BasicMapInitialization{
     @Override
     protected OLMap createMap() {
         OLMap map=super.createMap();
-        map.addLayer(new OLTile(new OLMapQuest(OLMapQuest.LAYER_HYB)));
+        map.addLayer(new OLTileLayer(new OLMapQuestSource(OLMapQuestSource.LAYER_HYB)));
         return map;
     }
 
     protected OLSource createSource(){
-        return new OLMapQuest(OLMapQuest.LAYER_SAT);
+        return new OLMapQuestSource(OLMapQuestSource.LAYER_SAT);
     }
 }

@@ -5,9 +5,9 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Created by mjhosio on 24/06/14.
  */
-public abstract class Base extends JavaScriptObject {
+public abstract class LayerBase extends JavaScriptObject {
 
-    protected Base(){
+    protected LayerBase(){
 
     }
 

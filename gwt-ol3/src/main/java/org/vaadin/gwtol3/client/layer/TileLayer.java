@@ -5,17 +5,17 @@ import org.vaadin.gwtol3.client.source.Source;
 /**
  * Created by mjhosio on 24/06/14.
  */
-public class Tile extends Layer{
+public class TileLayer extends Layer{
 
-    protected Tile() {
+    protected TileLayer() {
     }
 
-    public static native Tile create(Source src)
+    public static native TileLayer create(Source src)
     /*-{
         return new $wnd.ol.layer.Tile({source: src});
     }-*/;
 
-    public static native Tile create(TileOptions options)
+    public static native TileLayer create(TileOptions options)
     /*-{
         return new $wnd.ol.layer.Tile(options);
     }-*/;

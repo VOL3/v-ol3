@@ -1,11 +1,11 @@
 package org.vaadin.addon.vol3.source;
 
-import org.vaadin.addon.vol3.client.source.OLMapQuestState;
+import org.vaadin.addon.vol3.client.source.OLMapQuestSourceState;
 
 /**
  * Created by mjhosio on 30/06/14.
  */
-public class OLMapQuest extends OLSource {
+public class OLMapQuestSource extends OLSource {
 
     public static final String LAYER_OSM="osm";
     public static final String LAYER_SAT="sat";
@@ -14,13 +14,13 @@ public class OLMapQuest extends OLSource {
     /** Creates a MapQuest source
      * @param layer the MapQuest layer used (osm, sat, hyb)
      */
-    public OLMapQuest(String layer){
+    public OLMapQuestSource(String layer){
         super();
         getState().layer=layer;
     }
 
     @Override
-    protected OLMapQuestState getState() {
-        return (OLMapQuestState) super.getState();
+    protected OLMapQuestSourceState getState() {
+        return (OLMapQuestSourceState) super.getState();
     }
 }
