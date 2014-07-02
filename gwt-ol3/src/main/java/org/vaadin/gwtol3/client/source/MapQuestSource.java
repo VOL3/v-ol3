@@ -3,6 +3,7 @@ package org.vaadin.gwtol3.client.source;
 import java.util.logging.Logger;
 
 /**
+ * Layer source for the MapQuest tile server
  * Created by mjhosio on 24/06/14.
  */
 public class MapQuestSource extends XYZSource {
@@ -16,16 +17,7 @@ public class MapQuestSource extends XYZSource {
     protected MapQuestSource() {
     }
 
-    public static MapQuestSource create(String layer){
-        logger.info("Creating MapQuest source "+layer);
-        MapQuestSource source=createNative(layer);
-        logger.info("MapQuest source created");
-        return source;
-    }
-
-    private static native MapQuestSource createNative(String layerString)
-    /*-{
-        return new $wnd.ol.source.MapQuest({layer: layerString});
+    public static final native MapQuestSource create(String layer) /*-{
+        return new $wnd.ol.source.MapQuest({layer: layer});
     }-*/;
-
 }

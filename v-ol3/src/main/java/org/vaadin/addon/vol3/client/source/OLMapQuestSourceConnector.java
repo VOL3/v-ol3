@@ -16,7 +16,7 @@ public class OLMapQuestSourceConnector extends OLSourceConnector{
     @Override
     public Source getSource() {
         if(source==null){
-            source= MapQuestSource.create(getState().layer);
+            source = MapQuestSource.create(getState().layer.name().toLowerCase());
         }
         return source;
     }

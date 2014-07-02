@@ -7,6 +7,7 @@ import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
+import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.source.OLMapQuestSource;
@@ -38,7 +39,7 @@ public class BasicMapInitialization extends VerticalLayout implements View {
     }
 
     protected OLSource createSource(){
-        return new OLMapQuestSource(OLMapQuestSource.LAYER_OSM);
+        return new OLMapQuestSource(OLMapQuestLayerName.OSM);
     }
 
     protected OLLayer createLayer(OLSource source){

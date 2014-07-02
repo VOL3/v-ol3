@@ -5,5 +5,5 @@ package org.vaadin.addon.vol3.client.source;
  */
 public class OLMapQuestSourceState extends OLSourceState{
     // layer type (osm, sat, hyb)
-    public String layer;
+    public OLMapQuestLayerName layer;
 }
