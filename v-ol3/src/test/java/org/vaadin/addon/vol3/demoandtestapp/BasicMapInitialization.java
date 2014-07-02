@@ -20,6 +20,7 @@ public class BasicMapInitialization extends VerticalLayout implements View {
     public BasicMapInitialization() {
         this.setSizeFull();
         this.addComponent(createMap());
+        this.setExpandRatio(this.iterator().next(),1.0f);
         this.addComponent(createControls());
     }
 

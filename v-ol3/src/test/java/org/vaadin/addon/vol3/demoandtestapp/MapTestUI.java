@@ -35,6 +35,7 @@ public class MapTestUI extends UI {
     private void addViews() {
         addView("basic",BasicMapInitialization.class);
         addView("constrained", ConstrainedMap.class);
+        addView("multilayer", MultiLayer.class);
         navigator.navigateTo("basic");
     }
 
