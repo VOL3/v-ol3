@@ -1,32 +1,22 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.VerticalLayout;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
 import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLExtent;
+import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTile;
-import org.vaadin.addon.vol3.source.OLMapQuest;
+import org.vaadin.addon.vol3.layer.OLTileOptions;
+import org.vaadin.addon.vol3.source.OLSource;
 
 /**
  * Created by mjhosio on 01/07/14.
  */
-public class ConstrainedMap extends VerticalLayout implements View {
+public class ConstrainedMap extends BasicMapInitialization{
 
-    public ConstrainedMap() {
-        this.setSizeFull();
-        this.addComponent(createMap());
-    }
-
-    @Override
-    public void enter(ViewChangeListener.ViewChangeEvent event) {
-    }
-
-    private OLMap createMap(){
+    protected OLMap createMap(){
         OLMapOptions mapOpts=new OLMapOptions();
         OLDeviceOptions dopts=new OLDeviceOptions();
         dopts.loadTilesWhileAnimating=false;
@@ -34,14 +24,21 @@ public class ConstrainedMap extends VerticalLayout implements View {
         mapOpts.setDeviceOptions(dopts);
         mapOpts.setShowOl3Logo(false);
         OLMap map=new OLMap(mapOpts);
-        OLTile tileLayer=new OLTile(new OLMapQuest(OLMapQuest.LAYER_OSM));
-        map.addLayer(tileLayer);
+        OLLayer layer=createLayer(createSource());
+        map.addLayer(layer);
         map.setView(createView());
         map.setSizeFull();
         return map;
     }
 
-    private OLView createView(){
+    protected OLLayer createLayer(OLSource source){
+        OLTileOptions opts=new OLTileOptions();
+        opts.setPreload(4);
+        opts.setUseInterimTilesOnError(false);
+        return new OLTile(source,opts);
+    }
+
+    protected OLView createView(){
         OLViewOptions viewOpts=new OLViewOptions();
         viewOpts.setMinZoom(3);
         viewOpts.setMaxZoom(20);

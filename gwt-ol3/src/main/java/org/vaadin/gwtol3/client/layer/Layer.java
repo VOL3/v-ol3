@@ -10,6 +10,10 @@ public abstract class Layer extends Base{
     protected Layer() {
     }
 
+    /** Gets the source for the layer data
+     *
+     * @return
+     */
     public native final Source getSource()/*-{
         return this.getSource();
     }-*/;

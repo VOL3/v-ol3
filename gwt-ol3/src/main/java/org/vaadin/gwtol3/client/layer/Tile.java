@@ -14,4 +14,10 @@ public class Tile extends Layer{
     /*-{
         return new $wnd.ol.layer.Tile({source: src});
     }-*/;
+
+    public static native Tile create(TileOptions options)
+    /*-{
+        return new $wnd.ol.layer.Tile(options);
+    }-*/;
+
 }
