@@ -4,8 +4,8 @@ import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLRendererType;
 
 /**
- * Created by mjhosio on 01/07/14.
  * Options provided to the map on initialization.
+ * Created by mjhosio on 01/07/14.
  */
 public class OLMapOptions {
 

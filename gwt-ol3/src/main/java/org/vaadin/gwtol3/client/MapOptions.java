@@ -4,7 +4,9 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Options passed to Map on creation
+ * Created by mjhosio on 01/07/14
+ *
  */
 public class MapOptions extends JavaScriptObject{
     protected MapOptions() {

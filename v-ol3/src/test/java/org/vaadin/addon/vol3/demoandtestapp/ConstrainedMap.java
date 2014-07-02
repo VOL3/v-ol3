@@ -14,7 +14,7 @@ import org.vaadin.addon.vol3.source.OLSource;
 /**
  * Created by mjhosio on 01/07/14.
  */
-public class ConstrainedMap extends BasicMapInitialization{
+public class ConstrainedMap extends BasicMap {
 
     protected OLMap createMap(){
         OLMapOptions mapOpts=new OLMapOptions();

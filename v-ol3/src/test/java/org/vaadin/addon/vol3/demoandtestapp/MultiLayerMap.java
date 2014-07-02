@@ -9,7 +9,7 @@ import org.vaadin.addon.vol3.source.OLSource;
 /**
  * Created by mjhosio on 02/07/14.
  */
-public class MultiLayer extends BasicMapInitialization{
+public class MultiLayerMap extends BasicMap {
     @Override
     protected OLMap createMap() {
         OLMap map=super.createMap();
