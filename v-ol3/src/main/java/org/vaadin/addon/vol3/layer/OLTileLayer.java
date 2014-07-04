@@ -14,11 +14,8 @@ public class OLTileLayer extends OLLayer {
         this(source,null);
     }
 
-    public OLTileLayer(OLSource source, OLTileOptions options) {
-        super(source);
-        if(options!=null){
-            setOptions(options);
-        }
+    public OLTileLayer(OLSource source, OLTileLayerOptions options) {
+        super(source, options);
     }
 
     @Override
@@ -31,7 +28,8 @@ public class OLTileLayer extends OLLayer {
         return (OLTileLayerState) super.getState(markAsDirty);
     }
 
-    private void setOptions(OLTileOptions options) {
+    protected void setOptions(OLTileLayerOptions options) {
+        super.setOptions(options);
         getState().useInterimTilesOnError=options.getUseInterimTilesOnError();
         getState().preload=options.getPreload();
     }

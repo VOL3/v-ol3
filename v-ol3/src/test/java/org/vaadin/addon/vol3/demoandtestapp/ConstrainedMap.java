@@ -8,7 +8,7 @@ import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
-import org.vaadin.addon.vol3.layer.OLTileOptions;
+import org.vaadin.addon.vol3.layer.OLTileLayerOptions;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
@@ -32,7 +32,7 @@ public class ConstrainedMap extends BasicMap {
     }
 
     protected OLLayer createLayer(OLSource source){
-        OLTileOptions opts=new OLTileOptions();
+        OLTileLayerOptions opts=new OLTileLayerOptions();
         opts.setPreload(4);
         opts.setUseInterimTilesOnError(false);
         return new OLTileLayer(source,opts);

@@ -16,7 +16,9 @@ public abstract class OLXYZSourceConnector extends OLSourceConnector{
     }
 
     @Override
-    public abstract XYZSource getSource();
+    public XYZSource getSource(){
+        return (XYZSource) super.getSource();
+    }
 
     @Override
     public OLXYZSourceState getState() {

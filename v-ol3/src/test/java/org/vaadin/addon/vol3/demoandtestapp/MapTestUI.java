@@ -33,11 +33,13 @@ public class MapTestUI extends UI {
     }
 
     private void addViews() {
-        addView("basic",BasicMap.class);
-        addView("constrained", ConstrainedMap.class);
-        addView("multilayer", MultiLayerMap.class);
+        addView("Basic",BasicMap.class);
+        addView("Constrained", ConstrainedMap.class);
+        addView("Multilayer", MultiLayerMap.class);
         addView("OpenStreetMap", OSMMap.class);
-        navigator.navigateTo("basic");
+        addView("ImageWMSMap",ImageWMSMap.class);
+        addView("TileWMSMap", TileWMSMap.class);
+        navigator.navigateTo("Basic");
     }
 
     private void addView(String label, Class<? extends View> implementation){

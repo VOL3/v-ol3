@@ -2,8 +2,10 @@ package org.vaadin.addon.vol3.client.layer;
 
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
+import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.TileLayer;
 import org.vaadin.gwtol3.client.layer.TileOptions;
+import org.vaadin.gwtol3.client.source.Source;
 
 /**
  * Created by mjhosio on 30/06/14.
@@ -11,17 +13,7 @@ import org.vaadin.gwtol3.client.layer.TileOptions;
 @Connect (OLTileLayer.class)
 public class OLTileLayerConnector extends OLLayerConnector {
 
-    private TileLayer tile;
-
-    @Override
-    public TileLayer getLayer() {
-        if(tile==null){
-            tile=createTile();
-        }
-        return tile;
-    }
-
-    private TileLayer createTile(){
+    protected Layer createLayer(Source source){
         TileOptions opts=TileOptions.create();
         if(getState().useInterimTilesOnError!=null){
             opts.setUseInterimTilesOnError(getState().useInterimTilesOnError);
@@ -29,7 +21,7 @@ public class OLTileLayerConnector extends OLLayerConnector {
         if(getState().preload!=null){
             opts.setPreload(getState().preload);
         }
-        opts.setSource(super.getSource());
+        opts.setSource(source);
         return TileLayer.create(opts);
     }
 

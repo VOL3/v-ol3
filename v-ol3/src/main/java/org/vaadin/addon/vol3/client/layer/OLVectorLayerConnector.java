@@ -1,7 +1,9 @@
 package org.vaadin.addon.vol3.client.layer;
 
 import com.vaadin.client.annotations.OnStateChange;
+import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.VectorLayer;
+import org.vaadin.gwtol3.client.source.Source;
 import org.vaadin.gwtol3.client.source.VectorSource;
 
 /**
@@ -9,19 +11,14 @@ import org.vaadin.gwtol3.client.source.VectorSource;
  */
 public class OLVectorLayerConnector extends OLLayerConnector {
 
-    private VectorLayer layer;
-
-    @Override
-    public VectorLayer getLayer() {
-        if(layer==null){
-            layer = VectorLayer.create((VectorSource) super.getSource());
-        }
-        return layer;
-    }
-
     @Override
     public OLVectorLayerState getState() {
         return (OLVectorLayerState) super.getState();
+    }
+
+    @Override
+    protected Layer createLayer(Source source) {
+        return VectorLayer.create((VectorSource) source);
     }
 
     @OnStateChange("styles")

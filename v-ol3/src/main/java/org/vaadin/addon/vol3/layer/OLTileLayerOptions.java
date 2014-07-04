@@ -4,7 +4,7 @@ package org.vaadin.addon.vol3.layer;
  * Options that can be passed to OLTile on construction time
  * Created by mjhosio on 02/07/14.
  */
-public class OLTileOptions {
+public class OLTileLayerOptions extends OLLayerOptions{
     private Integer preload;
     private Boolean useInterimTilesOnError;
 

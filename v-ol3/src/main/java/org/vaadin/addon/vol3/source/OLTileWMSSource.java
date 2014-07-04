@@ -1,0 +1,106 @@
+package org.vaadin.addon.vol3.source;
+
+import org.vaadin.addon.vol3.client.OLExtent;
+import org.vaadin.addon.vol3.client.source.OLTileWMSSourceState;
+
+import java.util.Map;
+
+/**
+ * Created by mjhosio on 04/07/14.
+ */
+public class OLTileWMSSource extends OLSource {
+    public OLTileWMSSource(){
+        super();
+    }
+
+    public OLTileWMSSource(OLTileWMSSourceOptions options){
+        this();
+        setOptions(options);
+    }
+
+    @Override
+    protected OLTileWMSSourceState getState() {
+        return (OLTileWMSSourceState) super.getState();
+    }
+
+    @Override
+    protected OLTileWMSSourceState getState(boolean markAsDirty) {
+        return (OLTileWMSSourceState) super.getState(markAsDirty);
+    }
+
+    private void setOptions(OLTileWMSSourceOptions options) {
+        getState().attributions=options.getAttributions();
+        getState().crossOriginPolicy=options.getCrossOriginPolicy();
+        getState().extent=options.getExtent();
+        getState().projection=options.getProjection();
+        getState().hidpi=options.getHidpi();
+        getState().serverType=options.getServerType();
+        getState().logo=options.getLogo();
+        getState().url=options.getUrl();
+        getState().urls=options.getUrls();
+        getState().gutter=options.getGutter();
+        getState().maxZoom=options.getMaxZoom();
+        getState().params=options.getParams();
+    }
+
+    public String[] getAttributions() {
+        return getState(false).attributions;
+    }
+
+    public String getCrossOriginPolicy() {
+        return getState(false).crossOriginPolicy;
+    }
+
+    public OLExtent getExtent() {
+        return getState(false).extent;
+    }
+
+    public String getProjection() {
+        return getState(false).projection;
+    }
+
+    public Boolean getHidpi() {
+        return getState(false).hidpi;
+    }
+
+    public String getServerType() {
+        return getState(false).serverType;
+    }
+
+    public String getLogo() {
+        return getState(false).logo;
+    }
+
+    public String getUrl() {
+        return getState(false).url;
+    }
+
+    public String[] getUrls() {
+        return getState(false).urls;
+    }
+
+    public Double getGutter() {
+        return getState(false).gutter;
+    }
+
+    public Double getMaxZoom() {
+        return getState(false).maxZoom;
+    }
+
+    /** Gets WMS request parameters. The modifications to the parameters are applied automatically
+     *
+     * @return WMS request parameter map
+     */
+    public Map<String, String> getParams() {
+        // mark state as dirty
+        return getState().params;
+    }
+
+    /** Updates WMS request parameters
+     *
+     * @param params WMS request parameters
+     */
+    public void setParams(Map<String,String> params){
+        getState().params=params;
+    }
+}

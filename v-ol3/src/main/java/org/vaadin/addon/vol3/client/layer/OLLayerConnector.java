@@ -21,6 +21,8 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
     // only to handle layer state serialization
     private static final Widget dummyWidget=new Label();
 
+    protected Layer layer;
+
     public OLLayerConnector(){
         super();
     }
@@ -60,7 +62,19 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
      *
      * @return layer implementation
      */
-    public abstract Layer getLayer();
+    public Layer getLayer(){
+        if(layer==null){
+            layer=createLayer(getSource());
+        }
+        return layer;
+    }
+
+    /** Creates the javascript layer implementation. To be implemented in super classes
+     *
+     * @param source the layer data source
+     * @return the javascript layer implementation
+     */
+    protected abstract Layer createLayer(Source source);
 
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {

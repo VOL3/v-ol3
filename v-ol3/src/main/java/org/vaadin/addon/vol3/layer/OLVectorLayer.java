@@ -8,6 +8,6 @@ import org.vaadin.addon.vol3.source.OLSource;
  */
 public class OLVectorLayer extends OLLayer {
     public OLVectorLayer(OLSource source) {
-        super(source);
+        super(source, null);
     }
 }

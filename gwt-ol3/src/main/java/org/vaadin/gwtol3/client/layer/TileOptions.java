@@ -1,18 +1,14 @@
 package org.vaadin.gwtol3.client.layer;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import org.vaadin.gwtol3.client.source.Source;
-
 /**
  * Created by mjhosio on 02/07/14.
  */
-public class TileOptions extends JavaScriptObject {
+public class TileOptions extends LayerOptions {
     protected TileOptions() {
     }
 
-
     /**
-     * Initializes Tile options. Basically a simple map wrapper that can be passed to Tile on initialization
+     * Initializes Tile options. Basically a simple map wrapper that can be passed to TileLayer on initialization
      */
     public static native TileOptions create()
     /*-{
@@ -25,9 +21,5 @@ public class TileOptions extends JavaScriptObject {
 
     public final native void setUseInterimTilesOnError(boolean enabled)/*-{
         this.useInterimTilesOnError = enabled;
-    }-*/;
-
-    public final native void setSource(Source source)/*-{
-        this.source=source;
     }-*/;
 }

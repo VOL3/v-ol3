@@ -11,8 +11,22 @@ import org.vaadin.addon.vol3.source.OLSource;
  */
 public abstract class OLLayer extends AbstractSingleComponentContainer{
 
-    protected OLLayer(OLSource source){
+    protected OLLayer(OLSource source, OLLayerOptions options){
         super.setContent(source);
+        if(options!=null){
+            setOptions(options);
+        }
+    }
+
+    protected void setOptions(OLLayerOptions options) {
+        setBrightness(options.getBrightness());
+        setContrast(options.getContrast());
+        setHue(options.getHue());
+        setMinResolution(options.getMinResolution());
+        setMaxResolution(options.getMaxResolution());
+        setOpacity(options.getOpacity());
+        setSaturation(options.getSaturation());
+        setVisible(options.getVisible());
     }
 
     @Override

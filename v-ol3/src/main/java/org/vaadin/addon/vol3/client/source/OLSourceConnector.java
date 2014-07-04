@@ -10,14 +10,32 @@ import org.vaadin.gwtol3.client.source.Source;
  */
 public abstract class OLSourceConnector extends AbstractComponentConnector {
 
+    protected Source source;
+
     // we create a dummy widget since this connector is used
     // only to communicate layer source related information
-    private static final Widget dummyWidget=new Label();
+    private static final Widget dummyWidget = new Label();
 
     @Override
     public Widget getWidget() {
         return dummyWidget;
     }
 
-    public abstract Source getSource();
+    /**
+     * Returns the layer data source. Creates the source if not yet created.
+     *
+     * @return
+     */
+    public Source getSource() {
+        if (source == null) {
+            source = createSource();
+        }
+        return source;
+    }
+
+    /** Creates the layer data source
+     *
+     * @return the layer data source
+     */
+    protected abstract Source createSource();
 }

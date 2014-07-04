@@ -6,6 +6,7 @@ import org.vaadin.addon.vol3.source.OLOSMSource;
 import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.source.OSMSource;
 import org.vaadin.gwtol3.client.source.OSMSourceOptions;
+import org.vaadin.gwtol3.client.source.Source;
 
 /**
  * Created by mjhosio on 02/07/14.
@@ -13,17 +14,8 @@ import org.vaadin.gwtol3.client.source.OSMSourceOptions;
 @Connect(OLOSMSource.class)
 public class OLOSMSourceConnector extends OLXYZSourceConnector{
 
-    private OSMSource source;
-
     @Override
-    public OSMSource getSource() {
-        if(source==null){
-            source=createSource();
-        }
-        return source;
-    }
-
-    private OSMSource createSource() {
+    protected Source createSource() {
         OSMSourceOptions options=OSMSourceOptions.create();
         JsArray<Attribution> attributions=JsArray.createArray().cast();
         if(getState().showDataAttributions!=null && getState().showDataAttributions){
