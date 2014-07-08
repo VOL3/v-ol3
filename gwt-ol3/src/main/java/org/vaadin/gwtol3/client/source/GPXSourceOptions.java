@@ -7,7 +7,7 @@ import com.google.gwt.dom.client.Node;
 /**
  * Created by mjhosio on 07/07/14.
  */
-public class GPXSourceOptions extends VectorSourceOptions{
+public class GPXSourceOptions extends AbstractVectorSourceOptions{
     protected GPXSourceOptions() {
     }
 

@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.source.Source;
 /**
  * Created by mjhosio on 27/06/14.
  */
-public abstract class OLSourceConnector extends AbstractComponentConnector {
+public abstract class OLSourceConnector extends AbstractComponentConnector{
 
     protected Source source;
 

@@ -1,7 +1,9 @@
 package org.vaadin.addon.vol3.client.style;
 
+import java.io.Serializable;
+
 /**
- * Created by mjhosio on 30/06/14.
+ * Created by mjhosio on 07/07/14.
  */
-public class OLStyle {
+public class OLStyle implements Serializable {
 }

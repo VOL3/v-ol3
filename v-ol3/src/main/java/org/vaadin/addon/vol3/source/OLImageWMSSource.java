@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by mjhosio on 04/07/14.
  */
-public class OLImageWMSSource extends OLSource{
+public class OLImageWMSSource extends OLSource {
 
     public OLImageWMSSource(){
         super();

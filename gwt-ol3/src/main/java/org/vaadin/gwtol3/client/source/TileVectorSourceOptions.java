@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.tilegrid.TileGrid;
 /**
  * Created by mjhosio on 07/07/14.
  */
-public class TileVectorSourceOptions extends VectorSourceOptions{
+public class TileVectorSourceOptions extends AbstractVectorSourceOptions{
 
     protected TileVectorSourceOptions() {
     }

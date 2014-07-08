@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.style.Style;
 /**
  * Created by mjhosio on 07/07/14.
  */
-public class OSMXMLSourceOptions extends VectorSourceOptions{
+public class OSMXMLSourceOptions extends AbstractVectorSourceOptions{
     protected OSMXMLSourceOptions() {
     }
 

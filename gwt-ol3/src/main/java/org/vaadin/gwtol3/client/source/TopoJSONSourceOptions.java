@@ -5,7 +5,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * Created by mjhosio on 07/07/14.
  */
-public class TopoJSONSourceOptions extends VectorSourceOptions{
+public class TopoJSONSourceOptions extends AbstractVectorSourceOptions{
     protected TopoJSONSourceOptions() {
     }
 

@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.feature.Feature;
  * Abstract base class for vector sources in one of the supported formats
  * Created by mjhosio on 07/07/14.
  */
-public abstract class FormatVectorSource extends VectorSource{
+public abstract class FormatVectorSource extends AbstractVectorSource{
     protected FormatVectorSource() {
     }
 

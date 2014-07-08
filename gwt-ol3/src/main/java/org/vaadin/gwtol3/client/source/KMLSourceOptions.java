@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.style.Style;
 /**
  * Created by mjhosio on 07/07/14.
  */
-public class KMLSourceOptions extends VectorSourceOptions{
+public class KMLSourceOptions extends AbstractVectorSourceOptions{
     protected KMLSourceOptions() {
     }
 

@@ -10,8 +10,6 @@ import org.vaadin.addon.vol3.client.source.OLSourceConnector;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.source.Source;
 
-import java.util.List;
-
 /**
  * Created by mjhosio on 27/06/14.
  */
@@ -32,14 +30,6 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
         return dummyWidget;
     }
 
-    protected OLSourceConnector getSourceConnector(){
-        List<ComponentConnector> childComponents = this.getChildComponents();
-        if(!childComponents.isEmpty()){
-            return ((OLSourceConnector)childComponents.get(0));
-        }
-        return null;
-    }
-
     @Override
     public void updateCaption(ComponentConnector connector) {
         // no-op
@@ -55,7 +45,10 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
      * @return the source implementation
      */
     public Source getSource(){
-        return getSourceConnector().getSource();
+        if(super.getContent()!=null){
+            return ((OLSourceConnector)super.getContent()).getSource();
+        }
+        return null;
     }
 
     /** Returns the underlying wrapped javascript layer implementation

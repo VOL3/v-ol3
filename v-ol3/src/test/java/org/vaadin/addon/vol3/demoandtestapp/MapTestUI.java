@@ -39,6 +39,7 @@ public class MapTestUI extends UI {
         addView("OpenStreetMap", OSMMap.class);
         addView("ImageWMSMap",ImageWMSMap.class);
         addView("TileWMSMap", TileWMSMap.class);
+        addView("VectorLayer", VectorLayerMap.class);
         navigator.navigateTo("Basic");
     }
 

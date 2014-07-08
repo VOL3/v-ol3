@@ -1,55 +1,18 @@
 package org.vaadin.gwtol3.client.source;
 
-import com.google.gwt.core.client.JsArray;
-import org.vaadin.gwtol3.client.Coordinate;
-import org.vaadin.gwtol3.client.Extent;
-import org.vaadin.gwtol3.client.feature.Feature;
-
 /**
- * Abstract base class for vector sources
+ * Base class for vector sources
  * Created by mjhosio on 02/07/14.
  */
-public abstract class VectorSource extends Source {
+public class VectorSource extends AbstractVectorSource{
     protected VectorSource() {
     }
 
-    public final native void addFeature(Feature feature)/*-{
-        this.addFeature(feature);
+    public static final native VectorSource create()/*-{
+        return new $wnd.ol.source.Vector();
     }-*/;
 
-    public final native void addFeatures(JsArray<Feature> features)/*-{
-        this.addFeatures(features);
+    public static final native VectorSource create(VectorSourceOptions options)/*-{
+        return new $wnd.ol.source.Vector(options);
     }-*/;
-
-    public final native Feature getClosestFeatureToCoordinate(Coordinate coordinate)/*-{
-        return this.getClosestFeatureToCoordinate(coordinate);
-    }-*/;
-
-    public final native Extent getExtent()/*-{
-        return this.getExtent();
-    }-*/;
-
-    /** Get a feature by its identifier (the value returned by feature.getId()).
-     *
-     * @param id
-     * @return
-     */
-    public final native Feature getFeatureById(String id)/*-{
-        return this.getFeatureById(id);
-    }-*/;
-
-    public final native JsArray<Feature> getFeatures()/*-{
-        return this.getFeatures();
-    }-*/;
-
-    public final native JsArray<Feature> getFeaturesAtCoordinate(Coordinate coordinate)/*-{
-        return this.getFeaturesAtCoordinate(coordinate);
-    }-*/;
-
-    public final native void removeFeature(Feature feature)/*-{
-        return this.getFeatures();
-    }-*/;
-
-
-
 }
