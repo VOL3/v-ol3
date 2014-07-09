@@ -34,7 +34,7 @@ public class WMTSTileGridOptions extends JavaScriptObject{
         this.matrixIds=matrixIds;
     }-*/;
 
-    public final native void setTileSize(double tileSize)/*-{
+    public final native void setTileSize(Double tileSize)/*-{
         this.tileSize=tileSize;
     }-*/;
 

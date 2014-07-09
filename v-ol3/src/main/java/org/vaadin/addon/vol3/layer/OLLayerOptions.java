@@ -7,13 +7,13 @@ package org.vaadin.addon.vol3.layer;
 public class OLLayerOptions {
 
     private Double brightness;
-    private  Double contrast;
-    private  Double hue;
-    private  Double maxResolution;
-    private  Double minResolution;
-    private  Double opacity;
-    private  Double saturation;
-    private  Boolean visible;
+    private Double contrast;
+    private Double hue;
+    private Double maxResolution;
+    private Double minResolution;
+    private Double opacity;
+    private Double saturation;
+    private Boolean visible;
 
     public Double getBrightness() {
         return brightness;

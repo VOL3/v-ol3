@@ -4,9 +4,12 @@ import org.geojson.LineString;
 import org.geojson.LngLatAlt;
 import org.geojson.Point;
 import org.vaadin.addon.vol3.OLMap;
+import org.vaadin.addon.vol3.client.style.OLFillStyle;
+import org.vaadin.addon.vol3.client.style.OLStyle;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
 import org.vaadin.addon.vol3.source.OLVectorSource;
+import org.vaadin.addon.vol3.util.StyleUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,10 @@ public class VectorLayerMap extends BasicMap{
         }
         vectorSource.addFeature(createRectangleFeature("rect",-500000,0,1000000,500000));
         OLVectorLayer vectorLayer=new OLVectorLayer(vectorSource);
+        OLStyle style= StyleUtils.createDefaultStyle();
+        style.circleStyle.fill=new OLFillStyle("magenta");
+        style.circleStyle.stroke.color="green";
+        vectorLayer.setStyle(style);
         map.addLayer(vectorLayer);
         return map;
     }

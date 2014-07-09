@@ -14,7 +14,7 @@ public class FillStyle extends JavaScriptObject {
      */
     public static final native FillStyle create(FillStyleOptions options)
     /*-{
-        return new ol.style.Fill(options);
+        return new $wnd.ol.style.Fill(options);
     }-*/;
 
     /**
@@ -22,7 +22,7 @@ public class FillStyle extends JavaScriptObject {
      */
     public static final native FillStyle create(String color)
     /*-{
-        return new ol.style.Fill({color: color});
+        return new $wnd.ol.style.Fill({color: color});
     }-*/;
 
     public final native String getColor() /*-{

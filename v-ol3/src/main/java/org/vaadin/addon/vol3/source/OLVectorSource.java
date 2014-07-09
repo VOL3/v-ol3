@@ -99,5 +99,6 @@ public class OLVectorSource extends OLSource{
             getRpcProxy(OLVectorSourceClientRpc.class).createOrUpdateFeatures(serialized);
             newFeatures.clear();
         }
+
     }
 }

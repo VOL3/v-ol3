@@ -4,6 +4,7 @@ import com.google.gwt.core.client.JsArray;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
+import org.vaadin.addon.vol3.client.style.OLStyleConverter;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.Extent;
@@ -44,6 +45,9 @@ public class OLVectorSourceConnector extends OLSourceConnector {
             Feature f=Feature.create();
             f.setId(feature.id);
             f.setGeometry(GeoJSONFormat.create().readGeometry(feature.serializedGeometry));
+            if(feature.styles!=null){
+                f.setStyles(OLStyleConverter.convert(feature.styles));
+            }
             return f;
         }
 
@@ -61,7 +65,7 @@ public class OLVectorSourceConnector extends OLSourceConnector {
                 source.removeFeature(removed);
             }
         }
-    };
+    }
 
     @Override
     protected VectorSource createSource() {
@@ -70,7 +74,7 @@ public class OLVectorSourceConnector extends OLSourceConnector {
             options.setProjection(getState().projection);
         }
         if(getState().attributions!=null){
-            JsArray jsArray= (JsArray) JsArray.createArray(getState().attributions.length);
+            JsArray<Attribution> jsArray= JsArray.createArray(getState().attributions.length).cast();
             for(String attribution : getState().attributions){
                 jsArray.push(Attribution.create(attribution));
             }

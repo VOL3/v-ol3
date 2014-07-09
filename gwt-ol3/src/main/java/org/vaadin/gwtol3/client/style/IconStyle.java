@@ -32,14 +32,6 @@ public class IconStyle extends ImageStyle {
         return this.getOrigin();
     }-*/;
 
-    public final native double getRotation() /*-{
-        return this.getRotation();
-    }-*/;
-
-    public final native double getScale() /*-{
-        return this.getScale();
-    }-*/;
-
     public final native Size getSize() /*-{
         return this.getSize();
     }-*/;

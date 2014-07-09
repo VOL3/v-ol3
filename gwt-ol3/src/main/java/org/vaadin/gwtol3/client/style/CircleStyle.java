@@ -16,7 +16,7 @@ public class CircleStyle extends ImageStyle{
      */
     public static final native CircleStyle create(CircleStyleOptions options)
     /*-{
-        return new ol.style.Circle(options);
+        return new $wnd.ol.style.Circle(options);
     }-*/;
 
     public final native JsArrayNumber getAnchor() /*-{
@@ -26,7 +26,6 @@ public class CircleStyle extends ImageStyle{
     public final native FillStyle getFill() /*-{
         return this.getFill();
     }-*/;
-
 
     public final native ImageElement getImage(double pixelRatio) /*-{
         return this.getImage(pixelRatio);
@@ -38,15 +37,6 @@ public class CircleStyle extends ImageStyle{
 
     public final native double getRadius() /*-{
         return this.getRadius();
-    }-*/;
-
-
-    public final native double getRotation() /*-{
-        return this.getRotation();
-    }-*/;
-
-    public final native double getScale() /*-{
-        return this.getScale();
     }-*/;
 
     public final native Size getSize() /*-{

@@ -12,7 +12,7 @@ public class CircleStyleOptions extends JavaScriptObject{
     /**
      * Initializes FillStyle
      */
-    public static final native FillStyleOptions create()
+    public static final native CircleStyleOptions create()
     /*-{
         return {};
     }-*/;
