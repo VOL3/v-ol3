@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.layer;
 
+import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.source.VectorSource;
 import org.vaadin.gwtol3.client.style.Style;
 
@@ -20,11 +21,11 @@ public class VectorLayer extends Layer {
      * Set the style for features. Taking a shortcut here for simplicity. The javascript api would allow also single style instance and generator function
      * @param styles
      */
-    public native final void setStyles(Style [] styles)/*-{
+    public native final void setStyles(JsArray<Style> styles)/*-{
         this.setStyle(styles);
     }-*/;
 
-    public native final Style [] getStyles()/*-{
+    public native final JsArray<Style> getStyles()/*-{
         return this.getStyle();
     }-*/;
 }

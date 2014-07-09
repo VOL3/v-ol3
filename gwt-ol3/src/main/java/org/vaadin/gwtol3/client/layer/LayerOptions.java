@@ -6,7 +6,7 @@ import org.vaadin.gwtol3.client.source.Source;
 /**
  * Created by mjhosio on 04/07/14.
  */
-public class LayerOptions extends JavaScriptObject {
+public abstract class LayerOptions extends JavaScriptObject {
     protected LayerOptions() {
     }
 

@@ -19,9 +19,9 @@ public class VectorLayerMap extends BasicMap{
     protected OLMap createMap() {
         OLMap map=super.createMap();
         OLVectorSource vectorSource=new OLVectorSource();
-        for(int i=0;i<500;i++){
-            vectorSource.addFeature(createPointFeature("feature-a-"+i,i*1000,i*1000));
-            vectorSource.addFeature(createPointFeature("feature-b-"+i,i*-1000,i*1000));
+        for(int i=0;i<50;i++){
+            vectorSource.addFeature(createPointFeature("feature-a-"+i,i*10000,i*10000));
+            vectorSource.addFeature(createPointFeature("feature-b-"+i,i*-10000,i*10000));
         }
         vectorSource.addFeature(createRectangleFeature("rect",-500000,0,1000000,500000));
         OLVectorLayer vectorLayer=new OLVectorLayer(vectorSource);

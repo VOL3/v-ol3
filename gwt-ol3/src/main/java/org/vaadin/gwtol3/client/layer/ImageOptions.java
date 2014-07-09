@@ -10,7 +10,7 @@ public class ImageOptions extends LayerOptions {
     /**
      * Initializes Image options. Basically a simple map wrapper that can be passed to ImageLayer on initialization
      */
-    public static native ImageOptions create()
+    public static final native ImageOptions create()
     /*-{
         return {};
     }-*/;
