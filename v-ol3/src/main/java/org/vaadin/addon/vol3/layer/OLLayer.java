@@ -18,6 +18,10 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         }
     }
 
+    public OLSource getSource(){
+        return (OLSource) getContent();
+    }
+
     protected void setOptions(OLLayerOptions options) {
         setBrightness(options.getBrightness());
         setContrast(options.getContrast());

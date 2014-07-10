@@ -9,9 +9,7 @@ import java.util.List;
  * Created by mjhosio on 08/07/14.
  */
 public interface OLVectorSourceClientRpc extends ClientRpc {
-    /** Creates or updates the features on the client side. The features are encoded as JSON
-     *
-     * @param featuresAsJSON
+    /** Creates or updates the features on the client side.
      */
     public void createOrUpdateFeatures(List<SerializedFeature> features);
 

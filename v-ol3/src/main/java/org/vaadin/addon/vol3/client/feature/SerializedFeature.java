@@ -3,7 +3,6 @@ package org.vaadin.addon.vol3.client.feature;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public class SerializedFeature implements Serializable {
     public String id;
-    public List<OLStyle> styles=new ArrayList<OLStyle>();
+    public List<OLStyle> styles;
     // the geometry serialized as geojson
     public String serializedGeometry;
 }

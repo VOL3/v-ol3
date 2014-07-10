@@ -14,4 +14,13 @@ public class OLVectorSourceOptions extends OLSourceOptions {
     public void setState(String state) {
         this.state = state;
     }
+
+    /** Sets the destination projection. If provided, features will be transformed to this projection.
+     *
+     * @param projection
+     */
+    @Override
+    public void setProjection(String projection) {
+        super.setProjection(projection);
+    }
 }

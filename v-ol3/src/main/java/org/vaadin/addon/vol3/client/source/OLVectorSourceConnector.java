@@ -3,6 +3,7 @@ package org.vaadin.addon.vol3.client.source;
 import com.google.gwt.core.client.JsArray;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.client.OLExtent;
+import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.style.OLStyleConverter;
 import org.vaadin.addon.vol3.source.OLVectorSource;
@@ -10,6 +11,7 @@ import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.format.GeoJSONFormat;
+import org.vaadin.gwtol3.client.geom.Geometry;
 import org.vaadin.gwtol3.client.source.VectorSource;
 import org.vaadin.gwtol3.client.source.VectorSourceOptions;
 
@@ -32,19 +34,24 @@ public class OLVectorSourceConnector extends OLSourceConnector {
         @Override
         public void createOrUpdateFeatures(List<SerializedFeature> features) {
             VectorSource source=getSource();
+            GeoJSONFormat format = GeoJSONFormat.create();
             for(SerializedFeature feature : features){
                 // we just do delete and add for simplicity
                 // remove old feature with same id
                 removeFeatureById(source, feature.id);
                 // add the new one
-                getSource().addFeature(createFeature(feature));
+                getSource().addFeature(createFeature(format, feature, getState().projection));
             }
         }
 
-        private Feature createFeature(SerializedFeature feature) {
+        private Feature createFeature(GeoJSONFormat parser, SerializedFeature feature, String targetProjection) {
             Feature f=Feature.create();
             f.setId(feature.id);
-            f.setGeometry(GeoJSONFormat.create().readGeometry(feature.serializedGeometry));
+            Geometry geom=parser.readGeometry(feature.serializedGeometry);
+            if(targetProjection!=null){
+                geom.transform(Projections.EPSG4326, targetProjection);
+            }
+            f.setGeometry(geom);
             if(feature.styles!=null){
                 f.setStyles(OLStyleConverter.convert(feature.styles));
             }

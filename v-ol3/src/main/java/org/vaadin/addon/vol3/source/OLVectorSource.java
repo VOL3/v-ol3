@@ -54,6 +54,13 @@ public class OLVectorSource extends OLSource{
         newFeatures.remove(feature);
     }
 
+    public List<OLFeature> getFeatures(){
+        // just return copy of the list to prevent modifying the original one
+        LinkedList<OLFeature> features=new LinkedList<OLFeature>();
+        features.addAll(this.features);
+        return features;
+    }
+
     public OLExtent getExtent(){
         return getState(false).extent;
     }

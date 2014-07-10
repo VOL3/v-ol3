@@ -8,4 +8,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Geometry extends JavaScriptObject {
     protected Geometry() {
     }
+
+    public final native void transform(String sourceProjection, String destinationProjection)/*-{
+        this.transform(sourceProjection, destinationProjection);
+    }-*/;
 }

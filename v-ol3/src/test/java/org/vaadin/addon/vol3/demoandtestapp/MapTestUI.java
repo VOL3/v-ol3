@@ -40,6 +40,7 @@ public class MapTestUI extends UI {
         addView("ImageWMSMap",ImageWMSMap.class);
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
+        addView("StyleTest", StyleTestMap.class);
         navigator.navigateTo("Basic");
     }
 

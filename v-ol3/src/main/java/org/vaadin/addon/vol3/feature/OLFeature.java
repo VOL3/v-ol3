@@ -54,7 +54,9 @@ public class OLFeature implements Serializable{
     public SerializedFeature asSerializedFeature() {
         SerializedFeature serialized=new SerializedFeature();
         serialized.id=id;
-        serialized.styles=styles;
+        if(styles.size()>0){
+            serialized.styles=styles;
+        }
         if(geometry!=null) {
             serialized.serializedGeometry=serializeGeometry(geometry);
         }

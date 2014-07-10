@@ -22,7 +22,6 @@ public class VectorLayer extends Layer {
      * @param styles
      */
     public native final void setStyles(JsArray<Style> styles)/*-{
-//        console.log("existing styles "+this.getstyle());
         this.setStyle(styles);
     }-*/;
 

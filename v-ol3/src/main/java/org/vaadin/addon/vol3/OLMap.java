@@ -7,6 +7,7 @@ import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLRendererType;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by mjhosio on 24/06/14.
  */
 public class OLMap extends AbstractComponentContainer{
-    private List<Component> components=new LinkedList<Component>();
+    private List<Component> components=new ArrayList<Component>();
     private OLView view;
 
     public OLMap(){
@@ -33,9 +34,7 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     public OLMap(OLView view, OLMapOptions options){
-        if(view!=null){
-            setView(view);
-        }
+        setView(view);
         if(options != null){
             setOptions(options);
         }
@@ -57,14 +56,21 @@ public class OLMap extends AbstractComponentContainer{
         removeComponent(layer);
     }
 
+    public List<OLLayer> getLayers(){
+        List<OLLayer> layers=new LinkedList<OLLayer>();
+        for(Component c : components){
+            if(c instanceof OLLayer){
+                layers.add((OLLayer) c);
+            }
+        }
+        return layers;
+    }
+
     /** Sets the view of the map. The view can not be null
      *
      * @param view the view
      */
     public void setView(OLView view){
-        if(view==null){
-            throw new IllegalArgumentException("The view instance can not be null");
-        }
         doSetView(view);
     }
 
@@ -124,8 +130,10 @@ public class OLMap extends AbstractComponentContainer{
             super.removeComponent(this.view);
         }
         this.view=olView;
-        components.add(olView);
-        super.addComponent(olView);
+        if(olView!=null){
+            components.add(olView);
+            super.addComponent(olView);
+        }
     }
 
     @Override
