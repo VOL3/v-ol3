@@ -5,6 +5,7 @@ import com.vaadin.ui.Component;
 import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLRendererType;
+import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
 import java.util.ArrayList;
@@ -38,6 +39,7 @@ public class OLMap extends AbstractComponentContainer{
         if(options != null){
             setOptions(options);
         }
+        addDefaultControls();
     }
 
     /** Adds a new layer to the map
@@ -66,7 +68,7 @@ public class OLMap extends AbstractComponentContainer{
         return layers;
     }
 
-    /** Sets the view of the map. The view can not be null
+    /** Sets the view of the map.
      *
      * @param view the view
      */
@@ -129,6 +131,7 @@ public class OLMap extends AbstractComponentContainer{
             components.remove(this.view);
             super.removeComponent(this.view);
         }
+        // add new view
         this.view=olView;
         if(olView!=null){
             components.add(olView);
@@ -173,10 +176,89 @@ public class OLMap extends AbstractComponentContainer{
         return getState(false).deviceOptions;
     }
 
+    public OLAttributionControl getAttributionControl() {
+        return getState().attributionControl;
+    }
+
+    public void setAttributionControl(OLAttributionControl attributionControl) {
+        getState().attributionControl = attributionControl;
+    }
+
+    public OLFullScreenControl getFullScreenControl() {
+        return getState().fullScreenControl;
+    }
+
+    public void setFullScreenControl(OLFullScreenControl fullScreenControl) {
+        getState().fullScreenControl = fullScreenControl;
+    }
+
+    public OLLogoControl getLogoControl() {
+        return getState().logoControl;
+    }
+
+    public void setLogoControl(OLLogoControl logoControl) {
+        getState().logoControl = logoControl;
+    }
+
+    public OLMousePositionControl getMousePositionControl() {
+        return getState().mousePositionControl;
+    }
+
+    public void setMousePositionControl(OLMousePositionControl mousePositionControl) {
+        getState().mousePositionControl = mousePositionControl;
+    }
+
+    public OLRotateControl getRotateControl() {
+        return getState().rotateControl;
+    }
+
+    public void setRotateControl(OLRotateControl rotateControl) {
+        getState().rotateControl = rotateControl;
+    }
+
+    public OLScaleLineControl getScaleLineControl() {
+        return getState().scaleLineControl;
+    }
+
+    public void setScaleLineControl(OLScaleLineControl scaleLineControl) {
+        getState().scaleLineControl = scaleLineControl;
+    }
+
+    public OLZoomControl getZoomControl() {
+        return getState().zoomControl;
+    }
+
+    public void setZoomControl(OLZoomControl zoomControl) {
+        getState().zoomControl = zoomControl;
+    }
+
+    public OLZoomSliderControl getZoomSliderControl() {
+        return getState().zoomSliderControl;
+    }
+
+    public void setZoomSliderControl(OLZoomSliderControl zoomSliderControl) {
+        getState().zoomSliderControl = zoomSliderControl;
+    }
+
+    public OLZoomToExtentControl getZoomToExtentControl() {
+        return getState().zoomToExtentControl;
+    }
+
+    public void setZoomToExtentControl(OLZoomToExtentControl zoomToExtentControl) {
+        getState().zoomToExtentControl = zoomToExtentControl;
+    }
+
     private void setOptions(OLMapOptions options) {
         getState().showOl3Logo=options.getShowOl3Logo();
         getState().renderer=options.getRenderer();
         getState().pixelRatio=options.getPixelRatio();
         getState().deviceOptions=options.getDeviceOptions();
+    }
+
+    private void addDefaultControls() {
+        getState().zoomControl=new OLZoomControl();
+        getState().logoControl=new OLLogoControl();
+        getState().attributionControl=new OLAttributionControl();
+        getState().rotateControl=new OLRotateControl();
     }
 }

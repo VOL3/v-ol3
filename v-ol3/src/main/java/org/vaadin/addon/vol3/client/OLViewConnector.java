@@ -67,6 +67,7 @@ public class OLViewConnector extends AbstractComponentConnector{
         }
     }
 
+// the setProjection method is not implemented in the js-api
 //    @OnStateChange("projection")
 //    void updateProjection(){
 //        if(getState().projection!=null){

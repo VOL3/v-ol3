@@ -41,6 +41,7 @@ public class MapTestUI extends UI {
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
         addView("StyleTest", StyleTestMap.class);
+        addView("ControlTest", ControlTestMap.class);
         navigator.navigateTo("Basic");
     }
 

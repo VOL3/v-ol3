@@ -9,7 +9,7 @@ public class Collection extends JavaScriptObject{
 
     protected Collection(){}
 
-    public static native Map create() /*-{
+    public static native Collection create() /*-{
         return new $wnd.ol.Collection();
     }-*/;
 

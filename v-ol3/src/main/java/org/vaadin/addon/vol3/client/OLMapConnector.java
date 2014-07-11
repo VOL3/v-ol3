@@ -2,15 +2,19 @@ package org.vaadin.addon.vol3.client;
 
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
+import com.vaadin.client.annotations.OnStateChange;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
 import com.vaadin.client.ui.layout.ElementResizeListener;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLMap;
+import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
+import org.vaadin.gwtol3.client.Collection;
 import org.vaadin.gwtol3.client.DeviceOptions;
 import org.vaadin.gwtol3.client.MapOptions;
 import org.vaadin.gwtol3.client.MapWidget;
+import org.vaadin.gwtol3.client.control.*;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
 import java.util.List;
@@ -24,6 +28,18 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     static{
         ResourceInjector.ensureInjected();
     }
+
+    // references to controls added to the map
+    // makes it easier to handle removal
+    private AttributionControl attributionControl;
+    private FullScreenControl fullScreenControl;
+    private LogoControl logoControl;
+    private MousePositionControl mousePositionControl;
+    private RotateControl rotateControl;
+    private ScaleLineControl scaleLineControl;
+    private ZoomControl zoomControl;
+    private ZoomSliderControl zoomSliderControl;
+    private ZoomToExtentControl zoomToExtentControl;
 
     @Override
     protected void init() {
@@ -88,6 +104,8 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             DeviceOptions opts=DeviceOptions.create(getState().deviceOptions.loadTilesWhileAnimating, getState().deviceOptions.loadTilesWhileInteracting);
             options.setDeviceOptions(opts);
         }
+        // clear default controls
+        options.setControls(Collection.create());
         getWidget().initMap(options);
     }
 
@@ -99,5 +117,113 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     @Override
     public void onElementResize(ElementResizeEvent e) {
         getWidget().getMap().updateSize();
+    }
+
+    @OnStateChange("attributionControl")
+    void updateAttributionControl(){
+        OLAttributionControl ctrl=getState().attributionControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.attributionControl);
+        this.attributionControl=null;
+        if(ctrl!=null){
+            this.attributionControl=OLControlUtils.createAttributionControl(ctrl);
+            getWidget().getMap().addControl(this.attributionControl);
+        }
+    }
+
+    @OnStateChange("fullScreenControl")
+    void updateFullScreenControl(){
+        OLFullScreenControl ctrl=getState().fullScreenControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.fullScreenControl);
+        this.fullScreenControl=null;
+        if(ctrl!=null){
+            this.fullScreenControl=OLControlUtils.createFullScreenControl(ctrl);
+            getWidget().getMap().addControl(this.fullScreenControl);
+        }
+    }
+
+    @OnStateChange("logoControl")
+    void updateLogoControl(){
+        OLLogoControl ctrl=getState().logoControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.logoControl);
+        this.logoControl=null;
+        if(ctrl!=null){
+            this.logoControl=OLControlUtils.createLogoControl(ctrl);
+            getWidget().getMap().addControl(this.logoControl);
+        }
+    }
+
+    @OnStateChange("mousePositionControl")
+    void updatemousePositionControl(){
+        OLMousePositionControl ctrl=getState().mousePositionControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.mousePositionControl);
+        this.mousePositionControl=null;
+        if(ctrl!=null){
+            this.mousePositionControl=OLControlUtils.createMousePositionControl(ctrl);
+            getWidget().getMap().addControl(this.mousePositionControl);
+        }
+    }
+
+    @OnStateChange("rotateControl")
+    void updateRotateControl(){
+        OLRotateControl ctrl=getState().rotateControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.rotateControl);
+        this.rotateControl=null;
+        if(ctrl!=null){
+            this.rotateControl=OLControlUtils.createRotateControl(ctrl);
+            getWidget().getMap().addControl(this.rotateControl);
+        }
+    }
+
+    @OnStateChange("scaleLineControl")
+    void updateScaleLineControl(){
+        OLScaleLineControl ctrl=getState().scaleLineControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.scaleLineControl);
+        this.scaleLineControl=null;
+        if(ctrl!=null){
+            this.scaleLineControl=OLControlUtils.createScaleLineControl(ctrl);
+            getWidget().getMap().addControl(this.scaleLineControl);
+        }
+    }
+
+    @OnStateChange("zoomControl")
+    void updateZoomControl(){
+        OLZoomControl ctrl=getState().zoomControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.zoomControl);
+        this.zoomControl=null;
+        if(ctrl!=null){
+            this.zoomControl=OLControlUtils.createZoomControl(ctrl);
+            getWidget().getMap().addControl(this.zoomControl);
+        }
+    }
+
+    @OnStateChange("zoomSliderControl")
+    void updateZoomSliderControl(){
+        OLZoomSliderControl ctrl=getState().zoomSliderControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.zoomSliderControl);
+        this.zoomSliderControl=null;
+        if(ctrl!=null){
+            this.zoomSliderControl=OLControlUtils.createZoomSliderControl(ctrl);
+            getWidget().getMap().addControl(this.zoomSliderControl);
+        }
+    }
+
+    @OnStateChange("zoomToExtentControl")
+    void updateZoomToExtentControl(){
+        OLZoomToExtentControl ctrl=getState().zoomToExtentControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.zoomToExtentControl);
+        this.zoomToExtentControl=null;
+        if(ctrl!=null){
+            this.zoomToExtentControl=OLControlUtils.createZoomToExtentControl(ctrl);
+            getWidget().getMap().addControl(this.zoomToExtentControl);
+        }
     }
 }

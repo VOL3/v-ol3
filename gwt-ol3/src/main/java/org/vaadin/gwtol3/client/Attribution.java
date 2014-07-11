@@ -3,6 +3,7 @@ package org.vaadin.gwtol3.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
+ * Attribution for a layer source
  * Created by mjhosio on 02/07/14.
  */
 public class Attribution extends JavaScriptObject{
