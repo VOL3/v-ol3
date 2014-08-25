@@ -14,7 +14,6 @@ public class OLMapState extends AbstractComponentState {
     // controls added to the map
     public OLAttributionControl attributionControl;
     public OLFullScreenControl fullScreenControl;
-    public OLLogoControl logoControl;
     public OLMousePositionControl mousePositionControl;
     public OLRotateControl rotateControl;
     public OLScaleLineControl scaleLineControl;

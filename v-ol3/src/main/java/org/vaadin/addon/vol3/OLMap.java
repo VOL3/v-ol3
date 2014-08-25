@@ -192,14 +192,6 @@ public class OLMap extends AbstractComponentContainer{
         getState().fullScreenControl = fullScreenControl;
     }
 
-    public OLLogoControl getLogoControl() {
-        return getState().logoControl;
-    }
-
-    public void setLogoControl(OLLogoControl logoControl) {
-        getState().logoControl = logoControl;
-    }
-
     public OLMousePositionControl getMousePositionControl() {
         return getState().mousePositionControl;
     }
@@ -257,7 +249,6 @@ public class OLMap extends AbstractComponentContainer{
 
     private void addDefaultControls() {
         getState().zoomControl=new OLZoomControl();
-        getState().logoControl=new OLLogoControl();
         getState().attributionControl=new OLAttributionControl();
         getState().rotateControl=new OLRotateControl();
     }

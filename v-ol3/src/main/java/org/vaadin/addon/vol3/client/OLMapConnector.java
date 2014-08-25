@@ -33,7 +33,6 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     // makes it easier to handle removal
     private AttributionControl attributionControl;
     private FullScreenControl fullScreenControl;
-    private LogoControl logoControl;
     private MousePositionControl mousePositionControl;
     private RotateControl rotateControl;
     private ScaleLineControl scaleLineControl;
@@ -140,18 +139,6 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         if(ctrl!=null){
             this.fullScreenControl=OLControlUtils.createFullScreenControl(ctrl);
             getWidget().getMap().addControl(this.fullScreenControl);
-        }
-    }
-
-    @OnStateChange("logoControl")
-    void updateLogoControl(){
-        OLLogoControl ctrl=getState().logoControl;
-        // remove old control
-        getWidget().getMap().removeControl(this.logoControl);
-        this.logoControl=null;
-        if(ctrl!=null){
-            this.logoControl=OLControlUtils.createLogoControl(ctrl);
-            getWidget().getMap().addControl(this.logoControl);
         }
     }
 

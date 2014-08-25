@@ -32,10 +32,6 @@ public class OLControlUtils {
         return FullScreenControl.create(opts);
     }
 
-    public static final LogoControl createLogoControl(OLLogoControl logo){
-        return logo.className!=null ? LogoControl.create(logo.className) : LogoControl.create();
-    }
-
     public static final MousePositionControl createMousePositionControl(OLMousePositionControl mousePos){
         MousePositionControlOptions opts=MousePositionControlOptions.create();
         if(mousePos.className!=null){
