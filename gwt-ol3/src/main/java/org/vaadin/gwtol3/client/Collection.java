@@ -1,16 +1,22 @@
 package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 
 /**
  * Created by mjhosio on 25/06/14.
  */
-public class Collection extends JavaScriptObject{
+public class Collection<T extends JavaScriptObject> extends JavaScriptObject{
 
     protected Collection(){}
 
     public static native Collection create() /*-{
         return new $wnd.ol.Collection();
+    }-*/;
+
+    public static native Collection create(JsArray array) /*-{
+        var coll=new $wnd.ol.Collection();
+        return coll.extend(array);
     }-*/;
 
     public native final void clear() /*-{

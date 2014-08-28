@@ -1,9 +1,5 @@
 package org.vaadin.addon.vol3.feature;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.geojson.GeoJsonObject;
-import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 
 import java.io.Serializable;
@@ -11,21 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Feature implementation for the vector layer.
  * Created by mjhosio on 07/07/14.
  */
 public class OLFeature implements Serializable{
     private String id;
-    private GeoJsonObject geometry;
+    private OLGeometry geometry;
     private List<OLStyle> styles=new ArrayList<OLStyle>();
 
-    private static final ObjectMapper mapper=new ObjectMapper();
+    public OLFeature(){
+        super();
+    }
 
     public OLFeature(String id){
         super();
         this.id=id;
     }
 
-    public void setGeometry(GeoJsonObject geometry){
+    public void setGeometry(OLGeometry geometry){
         this.geometry=geometry;
     }
 
@@ -33,7 +32,11 @@ public class OLFeature implements Serializable{
         return id;
     }
 
-    public GeoJsonObject getGeometry() {
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public OLGeometry getGeometry() {
         return geometry;
     }
 
@@ -50,26 +53,4 @@ public class OLFeature implements Serializable{
         this.styles.clear();
         this.styles.addAll(styles);
     }
-
-    public SerializedFeature asSerializedFeature() {
-        SerializedFeature serialized=new SerializedFeature();
-        serialized.id=id;
-        if(styles.size()>0){
-            serialized.styles=styles;
-        }
-        if(geometry!=null) {
-            serialized.serializedGeometry=serializeGeometry(geometry);
-        }
-        return serialized;
-    }
-
-    private String serializeGeometry(GeoJsonObject geometry){
-        try {
-            return mapper.writeValueAsString(geometry);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
 }

@@ -2,6 +2,9 @@ package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
+import org.vaadin.gwtol3.client.control.Control;
+import org.vaadin.gwtol3.client.interaction.Interaction;
+import org.vaadin.gwtol3.client.layer.Layer;
 
 /**
  * Options passed to Map on creation
@@ -24,7 +27,7 @@ public class MapOptions extends JavaScriptObject{
      * Controls initially added to the map
      *
      */
-    public native final void setControls(Collection controls)/*-{
+    public native final void setControls(Collection<Control> controls)/*-{
         this.controls=controls;
     }-*/;
 
@@ -46,7 +49,7 @@ public class MapOptions extends JavaScriptObject{
     /**
      * Interactions that are initially added to the map. If not specified, ol.interaction.defaults() is used
      */
-    public native final void setInteractions(Collection interactions)/*-{
+    public native final void setInteractions(Collection<Interaction> interactions)/*-{
         this.interactions=interactions;
     }-*/;
 
@@ -62,7 +65,7 @@ public class MapOptions extends JavaScriptObject{
      *
      * @param layers initial layers
      */
-    public native final void setLayers(Collection layers)/*-{
+    public native final void setLayers(Collection<Layer> layers)/*-{
         this.layers=layers;
     }-*/;
 
@@ -78,7 +81,7 @@ public class MapOptions extends JavaScriptObject{
      *
      * @param overlays
      */
-    public native final void setOverlays(Collection overlays)/*-{
+    public native final void setOverlays(Collection<Overlay> overlays)/*-{
         this.overlays = overlays;
     }-*/;
 

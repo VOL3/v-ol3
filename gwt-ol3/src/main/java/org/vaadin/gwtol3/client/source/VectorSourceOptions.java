@@ -16,10 +16,6 @@ public class VectorSourceOptions extends AbstractVectorSourceOptions{
         return {};
     }-*/;
 
-    public final native void setState(String state)/*-{
-        this.state=state;
-    }-*/;
-
     public final native void setFeatures(JsArray<Feature> features)/*-{
         this.features=features;
     }-*/;

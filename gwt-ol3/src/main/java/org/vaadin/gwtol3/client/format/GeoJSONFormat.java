@@ -24,8 +24,8 @@ public class GeoJSONFormat extends FeatureFormat{
         return new $wnd.ol.format.GeoJSON({defaultProjection: defaultProjection, geometryName: geometryName});
     }-*/;
 
-    public final native Geometry readGeometry(String geoJSONString)/*-{
-        return this.readGeometry(geoJSONString);
+    public final native Geometry readGeometry(String geoJSONString, String dataProjection, String featureProjection)/*-{
+        return this.readGeometry(geoJSONString,{featureProjection: featureProjection, dataProjection: dataProjection});
     }-*/;
 
     public final native Feature readFeature(String geoJSONString)/*-{
@@ -46,6 +46,10 @@ public class GeoJSONFormat extends FeatureFormat{
 
     public final native String writeFeatures(JsArray<Feature> features)/*-{
         return this.writeFeatures(features);
+    }-*/;
+
+    public final native String writeGeometry(Geometry geometry, String featureProjection, String dataProjection)/*-{
+        return JSON.stringify(this.writeGeometry(geometry,{featureProjection: featureProjection, dataProjection: dataProjection}));
     }-*/;
 
 }

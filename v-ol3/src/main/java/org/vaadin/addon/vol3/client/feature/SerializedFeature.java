@@ -11,6 +11,6 @@ import java.util.List;
 public class SerializedFeature implements Serializable {
     public String id;
     public List<OLStyle> styles;
-    // the geometry serialized as geojson
+    // the serialized geometry
     public String serializedGeometry;
 }

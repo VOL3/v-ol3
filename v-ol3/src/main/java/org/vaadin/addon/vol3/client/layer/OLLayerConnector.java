@@ -51,6 +51,14 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
         return null;
     }
 
+    /** Returns the connector for the layer data source
+     *
+     * @return
+     */
+    public OLSourceConnector getSourceConnector(){
+        return (OLSourceConnector) super.getContent();
+    }
+
     /** Returns the underlying wrapped javascript layer implementation
      *
      * @return layer implementation

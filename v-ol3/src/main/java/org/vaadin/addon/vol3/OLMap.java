@@ -6,6 +6,7 @@ import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLRendererType;
 import org.vaadin.addon.vol3.client.control.*;
+import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
 import java.util.ArrayList;
@@ -58,6 +59,22 @@ public class OLMap extends AbstractComponentContainer{
         removeComponent(layer);
     }
 
+    /** Adds a new interaction to the map
+     *
+     * @param interaction interaction to be added
+     */
+    public void addInteraction(OLInteraction interaction){
+        addComponent(interaction);
+    }
+
+    /** Removes the specified interaction from the map
+     *
+     * @param interaction the interaction to be removed
+     */
+    public void removeInteraction(OLInteraction interaction){
+        removeComponent(interaction);
+    }
+
     public List<OLLayer> getLayers(){
         List<OLLayer> layers=new LinkedList<OLLayer>();
         for(Component c : components){
@@ -66,6 +83,16 @@ public class OLMap extends AbstractComponentContainer{
             }
         }
         return layers;
+    }
+
+    public List<OLInteraction> getInteractions(){
+        List<OLInteraction> interactions=new LinkedList<OLInteraction>();
+        for(Component c : components){
+            if(c instanceof OLInteraction){
+                interactions.add((OLInteraction) c);
+            }
+        }
+        return interactions;
     }
 
     /** Sets the view of the map.
@@ -106,19 +133,21 @@ public class OLMap extends AbstractComponentContainer{
 
     @Override
     public void addComponent(Component c) {
-        if(c instanceof OLLayer){
-            super.addComponent(c);
+        if(c instanceof OLLayer || c instanceof OLInteraction){
             components.add(c);
+            super.addComponent(c);
+            this.markAsDirty();
         } else{
-            throw new UnsupportedOperationException("Only instances of OLLayer can be added");
+            throw new UnsupportedOperationException("Only instances of OLLayer and OLInteraction can be added");
         }
     }
 
     @Override
     public void removeComponent(Component c) {
-        if(c instanceof OLLayer){
-            components.remove(c);
+        if(c instanceof OLLayer || c instanceof OLInteraction){
             super.removeComponent(c);
+            components.remove(c);
+            this.markAsDirty();
         }
     }
 
@@ -137,6 +166,7 @@ public class OLMap extends AbstractComponentContainer{
             components.add(olView);
             super.addComponent(olView);
         }
+        this.markAsDirty();
     }
 
     @Override

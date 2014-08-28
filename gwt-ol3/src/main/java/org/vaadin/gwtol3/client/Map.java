@@ -5,6 +5,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
+import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
 
@@ -83,7 +84,7 @@ public class Map extends JavaScriptObject{
 //        //TODO: find a nice way to do this in GWT
 //    }-*/;
 
-    public native final Collection getControls()/*-{
+    public native final Collection<Control> getControls()/*-{
         return this.getControls();
     }-*/;
 
@@ -116,7 +117,7 @@ public class Map extends JavaScriptObject{
      *
      * @return
      */
-    public native final Collection getInteractions()/*-{
+    public native final Collection<Interaction> getInteractions()/*-{
         return this.getInteractions();
     }-*/;
 
@@ -133,11 +134,11 @@ public class Map extends JavaScriptObject{
      * Get the collection of layers associated with this map.
      * @return
      */
-    public native final Collection getLayers()/*-{
+    public native final Collection<Layer> getLayers()/*-{
         return this.getLayers();
     }-*/;
 
-    public native final Collection getOverlays()/*-{
+    public native final Collection<Overlay> getOverlays()/*-{
         return this.getOverlays();
     }-*/;
 

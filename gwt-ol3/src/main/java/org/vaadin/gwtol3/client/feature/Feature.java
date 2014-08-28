@@ -11,6 +11,8 @@ import org.vaadin.gwtol3.client.style.Style;
  */
 public class Feature extends JavaScriptObject {
 
+    public static final String TEMP_ID="TEMP_ID";
+
     protected Feature() {
     }
 
@@ -40,6 +42,18 @@ public class Feature extends JavaScriptObject {
 
     public final native JsArray<Style> getStyles()/*-{
         return this.getStyle();
+    }-*/;
+
+    public final native Feature clone()/*-{
+        return this.clone();
+    }-*/;
+
+    public native final void addFeatureChangeListener(FeatureChangeListener listener)/*-{
+        var that=this;
+        var callback=function(){
+            $entry(listener.@org.vaadin.gwtol3.client.feature.FeatureChangeListener::featureChanged(Lorg/vaadin/gwtol3/client/feature/Feature;)(that));
+        };
+        this.on("change",callback,this);
     }-*/;
 }
 

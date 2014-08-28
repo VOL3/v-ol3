@@ -12,4 +12,13 @@ public class Geometry extends JavaScriptObject {
     public final native void transform(String sourceProjection, String destinationProjection)/*-{
         this.transform(sourceProjection, destinationProjection);
     }-*/;
+
+    public final native Geometry clone()/*-{
+        return this.clone();
+    }-*/;
+
+    public final native String getType()/*-{
+        return this.getType();
+    }-*/;
+
 }

@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.client;
 
+import com.google.gwt.core.client.Scheduler;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.annotations.OnStateChange;
@@ -9,6 +10,7 @@ import com.vaadin.client.ui.layout.ElementResizeListener;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.control.*;
+import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
 import org.vaadin.gwtol3.client.Collection;
 import org.vaadin.gwtol3.client.DeviceOptions;
@@ -63,14 +65,21 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         }
         List<ComponentConnector> oldChildren=connectorHierarchyChangeEvent.getOldChildren();
         List<ComponentConnector> currentChildren=getChildComponents();
-        // remove old layers
         for(ComponentConnector oldConnector : oldChildren){
-            if(!currentChildren.contains(oldConnector) && oldConnector instanceof OLLayerConnector){
-                OLLayerConnector layer=(OLLayerConnector) oldConnector;
-                getWidget().getMap().removeLayer(layer.getLayer());
+            if(!currentChildren.contains(oldConnector)){
+                // remove old layers
+                if(oldConnector instanceof OLLayerConnector){
+                    OLLayerConnector layer=(OLLayerConnector) oldConnector;
+                    getWidget().getMap().removeLayer(layer.getLayer());
+                }
+                // remove old interactions
+                if(oldConnector instanceof OLInteractionConnector){
+                    OLInteractionConnector interaction= (OLInteractionConnector) oldConnector;
+                    getWidget().getMap().removeInteraction(interaction.getInteraction());
+                }
             }
         }
-        // add new layers and possibly view
+        // add new layers, interactions and view
         for(ComponentConnector connector : this.getChildComponents()) {
             if (!oldChildren.contains(connector)) {
                 if (connector instanceof OLLayerConnector) {
@@ -79,9 +88,23 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                 } else if(connector instanceof OLViewConnector){
                     OLViewConnector view = (OLViewConnector) connector;
                     getWidget().getMap().setView(view.getView());
+                } else if (connector instanceof OLInteractionConnector){
+                    OLInteractionConnector interaction= (OLInteractionConnector) connector;
+                    // defer interaction creation since they may need layer state information
+                    // on initialization
+                    deferredAddInteraction(interaction);
                 }
             }
         }
+    }
+
+    private void deferredAddInteraction(final OLInteractionConnector interaction){
+        Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+            @Override
+            public void execute() {
+                getWidget().getMap().addInteraction(interaction.getInteraction());
+            }
+        });
     }
 
     /** Initializes the map object

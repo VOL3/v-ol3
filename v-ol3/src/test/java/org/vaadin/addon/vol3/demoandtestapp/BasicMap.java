@@ -18,9 +18,12 @@ import org.vaadin.addon.vol3.source.OLSource;
  */
 public class BasicMap extends VerticalLayout implements View {
 
+    protected OLMap map;
+
     public BasicMap() {
         this.setSizeFull();
-        this.addComponent(createMap());
+        map=createMap();
+        this.addComponent(map);
         this.setExpandRatio(this.iterator().next(),1.0f);
         this.addComponent(createControls());
     }

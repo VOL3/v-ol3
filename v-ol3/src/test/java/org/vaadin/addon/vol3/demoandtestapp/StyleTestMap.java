@@ -1,11 +1,11 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
-import org.geojson.Point;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.style.OLFillStyle;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 import org.vaadin.addon.vol3.client.style.OLTextStyle;
 import org.vaadin.addon.vol3.feature.OLFeature;
+import org.vaadin.addon.vol3.feature.OLPoint;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.util.StyleUtils;
@@ -31,9 +31,8 @@ public class StyleTestMap extends VectorLayerMap {
 
     private OLFeature createPointFeatureWithLabel(String id, double x, double y){
         OLFeature testFeature=new OLFeature(id);
-        testFeature.setGeometry(new Point(x,y));
-        // create a feature specific style. This does not actually work due to "feature" in the api
-        // but that is currently being fixed in the ol3js project.
+        testFeature.setGeometry(new OLPoint(x,y));
+        // create a feature specific style.
         OLStyle style= StyleUtils.createDefaultStyle();
         style.textStyle=new OLTextStyle();
         style.textStyle.text="Testing label";

@@ -42,6 +42,7 @@ public class MapTestUI extends UI {
         addView("VectorLayer", VectorLayerMap.class);
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);
+        addView("InteractionTest", InteractionMap.class);
         navigator.navigateTo("Basic");
     }
 
