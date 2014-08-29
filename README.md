@@ -1,3 +1,9 @@
 # Open Layers 3 wrapper add-on for Vaadin 7
 
-TODO: documentation
+This project provides GWT and Vaadin 7 wrappers for a subset of features in the OpenLayers 3 JavaScript api. The project is a multi module Maven project with separate modules for the GWT and Vaadin wrapper.
+
+The GWT wrapper uses JavaScript overlays to integrate with the underlying OpenLayers JavaScript library. The api provided by the GWT wrapper is in turn utilized by the Vaadin wrapper.
+
+As said, only a subset of the features of the OpenLayers 3 library is wrapped. It should be relatively easy to add support for more features, though.
+
+ If you need some features that are not supported at the moment or find a bug in the wrapper, please let me know. Patches and pull requests are also very welcome.

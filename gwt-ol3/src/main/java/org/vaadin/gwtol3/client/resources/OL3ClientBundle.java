@@ -9,8 +9,8 @@ import com.google.gwt.resources.client.TextResource;
  */
 public interface OL3ClientBundle extends ClientBundle {
 
-    @Source ("ol-debug.js")
-//    @Source ("ol.js")
+//    @Source ("ol-debug.js")
+    @Source ("ol.js")
     TextResource javaScript();
 
     @Source ("ol.css")
