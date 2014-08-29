@@ -7,3 +7,5 @@ The GWT wrapper uses JavaScript overlays to integrate with the underlying OpenLa
 As said, only a subset of the features of the OpenLayers 3 library is wrapped. It should be relatively easy to add support for more features, though.
 
  If you need some features that are not supported at the moment or find a bug in the wrapper, please let me know. Patches and pull requests are also very welcome.
+
+License: Apache License 2.0
