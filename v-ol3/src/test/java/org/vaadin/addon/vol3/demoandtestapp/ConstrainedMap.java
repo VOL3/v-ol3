@@ -43,7 +43,6 @@ public class ConstrainedMap extends BasicMap {
         viewOpts.setMinZoom(3);
         viewOpts.setMaxZoom(20);
         viewOpts.setZoomFactor(2d);
-        viewOpts.setEnableRotation(true);
         OLExtent extent=new OLExtent();
         extent.minX=0;
         extent.maxX=3000000;

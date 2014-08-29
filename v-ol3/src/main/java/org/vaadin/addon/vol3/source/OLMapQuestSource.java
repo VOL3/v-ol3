@@ -17,6 +17,10 @@ public class OLMapQuestSource extends OLXYZSource {
         getState().layer=layer;
     }
 
+    /** Gets the name of the layer fetched by the source
+     *
+     * @return the name of the layer fetched by the source
+     */
     public OLMapQuestLayerName getLayerName(){
         return getState(false).layer;
     }

@@ -7,7 +7,6 @@ import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.source.OLTileWMSSource;
 import org.vaadin.gwtol3.client.Attribution;
-import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.source.Source;
 import org.vaadin.gwtol3.client.source.TileWMSSource;
 import org.vaadin.gwtol3.client.source.TileWMSSourceOptions;
@@ -37,10 +36,6 @@ public class OLTileWMSSourceConnector extends OLSourceConnector {
         }
         if(state.crossOriginPolicy!=null){
             options.setCrossOrigin(state.crossOriginPolicy);
-        }
-        if(state.extent!=null){
-            Extent extent=Extent.create(state.extent.minX, state.extent.minY, state.extent.maxX, state.extent.maxY);
-            options.setExtent(extent);
         }
         if(state.gutter!=null){
             options.setGutter(state.gutter);

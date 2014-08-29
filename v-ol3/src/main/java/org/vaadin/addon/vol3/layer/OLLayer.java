@@ -18,10 +18,18 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         }
     }
 
+    /** Returns the data source of the layer
+     *
+     * @return the data source of the layer
+     */
     public OLSource getSource(){
         return (OLSource) getContent();
     }
 
+    /** Applies the layer options.
+     *
+     * @param options the options for the layer
+     */
     protected void setOptions(OLLayerOptions options) {
         setBrightness(options.getBrightness());
         setContrast(options.getContrast());
@@ -104,11 +112,11 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         getState().saturation = saturation;
     }
 
-    public Boolean getVisible() {
+    public Boolean isLayerVisible() {
         return getState(false).visible;
     }
 
-    public void setVisible(Boolean visible) {
+    public void setLayerVisible(Boolean visible) {
         getState().visible=visible;
     }
 }

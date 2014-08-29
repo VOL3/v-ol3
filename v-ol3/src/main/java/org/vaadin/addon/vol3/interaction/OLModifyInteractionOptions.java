@@ -5,6 +5,7 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 import java.util.List;
 
 /**
+ * Options for the modify interaction
  * Created by mjhosio on 25/08/14.
  */
 public class OLModifyInteractionOptions {
@@ -37,7 +38,7 @@ public class OLModifyInteractionOptions {
         return styles;
     }
 
-    /** Sets the FeatureOverlay style
+    /** Sets the FeatureOverlay style for the features being modified
      *
      * @param styles
      */

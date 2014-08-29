@@ -1,7 +1,5 @@
 package org.vaadin.addon.vol3.client.source;
 
-import org.vaadin.addon.vol3.client.OLExtent;
-
 import java.util.Map;
 
 /**
@@ -10,7 +8,6 @@ import java.util.Map;
 public class OLImageWMSSourceState extends OLSourceState {
     public String [] attributions;
     public String crossOriginPolicy;
-    public OLExtent extent;
     // crs name of the projection
     public String projection;
     //Use the Map.pixelRatio value when requesting the image from the remote server

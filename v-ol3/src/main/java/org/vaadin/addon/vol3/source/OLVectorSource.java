@@ -1,6 +1,5 @@
 package org.vaadin.addon.vol3.source;
 
-import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.source.OLVectorSourceClientRpc;
 import org.vaadin.addon.vol3.client.source.OLVectorSourceServerRpc;
@@ -12,7 +11,7 @@ import org.vaadin.addon.vol3.feature.OLGeometry;
 import java.util.*;
 
 /**
- * Base class for vector sources
+ * Vector source implementation that provides api for adding features.
  * Created by mjhosio on 07/07/14.
  */
 public class OLVectorSource extends OLSource{
@@ -23,44 +22,69 @@ public class OLVectorSource extends OLSource{
     private List<FeatureModificationListener> modificationListeners = new LinkedList<FeatureModificationListener>();
     private List<FeatureSetChangeListener> featureSetChangeListeners = new LinkedList<FeatureSetChangeListener>();
 
+    /** Creates a new instance of the vector source
+     *
+     */
     public OLVectorSource(){
         super();
+        registerRpc(new OLVectorSourceServerRpcImpl(), OLVectorSourceServerRpc.class);
     }
 
-    public OLVectorSource(OLVectorSourceOptions options){
+    /** Creates a new instance of the vector source
+     *
+     * @param options options for the vector source
+     */
+     public OLVectorSource(OLVectorSourceOptions options){
         this();
         setOptions(options);
-        registerRpc(new OLVectorSourceServerRpcImpl(), OLVectorSourceServerRpc.class);
     }
 
     private void setOptions(OLVectorSourceOptions options) {
         this.getState().attributions=options.getAttributions();
-        this.getState().extent=options.getExtent();
         this.getState().logo=options.getLogo();
         this.getState().projection=options.getProjection();
-        this.getState().state=options.getState();
     }
 
+    /** Adds feature to the source. The id is generated automatically for the feature
+     *
+     * @param geometry the geometry for the feature
+     */
     public void addFeature(OLGeometry geometry){
         OLFeature feature=new OLFeature(generateNextFeatureId());
         feature.setGeometry(geometry);
         addFeature(feature);
     }
 
+    /** Searches the feature from the source that has the same id than the one given as parameter. After that the
+     * geometry and styles of the feature are updated accordingly
+     * @param feature the feature that holds the data to be updated
+     */
     public void updateFeature(OLFeature feature){
         updateFeatureInternal(feature, true);
     }
 
+    /** Adds the specified feature to the source
+     *
+     * @param feature the feature to be added
+     */
     public void addFeature(OLFeature feature){
         addFeatureInternal(feature);
     }
 
+    /** Adds the given list of features to the source
+     *
+     * @param features
+     */
     public void addFeatures(List<OLFeature> features){
         for(OLFeature feature : features){
             this.addFeature(feature);
         }
     }
 
+    /** Removes the feature by id provided
+     *
+     * @param featureId the id of the feature to be removed
+     */
     public void removeFeatureById(String featureId){
         OLFeature feature=features.get(featureId);
         if(featureId!=null){
@@ -71,6 +95,10 @@ public class OLVectorSource extends OLSource{
         markAsDirty();
     }
 
+    /** Gets all features from the source
+     *
+     * @return the features from the source
+     */
     public List<OLFeature> getFeatures(){
         LinkedList<OLFeature> features=new LinkedList<OLFeature>();
         features.addAll(this.features.values());
@@ -96,14 +124,14 @@ public class OLVectorSource extends OLSource{
         fireFeatureModified(feature);
     }
 
+    /** Returns the feature based on the provided id
+     *
+     * @param id the id of the feature being fetched
+     * @return the feature matching the id or null if not found
+     */
     public OLFeature getFeatureById(String id){
         return this.features.get(id);
     }
-
-    public OLExtent getExtent(){
-        return getState(false).extent;
-    }
-
 
     @Override
     protected OLVectorSourceState getState() {
@@ -247,18 +275,31 @@ public class OLVectorSource extends OLSource{
         }
     }
 
-    /** Listener for feature modification
+    /** Listener that is notified when features are modified
      *
      */
     public interface FeatureModificationListener{
+        /** Called when feature has been modified
+         *
+         * @param feature the modified feature
+         */
         public void featureModified(OLFeature feature);
     }
 
-    /** Listener for feature modification
+    /** Listener that is notified when features are added or removed
      *
      */
     public interface FeatureSetChangeListener{
+        /** Called when a feature has been added to the source
+         *
+         * @param feature the feature that was added
+         */
         public void featureAdded(OLFeature feature);
+
+        /** Called when a feature has been removed from the source
+         *
+         * @param feature the feature that was removed
+         */
         public void featureDeleted(OLFeature feature);
     }
 

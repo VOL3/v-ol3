@@ -7,7 +7,6 @@ import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.source.OLImageWMSSource;
 import org.vaadin.gwtol3.client.Attribution;
-import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.source.ImageWMSSource;
 import org.vaadin.gwtol3.client.source.ImageWMSSourceOptions;
 import org.vaadin.gwtol3.client.source.Source;
@@ -38,10 +37,6 @@ public class OLImageWMSSourceConnector extends OLSourceConnector {
         }
         if(state.crossOriginPolicy!=null){
             options.setCrossOrigin(state.crossOriginPolicy);
-        }
-        if(state.extent!=null){
-            Extent extent=Extent.create(state.extent.minX, state.extent.minY, state.extent.maxX, state.extent.maxY);
-            options.setExtent(extent);
         }
         if(state.logo!=null){
             options.setLogo(state.logo);

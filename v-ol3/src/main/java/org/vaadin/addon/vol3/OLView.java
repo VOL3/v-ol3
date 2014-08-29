@@ -1,20 +1,24 @@
 package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponent;
-import org.vaadin.addon.vol3.client.OLCoordinate;
-import org.vaadin.addon.vol3.client.OLExtent;
-import org.vaadin.addon.vol3.client.OLRotationConstraint;
-import org.vaadin.addon.vol3.client.OLViewState;
+import org.vaadin.addon.vol3.client.*;
 
 /**
  * The view associated with a map.
  * Created by mjhosio on 30/06/14.
  */
 public class OLView extends AbstractComponent {
+    /** Creates a new instance of the view
+     *
+     */
     public OLView(){
         this(null);
     }
 
+    /** Creates a new instance of the view with provided options
+     *
+     * @param options view options
+     */
     public OLView(OLViewOptions options){
         if(options!=null){
             setOptions(options);
@@ -26,11 +30,7 @@ public class OLView extends AbstractComponent {
      * @param zoom
      */
     public void setZoom(int zoom){
-        getState().zoom=zoom;
-    }
-
-    public int getZoom(){
-        return getState(false).zoom;
+        getRpcProxy(OLViewClientRpc.class).setZoom(zoom);
     }
 
     /** Set the center of the current view.
@@ -38,11 +38,11 @@ public class OLView extends AbstractComponent {
      * @param center
      */
     public void setCenter(OLCoordinate center){
-        getState().center=center;
+        getRpcProxy(OLViewClientRpc.class).setCenter(center);
     }
 
     public void setCenter(double xCoord, double yCoord){
-        getState().center=new OLCoordinate(xCoord, yCoord);
+        getRpcProxy(OLViewClientRpc.class).setCenter(new OLCoordinate(xCoord, yCoord));
     }
 
     /** Set the rotation for this view.
@@ -50,11 +50,7 @@ public class OLView extends AbstractComponent {
      * @param rotation
      */
     public void setRotation(double rotation){
-        getState().rotation=rotation;
-    }
-
-    public Double getRotation(){
-        return getState(false).rotation;
+        getRpcProxy(OLViewClientRpc.class).setRotation(rotation);
     }
 
     /** Set the resolution for this view.
@@ -62,15 +58,7 @@ public class OLView extends AbstractComponent {
      * @param resolution
      */
     public void setResolution(double resolution){
-        getState().resolution=resolution;
-    }
-
-    public Double getResolution(){
-        return getState(false).resolution;
-    }
-
-    public OLCoordinate getCenter(){
-        return getState(false).center;
+        getRpcProxy(OLViewClientRpc.class).setResolution(resolution);
     }
 
     @Override

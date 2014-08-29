@@ -1,20 +1,27 @@
 package org.vaadin.addon.vol3.source;
 
-import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.source.OLImageWMSSourceState;
 
 import java.util.Map;
 
 /**
+ * Source for WMS servers providing single, untiled images.
  * Created by mjhosio on 04/07/14.
  */
 public class OLImageWMSSource extends OLSource {
 
+    /** Creates a new instance of the source
+     *
+     */
     public OLImageWMSSource(){
         super();
     }
 
-    public OLImageWMSSource(OLImageWMSSourceOptions options){
+    /** Creates a new instance of the source
+     *
+     * @param options the options for the source
+     */
+     public OLImageWMSSource(OLImageWMSSourceOptions options){
         this();
         setOptions(options);
     }
@@ -22,7 +29,6 @@ public class OLImageWMSSource extends OLSource {
     private void setOptions(OLImageWMSSourceOptions options) {
         getState().attributions=options.getAttributions();
         getState().crossOriginPolicy=options.getCrossOriginPolicy();
-        getState().extent=options.getExtent();
         getState().projection=options.getProjection();
         getState().hidpi=options.getHidpi();
         getState().serverType=options.getServerType();
@@ -49,10 +55,6 @@ public class OLImageWMSSource extends OLSource {
 
     public String getCrossOriginPolicy() {
         return getState(false).crossOriginPolicy;
-    }
-
-    public OLExtent getExtent() {
-        return getState(false).extent;
     }
 
     public String getProjection() {

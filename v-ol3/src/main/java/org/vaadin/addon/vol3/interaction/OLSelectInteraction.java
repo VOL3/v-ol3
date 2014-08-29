@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Interaction that allows selecting features on the layer
  * Created by mjhosio on 25/08/14.
  */
 public class OLSelectInteraction extends OLInteraction {
@@ -16,10 +17,17 @@ public class OLSelectInteraction extends OLInteraction {
     private List<String> selectedFeatures=new ArrayList<String>();
     private List<SelectionChangeListener> listeners=new LinkedList<SelectionChangeListener>();
 
+    /** Creates a new instance of the interaction
+     *
+     */
     public OLSelectInteraction(){
         this(null);
     }
 
+    /** Creates a new instance of the interaction
+     *
+     * @param options options for the interaction
+     */
     public OLSelectInteraction(OLSelectInteractionOptions options){
         if(options!=null){
             if(options.getLayers()!=null){
@@ -28,7 +36,7 @@ public class OLSelectInteraction extends OLInteraction {
             }
             getState().featureStyles=options.getStyles();
         }
-        this.registerRpc(new OLSelectInteractionSRPCImpl(),OLSelectInteractionSRPC.class);
+        this.registerRpc(new OLSelectInteractionSRPCImpl(), OLSelectInteractionSRPC.class);
     }
 
     /** Returns the ids of the currently selected features

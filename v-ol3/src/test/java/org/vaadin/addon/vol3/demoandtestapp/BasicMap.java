@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.CssLayout;
 import com.vaadin.ui.VerticalLayout;
@@ -59,6 +60,15 @@ public class BasicMap extends VerticalLayout implements View {
     protected Component createControls() {
         CssLayout controls=new CssLayout();
         controls.setWidth("100%");
+        Button button=new Button("Reset view");
+        button.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                map.getView().setCenter(0,0);
+                map.getView().setZoom(1);
+            }
+        });
+        controls.addComponent(button);
         return controls;
     }
 

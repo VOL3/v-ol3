@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * Polygon type of a geometry
  * Created by mjhosio on 27/08/14.
  */
 public class OLPolygon extends OLGeometry<List<OLCoordinate>> {

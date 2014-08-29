@@ -3,14 +3,12 @@ package org.vaadin.addon.vol3.client.source;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
 import com.vaadin.shared.ui.Connect;
-import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.feature.GeometrySerializer;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.style.OLStyleConverter;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.gwtol3.client.Attribution;
-import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.feature.FeatureChangeListener;
 import org.vaadin.gwtol3.client.geom.Geometry;
@@ -59,7 +57,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             VectorSource source=getSource();
             for(SerializedFeature serializedFeature : features){
                 Feature oldFeature=getSource().getFeatureById(serializedFeature.id);
-                Feature newFeature=createFeature(serializedFeature, getState().projection);
+                Feature newFeature=createFeature(serializedFeature);
                 if(oldFeature!=null){
                     //update feature
                     oldFeature.setGeometry(newFeature.getGeometry());
@@ -74,7 +72,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             removeTemporaryFeatures();
         }
 
-        private Feature createFeature(SerializedFeature feature, String targetProjection) {
+        private Feature createFeature(SerializedFeature feature) {
             Feature f=Feature.create();
             f.setId(feature.id);
             Geometry geom= GeometrySerializer.readGeometry(feature.serializedGeometry, getProjection());
@@ -113,11 +111,6 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
                 jsArray.push(Attribution.create(attribution));
             }
             options.setAttributions(jsArray);
-        }
-        if(getState().extent!=null){
-            OLExtent e=getState().extent;
-            Extent extent=Extent.create(e.minX,e.minY,e.maxX,e.maxY);
-            options.setExtent(extent);
         }
         if(getState().logo!=null){
             options.setLogo(getState().logo);

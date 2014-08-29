@@ -1,9 +1,7 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Notification;
+import com.vaadin.data.Property;
+import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.interaction.*;
@@ -16,13 +14,15 @@ import java.util.List;
  */
 public class InteractionMap extends VectorLayerMap {
 
+    private NativeSelect markerType;
+
     @Override
     protected OLMap createMap() {
         final OLMap map = super.createMap();
         // create select interaction for the vector layer
-//        map.addInteraction(createSelectInteraction());
-        map.addComponent(createModifyInteraction());
-        map.addComponent(createDrawInteraction());
+        map.addInteraction(createSelectInteraction());
+//        map.addComponent(createModifyInteraction());
+//        map.addComponent(createDrawInteraction());
         addFeatureChangeListeners();
         return map;
     }
@@ -65,6 +65,20 @@ public class InteractionMap extends VectorLayerMap {
             }
         });
         layout.addComponent(drawButton);
+        markerType=new NativeSelect("choose marker");
+        markerType.addItem(OLDrawInteractionOptions.DrawingType.POINT);
+        markerType.addItem(OLDrawInteractionOptions.DrawingType.LINESTRING);
+        markerType.addItem(OLDrawInteractionOptions.DrawingType.POLYGON);
+        markerType.setNullSelectionAllowed(false);
+        markerType.setValue(OLDrawInteractionOptions.DrawingType.POINT);
+        markerType.addValueChangeListener(new Property.ValueChangeListener() {
+            @Override
+            public void valueChange(Property.ValueChangeEvent event) {
+                clearInteractions();
+                map.addInteraction(createDrawInteraction());
+            }
+        });
+        layout.addComponent(markerType);
         return layout;
     }
 
@@ -81,7 +95,7 @@ public class InteractionMap extends VectorLayerMap {
 
     private OLDrawInteraction createDrawInteraction(){
         OLDrawInteractionOptions opts=new OLDrawInteractionOptions();
-        opts.setType(OLDrawInteractionOptions.DrawingType.LINESTRING);
+        opts.setType((OLDrawInteractionOptions.DrawingType) markerType.getValue());
         OLDrawInteraction draw=new OLDrawInteraction(vectorLayer, opts);
         return draw;
     }

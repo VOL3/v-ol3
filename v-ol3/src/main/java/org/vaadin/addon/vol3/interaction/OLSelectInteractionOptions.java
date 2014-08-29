@@ -6,6 +6,7 @@ import org.vaadin.addon.vol3.layer.OLLayer;
 import java.util.List;
 
 /**
+ * Options for the select interaction
  * Created by mjhosio on 25/08/14.
  */
 public class OLSelectInteractionOptions {
@@ -19,6 +20,7 @@ public class OLSelectInteractionOptions {
     public List<OLLayer> getLayers() {
         return layers;
     }
+
     /** Sets the layers where selections can be made. If not set, all visible layers are available for selection.
      * @param layers
      */

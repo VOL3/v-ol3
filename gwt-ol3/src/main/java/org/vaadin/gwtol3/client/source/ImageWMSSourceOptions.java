@@ -4,7 +4,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayNumber;
 import org.vaadin.gwtol3.client.Attribution;
-import org.vaadin.gwtol3.client.Extent;
 
 /**
  * Settings passed
@@ -33,10 +32,6 @@ public class ImageWMSSourceOptions extends JavaScriptObject {
      */
     public final native void setCrossOrigin(String crossOrigin)/*-{
         this.crossOrigin = crossOrigin;
-    }-*/;
-
-    public native final void setExtent(Extent extent)/*-{
-        this.extent=extent;
     }-*/;
 
     public native final void setProjection(String projection)/*-{

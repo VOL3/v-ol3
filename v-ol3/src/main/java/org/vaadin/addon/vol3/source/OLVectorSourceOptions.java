@@ -1,19 +1,10 @@
 package org.vaadin.addon.vol3.source;
 
 /**
+ * Options passed to OLVectorSource on creation
  * Created by mjhosio on 07/07/14.
  */
 public class OLVectorSourceOptions extends OLSourceOptions {
-
-    private String state;
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
 
     /** Sets the destination projection. If provided, features will be transformed to this projection.
      *

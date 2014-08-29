@@ -8,10 +8,17 @@ import org.vaadin.addon.vol3.client.source.OLOSMSourceState;
  */
 public class OLOSMSource extends OLXYZSource{
 
+    /** Creates a new instance of the Open Street Map source
+     *
+     */
     public OLOSMSource(){
         super();
     }
 
+    /** Creates a new instance of the Open Street Map source
+     *
+     * @param options options for the source
+     */
     public OLOSMSource(OLOSMSourceOptions options){
         this();
         setOptions(options);
@@ -35,9 +42,6 @@ public class OLOSMSource extends OLXYZSource{
         getState().maxZoom=options.getMaxZoom();
     }
 
-    /** Getters for the options passed on creation
-     * @return the options passed on creation
-     */
     public Boolean getShowDataAttributions() {
         return getState(false).showDataAttributions;
     }

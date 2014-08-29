@@ -5,6 +5,7 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 import java.util.List;
 
 /**
+ * Options for the draw interaction
  * Created by mjhosio on 25/08/14.
  */
 public class OLDrawInteractionOptions {
@@ -104,7 +105,7 @@ public class OLDrawInteractionOptions {
         this.geometryName = geometryName;
     }
 
-    String getTypeAsString(){
+    static String getTypeAsString(DrawingType type){
         switch(type){
             case POINT : return "Point";
             case LINESTRING: return "LineString";

@@ -1,5 +1,8 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.CssLayout;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.Projections;
@@ -24,12 +27,14 @@ public class VectorLayerMap extends BasicMap{
         // the features will be reprojected to the same projection than the base layer
         vectorOptions.setProjection(Projections.EPSG3857);
         OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
-        for(int i=0;i<50;i++){
-            vectorSource.addFeature(createPointFeature("feature-a-"+i,i,i));
-            vectorSource.addFeature(createPointFeature("feature-b-"+i,-i,i));
+        for(int i=0;i<=5;i++){
+            int coordinate=i*10;
+            vectorSource.addFeature(createPointFeature("feature-a-"+i,coordinate,coordinate));
+            vectorSource.addFeature(createPointFeature("feature-b-"+i,-coordinate,coordinate));
         }
         vectorSource.addFeature(createRectangleFeature("rect",-50,0,100,50));
         vectorLayer=new OLVectorLayer(vectorSource);
+        vectorLayer.setLayerVisible(true);
         map.addLayer(vectorLayer);
         return map;
     }
@@ -50,5 +55,19 @@ public class VectorLayerMap extends BasicMap{
         lineString.add(new OLCoordinate(x,y));
         testFeature.setGeometry(lineString);
         return testFeature;
+    }
+
+    @Override
+    protected Component createControls() {
+        CssLayout controls= (CssLayout) super.createControls();
+        Button toggleVectorLayerVisibility=new Button("Toggle vector layer");
+        toggleVectorLayerVisibility.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                vectorLayer.setLayerVisible(!vectorLayer.isLayerVisible().booleanValue());
+            }
+        });
+        controls.addComponent(toggleVectorLayerVisibility);
+        return controls;
     }
 }

@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.client;
 
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
-import com.vaadin.client.annotations.OnStateChange;
 import com.vaadin.client.ui.AbstractComponentConnector;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLView;
@@ -35,36 +34,14 @@ public class OLViewConnector extends AbstractComponentConnector{
     }
 
     @Override
+    protected void init() {
+        super.init();
+        registerRpc(OLViewClientRpc.class, new OLViewClientRpcImpl());
+    }
+
+    @Override
     public OLViewState getState() {
         return (OLViewState) super.getState();
-    }
-
-    @OnStateChange("zoom")
-    void updateZoom(){
-        if(getState().zoom!=null){
-            getView().setZoom(getState().zoom);
-        }
-    }
-
-    @OnStateChange("center")
-    void updateCenter(){
-        if(getState().center!=null){
-            getView().setCenter(Coordinate.create(getState().center.x, getState().center.y));
-        }
-    }
-
-    @OnStateChange("resolution")
-    void updateResolution(){
-        if(getState().resolution!=null){
-            getView().setResolution(getState().resolution);
-        }
-    }
-
-    @OnStateChange("rotation")
-    void updateRotation(){
-        if(getState().rotation!=null){
-            getView().setRotation(getState().rotation);
-        }
     }
 
 // the setProjection method is not implemented in the js-api
@@ -112,5 +89,28 @@ public class OLViewConnector extends AbstractComponentConnector{
         }
         View view=View.create(options);
         return view;
+    }
+
+    private final class OLViewClientRpcImpl implements OLViewClientRpc{
+
+        @Override
+        public void setZoom(int zoom) {
+            getView().setZoom(zoom);
+        }
+
+        @Override
+        public void setCenter(OLCoordinate center) {
+            getView().setCenter(Coordinate.create(center.x, center.y));
+        }
+
+        @Override
+        public void setResolution(double resolution) {
+            getView().setResolution(resolution);
+        }
+
+        @Override
+        public void setRotation(double rotation) {
+            getView().setRotation(rotation);
+        }
     }
 }

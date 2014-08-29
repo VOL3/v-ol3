@@ -1,19 +1,27 @@
 package org.vaadin.addon.vol3.source;
 
-import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.source.OLTileWMSSourceState;
 
 import java.util.Map;
 
 /**
+ * Data source for tile data from WMS servers
  * Created by mjhosio on 04/07/14.
  */
 public class OLTileWMSSource extends OLSource {
+
+    /** Creates a new instance of the layer data source
+     *
+     */
     public OLTileWMSSource(){
         super();
     }
 
-    public OLTileWMSSource(OLTileWMSSourceOptions options){
+    /** Creates a new instance of the layer data source
+     *
+     * @param options options for the data source
+     */
+     public OLTileWMSSource(OLTileWMSSourceOptions options){
         this();
         setOptions(options);
     }
@@ -31,7 +39,6 @@ public class OLTileWMSSource extends OLSource {
     private void setOptions(OLTileWMSSourceOptions options) {
         getState().attributions=options.getAttributions();
         getState().crossOriginPolicy=options.getCrossOriginPolicy();
-        getState().extent=options.getExtent();
         getState().projection=options.getProjection();
         getState().hidpi=options.getHidpi();
         getState().serverType=options.getServerType();
@@ -49,10 +56,6 @@ public class OLTileWMSSource extends OLSource {
 
     public String getCrossOriginPolicy() {
         return getState(false).crossOriginPolicy;
-    }
-
-    public OLExtent getExtent() {
-        return getState(false).extent;
     }
 
     public String getProjection() {

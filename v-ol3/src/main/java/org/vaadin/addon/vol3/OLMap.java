@@ -2,9 +2,7 @@ package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
-import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLMapState;
-import org.vaadin.addon.vol3.client.OLRendererType;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.layer.OLLayer;
@@ -23,18 +21,34 @@ public class OLMap extends AbstractComponentContainer{
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
 
+    /** Creates a new instance of the map
+     *
+     */
     public OLMap(){
         this(null,null);
     }
 
+    /** Creates a new instance of the map with the specified view
+     *
+     * @param view the view
+     */
     public OLMap(OLView view){
         this(view, null);
     }
 
+    /** Creates a new instance of the map with specified options
+     *
+     * @param options map options
+     */
     public OLMap(OLMapOptions options){
         this(null, options);
     }
 
+    /** Creates a new instance of the map with specified view and options
+     *
+     * @param view the view
+     * @param options map options
+     */
     public OLMap(OLView view, OLMapOptions options){
         setView(view);
         if(options != null){
@@ -75,6 +89,10 @@ public class OLMap extends AbstractComponentContainer{
         removeComponent(interaction);
     }
 
+    /** Gets the layers added to the map
+     *
+     * @return the layers of the map
+     */
     public List<OLLayer> getLayers(){
         List<OLLayer> layers=new LinkedList<OLLayer>();
         for(Component c : components){
@@ -85,6 +103,10 @@ public class OLMap extends AbstractComponentContainer{
         return layers;
     }
 
+    /** Gets the interactions added to the map
+     *
+     * @return the interactions
+     */
     public List<OLInteraction> getInteractions(){
         List<OLInteraction> interactions=new LinkedList<OLInteraction>();
         for(Component c : components){
@@ -174,42 +196,14 @@ public class OLMap extends AbstractComponentContainer{
         throw new UnsupportedOperationException("Replace component not implemented");
     }
 
-    /** Returns true if the ol3 logo is shown
-     *
-     * @return
-     */
-    public Boolean getShowOl3Logo() {
-        return getState(false).showOl3Logo;
-    }
-
-    /** Gets the renderer type used by the map
-     *
-     * @return
-     */
-    public OLRendererType getRenderer() {
-        return getState(false).renderer;
-    }
-
-    /** Gets the device pixel ratio used by the map
-     *
-     * @return
-     */
-    public Double getPixelRatio() {
-        return getState(false).pixelRatio;
-    }
-
-    /** Gets the device options used by the map
-     *
-     * @return
-     */
-    public OLDeviceOptions getDeviceOptions() {
-        return getState(false).deviceOptions;
-    }
-
     public OLAttributionControl getAttributionControl() {
         return getState().attributionControl;
     }
 
+    /** Sets the control to the map that shows map data attributions
+     *
+     * @param attributionControl
+     */
     public void setAttributionControl(OLAttributionControl attributionControl) {
         getState().attributionControl = attributionControl;
     }
@@ -218,6 +212,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().fullScreenControl;
     }
 
+    /** Sets the control to the map that allows entering full screen state
+     *
+     * @param fullScreenControl
+     */
     public void setFullScreenControl(OLFullScreenControl fullScreenControl) {
         getState().fullScreenControl = fullScreenControl;
     }
@@ -226,6 +224,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().mousePositionControl;
     }
 
+    /** Sets the control to the map that shows current mouse position in map coordinates
+     *
+     * @param mousePositionControl
+     */
     public void setMousePositionControl(OLMousePositionControl mousePositionControl) {
         getState().mousePositionControl = mousePositionControl;
     }
@@ -234,6 +236,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().rotateControl;
     }
 
+    /** Sets rotation control to the map
+     *
+     * @param rotateControl
+     */
     public void setRotateControl(OLRotateControl rotateControl) {
         getState().rotateControl = rotateControl;
     }
@@ -242,6 +248,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().scaleLineControl;
     }
 
+    /** Sets the control to the map that shows current map scale
+     *
+     * @param scaleLineControl
+     */
     public void setScaleLineControl(OLScaleLineControl scaleLineControl) {
         getState().scaleLineControl = scaleLineControl;
     }
@@ -250,6 +260,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().zoomControl;
     }
 
+    /** Sets the control for the map that allows zooming of the map by clicking zoom buttons
+     *
+     * @param zoomControl
+     */
     public void setZoomControl(OLZoomControl zoomControl) {
         getState().zoomControl = zoomControl;
     }
@@ -258,6 +272,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().zoomSliderControl;
     }
 
+    /** Sets slider type zoom control to the map
+     *
+     * @param zoomSliderControl
+     */
     public void setZoomSliderControl(OLZoomSliderControl zoomSliderControl) {
         getState().zoomSliderControl = zoomSliderControl;
     }
@@ -266,6 +284,10 @@ public class OLMap extends AbstractComponentContainer{
         return getState().zoomToExtentControl;
     }
 
+    /** Sets control to the map that allows instant zooming to given extent
+     *
+     * @param zoomToExtentControl
+     */
     public void setZoomToExtentControl(OLZoomToExtentControl zoomToExtentControl) {
         getState().zoomToExtentControl = zoomToExtentControl;
     }

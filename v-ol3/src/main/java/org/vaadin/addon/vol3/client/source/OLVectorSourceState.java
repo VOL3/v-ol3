@@ -10,7 +10,6 @@ import javax.print.attribute.standard.Destination;
 public class OLVectorSourceState extends OLSourceState{
     public String state;
     public String [] attributions;
-    public OLExtent extent;
     public String logo;
     //destination projection. If provided, features will be transformed to this projection.
     public String projection;

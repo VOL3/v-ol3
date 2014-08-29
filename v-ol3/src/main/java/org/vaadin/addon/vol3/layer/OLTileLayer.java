@@ -10,11 +10,20 @@ import org.vaadin.addon.vol3.source.OLSource;
  */
 public class OLTileLayer extends OLLayer {
 
+    /** Creates a new instance of the layer
+     *
+     * @param source the data source that provides the tiles
+     */
     public OLTileLayer(OLSource source){
         this(source,null);
     }
 
-    public OLTileLayer(OLSource source, OLTileLayerOptions options) {
+    /** Creates a new instance of the layer
+     *
+     * @param source the data source that provides the tiles
+     * @param options the options for the layer
+     */
+     public OLTileLayer(OLSource source, OLTileLayerOptions options) {
         super(source, options);
     }
 
@@ -28,6 +37,10 @@ public class OLTileLayer extends OLLayer {
         return (OLTileLayerState) super.getState(markAsDirty);
     }
 
+    /** Applies the layer options
+     *
+     * @param options
+     */
     protected void setOptions(OLTileLayerOptions options) {
         super.setOptions(options);
         getState().useInterimTilesOnError=options.getUseInterimTilesOnError();

@@ -3,6 +3,7 @@ package org.vaadin.addon.vol3.source;
 import org.vaadin.addon.vol3.client.source.OLXYZSourceState;
 
 /**
+ * Layer source for tile data with URLs in a set XYZ format.
  * Created by mjhosio on 02/07/14.
  */
 public abstract class OLXYZSource extends OLSource {

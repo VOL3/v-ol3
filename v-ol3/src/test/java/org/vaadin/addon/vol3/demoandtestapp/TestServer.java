@@ -17,6 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Stand-alone test server that powers the map demo. Just run the main method and the demo should be up and running
+ * on port 9998
  * Created by mjhosio on 24/06/14.
  */
 public class TestServer {

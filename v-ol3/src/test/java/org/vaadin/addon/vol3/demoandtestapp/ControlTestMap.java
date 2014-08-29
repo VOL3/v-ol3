@@ -13,7 +13,7 @@ public class ControlTestMap extends BasicMap {
         OLMap map=super.createMap();
         map.setFullScreenControl(new OLFullScreenControl());
         OLMousePositionControl mousePos=new OLMousePositionControl();
-        mousePos.projection= Projections.EPSG4326;
+        mousePos.projection = Projections.EPSG4326;
         map.setMousePositionControl(mousePos);
         map.setScaleLineControl(new OLScaleLineControl());
         map.setZoomSliderControl(new OLZoomSliderControl());

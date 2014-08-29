@@ -6,10 +6,6 @@ import com.vaadin.shared.AbstractComponentState;
  * Created by mjhosio on 30/06/14.
  */
 public class OLViewState extends AbstractComponentState {
-    public Integer zoom;
-    public OLCoordinate center;
-    public Double resolution;
-    public Double rotation;
     // crs name of the projection (EPSG:3857 and EPSG:4326 are supported out of the box)
     public String projection; // use spherical mercator by default;
 
