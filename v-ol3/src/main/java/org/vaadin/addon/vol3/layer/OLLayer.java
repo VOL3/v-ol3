@@ -38,7 +38,7 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         setMaxResolution(options.getMaxResolution());
         setOpacity(options.getOpacity());
         setSaturation(options.getSaturation());
-        setVisible(options.getVisible());
+        setLayerVisible(options.getVisible());
     }
 
     @Override
