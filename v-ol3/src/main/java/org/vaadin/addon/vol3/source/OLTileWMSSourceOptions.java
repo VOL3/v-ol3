@@ -20,7 +20,7 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
     private Double gutter;
     // Max zoom level
     private Double maxZoom;
-    // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version < 1.3.0) will be set dynamically.
+    // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
     private Map<String,String> params;
 
     public String getCrossOriginPolicy() {
@@ -107,7 +107,7 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
         return params;
     }
 
-    /** WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version < 1.3.0) will be set dynamically.
+    /** WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
      *
      * @param params
      */

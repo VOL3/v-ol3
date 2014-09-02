@@ -18,7 +18,7 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
     private double [] resolutions;
     // WMS service url
     private String url;
-    // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version < 1.3.0) will be set dynamically.
+    // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
     private Map<String,String> params;
 
     public String getCrossOriginPolicy() {
@@ -93,7 +93,7 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
         return params;
     }
 
-    /** WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version < 1.3.0) will be set dynamically.
+    /** WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
      *
      * @param params
      */
