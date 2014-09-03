@@ -5,8 +5,21 @@
 	<groupId>org.vaadin</groupId>
 	<artifactId>gwt-ol3</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1</version>
+	<version>0.1.0</version>
 	<name>OpenLayers 3 Wrapper for GWT</name>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <vaadin.version>7.2.0</vaadin.version>
+        <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
+
+        <!-- ZIP Manifest fields -->
+        <Implementation-Version>${project.version}</Implementation-Version>
+        <!-- Must not change this because of the Directory -->
+        <Implementation-Title>${project.name}</Implementation-Title>
+        <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+        <Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
+        <Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
+    </properties>
 
     <dependencies>
         <dependency>
