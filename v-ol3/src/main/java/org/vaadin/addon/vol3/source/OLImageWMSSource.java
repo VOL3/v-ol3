@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Source for WMS servers providing single, untiled images.
- * Created by mjhosio on 04/07/14.
  */
 public class OLImageWMSSource extends OLSource {
 

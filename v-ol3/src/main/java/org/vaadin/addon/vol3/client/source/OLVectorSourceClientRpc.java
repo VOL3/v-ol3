@@ -6,7 +6,7 @@ import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import java.util.List;
 
 /**
- * Created by mjhosio on 08/07/14.
+ * Client-rpc interface for the OLVectorSource
  */
 public interface OLVectorSourceClientRpc extends ClientRpc {
     /** Creates or updates the features on the client side.

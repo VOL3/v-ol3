@@ -1,7 +1,7 @@
 package org.vaadin.addon.vol3.client.source;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Shared state for the OLMapQuestSource
  */
 public class OLMapQuestSourceState extends OLXYZSourceState{
     // layer type (osm, sat, hyb)

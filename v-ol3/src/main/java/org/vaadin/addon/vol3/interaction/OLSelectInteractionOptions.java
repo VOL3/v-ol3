@@ -7,7 +7,6 @@ import java.util.List;
 
 /**
  * Options for the select interaction
- * Created by mjhosio on 25/08/14.
  */
 public class OLSelectInteractionOptions {
     private List<OLLayer> layers;

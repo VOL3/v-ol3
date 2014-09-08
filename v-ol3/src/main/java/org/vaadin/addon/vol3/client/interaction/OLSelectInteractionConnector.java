@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Client-side connector for the select interaction
  */
 @Connect(OLSelectInteraction.class)
 public class OLSelectInteractionConnector extends OLInteractionConnector implements SelectionChangeListener{

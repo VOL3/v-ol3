@@ -15,7 +15,7 @@ import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Basic map view
  */
 public class BasicMap extends VerticalLayout implements View {
 

@@ -4,7 +4,7 @@ import com.vaadin.shared.AbstractComponentState;
 import org.vaadin.addon.vol3.client.control.*;
 
 /**
- * Created by mjhosio on 27/06/14.
+ * State for the map
  */
 public class OLMapState extends AbstractComponentState {
     public Boolean showOl3Logo;

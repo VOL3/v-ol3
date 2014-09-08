@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.source;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Source for tiled image data
  */
 public class TileImageSource extends TileSource {
     protected TileImageSource() {

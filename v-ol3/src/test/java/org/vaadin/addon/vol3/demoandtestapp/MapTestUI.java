@@ -10,7 +10,6 @@ import com.vaadin.ui.VerticalLayout;
 
 /**
  * The map demo UI. Contains a number of test maps as navigator views.
- * Created by mjhosio on 24/06/14.
  */
 public class MapTestUI extends UI {
 

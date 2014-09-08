@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.layer;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * Options for the tile layer
  */
 public class TileOptions extends LayerOptions {
     protected TileOptions() {

@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.control;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 10/07/14.
+ * Options passed to the FullScreenControl on creation
  */
 public class FullScreenControlOptions extends JavaScriptObject {
     protected FullScreenControlOptions() {

@@ -4,7 +4,6 @@ import com.google.gwt.core.client.JsArrayNumber;
 
 /**
  * Grid pattern for sources accessing Zoomify tiled-image servers
- * Created by mjhosio on 07/07/14.
  */
 public class ZoomifyTileGrid extends TileGrid{
     protected ZoomifyTileGrid() {

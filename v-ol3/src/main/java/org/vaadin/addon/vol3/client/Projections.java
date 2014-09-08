@@ -1,7 +1,7 @@
 package org.vaadin.addon.vol3.client;
 
 /**
- * Created by mjhosio on 10/07/14.
+ * Supported projections
  */
 public final class Projections {
     public static final String EPSG4326="EPSG:4326";  // Geographic mercator (lat/lon)

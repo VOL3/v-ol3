@@ -5,7 +5,7 @@ import org.vaadin.addon.vol3.client.OLExtent;
 import javax.print.attribute.standard.Destination;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Shared state for the OLVectorSource
  */
 public class OLVectorSourceState extends OLSourceState{
     public String state;

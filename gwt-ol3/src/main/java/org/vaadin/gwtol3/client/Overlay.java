@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 25/06/14.
+ * Wrapper for an overlay displayed on a map
  */
 public class Overlay extends JavaScriptObject {
 

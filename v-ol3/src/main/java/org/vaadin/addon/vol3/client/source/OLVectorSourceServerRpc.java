@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.source;
 import com.vaadin.shared.communication.ServerRpc;
 
 /**
- * Created by mjhosio on 28/08/14.
+ * Server rpc interface for the OLVectorSource
  */
 public interface OLVectorSourceServerRpc extends ServerRpc {
     public void featureModified(String id, String serializedGeometry);

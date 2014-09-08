@@ -8,7 +8,6 @@ import org.vaadin.gwtol3.client.style.Style;
 
 /**
  * Options for the modify interaction
- * Created by mjhosio on 25/08/14.
  */
 public class ModifyInteractionOptions extends JavaScriptObject {
     protected ModifyInteractionOptions() {

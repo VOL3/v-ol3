@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by mjhosio on 03/07/14.
+ * Client-side connector for the OLTileWMSSource
  */
 @Connect(OLTileWMSSource.class)
 public class OLTileWMSSourceConnector extends OLSourceConnector {

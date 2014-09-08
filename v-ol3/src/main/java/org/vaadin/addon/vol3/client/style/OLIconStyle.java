@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.style;
 import java.io.Serializable;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * Icon style for features
  */
 public class OLIconStyle implements Serializable {
     public double [] anchor;

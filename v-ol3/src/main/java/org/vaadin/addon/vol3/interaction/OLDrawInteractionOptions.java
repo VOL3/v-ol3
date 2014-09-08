@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Options for the draw interaction
- * Created by mjhosio on 25/08/14.
  */
 public class OLDrawInteractionOptions {
 

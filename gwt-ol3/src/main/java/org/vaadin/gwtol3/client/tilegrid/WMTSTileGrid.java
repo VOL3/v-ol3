@@ -4,7 +4,6 @@ import com.google.gwt.core.client.JsArrayNumber;
 
 /**
  * The grid pattern for sources accessing WMTS tiled-image servers
- * Created by mjhosio on 07/07/14.
  */
 public class WMTSTileGrid extends TileGrid {
 

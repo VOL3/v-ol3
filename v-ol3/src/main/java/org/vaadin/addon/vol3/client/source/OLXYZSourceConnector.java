@@ -4,7 +4,7 @@ import com.vaadin.client.annotations.OnStateChange;
 import org.vaadin.gwtol3.client.source.XYZSource;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * Client-side connector for the OLXYZSource
  */
 public abstract class OLXYZSourceConnector extends OLSourceConnector{
 

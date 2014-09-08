@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.source;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * TopoJSON layer data source
  */
 public class TopoJSONSource extends StaticVectorSource{
     protected TopoJSONSource() {

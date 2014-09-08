@@ -5,7 +5,6 @@ import org.vaadin.gwtol3.client.Coordinate;
 
 /**
  * Base class for setting the grid pattern for sources accessing tiled-image servers
- * Created by mjhosio on 07/07/14.
  */
 public class TileGrid extends JavaScriptObject{
 

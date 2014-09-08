@@ -8,7 +8,6 @@ import org.vaadin.gwtol3.client.Coordinate;
 
 /**
  * Options passed to WMTSTileGrid instance on creation
- * Created by mjhosio on 07/07/14.
  */
 public class WMTSTileGridOptions extends JavaScriptObject{
     protected WMTSTileGridOptions() {

@@ -12,7 +12,6 @@ import java.util.*;
 
 /**
  * Vector source implementation that provides api for adding features.
- * Created by mjhosio on 07/07/14.
  */
 public class OLVectorSource extends OLSource{
 

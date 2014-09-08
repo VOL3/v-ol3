@@ -6,7 +6,7 @@ import com.vaadin.client.ui.AbstractComponentConnector;
 import org.vaadin.gwtol3.client.interaction.Interaction;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Abstract base class for interaction connectors
  */
 public abstract class OLInteractionConnector extends AbstractComponentConnector {
     // we create a dummy widget since this connector is used

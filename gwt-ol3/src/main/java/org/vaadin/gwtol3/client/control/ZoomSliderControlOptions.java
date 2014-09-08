@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.control;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 11/07/14.
+ * Options passed to the ZoomSliderControl on creation
  */
 public class ZoomSliderControlOptions extends JavaScriptObject{
     protected ZoomSliderControlOptions() {

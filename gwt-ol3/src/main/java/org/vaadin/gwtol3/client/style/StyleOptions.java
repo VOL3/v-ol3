@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.style;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 08/07/14.
+ * Options for feature Styles
  */
 public class StyleOptions extends JavaScriptObject {
     protected StyleOptions() {

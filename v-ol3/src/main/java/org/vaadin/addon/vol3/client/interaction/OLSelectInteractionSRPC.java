@@ -5,8 +5,7 @@ import com.vaadin.shared.communication.ServerRpc;
 import java.util.List;
 
 /**
- * Server rpc interface
- * Created by mjhosio on 26/08/14.
+ * Server rpc interface for the select interaction
  */
 public interface OLSelectInteractionSRPC extends ServerRpc{
     public void updateSelection(List<String> selectedFeatures);

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * A control displaying rough x-axis distances. By default it will show in the bottom left portion of the map, but this can be changed by using the css selector .ol-scale-line.
- * Created by mjhosio on 11/07/14.
  */
 public class OLScaleLineControl implements Serializable {
 

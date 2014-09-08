@@ -6,7 +6,6 @@ import org.vaadin.gwtol3.client.feature.Feature;
 
 /**
  * Interaction that handles selection of vector data
- * Created by mjhosio on 25/08/14.
  */
 public class SelectInteraction extends Interaction{
     protected SelectInteraction() {

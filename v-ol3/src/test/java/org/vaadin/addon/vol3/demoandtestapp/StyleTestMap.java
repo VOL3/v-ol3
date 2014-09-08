@@ -11,7 +11,7 @@ import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.util.StyleUtils;
 
 /**
- * Created by mjhosio on 10/07/14.
+ * Map for testing styles on vector layer
  */
 public class StyleTestMap extends VectorLayerMap {
 

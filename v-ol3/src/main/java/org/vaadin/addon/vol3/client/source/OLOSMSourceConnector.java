@@ -9,7 +9,7 @@ import org.vaadin.gwtol3.client.source.OSMSourceOptions;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * Client-side connector for the OLOSMSource
  */
 @Connect(OLOSMSource.class)
 public class OLOSMSourceConnector extends OLXYZSourceConnector{

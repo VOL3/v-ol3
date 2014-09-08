@@ -5,7 +5,7 @@ import org.vaadin.addon.vol3.source.OLOSMSourceOptions;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * OpenStreetMap source test
  */
 public class OSMMap extends BasicMap {
     @Override

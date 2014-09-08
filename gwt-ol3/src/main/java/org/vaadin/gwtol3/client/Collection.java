@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
 /**
- * Created by mjhosio on 25/06/14.
+ * Wrapper for the ol3 collection
  */
 public class Collection<T extends JavaScriptObject> extends JavaScriptObject{
 

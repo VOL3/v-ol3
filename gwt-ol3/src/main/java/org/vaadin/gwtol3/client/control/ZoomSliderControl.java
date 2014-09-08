@@ -2,7 +2,6 @@ package org.vaadin.gwtol3.client.control;
 
 /**
  * A slider type of control for zooming.
- * Created by mjhosio on 11/07/14.
  */
 public class ZoomSliderControl extends Control{
     protected ZoomSliderControl() {

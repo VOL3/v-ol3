@@ -5,7 +5,7 @@ import com.google.gwt.dom.client.ImageElement;
 import org.vaadin.gwtol3.client.Size;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * IconStyle for a feature
  */
 public class IconStyle extends ImageStyle {
     protected IconStyle() {

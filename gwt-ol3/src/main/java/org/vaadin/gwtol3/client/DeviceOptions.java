@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Tile loading options
  */
 public class DeviceOptions extends JavaScriptObject {
     protected DeviceOptions() {

@@ -10,7 +10,7 @@ import org.vaadin.gwtol3.client.source.Source;
 import org.vaadin.gwtol3.client.source.VectorSource;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Client-side connector for the vector layer
  */
 @Connect(OLVectorLayer.class)
 public class OLVectorLayerConnector extends OLLayerConnector {

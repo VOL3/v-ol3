@@ -6,7 +6,7 @@ import com.google.gwt.core.client.JsArrayString;
 import org.vaadin.gwtol3.client.Attribution;
 
 /**
- * Created by mjhosio on 03/07/14.
+ * Options for the TileWMSSource
  */
 public class TileWMSSourceOptions extends JavaScriptObject{
 

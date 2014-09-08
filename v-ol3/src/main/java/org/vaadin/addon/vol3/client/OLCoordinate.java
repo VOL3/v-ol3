@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client;
 import java.io.Serializable;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Models a coordinate in some projection units
  */
 public class OLCoordinate implements Serializable{
 

@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Feature implementation for the vector layer.
- * Created by mjhosio on 07/07/14.
+ * Feature implementation for the vector layer. Used for adding custom markup on the vector layer.
  */
 public class OLFeature implements Serializable{
     // id of the feature

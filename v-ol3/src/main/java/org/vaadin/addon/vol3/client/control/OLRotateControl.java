@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /**
  * A button control to reset rotation to 0. To style this control use css selector .ol-rotate.
- * Created by mjhosio on 11/07/14.
  */
 public class OLRotateControl implements Serializable {
     //the css class name of the control. Default is ol-rotate

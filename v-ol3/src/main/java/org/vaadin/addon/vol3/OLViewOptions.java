@@ -4,7 +4,7 @@ import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.OLRotationConstraint;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Options for the view
  */
 public class OLViewOptions {
     private OLRotationConstraint rotationConstraint;

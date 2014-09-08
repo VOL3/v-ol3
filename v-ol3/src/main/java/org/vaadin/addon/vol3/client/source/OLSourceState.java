@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.source;
 import com.vaadin.shared.AbstractComponentState;
 
 /**
- * Created by mjhosio on 27/06/14.
+ *  Base class for shared state of sources
  */
 public class OLSourceState extends AbstractComponentState{
 

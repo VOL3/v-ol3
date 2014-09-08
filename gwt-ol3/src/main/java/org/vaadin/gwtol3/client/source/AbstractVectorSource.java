@@ -6,7 +6,7 @@ import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.feature.Feature;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Base class for vector sources
  */
 public abstract class AbstractVectorSource extends Source {
     protected AbstractVectorSource() {

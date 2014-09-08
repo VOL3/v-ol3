@@ -5,7 +5,6 @@ import org.vaadin.addon.vol3.layer.OLVectorLayer;
 
 /**
  * Interaction that allows drawing on the specified vector layer
- * Created by mjhosio on 25/08/14.
  */
 public class OLDrawInteraction extends OLInteraction {
 

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * Created by mjhosio on 27/08/14.
+ * Serializes the features so that they can be sent to the client side
  */
 public class OLFeatureSerializer {
 

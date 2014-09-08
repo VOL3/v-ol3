@@ -4,7 +4,6 @@ import org.vaadin.gwtol3.client.Attribution;
 
 /**
  * Layer source for the OpenStreetMap tile server
- * Created by mjhosio on 02/07/14.
  */
 public class OSMSource extends XYZSource {
     protected OSMSource() {

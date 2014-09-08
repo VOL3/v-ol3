@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.format;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Reader/Writer for Polyline features
  */
 public class PolylineFormat extends FeatureFormat{
     protected PolylineFormat() {

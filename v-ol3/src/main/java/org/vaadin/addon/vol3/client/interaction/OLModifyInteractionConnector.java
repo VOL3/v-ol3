@@ -16,7 +16,7 @@ import org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener;
 import java.util.logging.Logger;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Client-side connector for the modify interaction
  */
 @Connect(OLModifyInteraction.class)
 public class OLModifyInteractionConnector extends OLInteractionConnector implements FeatureSetChangeListener{

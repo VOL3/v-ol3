@@ -6,7 +6,7 @@ import org.vaadin.gwtol3.client.source.MapQuestSource;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Client-side connector for the OLMapQuestSource
  */
 @Connect (OLMapQuestSource.class)
 public class OLMapQuestSourceConnector extends OLXYZSourceConnector{

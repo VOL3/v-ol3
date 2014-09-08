@@ -11,7 +11,7 @@ import org.vaadin.gwtol3.client.interaction.DrawInteractionOptions;
 import java.util.logging.Logger;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Client-side connector for draw interaction
  */
 @Connect(OLDrawInteraction.class)
 public class OLDrawInteractionConnector extends OLInteractionConnector {

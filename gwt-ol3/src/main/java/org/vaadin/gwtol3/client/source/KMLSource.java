@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.source;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * KMLSource
  */
 public class KMLSource extends StaticVectorSource{
     protected KMLSource() {

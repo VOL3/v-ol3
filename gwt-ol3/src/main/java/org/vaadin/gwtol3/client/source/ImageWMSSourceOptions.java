@@ -6,8 +6,7 @@ import com.google.gwt.core.client.JsArrayNumber;
 import org.vaadin.gwtol3.client.Attribution;
 
 /**
- * Settings passed
- * Created by mjhosio on 03/07/14.
+ * Settings passed to the ImageWMSSource on creation
  */
 public class ImageWMSSourceOptions extends JavaScriptObject {
 

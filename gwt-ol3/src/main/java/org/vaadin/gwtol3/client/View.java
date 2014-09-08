@@ -5,7 +5,7 @@ import org.vaadin.gwtol3.client.geom.SimpleGeometry;
 import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * View of the map
  */
 public class View extends JavaScriptObject {
 

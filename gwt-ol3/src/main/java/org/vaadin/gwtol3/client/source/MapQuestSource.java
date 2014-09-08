@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 /**
  * Layer source for the MapQuest tile server
- * Created by mjhosio on 24/06/14.
  */
 public class MapQuestSource extends XYZSource {
 

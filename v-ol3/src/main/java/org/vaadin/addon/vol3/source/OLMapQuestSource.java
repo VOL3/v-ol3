@@ -5,7 +5,6 @@ import org.vaadin.addon.vol3.client.source.OLMapQuestSourceState;
 
 /**
  * Layer source for the MapQuest tile server
- * Created by mjhosio on 30/06/14.
  */
 public class OLMapQuestSource extends OLXYZSource {
 

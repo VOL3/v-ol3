@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.layer;
 
 /**
- * Created by mjhosio on 25/06/14.
+ * Group of layers
  */
 public class LayerGroup extends LayerBase {
 

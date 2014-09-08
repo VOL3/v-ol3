@@ -15,7 +15,6 @@ import java.util.List;
 /**
  * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
  *
- * Created by mjhosio on 24/06/14.
  */
 public class OLMap extends AbstractComponentContainer{
     private List<Component> components=new ArrayList<Component>();

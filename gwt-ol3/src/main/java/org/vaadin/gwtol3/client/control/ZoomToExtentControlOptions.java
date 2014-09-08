@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import org.vaadin.gwtol3.client.Extent;
 
 /**
- * Created by mjhosio on 11/07/14.
+ * Options passed to the ZoomToExtentControl on creation
  */
 public class ZoomToExtentControlOptions extends JavaScriptObject{
     protected ZoomToExtentControlOptions() {

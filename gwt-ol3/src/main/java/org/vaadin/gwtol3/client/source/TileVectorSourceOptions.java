@@ -6,7 +6,7 @@ import org.vaadin.gwtol3.client.format.FeatureFormat;
 import org.vaadin.gwtol3.client.tilegrid.TileGrid;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Options for the TileVectorSource
  */
 public class TileVectorSourceOptions extends AbstractVectorSourceOptions{
 

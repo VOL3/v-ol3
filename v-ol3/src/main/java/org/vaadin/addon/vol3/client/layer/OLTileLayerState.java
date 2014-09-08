@@ -1,7 +1,7 @@
 package org.vaadin.addon.vol3.client.layer;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * Shared state for the tile layer
  */
 public class OLTileLayerState extends OLLayerState{
     public Integer preload;

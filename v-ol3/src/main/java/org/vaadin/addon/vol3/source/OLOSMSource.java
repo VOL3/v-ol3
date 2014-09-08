@@ -4,7 +4,6 @@ import org.vaadin.addon.vol3.client.source.OLOSMSourceState;
 
 /**
  * Layer source for an open street map tile server
- * Created by mjhosio on 02/07/14.
  */
 public class OLOSMSource extends OLXYZSource{
 

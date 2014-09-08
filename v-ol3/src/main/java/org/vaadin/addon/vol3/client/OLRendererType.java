@@ -1,7 +1,7 @@
 package org.vaadin.addon.vol3.client;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Renderer type to be used by the map
  */
 public enum OLRendererType {
     CANVAS,

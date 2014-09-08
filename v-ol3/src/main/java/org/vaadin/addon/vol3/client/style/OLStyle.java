@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.style;
 import java.io.Serializable;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Style definitions for features
  */
 public class OLStyle implements Serializable {
     public OLFillStyle fillStyle;

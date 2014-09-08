@@ -7,7 +7,6 @@ import org.vaadin.gwtol3.client.proj.Projection;
 /**
  *
  * Source for WMS servers providing single, untiled images.
- * Created by mjhosio on 03/07/14.
  */
 public class ImageWMSSource extends ImageSource {
 

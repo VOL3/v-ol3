@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.layer;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Base class for the layers
  */
 public abstract class Layer extends LayerBase {
 

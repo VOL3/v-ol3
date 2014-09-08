@@ -2,7 +2,6 @@ package org.vaadin.gwtol3.client.source;
 
 /**
  * Static vector source in GeoJSON format
- * Created by mjhosio on 07/07/14.
  */
 public class GeoJSONSource extends StaticVectorSource{
     protected GeoJSONSource() {

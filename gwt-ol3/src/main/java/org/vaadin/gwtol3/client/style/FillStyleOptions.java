@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.style;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * Options for a FillStyle
  */
 public class FillStyleOptions extends JavaScriptObject{
     protected FillStyleOptions() {

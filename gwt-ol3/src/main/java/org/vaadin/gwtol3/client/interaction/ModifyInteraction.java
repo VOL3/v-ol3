@@ -2,7 +2,6 @@ package org.vaadin.gwtol3.client.interaction;
 
 /**
  * Interaction for modifying vector data
- * Created by mjhosio on 25/08/14.
  */
 public class ModifyInteraction extends PointerInteraction {
     protected ModifyInteraction() {

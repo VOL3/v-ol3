@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.interaction;
 
 /**
- * Created by mjhosio on 26/08/14.
+ * Listener interface for selection changes made using SelectInteraction.
  */
 public interface SelectionChangeListener {
     public void selectionChanged();

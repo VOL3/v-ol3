@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.source;
 
 /**
  * Base class for all the source options
- * Created by mjhosio on 07/07/14.
  */
 public class OLSourceOptions {
     private String [] attributions;

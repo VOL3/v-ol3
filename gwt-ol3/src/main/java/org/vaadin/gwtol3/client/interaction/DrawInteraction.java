@@ -2,7 +2,6 @@ package org.vaadin.gwtol3.client.interaction;
 
 /**
  * Interaction that allows drawing of geometries
- * Created by mjhosio on 25/08/14.
  */
 public class DrawInteraction extends Interaction{
     protected DrawInteraction() {

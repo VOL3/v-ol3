@@ -14,7 +14,7 @@ import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.source.OLVectorSourceOptions;
 
 /**
- * Created by mjhosio on 08/07/14.
+ * Map for testing vector layer
  */
 public class VectorLayerMap extends BasicMap{
 

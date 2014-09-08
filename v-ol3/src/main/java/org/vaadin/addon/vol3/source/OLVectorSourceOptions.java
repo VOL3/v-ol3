@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.source;
 
 /**
  * Options passed to OLVectorSource on creation
- * Created by mjhosio on 07/07/14.
  */
 public class OLVectorSourceOptions extends OLSourceOptions {
 

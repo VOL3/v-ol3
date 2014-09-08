@@ -8,8 +8,6 @@ import org.vaadin.gwtol3.client.layer.Layer;
 
 /**
  * Options passed to Map on creation
- * Created by mjhosio on 01/07/14
- *
  */
 public class MapOptions extends JavaScriptObject{
     protected MapOptions() {

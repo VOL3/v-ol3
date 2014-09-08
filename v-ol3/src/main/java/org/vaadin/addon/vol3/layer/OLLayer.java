@@ -7,7 +7,6 @@ import org.vaadin.addon.vol3.source.OLSource;
 
 /**
  * Base class for all layer types
- * Created by mjhosio on 27/06/14.
  */
 public abstract class OLLayer extends AbstractSingleComponentContainer{
 

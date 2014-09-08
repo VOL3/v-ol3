@@ -5,7 +5,6 @@ import org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener;
 
 /**
  * Base class for vector sources
- * Created by mjhosio on 02/07/14.
  */
 public class VectorSource extends AbstractVectorSource{
     protected VectorSource() {

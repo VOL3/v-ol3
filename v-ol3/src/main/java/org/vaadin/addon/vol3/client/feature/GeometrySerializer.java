@@ -7,8 +7,7 @@ import org.vaadin.gwtol3.client.geom.Geometry;
 import java.util.logging.Logger;
 
 /**
- * /** Serializer for geometries used on the client side
- * Created by mjhosio on 27/08/14.
+ * Serializer for geometries used on the client side
  */
 public class GeometrySerializer {
 

@@ -6,8 +6,7 @@ import org.vaadin.gwtol3.client.Coordinate;
 import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
- *
- * Created by mjhosio on 03/07/14.
+ * Tile WMS Source
  */
 public class TileWMSSource extends TileImageSource {
     protected TileWMSSource() {

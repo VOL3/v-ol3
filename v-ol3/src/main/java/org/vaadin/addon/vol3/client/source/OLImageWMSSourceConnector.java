@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by mjhosio on 03/07/14.
+ * Client-side connector for the ImageWMSSource
  */
 @Connect(OLImageWMSSource.class)
 public class OLImageWMSSourceConnector extends OLSourceConnector {

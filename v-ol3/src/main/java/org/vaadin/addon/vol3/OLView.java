@@ -4,8 +4,7 @@ import com.vaadin.ui.AbstractComponent;
 import org.vaadin.addon.vol3.client.*;
 
 /**
- * The view associated with a map.
- * Created by mjhosio on 30/06/14.
+ * The view associated with a map. The view provides api for controlling things like zoom (resolution), rotation and extent
  */
 public class OLView extends AbstractComponent {
     /** Creates a new instance of the view

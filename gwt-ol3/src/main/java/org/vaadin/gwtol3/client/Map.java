@@ -10,7 +10,7 @@ import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Wrapper for the OpenLayers map
  */
 public class Map extends JavaScriptObject{
 

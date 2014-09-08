@@ -22,7 +22,7 @@ import org.vaadin.gwtol3.client.resources.ResourceInjector;
 import java.util.List;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Client side connector for the map
  */
 @Connect(OLMap.class)
 public class OLMapConnector extends AbstractHasComponentsConnector implements ElementResizeListener{

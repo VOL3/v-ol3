@@ -7,7 +7,7 @@ import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 04/07/14.
+ * Client-side connector for the image layer
  */
 @Connect(OLImageLayer.class)
 public class OLImageLayerConnector extends OLLayerConnector {

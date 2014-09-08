@@ -5,7 +5,6 @@ import org.vaadin.addon.vol3.layer.OLVectorLayer;
 
 /**
  * Interaction that allows modifying of the features on the layer
- * Created by mjhosio on 25/08/14.
  */
 public class OLModifyInteraction extends OLInteraction{
 

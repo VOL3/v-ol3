@@ -11,7 +11,7 @@ import org.vaadin.gwtol3.client.View;
 import org.vaadin.gwtol3.client.ViewOptions;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Client-side connector for the view
  */
 @Connect(OLView.class)
 public class OLViewConnector extends AbstractComponentConnector{

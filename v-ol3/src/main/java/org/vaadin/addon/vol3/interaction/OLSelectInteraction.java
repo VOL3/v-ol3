@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * Interaction that allows selecting features on the layer
- * Created by mjhosio on 25/08/14.
  */
 public class OLSelectInteraction extends OLInteraction {
 

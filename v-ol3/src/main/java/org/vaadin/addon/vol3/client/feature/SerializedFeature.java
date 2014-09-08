@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by mjhosio on 08/07/14.
+ * Serialized version of a feature to be drawn on the vector layer
  */
 public class SerializedFeature implements Serializable {
     public String id;

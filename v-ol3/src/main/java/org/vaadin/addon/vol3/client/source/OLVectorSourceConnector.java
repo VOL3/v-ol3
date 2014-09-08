@@ -23,7 +23,7 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Client-side connector for the OLVectorSource
  */
 @Connect(OLVectorSource.class)
 public class OLVectorSourceConnector extends OLSourceConnector implements FeatureSetChangeListener, FeatureChangeListener {

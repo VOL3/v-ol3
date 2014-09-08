@@ -7,7 +7,7 @@ import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
- * Created by mjhosio on 02/07/14.
+ * Map with multiple layers
  */
 public class MultiLayerMap extends BasicMap {
     @Override

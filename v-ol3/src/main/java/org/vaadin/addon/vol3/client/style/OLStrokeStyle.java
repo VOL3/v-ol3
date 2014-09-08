@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.style;
 import java.io.Serializable;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * Stroke style for features
  */
 public class OLStrokeStyle implements Serializable{
     public String color;

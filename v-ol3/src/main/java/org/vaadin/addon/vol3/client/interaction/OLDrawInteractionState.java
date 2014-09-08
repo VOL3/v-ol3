@@ -7,7 +7,7 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 import java.util.List;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Shared state for the draw interaction
  */
 public class OLDrawInteractionState extends AbstractComponentState {
     // Pixel distance for snapping to the drawing finish. Default is 12.

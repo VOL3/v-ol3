@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.proj;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 25/06/14.
+ * Projection object to be passed to underlying ol3.js api
  */
 public class Projection extends JavaScriptObject {
 

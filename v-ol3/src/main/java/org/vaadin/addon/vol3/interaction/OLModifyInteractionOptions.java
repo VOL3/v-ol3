@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Options for the modify interaction
- * Created by mjhosio on 25/08/14.
  */
 public class OLModifyInteractionOptions {
     // Pixel tolerance for considering the pointer close enough to a segment or vertex for editing. Default is 10 pixels.

@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.layer;
 
 /**
- * Created by mjhosio on 04/07/14.
+ * Options for the ImageLayer
  */
 public class ImageOptions extends LayerOptions {
     protected ImageOptions() {

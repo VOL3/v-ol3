@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.source.vector;
 import org.vaadin.gwtol3.client.feature.Feature;
 
 /**
- * Created by mjhosio on 28/08/14.
+ * Listener for feature changes (add / remove) in a VectorSource
  */
 public interface FeatureSetChangeListener {
     public void featureDeleted(Feature feature);

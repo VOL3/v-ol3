@@ -4,7 +4,6 @@ import java.util.Map;
 
 /**
  * Options passed to OLTileWMSSource on construction
- * Created by mjhosio on 04/07/14.
  */
 public class OLTileWMSSourceOptions extends OLSourceOptions {
     private String crossOriginPolicy;

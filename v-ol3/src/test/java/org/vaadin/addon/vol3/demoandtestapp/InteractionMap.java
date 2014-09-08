@@ -10,7 +10,7 @@ import org.vaadin.addon.vol3.source.OLVectorSource;
 import java.util.List;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Map for testing interactions
  */
 public class InteractionMap extends VectorLayerMap {
 

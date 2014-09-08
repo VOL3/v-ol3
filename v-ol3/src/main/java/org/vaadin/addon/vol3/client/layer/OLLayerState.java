@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.layer;
 import com.vaadin.shared.AbstractComponentState;
 
 /**
- * Created by mjhosio on 27/06/14.
+ * Base class for layer states
  */
 public class OLLayerState extends AbstractComponentState{
 

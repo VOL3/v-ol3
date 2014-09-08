@@ -11,7 +11,7 @@ import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 27/06/14.
+ * Abstract base class for client-side connectors of the layers
  */
 public abstract class OLLayerConnector extends AbstractSingleComponentContainerConnector {
 

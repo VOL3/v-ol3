@@ -6,7 +6,6 @@ import org.vaadin.addon.vol3.source.OLSource;
 /**
  *
  * Layer for layer sources that provide pre-rendered, tiled images in grids that are organized by zoom levels for specific resolutions.
- * Created by mjhosio on 30/06/14.
  */
 public class OLTileLayer extends OLLayer {
 

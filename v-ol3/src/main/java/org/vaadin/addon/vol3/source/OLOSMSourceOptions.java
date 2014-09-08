@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.source;
 
 /**
  * Options provided to the osm tile source on creation
- * Created by mjhosio on 02/07/14.
  */
 public class OLOSMSourceOptions {
     private Boolean showDataAttributions;

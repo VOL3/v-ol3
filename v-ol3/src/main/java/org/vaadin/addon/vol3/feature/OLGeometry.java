@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * Base class for geometry associated with the feature drawn on the VectorLayer
- * Created by mjhosio on 27/08/14.
  */
 public abstract class OLGeometry<T> {
     protected List<T> elements=new LinkedList<T>();

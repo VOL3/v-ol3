@@ -6,7 +6,7 @@ import org.vaadin.gwtol3.client.geom.Geometry;
 import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Reader / Writer for GeoJSON features / Geometries
  */
 public class GeoJSONFormat extends FeatureFormat{
     protected GeoJSONFormat() {

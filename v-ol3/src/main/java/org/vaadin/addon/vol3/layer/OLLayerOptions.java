@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.layer;
 
 /**
  * Options common for all layer types
- * Created by mjhosio on 04/07/14.
  */
 public class OLLayerOptions {
 

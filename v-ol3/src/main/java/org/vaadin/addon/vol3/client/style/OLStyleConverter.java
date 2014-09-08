@@ -10,7 +10,6 @@ import java.util.List;
 
 /**
  * Converter for converting the OLStyle class to its GWT-counterpart
- * Created by mjhosio on 09/07/14.
  */
 public class OLStyleConverter {
 

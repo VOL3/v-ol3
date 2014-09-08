@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by mjhosio on 04/07/14.
+ * Map for testing TileWMS sources
  */
 public class TileWMSMap extends BasicMap{
     @Override

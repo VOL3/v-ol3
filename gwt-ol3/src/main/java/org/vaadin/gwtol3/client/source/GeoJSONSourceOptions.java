@@ -5,7 +5,6 @@ import com.google.gwt.core.client.JsArrayString;
 
 /**
  * Options passed to GeoJSON source on creation
- * Created by mjhosio on 07/07/14.
  */
 public class GeoJSONSourceOptions extends AbstractVectorSourceOptions{
 

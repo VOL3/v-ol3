@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
- * Created by mjhosio on 10/07/14.
+ * Options for the MousePositionControl passed on creation.
  */
 public class MousePositionControlOptions extends JavaScriptObject{
     protected MousePositionControlOptions() {

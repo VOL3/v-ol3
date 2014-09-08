@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 04/07/14.
+ * Base class for layer options
  */
 public abstract class LayerOptions extends JavaScriptObject {
     protected LayerOptions() {

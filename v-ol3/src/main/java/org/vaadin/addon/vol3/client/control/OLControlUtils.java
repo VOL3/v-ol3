@@ -8,7 +8,6 @@ import java.util.logging.Logger;
 
 /**
  * Utility methods for dealing with controls
- * Created by mjhosio on 11/07/14.
  */
 public class OLControlUtils {
 

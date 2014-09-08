@@ -8,7 +8,7 @@ import org.vaadin.gwtol3.client.layer.TileOptions;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 30/06/14.
+ * Client-side connector for the tile layer
  */
 @Connect (OLTileLayer.class)
 public class OLTileLayerConnector extends OLLayerConnector {

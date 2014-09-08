@@ -5,7 +5,7 @@ import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.TextResource;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Client bundle for embedding the wrapper JS api and associated style sheets
  */
 public interface OL3ClientBundle extends ClientBundle {
 

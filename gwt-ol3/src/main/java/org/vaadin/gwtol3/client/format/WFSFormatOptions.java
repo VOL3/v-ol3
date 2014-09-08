@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.format;
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Options for the WFSFormat
  */
 public class WFSFormatOptions extends JavaScriptObject{
     protected WFSFormatOptions() {

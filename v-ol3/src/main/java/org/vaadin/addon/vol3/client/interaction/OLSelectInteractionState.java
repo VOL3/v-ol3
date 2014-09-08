@@ -7,7 +7,7 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 import java.util.List;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Shared state for the select interaction
  */
 public class OLSelectInteractionState extends AbstractComponentState{
     // Style for selected features

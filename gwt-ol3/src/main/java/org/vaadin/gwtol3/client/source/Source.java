@@ -4,7 +4,6 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not instantiated in apps. Base class for layer sources.
- * Created by mjhosio on 24/06/14.
  */
 public abstract class Source extends JavaScriptObject{
 

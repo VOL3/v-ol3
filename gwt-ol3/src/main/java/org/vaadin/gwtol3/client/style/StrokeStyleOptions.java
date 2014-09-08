@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayNumber;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * Options for StrokeStyle
  */
 public class StrokeStyleOptions extends JavaScriptObject {
     protected StrokeStyleOptions() {

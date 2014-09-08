@@ -6,7 +6,7 @@ import com.google.gwt.dom.client.Node;
 import org.vaadin.gwtol3.client.style.Style;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Options for the OSMXMLSource
  */
 public class OSMXMLSourceOptions extends AbstractVectorSourceOptions{
     protected OSMXMLSourceOptions() {

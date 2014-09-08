@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Renderer type used by the map
  */
 public final class RendererType {
 

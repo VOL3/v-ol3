@@ -5,7 +5,7 @@ import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.control.*;
 
 /**
- * Created by mjhosio on 11/07/14.
+ * Map for testing controls
  */
 public class ControlTestMap extends BasicMap {
     @Override

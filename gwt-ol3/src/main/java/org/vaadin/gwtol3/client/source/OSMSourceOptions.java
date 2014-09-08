@@ -6,7 +6,6 @@ import org.vaadin.gwtol3.client.Attribution;
 
 /**
  * Options passed to Open Street Map source on creation
- * Created by mjhosio on 02/07/14.
  */
 public class OSMSourceOptions extends JavaScriptObject {
 

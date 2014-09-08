@@ -1,7 +1,7 @@
 package org.vaadin.gwtol3.client.format;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Reader/Writer for WKT features
  */
 public class WKTFormat extends FeatureFormat{
     protected WKTFormat() {

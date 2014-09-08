@@ -6,7 +6,6 @@ import java.util.Map;
 
 /**
  * Data source for tile data from WMS servers
- * Created by mjhosio on 04/07/14.
  */
 public class OLTileWMSSource extends OLSource {
 

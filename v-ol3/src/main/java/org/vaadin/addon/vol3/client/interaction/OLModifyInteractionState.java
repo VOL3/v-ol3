@@ -7,7 +7,7 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 import java.util.List;
 
 /**
- * Created by mjhosio on 25/08/14.
+ * Shared state for the modify interaction
  */
 public class OLModifyInteractionState extends AbstractComponentState {
     // Pixel tolerance for considering the pointer close enough to a segment or vertex for editing. Default is 10 pixels.

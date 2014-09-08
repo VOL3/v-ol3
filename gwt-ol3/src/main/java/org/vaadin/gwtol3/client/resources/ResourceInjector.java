@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.resources;
 import com.google.gwt.core.client.GWT;
 
 /**
- * Created by mjhosio on 24/06/14.
+ * Injector for the JavaScript library and associated CSS files
  */
 public class ResourceInjector {
     protected static OL3ClientBundle bundle;

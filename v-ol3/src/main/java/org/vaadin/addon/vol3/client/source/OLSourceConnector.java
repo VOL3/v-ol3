@@ -6,7 +6,7 @@ import com.vaadin.client.ui.AbstractComponentConnector;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 27/06/14.
+ * Base class for source connectors
  */
 public abstract class OLSourceConnector extends AbstractComponentConnector{
 

@@ -9,7 +9,6 @@ import java.util.List;
 
 /**
  * Vector layer for drawing markers (features)
- * Created by mjhosio on 30/06/14.
  */
 public class OLVectorLayer extends OLLayer {
 

@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client;
 import com.vaadin.shared.communication.ClientRpc;
 
 /**
- * Created by mjhosio on 28/08/14.
+ * Client-side rpc impl for the view
  */
 public interface OLViewClientRpc extends ClientRpc{
 

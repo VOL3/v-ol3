@@ -4,7 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayString;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Options for the IGC source
  */
 public class IGCSourceOptions extends JavaScriptObject{
     protected IGCSourceOptions() {

@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.style;
 import java.io.Serializable;
 
 /**
- * Created by mjhosio on 09/07/14.
+ * Text style for features
  */
 public class OLTextStyle implements Serializable{
     public String font;

@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.client.source;
 import java.util.Map;
 
 /**
- * Created by mjhosio on 03/07/14.
+ * Shared state for the OLImageWMSSource
  */
 public class OLImageWMSSourceState extends OLSourceState {
     public String [] attributions;

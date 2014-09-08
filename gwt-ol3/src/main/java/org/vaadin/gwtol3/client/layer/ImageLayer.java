@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.layer;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
- * Created by mjhosio on 04/07/14.
+ * Image layer
  */
 public class ImageLayer extends Layer {
     protected ImageLayer() {

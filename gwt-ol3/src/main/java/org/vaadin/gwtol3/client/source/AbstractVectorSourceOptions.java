@@ -5,7 +5,7 @@ import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.Attribution;
 
 /**
- * Created by mjhosio on 07/07/14.
+ * Options for the vector source
  */
 public class AbstractVectorSourceOptions extends JavaScriptObject {
 

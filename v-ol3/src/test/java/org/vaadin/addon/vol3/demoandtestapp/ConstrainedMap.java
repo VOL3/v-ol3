@@ -12,7 +12,7 @@ import org.vaadin.addon.vol3.layer.OLTileLayerOptions;
 import org.vaadin.addon.vol3.source.OLSource;
 
 /**
- * Created by mjhosio on 01/07/14.
+ * Map with constrained view extent
  */
 public class ConstrainedMap extends BasicMap {
 

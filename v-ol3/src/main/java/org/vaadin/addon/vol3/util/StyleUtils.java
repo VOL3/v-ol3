@@ -7,7 +7,6 @@ import org.vaadin.addon.vol3.client.style.OLStyle;
 
 /**
  * Utility methods for handling styles
- * Created by mjhosio on 09/07/14.
  */
 public class StyleUtils {
 

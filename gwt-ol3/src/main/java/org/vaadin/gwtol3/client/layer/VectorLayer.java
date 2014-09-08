@@ -5,8 +5,7 @@ import org.vaadin.gwtol3.client.source.VectorSource;
 import org.vaadin.gwtol3.client.style.Style;
 
 /**
- * Basic implementation for the ol3 vector layer
- * Created by mjhosio on 30/06/14.
+ * Basic wrapper for the ol3 vector layer
  */
 public class VectorLayer extends Layer {
 
