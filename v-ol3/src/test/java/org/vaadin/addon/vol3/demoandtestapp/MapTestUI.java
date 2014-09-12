@@ -43,6 +43,7 @@ public class MapTestUI extends UI {
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);
         addView("InteractionTest", InteractionMap.class);
+        addView("ExtentTest", ExtentTestMap.class);
         navigator.navigateTo("Basic");
     }
 
