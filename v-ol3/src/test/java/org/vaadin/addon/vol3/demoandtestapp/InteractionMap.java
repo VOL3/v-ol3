@@ -34,8 +34,8 @@ public class InteractionMap extends VectorLayerMap {
     }
 
     @Override
-    protected Component createControls() {
-        CssLayout layout= (CssLayout) super.createControls();
+    protected AbstractLayout createControls() {
+        AbstractLayout layout= super.createControls();
         Button selectButton=new Button("selectMode");
         selectButton.addClickListener(new Button.ClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class InteractionMap extends VectorLayerMap {
             }
         });
         layout.addComponent(drawButton);
-        markerType=new NativeSelect("choose marker");
+        markerType=new NativeSelect();
         markerType.addItem(OLDrawInteractionOptions.DrawingType.POINT);
         markerType.addItem(OLDrawInteractionOptions.DrawingType.LINESTRING);
         markerType.addItem(OLDrawInteractionOptions.DrawingType.POLYGON);

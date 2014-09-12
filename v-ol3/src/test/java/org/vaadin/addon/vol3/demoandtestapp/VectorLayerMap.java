@@ -1,8 +1,7 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.Projections;
@@ -58,8 +57,8 @@ public class VectorLayerMap extends BasicMap{
     }
 
     @Override
-    protected Component createControls() {
-        CssLayout controls= (CssLayout) super.createControls();
+    protected AbstractLayout createControls() {
+        AbstractLayout controls= super.createControls();
         Button toggleVectorLayerVisibility=new Button("Toggle vector layer");
         toggleVectorLayerVisibility.addClickListener(new Button.ClickListener() {
             @Override

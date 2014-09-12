@@ -2,10 +2,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Component;
-import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
@@ -57,9 +54,10 @@ public class BasicMap extends VerticalLayout implements View {
         return view;
     }
 
-    protected Component createControls() {
-        CssLayout controls=new CssLayout();
-        controls.setWidth("100%");
+    protected AbstractLayout createControls() {
+        HorizontalLayout controls=new HorizontalLayout();
+		controls.setSpacing(true);
+		controls.setDefaultComponentAlignment(Alignment.MIDDLE_CENTER);
         Button button=new Button("Reset view");
         button.addClickListener(new Button.ClickListener() {
             @Override
