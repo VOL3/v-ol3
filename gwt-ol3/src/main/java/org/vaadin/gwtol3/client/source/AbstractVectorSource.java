@@ -47,7 +47,7 @@ public abstract class AbstractVectorSource extends Source {
     }-*/;
 
     public final native void removeFeature(Feature feature)/*-{
-        return this.getFeatures();
+        return this.removeFeature(feature);
     }-*/;
 }
 
