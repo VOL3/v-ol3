@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
 	<packaging>jar</packaging>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.2</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
@@ -94,7 +94,7 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>0.1.2-SNAPSHOT</version>
+            <version>0.1.2</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>
@@ -251,7 +251,7 @@
                     <version>${vaadin.version}</version>
                     <configuration>
                         <webappDirectory>${project.build.directory}/testwebapp/VAADIN/widgetsets</webappDirectory>
-                        <aextraJvmArgs>-Xmx1024M -Xss512m -XX:MaxPermSize=1024m</aextraJvmArgs>
+                        <extraJvmArgs>-Xmx1024M -Xss512m -XX:MaxPermSize=1024m</extraJvmArgs>
                         <hostedWebapp>${project.build.directory}/testwebapp</hostedWebapp>
                         <noServer>true</noServer>
                         <runTarget>http://localhost:9998/</runTarget>
