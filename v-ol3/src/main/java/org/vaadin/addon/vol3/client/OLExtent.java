@@ -9,4 +9,66 @@ public class OLExtent implements Serializable {
     public double minY;
     public double maxX;
     public double maxY;
+
+    private boolean empty = true;
+
+    public OLExtent() {
+
+    }
+
+    public OLExtent(OLCoordinate ... coordinates) {
+        if (coordinates.length == 0) {
+            return;
+        }
+
+        OLCoordinate first = coordinates[0];
+        init(first);
+
+        for (OLCoordinate coordinate : coordinates) {
+            extend(coordinate);
+        }
+    }
+
+    private void init(OLCoordinate first) {
+        minX = first.x;
+        minY = first.y;
+        maxX = first.x;
+        minY = first.y;
+        empty = false;
+    }
+
+    /**
+     * extend(OLCoordinate... points) will be useful in case of multiple vector on the
+     * same map to compute the bounds that surround all the vectors
+     *
+     * Notes : there is no check of the starting bounds values the method will
+     * fail if bounds values are not correctly initialized
+     */
+    public void extend(OLCoordinate... coordinates) {
+        for (int i = 0; i < coordinates.length; i++) {
+            OLCoordinate p = coordinates[i];
+            extend(p);
+        }
+    }
+
+    public void extend(OLCoordinate p) {
+        if (empty) {
+            init(p);
+        } else {
+            double x = p.x;
+            if (x > maxX) {
+                maxX = x;
+            }
+            if (x < minX) {
+                minX = x;
+            }
+            double y = p.y;
+            if (y < minY) {
+                minY = y;
+            }
+            if (y > maxY) {
+                maxY = y;
+            }
+        }
+    }
 }

@@ -7,7 +7,10 @@ import java.io.Serializable;
  */
 public class OLCoordinate implements Serializable{
 
-    public OLCoordinate(){}
+    public OLCoordinate(){
+        x=0.0;
+        y=0.0;
+    }
 
     public Double x;
     public Double y;
@@ -15,5 +18,9 @@ public class OLCoordinate implements Serializable{
     public OLCoordinate(double xCoord, double yCoord){
         x=xCoord;
         y=yCoord;
+    }
+    
+    public String toText(){
+        return String.valueOf(x)+":"+String.valueOf(y);
     }
 }
