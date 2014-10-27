@@ -5,6 +5,7 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
+import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
@@ -67,6 +68,20 @@ public class BasicMap extends VerticalLayout implements View {
             }
         });
         controls.addComponent(button);
+		button=new Button("Show view state");
+		button.addClickListener(new Button.ClickListener() {
+			@Override
+			public void buttonClick(Button.ClickEvent event) {
+				OLCoordinate center=map.getView().getCenter();
+				StringBuilder message=new StringBuilder();
+				message.append("center: ").append(center.toText()).append("\n");
+				message.append("rotation: ").append(map.getView().getRotation()).append("\n");
+				message.append("zoom: ").append(map.getView().getZoom()).append("\n");
+				message.append("resolution: ").append(map.getView().getResolution()).append("\n");
+				Notification.show(message.toString());
+			}
+		});
+		controls.addComponent(button);
         return controls;
     }
 

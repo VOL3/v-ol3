@@ -7,6 +7,12 @@ import org.vaadin.addon.vol3.client.*;
  * The view associated with a map. The view provides api for controlling things like zoom (resolution), rotation and extent
  */
 public class OLView extends AbstractComponent {
+
+	private OLCoordinate center;
+	private double rotation;
+	private double resolution;
+	private int zoom;
+
     /** Creates a new instance of the view
      *
      */
@@ -22,6 +28,8 @@ public class OLView extends AbstractComponent {
         if(options!=null){
             setOptions(options);
         }
+		registerRpc();
+		center=new OLCoordinate(0,0);
     }
 
     /** Zoom to a specific zoom level.
@@ -29,7 +37,8 @@ public class OLView extends AbstractComponent {
      * @param zoom
      */
     public void setZoom(int zoom){
-        getRpcProxy(OLViewClientRpc.class).setZoom(zoom);
+        this.zoom=zoom;
+		getRpcProxy(OLViewClientRpc.class).setZoom(zoom);
     }
 
     /** Set the center of the current view.
@@ -37,11 +46,13 @@ public class OLView extends AbstractComponent {
      * @param center
      */
     public void setCenter(OLCoordinate center){
+		this.center=center;
         getRpcProxy(OLViewClientRpc.class).setCenter(center);
     }
 
     public void setCenter(double xCoord, double yCoord){
-        getRpcProxy(OLViewClientRpc.class).setCenter(new OLCoordinate(xCoord, yCoord));
+		center=new OLCoordinate(xCoord, yCoord);
+        getRpcProxy(OLViewClientRpc.class).setCenter(center);
     }
 
     /** Set the rotation for this view.
@@ -49,6 +60,7 @@ public class OLView extends AbstractComponent {
      * @param rotation
      */
     public void setRotation(double rotation){
+		this.rotation=rotation;
         getRpcProxy(OLViewClientRpc.class).setRotation(rotation);
     }
 
@@ -57,10 +69,43 @@ public class OLView extends AbstractComponent {
      * @param resolution
      */
     public void setResolution(double resolution){
-        getRpcProxy(OLViewClientRpc.class).setResolution(resolution);
+        this.resolution=resolution;
+		getRpcProxy(OLViewClientRpc.class).setResolution(resolution);
     }
 
-    @Override
+	/** Gets the last known center position of the view
+	 *
+	 * @return
+	 */
+	public OLCoordinate getCenter() {
+		return center;
+	}
+
+	/** Gets the last known rotation of the view
+	 *
+	 * @return
+	 */
+	public double getRotation() {
+		return rotation;
+	}
+
+	/** Gets the last known resolution of the view
+	 *
+	 * @return
+	 */
+	public double getResolution() {
+		return resolution;
+	}
+
+	/** Gets the last know zoom level of the view
+	 *
+	 * @return
+	 */
+	public int getZoom() {
+		return zoom;
+	}
+
+	@Override
     protected OLViewState getState() {
         return (OLViewState) super.getState();
     }
@@ -117,4 +162,33 @@ public class OLView extends AbstractComponent {
         getState().zoomFactor=options.getZoomFactor();
         getState().projection=options.getProjection();
     }
+
+	private void registerRpc(){
+		registerRpc(new OLViewServerRpcImpl(), OLViewServerRpc.class);
+	}
+
+	private class OLViewServerRpcImpl implements OLViewServerRpc{
+
+		@Override
+		public void updateCenter(OLCoordinate coordinate) {
+			OLView.this.center=coordinate;
+		}
+
+		@Override
+		public void updateRotation(double rotation) {
+			OLView.this.rotation=rotation;
+		}
+
+		@Override
+		public void updateResolution(double resolution) {
+			OLView.this.resolution=resolution;
+		}
+
+		@Override
+		public void updateZoom(double zoom) {
+			OLView.this.zoom=(int)zoom;
+		}
+
+
+	}
 }

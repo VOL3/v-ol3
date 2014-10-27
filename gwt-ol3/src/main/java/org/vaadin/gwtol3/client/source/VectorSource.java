@@ -48,10 +48,10 @@ public class VectorSource extends AbstractVectorSource{
     }-*/;
 
     public native final void removeFeatureSetChangeListener(JavaScriptObject listenerKey)/*-{
-        var listenerCount=this.featureChangeListeners.length;
+        var listenerCount=this.featureSetChangeListeners.length;
         for(var i=0;i<listenerCount;i++){
-            if(this.featureChangeListeners[i]==listenerKey){
-                this.featureChangeListeners[i].splice(i,1);
+            if(this.featureSetChangeListeners[i]==listenerKey){
+                this.featureSetChangeListeners[i].splice(i,1);
                 return;
             }
         }

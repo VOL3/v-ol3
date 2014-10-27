@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import org.vaadin.gwtol3.client.view.StatusChangeListener;
 import org.vaadin.gwtol3.client.geom.SimpleGeometry;
 import org.vaadin.gwtol3.client.proj.Projection;
 
@@ -14,11 +15,13 @@ public class View extends JavaScriptObject {
     }
 
     public static final native View create()/*-{
-        return new $wnd.ol.View({});
+		var view = $wnd.ol.View({});
+        return view;
     }-*/;
 
     public static final native View create(ViewOptions options)/*-{
-        return new $wnd.ol.View(options);
+        var view = new $wnd.ol.View(options);
+		return view;
     }-*/;
 
     public native final Extent calculateExtent(Size size)/*-{
@@ -106,7 +109,7 @@ public class View extends JavaScriptObject {
      * @return
      */
     public native final double getResolution()/*-{
-        return this.getResolution;
+        return this.getResolution();
     }-*/;
 
     /**
@@ -186,5 +189,60 @@ public class View extends JavaScriptObject {
         this.setZoom(zoom);
     }-*/;
 
+	/** Adds status change listener to the view
+	 *
+	 * @param listener the listener to be added
+	 * @return listener key that can be used to remove the listener
+	 */
+
+	public native final JavaScriptObject addStatusChangeListener(StatusChangeListener listener)/*-{
+		if(typeof this.statusChangeListeners == 'undefined'){
+            this.statusChangeListeners=[];
+			var self=this;
+            var fireCenterChanged=function(){
+                var listenerCount=self.statusChangeListeners.length;
+                for(var i=0;i<listenerCount;i++){
+                    self.statusChangeListeners[i].centerChanged();
+                }
+            };
+            var fireResolutionChanged=function(){
+                var listenerCount=self.statusChangeListeners.length;
+                for(var i=0;i<listenerCount;i++){
+                    self.statusChangeListeners[i].resolutionChanged();
+                }
+            };
+            var fireRotationChanged=function(){
+                var listenerCount=self.statusChangeListeners.length;
+                for(var i=0;i<listenerCount;i++){
+                    self.statusChangeListeners[i].rotationChanged();
+                }
+            };
+            this.on("change:center", fireCenterChanged, this);
+            this.on("change:resolution", fireResolutionChanged, this);
+			this.on("change:rotation", fireRotationChanged, this);
+		}
+        var changeListener = {
+			 centerChanged: function(){
+				 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::centerChanged()());
+			 },
+			 resolutionChanged: function(){
+                 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::resolutionChanged()());
+			 },
+             rotationChanged: function(){
+                 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::rotationChanged()());
+             }
+		 };
+		 this.statusChangeListeners.push(changeListener);
+	}-*/;
+
+	public native final void removeStatusChangeListener(JavaScriptObject listenerKey)/*-{
+        var listenerCount=this.statusChangeListeners.length;
+        for(var i=0;i<listenerCount;i++){
+            if(this.statusChangeListeners[i]==listenerKey){
+                this.statusChangeListeners[i].splice(i,1);
+                return;
+            }
+        }
+    }-*/;
 
 }

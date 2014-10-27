@@ -9,12 +9,17 @@ import org.vaadin.gwtol3.client.Coordinate;
 import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.View;
 import org.vaadin.gwtol3.client.ViewOptions;
+import org.vaadin.gwtol3.client.view.StatusChangeListener;
+
+import java.util.logging.Logger;
 
 /**
  * Client-side connector for the view
  */
 @Connect(OLView.class)
 public class OLViewConnector extends AbstractComponentConnector{
+
+	private static Logger logger= Logger.getLogger(OLViewConnector.class.getName());
 
     // we create a dummy widget since this connector is used
     // only to handle layer state serialization
@@ -88,6 +93,25 @@ public class OLViewConnector extends AbstractComponentConnector{
             options.setProjection(getState().projection);
         }
         View view=View.create(options);
+		view.addStatusChangeListener(new StatusChangeListener() {
+			@Override
+			public void centerChanged() {
+				Coordinate c=getView().getCenter();
+				OLCoordinate olCoordinate=new OLCoordinate(c.getX(), c.getY());
+				getRpcProxy(OLViewServerRpc.class).updateCenter(olCoordinate);
+			}
+
+			@Override
+			public void resolutionChanged() {
+				getRpcProxy(OLViewServerRpc.class).updateResolution(getView().getResolution());
+				getRpcProxy(OLViewServerRpc.class).updateZoom(getView().getZoom());
+			}
+
+			@Override
+			public void rotationChanged() {
+				getRpcProxy(OLViewServerRpc.class).updateRotation(getView().getRotation());
+			}
+		});
         return view;
     }
 
