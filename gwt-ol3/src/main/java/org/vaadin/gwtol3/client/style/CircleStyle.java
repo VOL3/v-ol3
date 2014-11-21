@@ -35,8 +35,9 @@ public class CircleStyle extends ImageStyle{
         return this.getOrigin();
     }-*/;
 
-    public final native double getRadius() /*-{
-        return this.getRadius();
+    public final native Double getRadius() /*-{
+        var res = this.getRadius();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     public final native Size getSize() /*-{

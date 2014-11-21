@@ -11,20 +11,23 @@ public class TileGrid extends JavaScriptObject{
     protected TileGrid() {
     }
 
-    public final native double getMinZoom()/*-{
-        return this.getMinZoom();
+    public final native Double getMinZoom()/*-{
+		var res = this.getMinZoom();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     public final native Coordinate getOrigin(double z)/*-{
         return this.getOrigin();
     }-*/;
 
-    public final native double getResolution(double z)/*-{
-        return this.getResolution();
+    public final native Double getResolution(double z)/*-{
+		var res = this.getResolution();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public final native double getTileSize()/*-{
-        return this.getTileSize();
+    public final native Double getTileSize()/*-{
+        var res = this.getTileSize();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
 

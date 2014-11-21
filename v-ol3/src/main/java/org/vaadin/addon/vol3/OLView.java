@@ -9,9 +9,9 @@ import org.vaadin.addon.vol3.client.*;
 public class OLView extends AbstractComponent {
 
 	private OLCoordinate center;
-	private double rotation;
-	private double resolution;
-	private int zoom;
+	private Double rotation=0d;
+	private Double resolution;
+	private Integer zoom;
 
     /** Creates a new instance of the view
      *
@@ -85,15 +85,15 @@ public class OLView extends AbstractComponent {
 	 *
 	 * @return
 	 */
-	public double getRotation() {
-		return rotation;
+	public Double getRotation() {
+		return this.rotation;
 	}
 
 	/** Gets the last known resolution of the view
 	 *
 	 * @return
 	 */
-	public double getResolution() {
+	public Double getResolution() {
 		return resolution;
 	}
 
@@ -101,7 +101,7 @@ public class OLView extends AbstractComponent {
 	 *
 	 * @return
 	 */
-	public int getZoom() {
+	public Integer getZoom() {
 		return zoom;
 	}
 
@@ -175,18 +175,18 @@ public class OLView extends AbstractComponent {
 		}
 
 		@Override
-		public void updateRotation(double rotation) {
+		public void updateRotation(Double rotation) {
 			OLView.this.rotation=rotation;
 		}
 
 		@Override
-		public void updateResolution(double resolution) {
+		public void updateResolution(Double resolution) {
 			OLView.this.resolution=resolution;
 		}
 
 		@Override
-		public void updateZoom(double zoom) {
-			OLView.this.zoom=(int)zoom;
+		public void updateZoom(Double zoom) {
+			OLView.this.zoom = zoom==null ? null : Integer.valueOf((int)zoom.doubleValue());
 		}
 
 

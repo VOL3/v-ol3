@@ -15,12 +15,12 @@ public class Coordinate extends JavaScriptObject{
         return [x,y];
     }-*/;
 
-	public native final double getX()/*-{
-		return this[0];
+	public native final Double getX()/*-{
+		return this[0] == null ? null : @java.lang.Double::valueOf(D)(this[0]);
 	}-*/;
 
-	public native final double getY()/*-{
-        return this[1];
+	public native final Double getY()/*-{
+        return this[1] == null ? null : @java.lang.Double::valueOf(D)(this[1]);
     }-*/;
 
 }

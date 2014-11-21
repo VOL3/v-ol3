@@ -4,13 +4,13 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
-	<packaging>jar</packaging>
-	<version>0.1.4-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+	<version>0.1.5-SNAPSHOT</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vaadin.version>7.2.0</vaadin.version>
+		<vaadin.version>7.3.0</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
 		<!-- ZIP Manifest fields -->
@@ -94,7 +94,7 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>0.1.4-SNAPSHOT</version>
+            <version>0.1.4</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>
@@ -218,6 +218,19 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <version>2.5.3</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <!-- ignore client-side packages since those should be on the compiled widgetset -->
+                        <Import-Package>!com.google.gwt.*,!com.vaadin.client.*,!org.vaadin.gwtol3.*,*</Import-Package>
+                    </instructions>
+                </configuration>
             </plugin>
 
 

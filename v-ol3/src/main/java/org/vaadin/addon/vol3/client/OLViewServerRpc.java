@@ -12,12 +12,12 @@ public interface OLViewServerRpc extends ServerRpc {
 	public void updateCenter(OLCoordinate coordinate);
 
 	@Delayed (lastOnly = true)
-	public void updateRotation(double rotation);
+	public void updateRotation(Double rotation);
 
 	@Delayed (lastOnly = true)
-	public void updateResolution(double resolution);
+	public void updateResolution(Double resolution);
 
 	@Delayed (lastOnly = true)
-	public void updateZoom(double zoom);
+	public void updateZoom(Double zoom);
 
 }

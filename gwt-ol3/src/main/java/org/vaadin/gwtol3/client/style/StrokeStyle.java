@@ -35,12 +35,14 @@ public class StrokeStyle extends JavaScriptObject {
         return this.getLineJoin();
     }-*/;
 
-    public final native double getMiterLimit() /*-{
-        return this.getMiterLimit();
+    public final native Double getMiterLimit() /*-{
+		var res = this.getMiterLimit();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public final native double getWidth() /*-{
-        return this.getWidth();
+    public final native Double getWidth() /*-{
+        var res = this.getWidth();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
 

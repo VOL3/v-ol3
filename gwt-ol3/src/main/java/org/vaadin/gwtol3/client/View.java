@@ -54,8 +54,9 @@ public class View extends JavaScriptObject {
      * @param direction
      * @return
      */
-    public native final double constrainResolution(double resolution, double delta, double direction)/*-{
-        return this.constrainResolution(resolution, delta, direction);
+    public native final Double constrainResolution(double resolution, double delta, double direction)/*-{
+		var res = this.constrainResolution(resolution, delta, direction);
+        return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /**
@@ -64,8 +65,9 @@ public class View extends JavaScriptObject {
      * @param delta
      * @return
      */
-    public native final double constrainRotation(double rotation, double delta)/*-{
-        return this.constrainRotation(rotation, delta);
+    public native final Double constrainRotation(double rotation, double delta)/*-{
+        var res = this.constrainRotation(rotation, delta);
+        return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /**
@@ -108,8 +110,9 @@ public class View extends JavaScriptObject {
      *
      * @return
      */
-    public native final double getResolution()/*-{
-        return this.getResolution();
+    public native final Double getResolution()/*-{
+		res=this.getResolution();
+        return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /**
@@ -119,24 +122,30 @@ public class View extends JavaScriptObject {
      * @param size
      * @return The resolution at which the provided extent will render at the given size
      */
-    public native final double getResolutionForExtent(Extent extent, Size size)/*-{
-        return this.getResolutionForExtent(extent, size);
+    public native final Double getResolutionForExtent(Extent extent, Size size)/*-{
+        var res = this.getResolutionForExtent(extent, size);
+        return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /** Gets the rotation of the view
      *
      * @return
      */
-    public native final double getRotation()/*-{
-        return this.getRotation();
+    public native final Double getRotation()/*-{
+        var res = this.getRotation();
+		if(res==null){
+			res=0;
+		}
+        return @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /** Gets the zoom of the view
      *
      * @return
      */
-    public native final double getZoom()/*-{
-        return this.getZoom();
+    public native final Double getZoom()/*-{
+		var res=this.getZoom();
+        return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
     /** Rotate the view around a given coordinate.

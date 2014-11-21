@@ -46,8 +46,9 @@ public class Style extends JavaScriptObject{
         return this.getText();
     }-*/;
 
-    public final native int getZIndex() /*-{
-        return this.getZIndex();
+    public final native Integer getZIndex() /*-{
+        var res = this.getZIndex();
+        return res == null ? null : @java.lang.Integer::valueOf(I)(res);
     }-*/;
 
 

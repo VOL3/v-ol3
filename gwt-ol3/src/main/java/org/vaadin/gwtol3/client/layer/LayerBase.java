@@ -11,36 +11,45 @@ public abstract class LayerBase extends JavaScriptObject {
 
     }
 
-    public native final double getBrightness()/*-{
-        return this.getBrightness();
+    public native final Double getBrightness()/*-{
+		var res = this.getBrightness();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
+
     }-*/;
 
-    public native final double getContrast()/*-{
-        return this.getContrast();
+    public native final Double getContrast()/*-{
+        var res = this.getContrast();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final double getHue()/*-{
-        return this.getHue();
+    public native final Double getHue()/*-{
+		var res = this.getHue();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final double getMaxResolution()/*-{
-        return this.getMaxResolution();
+    public native final Double getMaxResolution()/*-{
+		var res = this.getMaxResolution();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final double getMinResolution()/*-{
-        return this.getMinResolution();
+    public native final Double getMinResolution()/*-{
+        var res = this.getMinResolution();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final double getOpacity()/*-{
-        return this.getOpacity();
+    public native final Double getOpacity()/*-{
+        var res = this.getOpacity();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final double getSaturation()/*-{
-        return this.getSaturation();
+    public native final Double getSaturation()/*-{
+		var res =  this.getSaturation();
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public native final boolean getVisible()/*-{
-        return this.getVisible();
+    public native final Boolean getVisible()/*-{
+		var res = this.getVisible();
+        return res == null ? null : @java.lang.Boolean::valueOf(Z)(res);
     }-*/;
 
     public native final void setBrightness(double brightness)/*-{
