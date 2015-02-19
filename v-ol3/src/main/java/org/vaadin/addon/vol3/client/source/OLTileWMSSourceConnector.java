@@ -1,15 +1,32 @@
 package org.vaadin.addon.vol3.client.source;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
+import com.google.gwt.logging.client.ConsoleLogHandler;
+import com.google.gwt.user.client.Window;
 import com.vaadin.client.FastStringMap;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.shared.ui.Connect;
+
+import org.vaadin.addon.vol3.client.OLCoordinate;
+import org.vaadin.addon.vol3.client.tilegrid.OLTileGrid;
+import org.vaadin.addon.vol3.client.tilegrid.OLWMTSTileGrid;
+import org.vaadin.addon.vol3.client.tilegrid.OLWMTSTileGridOptions;
+import org.vaadin.addon.vol3.client.tilegrid.OLXYZTileGrid;
+import org.vaadin.addon.vol3.client.tilegrid.OLZoomifiyTileGrid;
 import org.vaadin.addon.vol3.source.OLTileWMSSource;
 import org.vaadin.gwtol3.client.Attribution;
+import org.vaadin.gwtol3.client.Coordinate;
 import org.vaadin.gwtol3.client.source.Source;
 import org.vaadin.gwtol3.client.source.TileWMSSource;
 import org.vaadin.gwtol3.client.source.TileWMSSourceOptions;
+import org.vaadin.gwtol3.client.tilegrid.TileGrid;
+import org.vaadin.gwtol3.client.tilegrid.WMTSTileGrid;
+import org.vaadin.gwtol3.client.tilegrid.WMTSTileGridOptions;
+import org.vaadin.gwtol3.client.tilegrid.XYZTileGrid;
+import org.vaadin.gwtol3.client.tilegrid.ZoomifyTileGrid;
 
 import java.util.Map;
 import java.util.Set;
@@ -70,10 +87,54 @@ public class OLTileWMSSourceConnector extends OLSourceConnector {
             }
             options.setUrls(jsArray);
         }
+        
+        if(state.WMTSTileGridOptionsOriginX!=null && state.WMTSTileGridOptionsOriginY!=null){
+        	TileGrid tileGrid = createTileGridForWMTS(state);
+        	options.setTileGrid(tileGrid);
+        }
+        
         return TileWMSSource.create(options);
     }
 
-    @Override
+    private TileGrid createTileGridForWMTS(OLTileWMSSourceState state) {
+		WMTSTileGridOptions wmtsTileGridOptions = WMTSTileGridOptions.create();
+		wmtsTileGridOptions.setOrigin(Coordinate.create(state.WMTSTileGridOptionsOriginX, state.WMTSTileGridOptionsOriginY));
+		wmtsTileGridOptions.setTileSize(state.WMTSTileGridOptionsTileSize);
+		
+		
+		JsArrayNumber jsResolutionsArray= (JsArrayNumber) JsArrayNumber.createArray(state.WMTSTileGridOptionsresolutions.length);
+        for(double resolutionValue : state.WMTSTileGridOptionsresolutions){
+        	jsResolutionsArray.push(resolutionValue);
+        }
+		wmtsTileGridOptions.setResolutions(jsResolutionsArray);
+		
+		
+//		JsArray<Coordinate> jsOriginsArray= (JsArray<Coordinate>) JsArray.createArray(state..origins.length);
+//        for(OLCoordinate resolutionValue : state.options.origins){
+//        	jsOriginsArray.push(Coordinate.create(resolutionValue.x, resolutionValue.y));
+//        	GWT.log(resolutionValue.x + " " + resolutionValue.y);
+//        }
+        
+		//wmtsTileGridOptions.setOrigins(jsOriginsArray);
+		return WMTSTileGrid.create(wmtsTileGridOptions);
+	}
+
+	private TileGrid createTileGridForZoomify(OLZoomifiyTileGrid tileGrid) {
+    	if(tileGrid.resolutions != null){
+    		JsArrayNumber jsResolutionsArray= (JsArrayNumber) JsArrayNumber.createArray(tileGrid.resolutions.length);
+            for(double resolutionValue : tileGrid.resolutions){
+            	jsResolutionsArray.push(resolutionValue);
+            }
+            return ZoomifyTileGrid.create(jsResolutionsArray);
+    	}
+		return ZoomifyTileGrid.create();
+	}
+    
+    private TileGrid createTileGridForXYZ(OLXYZTileGrid tileGrid){
+    	return XYZTileGrid.create(tileGrid.maxZoom);
+    }
+    
+	@Override
     public OLTileWMSSourceState getState() {
         return (OLTileWMSSourceState) super.getState();
     }
