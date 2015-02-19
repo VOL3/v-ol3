@@ -14,4 +14,6 @@ public interface OLViewClientRpc extends ClientRpc{
     public void setResolution(double resolution);
 
     public void setRotation(double rotation);
+
+	public void fitExtent(OLExtent extent);
 }

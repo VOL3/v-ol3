@@ -4,6 +4,7 @@ import com.google.gwt.core.client.Scheduler;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.annotations.OnStateChange;
+import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
 import com.vaadin.client.ui.layout.ElementResizeListener;
@@ -86,8 +87,11 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                     OLLayerConnector layer = (OLLayerConnector) connector;
                     getWidget().getMap().addLayer(layer.getLayer());
                 } else if(connector instanceof OLViewConnector){
+
                     OLViewConnector view = (OLViewConnector) connector;
+                    view.setMap(this.getWidget().getMap());
                     getWidget().getMap().setView(view.getView());
+
                 } else if (connector instanceof OLInteractionConnector){
                     OLInteractionConnector interaction= (OLInteractionConnector) connector;
                     // defer interaction creation since they may need layer state information
