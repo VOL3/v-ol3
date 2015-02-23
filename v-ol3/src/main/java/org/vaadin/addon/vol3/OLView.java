@@ -55,6 +55,10 @@ public class OLView extends AbstractComponent {
         getRpcProxy(OLViewClientRpc.class).setCenter(center);
     }
 
+    public void fitExtent(OLExtent extent){
+       	getRpcProxy(OLViewClientRpc.class).fitExtent(extent);
+    }
+
     /** Set the rotation for this view.
      *
      * @param rotation

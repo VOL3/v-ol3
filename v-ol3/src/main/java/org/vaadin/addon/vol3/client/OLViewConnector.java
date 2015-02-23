@@ -5,10 +5,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.ui.AbstractComponentConnector;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.OLView;
-import org.vaadin.gwtol3.client.Coordinate;
-import org.vaadin.gwtol3.client.Extent;
-import org.vaadin.gwtol3.client.View;
-import org.vaadin.gwtol3.client.ViewOptions;
+import org.vaadin.gwtol3.client.*;
 import org.vaadin.gwtol3.client.view.StatusChangeListener;
 
 import java.util.logging.Logger;
@@ -25,6 +22,7 @@ public class OLViewConnector extends AbstractComponentConnector{
     // only to handle layer state serialization
     private static final Widget dummyWidget=new Label();
     private View view;
+    private Map map;
 
     @Override
     public Widget getWidget() {
@@ -115,6 +113,14 @@ public class OLViewConnector extends AbstractComponentConnector{
         return view;
     }
 
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
     private final class OLViewClientRpcImpl implements OLViewClientRpc{
 
         @Override
@@ -136,5 +142,10 @@ public class OLViewConnector extends AbstractComponentConnector{
         public void setRotation(double rotation) {
             getView().setRotation(rotation);
         }
+
+		@Override
+		public void fitExtent(OLExtent extent) {
+            getView().fitExtent(Extent.create(extent.minX, extent.minY, extent.maxX, extent.maxY), getMap().getSize());
+		}
     }
 }

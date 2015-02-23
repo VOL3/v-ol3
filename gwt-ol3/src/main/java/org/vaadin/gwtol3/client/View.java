@@ -70,12 +70,7 @@ public class View extends JavaScriptObject {
         return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    /**
-     * Fit the given extent based on the given map size.
-     *
-     * @param extent
-     * @param size
-     */
+
     public native final void fitExtent(Extent extent, Size size)/*-{
         this.fitExtent(extent, size);
     }-*/;
