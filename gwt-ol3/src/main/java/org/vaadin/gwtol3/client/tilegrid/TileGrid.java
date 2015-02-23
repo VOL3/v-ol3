@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.tilegrid;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArrayNumber;
 import org.vaadin.gwtol3.client.Coordinate;
 
 /**
@@ -16,17 +17,26 @@ public class TileGrid extends JavaScriptObject{
         return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public final native Coordinate getOrigin(double z)/*-{
-        return this.getOrigin();
-    }-*/;
-
-    public final native Double getResolution(double z)/*-{
-		var res = this.getResolution();
+    public final native Double getMaxZoom()/*-{
+        var res = this.getMaxZoom();
         return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
-    public final native Double getTileSize()/*-{
-        var res = this.getTileSize();
+    public final native Coordinate getOrigin()/*-{
+        return this.getOrigin();
+    }-*/;
+
+    public final native Double getResolution(int number)/*-{
+		var res = this.getResolution(number);
+        return res == null ? null : @java.lang.Double::valueOf(D)(res);
+    }-*/;
+
+    public final native JsArrayNumber getResolutions()/*-{
+        return this.getResolutions();
+    }-*/;
+
+    public final native Double getTileSize(int number)/*-{
+        var res = this.getTileSize(number);
         return res == null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 

@@ -1,9 +1,8 @@
 package org.vaadin.addon.vol3.source;
 
-import java.util.Map;
+import org.vaadin.addon.vol3.client.source.OLTileGrid;
 
-import org.vaadin.addon.vol3.client.tilegrid.OLTileGrid;
-import org.vaadin.gwtol3.client.tilegrid.TileGrid;
+import java.util.Map;
 
 /**
  * Options passed to OLTileWMSSource on construction
@@ -26,8 +25,8 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
     private Map<String,String> params;
 
     private OLTileGrid tileGrid;
-    
-    
+
+
     public String getCrossOriginPolicy() {
         return crossOriginPolicy;
     }

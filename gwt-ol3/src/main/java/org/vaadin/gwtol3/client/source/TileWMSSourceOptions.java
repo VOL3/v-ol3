@@ -1,42 +1,18 @@
 package org.vaadin.gwtol3.client.source;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
-
-import org.vaadin.gwtol3.client.Attribution;
-import org.vaadin.gwtol3.client.tilegrid.TileGrid;
 
 /**
  * Options for the TileWMSSource
  */
-public class TileWMSSourceOptions extends JavaScriptObject{
+public class TileWMSSourceOptions extends TileImageSourceOptions{
 
     protected TileWMSSourceOptions() {
     }
 
     public static native final TileWMSSourceOptions create()/*-{
         return {};
-    }-*/;
-
-    /** Sets the attributions
-     *
-     * @param attributions attributions
-     */
-    public final native void setAttributions(JsArray<Attribution> attributions)/*-{
-        this.attributions = attributions;
-    }-*/;
-
-    /** Sets the cross origin setting for image requests. Default is 'anonymous'
-     *
-     * @param crossOrigin cross origin setting
-     */
-    public final native void setCrossOrigin(String crossOrigin)/*-{
-        this.crossOrigin = crossOrigin;
-    }-*/;
-
-    public native final void setProjection(String projection)/*-{
-        this.projection=projection;
     }-*/;
 
     /** Use the Map.pixelRatio value when requesting the image from the remote server. Default is true.
@@ -53,10 +29,6 @@ public class TileWMSSourceOptions extends JavaScriptObject{
      */
     public native final void setServerType(String serverType)/*-{
         this.serverType = serverType;
-    }-*/;
-
-    public native final void setLogo(String logo)/*-{
-        this.logo = logo;
     }-*/;
 
     /** Set WMS service URL
@@ -98,9 +70,5 @@ public class TileWMSSourceOptions extends JavaScriptObject{
     public native final void setMaxZoom(double maxZoom)/*-{
         this.maxZoom = maxZoom;
     }-*/;
-    
-    public native final void setTileGrid(TileGrid tileGrid)/*-{
-    	this.tileGrid = tileGrid;
-	}-*/;
-    
+
 }

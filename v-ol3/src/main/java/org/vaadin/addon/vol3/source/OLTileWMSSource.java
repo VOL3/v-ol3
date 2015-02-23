@@ -1,11 +1,6 @@
 package org.vaadin.addon.vol3.source;
 
 import org.vaadin.addon.vol3.client.source.OLTileWMSSourceState;
-import org.vaadin.addon.vol3.client.tilegrid.OLTileGrid;
-import org.vaadin.addon.vol3.client.tilegrid.OLWMTSTileGrid;
-import org.vaadin.gwtol3.client.tilegrid.TileGrid;
-import org.vaadin.gwtol3.client.tilegrid.WMTSTileGrid;
-import org.vaadin.gwtol3.client.tilegrid.WMTSTileGridOptions;
 
 import java.util.Map;
 
@@ -52,17 +47,7 @@ public class OLTileWMSSource extends OLSource {
         getState().gutter=options.getGutter();
         getState().maxZoom=options.getMaxZoom();
         getState().params=options.getParams();
-        
-        //getState().tileGrid=options.getTileGrid();
-        if(options.getTileGrid() instanceof OLWMTSTileGrid){
-        	OLWMTSTileGrid olWmtsTileGrid = (OLWMTSTileGrid) options.getTileGrid();
-            getState().WMTSTileGridOptionsOriginX = olWmtsTileGrid.options.origin.x;
-            getState().WMTSTileGridOptionsOriginY = olWmtsTileGrid.options.origin.y;
-            
-            getState().WMTSTileGridOptionsresolutions = olWmtsTileGrid.options.resolutions;
-            getState().WMTSTileGridOptionsTileSize = olWmtsTileGrid.options.tileSize;
-        	
-        }
+        getState().tileGrid=options.getTileGrid();
     }
 
     public String[] getAttributions() {
@@ -104,7 +89,7 @@ public class OLTileWMSSource extends OLSource {
     public Double getMaxZoom() {
         return getState(false).maxZoom;
     }
-   
+
     /** Gets WMS request parameters. The modifications to the parameters are applied automatically
      *
      * @return WMS request parameter map
