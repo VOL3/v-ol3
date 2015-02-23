@@ -21,7 +21,7 @@ public class WMTSTileGridOptions extends JavaScriptObject{
         this.origin=origin;
     }-*/;
 
-    public final native void setOrigins(JsArray<Coordinate> origin)/*-{
+    public final native void setOrigins(JsArray<Coordinate> origins)/*-{
         this.origins=origins;
     }-*/;
 

@@ -3,7 +3,9 @@ package org.vaadin.gwtol3.client.source;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
+
 import org.vaadin.gwtol3.client.Attribution;
+import org.vaadin.gwtol3.client.tilegrid.TileGrid;
 
 /**
  * Options for the TileWMSSource
@@ -96,4 +98,9 @@ public class TileWMSSourceOptions extends JavaScriptObject{
     public native final void setMaxZoom(double maxZoom)/*-{
         this.maxZoom = maxZoom;
     }-*/;
+    
+    public native final void setTileGrid(TileGrid tileGrid)/*-{
+    	this.tileGrid = tileGrid;
+	}-*/;
+    
 }

@@ -2,6 +2,9 @@ package org.vaadin.addon.vol3.source;
 
 import java.util.Map;
 
+import org.vaadin.addon.vol3.client.tilegrid.OLTileGrid;
+import org.vaadin.gwtol3.client.tilegrid.TileGrid;
+
 /**
  * Options passed to OLTileWMSSource on construction
  */
@@ -22,6 +25,9 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
     // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
     private Map<String,String> params;
 
+    private OLTileGrid tileGrid;
+    
+    
     public String getCrossOriginPolicy() {
         return crossOriginPolicy;
     }
@@ -113,4 +119,12 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
     public void setParams(Map<String, String> params) {
         this.params = params;
     }
+
+	public OLTileGrid getTileGrid() {
+		return tileGrid;
+	}
+
+	public void setTileGrid(OLTileGrid tileGrid) {
+		this.tileGrid = tileGrid;
+	}
 }
