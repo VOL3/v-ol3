@@ -4,34 +4,21 @@ package org.vaadin.addon.vol3.source;
  * Options provided to the osm tile source on creation
  */
 public class OLOSMSourceOptions {
-    private Boolean showDataAttributions;
-    private Boolean showTileAttributions;
+    private Boolean showAttributions;
     private String [] customAttributions;
     private Integer maxZoom;
     private String crossOriginPolicy;
 
-    public Boolean getShowDataAttributions() {
-        return showDataAttributions;
-    }
-
-    /** Show osm data attributions
+    /** Show osm attributions
      *
-     * @param showDataAttributions
+     * @param showAttributions
      */
-    public void setShowDataAttributions(Boolean showDataAttributions) {
-        this.showDataAttributions = showDataAttributions;
+    public void setShowAttributions(Boolean showAttributions) {
+        this.showAttributions = showAttributions;
     }
 
-    public Boolean getShowTileAttributions() {
-        return showTileAttributions;
-    }
-
-    /** Show osm tile attributions
-     *
-     * @param showTileAttributions
-     */
-    public void setShowTileAttributions(Boolean showTileAttributions) {
-        this.showTileAttributions = showTileAttributions;
+    public Boolean getShowAttributions() {
+        return showAttributions;
     }
 
     public String[] getCustomAttributions() {

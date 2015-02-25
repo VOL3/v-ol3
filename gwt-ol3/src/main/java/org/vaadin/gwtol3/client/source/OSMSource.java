@@ -17,11 +17,7 @@ public class OSMSource extends XYZSource {
         return new $wnd.ol.source.OSM(options);
     }-*/;
 
-    public static final native Attribution createDataAttribution() /*-{
-        return $wnd.ol.source.OSM.DATA_ATTRIBUTION;
-    }-*/;
-
-    public static final native Attribution createTileAttribution() /*-{
-        return $wnd.ol.source.OSM.TILE_ATTRIBUTION;
+    public static final native Attribution createOSMAttribution() /*-{
+        return $wnd.ol.source.OSM.ATTRIBUTION;
     }-*/;
 }

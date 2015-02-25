@@ -4,7 +4,6 @@ import com.google.gwt.core.client.Scheduler;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.annotations.OnStateChange;
-import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
 import com.vaadin.client.ui.layout.ElementResizeListener;
@@ -50,6 +49,11 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     }
 
     @Override
+    public void onUnregister() {
+        getLayoutManager().removeElementResizeListener(getWidget().getElement(), this);
+    }
+
+    @Override
     public MapWidget getWidget() {
         return (MapWidget) super.getWidget();
     }
@@ -61,6 +65,10 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
 
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {
+        if(!getWidget().isAttached()){
+            // ignore the hierarchy change event when we are removing the map all together
+            return;
+        }
         if(!getWidget().isMapInitialized()){
             initMap();
         }
@@ -87,11 +95,9 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                     OLLayerConnector layer = (OLLayerConnector) connector;
                     getWidget().getMap().addLayer(layer.getLayer());
                 } else if(connector instanceof OLViewConnector){
-
                     OLViewConnector view = (OLViewConnector) connector;
                     view.setMap(this.getWidget().getMap());
                     getWidget().getMap().setView(view.getView());
-
                 } else if (connector instanceof OLInteractionConnector){
                     OLInteractionConnector interaction= (OLInteractionConnector) connector;
                     // defer interaction creation since they may need layer state information
@@ -116,7 +122,6 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
      */
     private void initMap() {
         MapOptions options=MapOptions.create();
-        options.setTarget(getWidget().getElement());
         if(getState().showOl3Logo!=null){
             options.setOl3Logo(getState().showOl3Logo);
         }

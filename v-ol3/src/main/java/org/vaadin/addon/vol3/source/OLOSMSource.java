@@ -36,17 +36,12 @@ public class OLOSMSource extends OLXYZSource{
     private void setOptions(OLOSMSourceOptions options) {
         getState().customAttributions=options.getCustomAttributions();
         getState().crossOriginPolicy=options.getCrossOriginPolicy();
-        getState().showDataAttributions=options.getShowDataAttributions();
-        getState().showTileAttributions=options.getShowTileAttributions();
+        getState().showOSMAttributions=options.getShowAttributions();
         getState().maxZoom=options.getMaxZoom();
     }
 
-    public Boolean getShowDataAttributions() {
-        return getState(false).showDataAttributions;
-    }
-
-    public Boolean getShowTileAttributions() {
-        return getState(false).showTileAttributions;
+    public Boolean getShowAttributions() {
+        return getState(false).showOSMAttributions;
     }
 
     public String[] getCustomAttributions() {

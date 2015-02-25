@@ -82,6 +82,14 @@ public class BasicMap extends VerticalLayout implements View {
 			}
 		});
 		controls.addComponent(button);
+        button=new Button("Toggle map visibility");
+        button.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                map.setVisible(!map.isVisible());
+            }
+        });
+        controls.addComponent(button);
         return controls;
     }
 

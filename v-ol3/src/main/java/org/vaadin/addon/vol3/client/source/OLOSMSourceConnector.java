@@ -18,20 +18,15 @@ public class OLOSMSourceConnector extends OLXYZSourceConnector{
     protected Source createSource() {
         OSMSourceOptions options=OSMSourceOptions.create();
         JsArray<Attribution> attributions=JsArray.createArray().cast();
-        if(getState().showDataAttributions!=null && getState().showDataAttributions){
-            attributions.push(OSMSource.createDataAttribution());
-        }
-        if(getState().showTileAttributions!=null && getState().showTileAttributions){
-            attributions.push(OSMSource.createTileAttribution());
+        if(getState().showOSMAttributions!=null && getState().showOSMAttributions){
+            attributions.push(OSMSource.createOSMAttribution());
         }
         if(getState().customAttributions!=null){
             for(String attribution : getState().customAttributions){
                 attributions.push(Attribution.create(attribution));
             }
         }
-        if(attributions.length()>0) {
-            options.setAttributions(attributions);
-        }
+        options.setAttributions(attributions);
         if(getState().crossOriginPolicy!=null){
             options.setCrossOrigin(getState().crossOriginPolicy);
         }

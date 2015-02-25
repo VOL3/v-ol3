@@ -13,8 +13,7 @@ public class OSMMap extends BasicMap {
         OLOSMSourceOptions opts=new OLOSMSourceOptions();
         opts.setCustomAttributions(new String []{"custom attribution"});
         opts.setMaxZoom(18);
-        opts.setShowDataAttributions(true);
-        opts.setShowTileAttributions(true);
+        opts.setShowAttributions(true);
         return new OLOSMSource(opts);
     }
 }

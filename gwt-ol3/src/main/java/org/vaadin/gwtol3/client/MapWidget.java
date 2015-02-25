@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Widget;
 public class MapWidget extends Widget {
 
     private Map map;
-    private MapOptions options;
 
     public MapWidget(){
         setElement(Document.get().createDivElement());
@@ -18,8 +17,8 @@ public class MapWidget extends Widget {
 
     public void initMap(MapOptions options){
         map = Map.create(options);
-        if(map.getTarget()==null){
-            map.setTarget(getElement());
+        if(isAttached()){
+            attachMapToWidget();
         }
     }
 
@@ -27,10 +26,33 @@ public class MapWidget extends Widget {
         return map!=null;
     }
 
-    public Map getMap(){
-        if(!isMapInitialized()){
-            initMap(MapOptions.create());
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        if(map!=null && map.getTarget()!=getElement()){
+            map.setTarget(getElement());
+            map.updateSize();
         }
+    }
+
+    private void attachMapToWidget(){
+        map.setTarget(getElement());
+    }
+
+    private void detachMapFromWidget(){
+        map.setTarget(null);
+        map=null;
+    }
+
+    @Override
+    protected void onUnload() {
+        super.onUnload();
+        if(map!=null){
+            detachMapFromWidget();
+        }
+    }
+
+    public Map getMap(){
         return map;
     }
 }

@@ -49,7 +49,7 @@ public class GeoJSONFormat extends FeatureFormat{
     }-*/;
 
     public final native String writeGeometry(Geometry geometry, String featureProjection, String dataProjection)/*-{
-        return JSON.stringify(this.writeGeometry(geometry,{featureProjection: featureProjection, dataProjection: dataProjection}));
+        return this.writeGeometry(geometry,{featureProjection: featureProjection, dataProjection: dataProjection});
     }-*/;
 
 }

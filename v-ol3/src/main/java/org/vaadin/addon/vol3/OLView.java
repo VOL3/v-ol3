@@ -51,8 +51,7 @@ public class OLView extends AbstractComponent {
     }
 
     public void setCenter(double xCoord, double yCoord){
-		center=new OLCoordinate(xCoord, yCoord);
-        getRpcProxy(OLViewClientRpc.class).setCenter(center);
+        setCenter(new OLCoordinate(xCoord, yCoord));
     }
 
     public void fitExtent(OLExtent extent){
@@ -153,6 +152,27 @@ public class OLView extends AbstractComponent {
 
     public String getProjection() {
         return getState(false).projection;
+    }
+
+    @Override
+    public void beforeClientResponse(boolean initial) {
+        super.beforeClientResponse(initial);
+        // make sure that we sent the stored values to client when ever we have initial state change
+        // this way we remember the state over visibility changes
+        if(initial){
+            if(this.resolution!=null){
+                this.setResolution(this.resolution);
+            }
+            if(this.center!=null){
+                this.setCenter(this.center);
+            }
+            if(this.rotation!=null){
+                this.setRotation(this.rotation);
+            }
+            if(this.zoom!=null){
+                this.setZoom(this.zoom);
+            }
+        }
     }
 
     private void setOptions(OLViewOptions options) {
