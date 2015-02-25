@@ -4,7 +4,6 @@ import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
-import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.feature.OLLineString;
 import org.vaadin.addon.vol3.feature.OLPoint;
@@ -23,8 +22,6 @@ public class VectorLayerMap extends BasicMap{
     protected OLMap createMap() {
         OLMap map=super.createMap();
         OLVectorSourceOptions vectorOptions=new OLVectorSourceOptions();
-        // the features will be reprojected to the same projection than the base layer
-        vectorOptions.setProjection(Projections.EPSG3857);
         OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
         for(int i=0;i<=5;i++){
             int coordinate=i*10;

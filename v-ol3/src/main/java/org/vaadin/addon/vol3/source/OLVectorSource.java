@@ -11,7 +11,8 @@ import org.vaadin.addon.vol3.feature.OLGeometry;
 import java.util.*;
 
 /**
- * Vector source implementation that provides api for adding features.
+ * Vector source implementation that provides api for adding features. NOTE: the coordinates for the shapes of the features
+ * must always be expressed in EPSG:4326 / WGS84 (lat/lon). The wrapper handles the conversion to the projection set for the view automatically.
  */
 public class OLVectorSource extends OLSource{
 
@@ -41,7 +42,6 @@ public class OLVectorSource extends OLSource{
     private void setOptions(OLVectorSourceOptions options) {
         this.getState().attributions=options.getAttributions();
         this.getState().logo=options.getLogo();
-        this.getState().projection=options.getProjection();
     }
 
     /** Adds feature to the source. The id is generated automatically for the feature

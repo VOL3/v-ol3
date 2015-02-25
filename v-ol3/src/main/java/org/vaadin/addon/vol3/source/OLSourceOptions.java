@@ -24,16 +24,4 @@ public class OLSourceOptions {
     public void setLogo(String logo) {
         this.logo = logo;
     }
-
-    public String getProjection() {
-        return projection;
-    }
-
-    /** Sets the csr name of the used projection
-     *
-     * @param projection
-     */
-    public void setProjection(String projection) {
-        this.projection = projection;
-    }
 }

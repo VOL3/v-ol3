@@ -20,6 +20,21 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
     // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
     private Map<String,String> params;
 
+    private String projection;
+
+    public String getProjection() {
+        return projection;
+    }
+
+    /** Sets the csr name of the used projection
+     *
+     * @param projection
+     */
+    public void setProjection(String projection) {
+        this.projection = projection;
+    }
+
+
     public String getCrossOriginPolicy() {
         return crossOriginPolicy;
     }

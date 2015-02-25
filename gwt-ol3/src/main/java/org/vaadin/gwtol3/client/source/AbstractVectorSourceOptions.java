@@ -19,12 +19,4 @@ public class AbstractVectorSourceOptions extends JavaScriptObject {
     public final native void setLogo(String logo)/*-{
         this.logo=logo;
     }-*/;
-
-    /** Destination projection. If provided, features will be transformed to this projection. If not provided, features will not be transformed
-     *
-     * @param projection
-     */
-    public final native void setProjection(String projection)/*-{
-        this.projection=projection;
-    }-*/;
 }

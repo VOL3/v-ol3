@@ -2,13 +2,16 @@ package org.vaadin.addon.vol3.client.source;
 
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
+import com.vaadin.client.ServerConnector;
 import com.vaadin.shared.ui.Connect;
+import org.vaadin.addon.vol3.client.OLMapConnector;
 import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.feature.GeometrySerializer;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.style.OLStyleConverter;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.gwtol3.client.Attribution;
+import org.vaadin.gwtol3.client.View;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.feature.FeatureChangeListener;
 import org.vaadin.gwtol3.client.geom.Geometry;
@@ -20,7 +23,6 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import java.util.logging.Logger;
 
 /**
  * Client-side connector for the OLVectorSource
@@ -30,9 +32,9 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
 
     private Timer sendTimer;
     private static final int MODIFY_THRESHOLD=200; // milliseconds to wait for modifications before they are flushed to server
-    private static final Logger logger= Logger.getLogger(OLVectorSourceConnector.class.getName());
     private Set<Feature> modifiedFeatures=new HashSet<Feature>();
     private List<Feature> tempFeatures=new LinkedList<Feature>();
+    private String viewProjection;
 
     @Override
     protected void init() {
@@ -42,7 +44,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             @Override
             public void run() {
                 for (Feature feature : modifiedFeatures) {
-                    String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getProjection());
+                    String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection());
                     getRpcProxy(OLVectorSourceServerRpc.class).featureModified(feature.getId(), serializedGeometry);
                     modifiedFeatures.clear();
                 }
@@ -75,7 +77,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
         private Feature createFeature(SerializedFeature feature) {
             Feature f=Feature.create();
             f.setId(feature.id);
-            Geometry geom= GeometrySerializer.readGeometry(feature.serializedGeometry, getProjection());
+            Geometry geom= GeometrySerializer.readGeometry(feature.serializedGeometry, getViewProjection());
             f.setGeometry(geom);
             if(feature.styles!=null){
                 f.setStyles(OLStyleConverter.convert(feature.styles));
@@ -102,9 +104,6 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
     @Override
     protected VectorSource createSource() {
         VectorSourceOptions options=VectorSourceOptions.create();
-        if(getState().projection!=null){
-            options.setProjection(getState().projection);
-        }
         if(getState().attributions!=null){
             JsArray<Attribution> jsArray= JsArray.createArray(getState().attributions.length).cast();
             for(String attribution : getState().attributions){
@@ -115,20 +114,9 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
         if(getState().logo!=null){
             options.setLogo(getState().logo);
         }
-        if(getState().projection!=null){
-            options.setProjection(getState().projection);
-        }
         VectorSource source=VectorSource.create(options);
         source.addFeatureSetChangeListener(this);
         return source;
-    }
-
-    public String getProjection(){
-        if(getState().projection!=null){
-            return getState().projection;
-        } else{
-            return Projections.EPSG3857;
-        }
     }
 
     @Override
@@ -152,7 +140,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
     }
 
     private void sendNewFeature(Feature feature){
-        String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getProjection());
+        String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection());
         getRpcProxy(OLVectorSourceServerRpc.class).featureAdded(serializedGeometry);
     }
 
@@ -184,5 +172,30 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             getSource().removeFeature(f);
         }
         tempFeatures.clear();
+    }
+
+    /** Returns the currently used view projection
+     *
+     * @return
+     */
+    private String getViewProjection(){
+        // we want to find out the projection only once since that will not change
+        if(viewProjection==null){
+            // we make an educated guess here since most base layers are in this projection
+            viewProjection= Projections.EPSG3857;
+            // but let's still try to fetch the actual projection from view
+            ServerConnector connector=this.getParent();
+            while(connector!=null && !(connector instanceof OLMapConnector)){
+                connector=connector.getParent();
+            }
+            if(connector instanceof OLMapConnector){
+                OLMapConnector mapConnector=(OLMapConnector) connector;
+                View view=mapConnector.getWidget().getMap().getView();
+                if(view!=null){
+                    viewProjection=view.getProjection().getCode();
+                }
+            }
+        }
+        return viewProjection;
     }
 }

@@ -26,6 +26,7 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
 
     private OLTileGrid tileGrid;
 
+    private String projection;
 
     public String getCrossOriginPolicy() {
         return crossOriginPolicy;
@@ -126,4 +127,17 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
 	public void setTileGrid(OLTileGrid tileGrid) {
 		this.tileGrid = tileGrid;
 	}
+
+    public String getProjection() {
+        return projection;
+    }
+
+    /** Sets the csr name of the used projection
+     *
+     * @param projection
+     */
+    public void setProjection(String projection) {
+        this.projection = projection;
+    }
+
 }

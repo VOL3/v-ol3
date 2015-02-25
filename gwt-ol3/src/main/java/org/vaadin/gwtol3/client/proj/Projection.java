@@ -13,4 +13,8 @@ public class Projection extends JavaScriptObject {
     public static final native Projection get(String crsString)/*-{
         return $wnd.ol.proj.get(crsString);
     }-*/;
+
+    public native final String getCode()/*-{
+        return this.getCode();
+    }-*/;
 }
