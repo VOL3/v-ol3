@@ -20,12 +20,38 @@ public class View extends JavaScriptObject {
     }-*/;
 
     public static final native View create(ViewOptions options)/*-{
+        // we may need to transform the extent before passing it to the view
+        if(typeof options.__inputProjection !== 'undefined' && typeof options.extent !== 'undefined'){
+            var projection = options.projection ? options.projection : "EPSG:3857";
+            if(projection !== options.__inputProjection){
+                options.extent=$wnd.ol.proj.transformExtent(options.extent, options.__inputProjection, projection);
+            }
+        }
         var view = new $wnd.ol.View(options);
+        if(typeof options.__inputProjection !== 'undefined'){
+            view.__inputProjection=options.__inputProjection;
+        }
+        // add projection helpers
+        view.__transformInputCoordinate = function(coordinate){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(coordinate, this.__inputProjection, this.getProjection()) : coordinate;
+        };
+
+        view.__transformOutputCoordinate = function(coordinate){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(coordinate, this.getProjection(), this.__inputProjection) : coordinate;
+        };
+
+        view.__transformInputExtent = function(extent){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transformExtent(extent, this.__inputProjection, this.getProjection()) : extent;
+        };
+
+        view.__transformOutputExtent = function(extent){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(extent, this.getProjection(), this.__inputProjection) : extent;
+        };
 		return view;
     }-*/;
 
     public native final Extent calculateExtent(Size size)/*-{
-        return this.calculateExtent(size);
+        return this.__transformOutputExtent(this.calculateExtent(size));
     }-*/;
 
     /**
@@ -36,7 +62,7 @@ public class View extends JavaScriptObject {
      * @param pixel Position on the view to center on
      */
     public native final void centerOn(Coordinate coordinate, Size size, Pixel pixel)/*-{
-        this.centerOn(coordinate, size, pixel);
+        this.centerOn(this.__transformInputCoordinate(coordinate), size, pixel);
     }-*/;
 
     /** Gets the constrained center of this view
@@ -44,7 +70,7 @@ public class View extends JavaScriptObject {
      * @param coordinate
      */
     public native final Coordinate constrainCenter(Coordinate coordinate)/*-{
-        return this.constrainCenter(coordinate);
+        return this.constrainCenter(this.__transformInputCoordinate(coordinate));
     }-*/;
 
     /** Get the constrained resolution of this view.
@@ -72,7 +98,7 @@ public class View extends JavaScriptObject {
 
 
     public native final void fitExtent(Extent extent, Size size)/*-{
-        this.fitExtent(extent, size);
+        this.fitExtent(this.__transformInputExtent(extent), size);
     }-*/;
 
     /**
@@ -90,7 +116,7 @@ public class View extends JavaScriptObject {
      * @return
      */
     public native final Coordinate getCenter()/*-{
-        return this.getCenter();
+        return this.__transformOutputCoordinate(this.getCenter());
     }-*/;
 
     /** Gets the projection of the view
@@ -118,7 +144,7 @@ public class View extends JavaScriptObject {
      * @return The resolution at which the provided extent will render at the given size
      */
     public native final Double getResolutionForExtent(Extent extent, Size size)/*-{
-        var res = this.getResolutionForExtent(extent, size);
+        var res = this.getResolutionForExtent(this.__transformInputExtent(extent), size);
         return res==null ? null : @java.lang.Double::valueOf(D)(res);
     }-*/;
 
@@ -149,7 +175,7 @@ public class View extends JavaScriptObject {
      * @param anchor
      */
     public native final void rotate(double rotation, Coordinate anchor)/*-{
-        this.rotate(rotation, anchor);
+        this.rotate(rotation, this.__transformInputCoordinate(anchor));
     }-*/;
 
     /** Set the center of the current view.
@@ -157,7 +183,7 @@ public class View extends JavaScriptObject {
      * @param coordinate
      */
     public native final void setCenter(Coordinate coordinate)/*-{
-        this.setCenter(coordinate);
+        this.setCenter(this.__transformInputCoordinate(coordinate));
     }-*/;
 
     /** Set the projection of this view. Currently not implemented by the library

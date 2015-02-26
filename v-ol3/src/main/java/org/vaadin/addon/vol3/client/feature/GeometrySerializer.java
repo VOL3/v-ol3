@@ -1,6 +1,5 @@
 package org.vaadin.addon.vol3.client.feature;
 
-import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.gwtol3.client.format.GeoJSONFormat;
 import org.vaadin.gwtol3.client.geom.Geometry;
 
@@ -15,8 +14,8 @@ public class GeometrySerializer {
 
     private static final GeoJSONFormat serializer=GeoJSONFormat.create();
 
-    public static Geometry readGeometry(String serializedGeometry, String targetGeometry){
-        Geometry geometry=serializer.readGeometry(serializedGeometry, Projections.EPSG4326, targetGeometry);
+    public static Geometry readGeometry(String serializedGeometry, String sourceProjection, String targetProjection){
+        Geometry geometry=serializer.readGeometry(serializedGeometry, sourceProjection, targetProjection);
         return geometry;
     }
 
@@ -26,8 +25,8 @@ public class GeometrySerializer {
      * @param sourceProjection
      * @return
      */
-    public static String writeGeometry(Geometry geometry, String sourceProjection){
-        return serializer.writeGeometry(geometry, sourceProjection, Projections.EPSG4326);
+    public static String writeGeometry(Geometry geometry, String sourceProjection, String targetProjection){
+        return serializer.writeGeometry(geometry, sourceProjection, targetProjection);
     }
 
 }

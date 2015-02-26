@@ -6,8 +6,11 @@ import com.vaadin.shared.AbstractComponentState;
  * Shared state for the view
  */
 public class OLViewState extends AbstractComponentState {
-    // crs name of the projection (EPSG:3857 and EPSG:4326 are supported out of the box)
-    public String projection; // use spherical mercator by default;
+    // crs name of the projection used in map (EPSG:3857 and EPSG:4326 are supported out of the box)
+    public String mapProjection; // use spherical mercator (EPSG:3857) by default;
+
+    // crs name of the projection used when interpreting coordinates and extents
+    public String inputProjection;
 
     // enable rotation, defaults to true
     public Boolean enableRotation;

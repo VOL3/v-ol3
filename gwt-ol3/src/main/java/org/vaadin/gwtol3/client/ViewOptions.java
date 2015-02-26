@@ -54,7 +54,19 @@ public class ViewOptions extends JavaScriptObject{
         this.zoomFactor=zoomFactor;
     }-*/;
 
+    /** This is the map projection that must always match the basemap projection.
+     *
+     * @param projection
+     */
     public native final void setProjection(String projection)/*-{
         this.projection=projection;
+    }-*/;
+
+    /**
+     * Toggles automatic coordinate transformation. By setting input projection, you can interact with the view by passing coordinates and extents in chosen projection instead of the map projection.
+     * @param projection the input / output projections for coordinates and extents.
+     */
+    public native final void setInputProjection(String projection)/*-{
+        this.__inputProjection=projection;
     }-*/;
 }

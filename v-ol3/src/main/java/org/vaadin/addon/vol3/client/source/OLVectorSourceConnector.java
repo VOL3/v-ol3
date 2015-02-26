@@ -44,7 +44,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             @Override
             public void run() {
                 for (Feature feature : modifiedFeatures) {
-                    String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection());
+                    String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection(), getInputProjection());
                     getRpcProxy(OLVectorSourceServerRpc.class).featureModified(feature.getId(), serializedGeometry);
                     modifiedFeatures.clear();
                 }
@@ -77,7 +77,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
         private Feature createFeature(SerializedFeature feature) {
             Feature f=Feature.create();
             f.setId(feature.id);
-            Geometry geom= GeometrySerializer.readGeometry(feature.serializedGeometry, getViewProjection());
+            Geometry geom= GeometrySerializer.readGeometry(feature.serializedGeometry, getInputProjection(), getViewProjection());
             f.setGeometry(geom);
             if(feature.styles!=null){
                 f.setStyles(OLStyleConverter.convert(feature.styles));
@@ -140,7 +140,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
     }
 
     private void sendNewFeature(Feature feature){
-        String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection());
+        String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection(), getInputProjection());
         getRpcProxy(OLVectorSourceServerRpc.class).featureAdded(serializedGeometry);
     }
 
@@ -172,6 +172,10 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             getSource().removeFeature(f);
         }
         tempFeatures.clear();
+    }
+
+    private String getInputProjection(){
+        return Projections.EPSG4326;
     }
 
     /** Returns the currently used view projection

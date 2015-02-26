@@ -87,8 +87,11 @@ public class OLViewConnector extends AbstractComponentConnector{
         if(getState().zoomFactor!=null){
             options.setZoomFactor(getState().zoomFactor);
         }
-        if(getState().projection!=null){
-            options.setProjection(getState().projection);
+        if(getState().mapProjection!=null){
+            options.setProjection(getState().mapProjection);
+        }
+        if(getState().inputProjection!=null){
+            options.setInputProjection(getState().inputProjection);
         }
         View view=View.create(options);
 		view.addStatusChangeListener(new StatusChangeListener() {

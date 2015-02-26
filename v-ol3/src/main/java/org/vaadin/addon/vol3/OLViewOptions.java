@@ -15,7 +15,8 @@ public class OLViewOptions {
     private Integer maxZoom;
     private Integer minZoom;
     private Double zoomFactor;
-    private String projection;
+    private String mapProjection;
+    private String inputProjection;
 
     public Boolean getEnableRotation() {
         return enableRotation;
@@ -89,16 +90,28 @@ public class OLViewOptions {
         this.minZoom = minZoom;
     }
 
-    public String getProjection() {
-        return projection;
+    public String getMapProjection() {
+        return mapProjection;
     }
 
-    /** The projection. Default is EPSG:3857 (Spherical Mercator).
+    /** Sets the projection used on the map layers. Default is EPSG:3857 (Spherical Mercator). This MUST match the projection used by your map server
      *
-     * @param projection
+     * @param mapProjection the map projection
      */
-    public void setProjection(String projection) {
-        this.projection = projection;
+    public void setMapProjection(String mapProjection) {
+        this.mapProjection = mapProjection;
+    }
+
+    public String getInputProjection(){
+        return inputProjection;
+    }
+
+    /** Sets the projection used when interpreting Coordinates and Extents passed in view api calls. If the inputProjection differs from map projection,
+     * automatic conversion is done by the wrapper. The default is the value of the map projection.
+     * @param inputProjection the input projection
+     */
+    public void setInputProjection(String inputProjection){
+        this.inputProjection=inputProjection;
     }
 
     public Double getZoomFactor() {

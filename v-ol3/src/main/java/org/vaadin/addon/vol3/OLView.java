@@ -150,8 +150,12 @@ public class OLView extends AbstractComponent {
         return getState(false).zoomFactor;
     }
 
-    public String getProjection() {
-        return getState(false).projection;
+    public String getMapProjection() {
+        return getState(false).mapProjection;
+    }
+
+    public String getInputProjection() {
+        return getState(false).inputProjection;
     }
 
     @Override
@@ -184,7 +188,8 @@ public class OLView extends AbstractComponent {
         getState().minZoom=options.getMinZoom();
         getState().maxZoom=options.getMaxZoom();
         getState().zoomFactor=options.getZoomFactor();
-        getState().projection=options.getProjection();
+        getState().mapProjection=options.getMapProjection();
+        getState().inputProjection=options.getInputProjection();
     }
 
 	private void registerRpc(){

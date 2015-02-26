@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
+import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.source.OLSource;
 import org.vaadin.addon.vol3.source.OLTileWMSSource;
 import org.vaadin.addon.vol3.source.OLTileWMSSourceOptions;
@@ -31,7 +32,8 @@ public class TileWMSMap extends BasicMap{
         OLViewOptions opts=new OLViewOptions();
         // this is the projection this map server expects
         // same as EPSG: 3857 but the map server does not recognize that...
-        opts.setProjection("EPSG:900913");
+        opts.setMapProjection("EPSG:900913");
+        opts.setInputProjection(Projections.EPSG4326);
         OLView view=new OLView(opts);
         view.setZoom(1);
         view.setCenter(0,0);

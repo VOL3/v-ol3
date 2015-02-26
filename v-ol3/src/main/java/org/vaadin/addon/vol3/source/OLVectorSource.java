@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * Vector source implementation that provides api for adding features. NOTE: the coordinates for the shapes of the features
- * must always be expressed in EPSG:4326 / WGS84 (lat/lon). The wrapper handles the conversion to the projection set for the view automatically.
+ * must always be expressed in EPSG:4326 / WGS84 (lon/lat). The wrapper handles the conversion to the projection set for the view automatically.
  */
 public class OLVectorSource extends OLSource{
 
