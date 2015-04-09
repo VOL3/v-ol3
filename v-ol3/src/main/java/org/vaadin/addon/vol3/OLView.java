@@ -3,6 +3,9 @@ package org.vaadin.addon.vol3;
 import com.vaadin.ui.AbstractComponent;
 import org.vaadin.addon.vol3.client.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The view associated with a map. The view provides api for controlling things like zoom (resolution), rotation and extent
  */
@@ -12,6 +15,7 @@ public class OLView extends AbstractComponent {
 	private Double rotation=0d;
 	private Double resolution;
 	private Integer zoom;
+    private List<ViewChangeListener> listeners=new ArrayList<ViewChangeListener>();
 
     /** Creates a new instance of the view
      *
@@ -158,6 +162,14 @@ public class OLView extends AbstractComponent {
         return getState(false).inputProjection;
     }
 
+    public void addViewChangeListener(ViewChangeListener listener){
+        this.listeners.add(listener);
+    }
+
+    public void removeViewChangeListener(ViewChangeListener listener){
+        this.listeners.remove(listener);
+    }
+
     @Override
     public void beforeClientResponse(boolean initial) {
         super.beforeClientResponse(initial);
@@ -178,6 +190,8 @@ public class OLView extends AbstractComponent {
             }
         }
     }
+
+
 
     private void setOptions(OLViewOptions options) {
         getState().enableRotation=options.getEnableRotation();
@@ -201,23 +215,56 @@ public class OLView extends AbstractComponent {
 		@Override
 		public void updateCenter(OLCoordinate coordinate) {
 			OLView.this.center=coordinate;
+            fireCenterChanged();
 		}
 
 		@Override
 		public void updateRotation(Double rotation) {
 			OLView.this.rotation=rotation;
+            fireRotationChanged();
 		}
 
 		@Override
 		public void updateResolution(Double resolution) {
 			OLView.this.resolution=resolution;
+            fireResolutionChanged();
 		}
 
 		@Override
 		public void updateZoom(Double zoom) {
 			OLView.this.zoom = zoom==null ? null : Integer.valueOf((int)zoom.doubleValue());
+            fireZoomChanged();
 		}
-
-
 	}
+
+    private void fireResolutionChanged(){
+        for(ViewChangeListener listener : listeners){
+            listener.resolutionChanged(this.resolution);
+        }
+    }
+
+    private void fireRotationChanged(){
+        for(ViewChangeListener listener : listeners){
+            listener.rotationChanged(this.rotation);
+        }
+    }
+
+    private void fireCenterChanged(){
+        for(ViewChangeListener listener : listeners){
+            listener.centerChanged(this.center);
+        }
+    }
+
+    private void fireZoomChanged(){
+        for(ViewChangeListener listener : listeners){
+            listener.zoomChanged(this.zoom);
+        }
+    }
+
+    public interface ViewChangeListener {
+        public void resolutionChanged(Double newResolution);
+        public void rotationChanged(Double rotation);
+        public void centerChanged(OLCoordinate centerPoint);
+        public void zoomChanged(Integer zoom);
+    }
 }
