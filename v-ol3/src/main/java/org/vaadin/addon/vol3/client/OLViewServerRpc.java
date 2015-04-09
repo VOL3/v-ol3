@@ -20,4 +20,6 @@ public interface OLViewServerRpc extends ServerRpc {
 	@Delayed (lastOnly = true)
 	public void updateZoom(Double zoom);
 
+	public void flush();
+
 }

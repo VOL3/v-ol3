@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.client;
 
+import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.ui.AbstractComponentConnector;
@@ -100,20 +101,34 @@ public class OLViewConnector extends AbstractComponentConnector{
 				Coordinate c=getView().getCenter();
 				OLCoordinate olCoordinate=new OLCoordinate(c.getX(), c.getY());
 				getRpcProxy(OLViewServerRpc.class).updateCenter(olCoordinate);
+                resetSendTimer();
 			}
 
 			@Override
 			public void resolutionChanged() {
 				getRpcProxy(OLViewServerRpc.class).updateResolution(getView().getResolution());
 				getRpcProxy(OLViewServerRpc.class).updateZoom(getView().getZoom());
+                resetSendTimer();
 			}
 
 			@Override
 			public void rotationChanged() {
 				getRpcProxy(OLViewServerRpc.class).updateRotation(getView().getRotation());
-			}
+                resetSendTimer();
+            }
 		});
         return view;
+    }
+
+    private Timer sendTimer=new Timer(){
+        @Override
+        public void run() {
+            getRpcProxy(OLViewServerRpc.class).flush();
+        }
+    };
+
+    private void resetSendTimer(){
+        sendTimer.schedule(200);
     }
 
     public void setMap(Map map) {

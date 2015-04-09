@@ -235,7 +235,12 @@ public class OLView extends AbstractComponent {
 			OLView.this.zoom = zoom==null ? null : Integer.valueOf((int)zoom.doubleValue());
             fireZoomChanged();
 		}
-	}
+
+        @Override
+        public void flush() {
+            // NO-OP
+        }
+    }
 
     private void fireResolutionChanged(){
         for(ViewChangeListener listener : listeners){

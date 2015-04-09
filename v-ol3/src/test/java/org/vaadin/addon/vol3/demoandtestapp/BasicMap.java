@@ -12,12 +12,15 @@ import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 
+import java.util.logging.Logger;
+
 /**
  * Basic map view
  */
 public class BasicMap extends VerticalLayout implements View {
 
     protected OLMap map;
+    private static final Logger logger= Logger.getLogger(BasicMap.class.getName());
 
     public BasicMap() {
         this.setSizeFull();
@@ -52,6 +55,27 @@ public class BasicMap extends VerticalLayout implements View {
         OLView view=new OLView();
         view.setZoom(1);
         view.setCenter(0,0);
+        view.addViewChangeListener(new OLView.ViewChangeListener() {
+            @Override
+            public void resolutionChanged(Double newResolution) {
+                logger.info("resolution changed "+newResolution);
+            }
+
+            @Override
+            public void rotationChanged(Double rotation) {
+                logger.info("rotation changed "+rotation);
+            }
+
+            @Override
+            public void centerChanged(OLCoordinate centerPoint) {
+                logger.info("center changed "+centerPoint.toText());
+            }
+
+            @Override
+            public void zoomChanged(Integer zoom) {
+                logger.info("zoom changed "+zoom);
+            }
+        });
         return view;
     }
 
