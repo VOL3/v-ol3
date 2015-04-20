@@ -45,13 +45,17 @@ public class View extends JavaScriptObject {
         };
 
         view.__transformOutputExtent = function(extent){
-            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(extent, this.getProjection(), this.__inputProjection) : extent;
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transformExtent(extent, this.getProjection(), this.__inputProjection) : extent;
         };
 		return view;
     }-*/;
 
     public native final Extent calculateExtent(Size size)/*-{
-        return this.__transformOutputExtent(this.calculateExtent(size));
+        try{
+            return this.__transformOutputExtent(this.calculateExtent(size));
+        } catch (e){
+
+        }
     }-*/;
 
     /**

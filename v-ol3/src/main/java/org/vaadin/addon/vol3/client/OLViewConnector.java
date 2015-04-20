@@ -101,6 +101,7 @@ public class OLViewConnector extends AbstractComponentConnector{
 				Coordinate c=getView().getCenter();
 				OLCoordinate olCoordinate=new OLCoordinate(c.getX(), c.getY());
 				getRpcProxy(OLViewServerRpc.class).updateCenter(olCoordinate);
+                updateExtent();
                 resetSendTimer();
 			}
 
@@ -108,16 +109,27 @@ public class OLViewConnector extends AbstractComponentConnector{
 			public void resolutionChanged() {
 				getRpcProxy(OLViewServerRpc.class).updateResolution(getView().getResolution());
 				getRpcProxy(OLViewServerRpc.class).updateZoom(getView().getZoom());
+                updateExtent();
                 resetSendTimer();
 			}
 
 			@Override
 			public void rotationChanged() {
 				getRpcProxy(OLViewServerRpc.class).updateRotation(getView().getRotation());
+                updateExtent();
                 resetSendTimer();
             }
 		});
         return view;
+    }
+
+    private void updateExtent() {
+        if(getMap().getSize()!=null){
+            Extent extent = getView().calculateExtent(getMap().getSize());
+            if(extent!=null){
+                getRpcProxy(OLViewServerRpc.class).updateExtent(extent.getMinX(), extent.getMinY(), extent.getMaxX(), extent.getMaxY());
+            }
+        }
     }
 
     private Timer sendTimer=new Timer(){

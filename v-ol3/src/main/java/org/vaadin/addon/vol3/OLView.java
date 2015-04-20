@@ -15,6 +15,7 @@ public class OLView extends AbstractComponent {
 	private Double rotation=0d;
 	private Double resolution;
 	private Integer zoom;
+    private OLExtent extent;
     private List<ViewChangeListener> listeners=new ArrayList<ViewChangeListener>();
 
     /** Creates a new instance of the view
@@ -240,6 +241,12 @@ public class OLView extends AbstractComponent {
         public void flush() {
             // NO-OP
         }
+
+        @Override
+        public void updateExtent(double minX, double minY, double maxX, double maxY) {
+            extent = new OLExtent(new OLCoordinate(minX, minY), new OLCoordinate(maxX, maxY));
+            fireExtentChanged();
+        }
     }
 
     private void fireResolutionChanged(){
@@ -266,10 +273,17 @@ public class OLView extends AbstractComponent {
         }
     }
 
+    private void fireExtentChanged(){
+        for(ViewChangeListener listener : listeners){
+            listener.extentChanged(this.extent);
+        }
+    }
+
     public interface ViewChangeListener {
         public void resolutionChanged(Double newResolution);
         public void rotationChanged(Double rotation);
         public void centerChanged(OLCoordinate centerPoint);
         public void zoomChanged(Integer zoom);
+        public void extentChanged(OLExtent extent);
     }
 }

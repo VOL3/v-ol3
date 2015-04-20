@@ -13,4 +13,21 @@ public class Extent extends JavaScriptObject{
 
     protected Extent() {
     }
+
+    public final native double getMinX()/*-{
+        return this[0];
+    }-*/;
+
+    public final native double getMinY()/*-{
+        return this[1];
+    }-*/;
+
+    public final native double getMaxX()/*-{
+        return this[2];
+    }-*/;
+
+    public final native double getMaxY()/*-{
+        return this[3];
+    }-*/;
+
 }

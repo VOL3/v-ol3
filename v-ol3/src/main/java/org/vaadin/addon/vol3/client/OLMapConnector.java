@@ -17,9 +17,11 @@ import org.vaadin.gwtol3.client.DeviceOptions;
 import org.vaadin.gwtol3.client.MapOptions;
 import org.vaadin.gwtol3.client.MapWidget;
 import org.vaadin.gwtol3.client.control.*;
+import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Client side connector for the map
@@ -30,6 +32,8 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     static{
         ResourceInjector.ensureInjected();
     }
+
+    private static final Logger logger= Logger.getLogger(OLMapConnector.class.getName());
 
     // references to controls added to the map
     // makes it easier to handle removal
@@ -104,6 +108,19 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                     // on initialization
                     deferredAddInteraction(interaction);
                 }
+            }
+        }
+        // ensure layer ordering
+        int layerIndex=0;
+        Collection<Layer> layers = getWidget().getMap().getLayers();
+        for(ComponentConnector connector : this.getChildComponents()){
+            if(connector instanceof OLLayerConnector){
+                OLLayerConnector layerConnector= (OLLayerConnector) connector;
+                if(layers.item(layerIndex) != layerConnector.getLayer()){
+                    logger.info("setting layer to index "+layerIndex);
+                    layers.setAt(layerIndex, layerConnector.getLayer());
+                }
+                layerIndex++;
             }
         }
     }

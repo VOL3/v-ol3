@@ -22,4 +22,6 @@ public interface OLViewServerRpc extends ServerRpc {
 
 	public void flush();
 
+	@Delayed(lastOnly = true)
+	void updateExtent(double minX, double minY, double maxX, double maxY);
 }

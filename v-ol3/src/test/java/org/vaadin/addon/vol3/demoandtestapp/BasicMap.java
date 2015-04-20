@@ -6,6 +6,7 @@ import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.client.OLCoordinate;
+import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
@@ -74,6 +75,11 @@ public class BasicMap extends VerticalLayout implements View {
             @Override
             public void zoomChanged(Integer zoom) {
                 logger.info("zoom changed "+zoom);
+            }
+
+            @Override
+            public void extentChanged(OLExtent extent) {
+                logger.info("extent changed "+extent.minX+","+extent.minY+","+extent.maxX+","+extent.maxY);
             }
         });
         return view;
