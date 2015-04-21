@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CssLayout;
@@ -27,9 +28,12 @@ public class MapTestUI extends UI {
         VerticalLayout navigatorContainer=new VerticalLayout();
         navigatorContainer.setSizeFull();
         root.addComponent(navigatorContainer);
-        root.setExpandRatio(navigatorContainer,1.0f);
+        root.setExpandRatio(navigatorContainer, 1.0f);
         navigator=new Navigator(this, navigatorContainer);
         addViews();
+        if(Page.getCurrent().getUriFragment()==null || Page.getCurrent().getUriFragment().length()==0){
+            navigator.navigateTo("Basic");
+        }
     }
 
     private void addViews() {
@@ -44,7 +48,7 @@ public class MapTestUI extends UI {
         addView("ControlTest", ControlTestMap.class);
         addView("InteractionTest", InteractionMap.class);
         addView("ExtentTest", ExtentTestMap.class);
-        navigator.navigateTo("Basic");
+        addView("WMTSMap", WMTSMap.class);
     }
 
     private void addView(String label, Class<? extends View> implementation){

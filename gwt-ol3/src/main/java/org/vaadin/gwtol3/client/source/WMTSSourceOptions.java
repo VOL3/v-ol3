@@ -93,4 +93,12 @@ public class WMTSSourceOptions extends TileImageSourceOptions{
 	public native final void setMatrixSet(String matrixSet)/*-{
         this.matrixSet = matrixSet;
     }-*/;
+
+	/** Whether to wrap the world horizontally. Default false.
+	 *
+	 * @param wrapX if true, the world will be wrapped horizontally
+	 */
+	public native final void setWrapX(boolean wrapX)/*-{
+		this.wrapX=wrapX;
+	}-*/;
 }

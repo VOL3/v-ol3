@@ -33,7 +33,7 @@ public class OLTileWMSSourceConnector extends OLSourceConnector {
             options.setHidpi(state.hidpi);
         }
         if(state.attributions!=null && state.attributions.length>0){
-            JsArray jsArray= (JsArray) JsArray.createArray(state.attributions.length);
+            JsArray<Attribution> jsArray= JsArray.createArray().cast();
             for(String attribution : state.attributions){
                 jsArray.push(Attribution.create(attribution));
             }

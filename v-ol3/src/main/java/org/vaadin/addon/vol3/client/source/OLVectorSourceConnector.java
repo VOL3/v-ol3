@@ -105,7 +105,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
     protected VectorSource createSource() {
         VectorSourceOptions options=VectorSourceOptions.create();
         if(getState().attributions!=null){
-            JsArray<Attribution> jsArray= JsArray.createArray(getState().attributions.length).cast();
+            JsArray<Attribution> jsArray= JsArray.createArray().cast();
             for(String attribution : getState().attributions){
                 jsArray.push(Attribution.create(attribution));
             }

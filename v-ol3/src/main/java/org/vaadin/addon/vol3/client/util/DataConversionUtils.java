@@ -13,7 +13,7 @@ import org.vaadin.gwtol3.client.Coordinate;
 public class DataConversionUtils {
 
 	public static JsArrayNumber toJsArrayNumber(double [] array) {
-		JsArrayNumber jsArray = JsArrayNumber.createArray(array.length).cast();
+		JsArrayNumber jsArray = JsArrayNumber.createArray().cast();
 		for (double value : array) {
 			jsArray.push(value);
 		}
@@ -21,7 +21,7 @@ public class DataConversionUtils {
 	}
 
 	public static JsArrayString toJsArrayString(String [] array){
-		JsArrayString jsArray = JsArrayString.createArray(array.length).cast();
+		JsArrayString jsArray = JsArrayString.createArray().cast();
 		for(String value : array){
 			jsArray.push(value);
 		}
@@ -29,7 +29,7 @@ public class DataConversionUtils {
 	}
 
 	public static JsArray<Coordinate> toJsArrayCoordinate(OLCoordinate [] coordinates) {
-		JsArray<Coordinate> coordinateArray = JsArray.createArray(coordinates.length).cast();
+		JsArray<Coordinate> coordinateArray = JsArray.createArray().cast();
 		for (OLCoordinate coordinate : coordinates) {
 			coordinateArray.push(Coordinate.create(coordinate.x, coordinate.y));
 		}
