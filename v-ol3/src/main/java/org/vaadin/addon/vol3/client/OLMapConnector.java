@@ -12,12 +12,11 @@ import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
-import org.vaadin.gwtol3.client.Collection;
-import org.vaadin.gwtol3.client.DeviceOptions;
-import org.vaadin.gwtol3.client.MapOptions;
-import org.vaadin.gwtol3.client.MapWidget;
+import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
+import org.vaadin.gwtol3.client.*;
 import org.vaadin.gwtol3.client.control.*;
 import org.vaadin.gwtol3.client.layer.Layer;
+import org.vaadin.gwtol3.client.map.OnClickListener;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
 import java.util.List;
@@ -155,6 +154,15 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         // clear default controls
         options.setControls(Collection.create());
         getWidget().initMap(options);
+
+        getWidget().getMap().addOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(Coordinate coordinate) {
+                OLCoordinate olCoordinate = new OLCoordinate(coordinate.getX(), coordinate.getY());
+                getRpcProxy(OLOnClickListenerRpc.class).onClick(olCoordinate);
+            }
+        });
+
     }
 
     @Override
