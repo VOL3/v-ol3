@@ -2,8 +2,10 @@ package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
+import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.control.*;
+import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
@@ -19,6 +21,7 @@ import java.util.List;
 public class OLMap extends AbstractComponentContainer{
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
+    private List<OnClickListener> listeners = new ArrayList<OnClickListener>();
 
     /** Creates a new instance of the map
      *
@@ -54,6 +57,7 @@ public class OLMap extends AbstractComponentContainer{
             setOptions(options);
         }
         addDefaultControls();
+        registerRpc(new OLOnClickListenerRpcImpl(), OLOnClickListenerRpc.class);
     }
 
     /** Adds a new layer to the map
@@ -291,6 +295,25 @@ public class OLMap extends AbstractComponentContainer{
         getState().zoomToExtentControl = zoomToExtentControl;
     }
 
+    /**
+     * Adds given listener to the list
+     * @param onClickListener
+     */
+    public void addListener(OnClickListener onClickListener){
+        this.listeners.add(onClickListener);
+    }
+
+    /**
+     * @param listeners listener to set
+     */
+    public void setListeners(List<OnClickListener> listeners) {
+        this.listeners = listeners;
+    }
+
+    public List<OnClickListener> getListeners() {
+        return listeners;
+    }
+
     private void setOptions(OLMapOptions options) {
         getState().showOl3Logo=options.getShowOl3Logo();
         getState().renderer=options.getRenderer();
@@ -302,5 +325,22 @@ public class OLMap extends AbstractComponentContainer{
         getState().zoomControl=new OLZoomControl();
         getState().attributionControl=new OLAttributionControl();
         getState().rotateControl=new OLRotateControl();
+    }
+
+    /**
+     * Needed register a click event on the map
+     */
+    public interface OnClickListener {
+        void onClickListener(OLCoordinate centerPoint);
+    }
+
+    private class OLOnClickListenerRpcImpl implements OLOnClickListenerRpc {
+
+        @Override
+        public void onClick(OLCoordinate coordinate) {
+            for (OnClickListener listener : getListeners()) {
+                listener.onClickListener(coordinate);
+            }
+        }
     }
 }

@@ -5,9 +5,11 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
+import org.vaadin.gwtol3.client.interaction.SelectionChangeListener;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
+import org.vaadin.gwtol3.client.map.OnClickListener;
 
 /**
  * Wrapper for the OpenLayers map
@@ -272,5 +274,16 @@ public class Map extends JavaScriptObject{
      */
     public native final void updateSize()/*-{
         this.updateSize();
+    }-*/;
+
+    /**
+     * Add given listener to the map
+     * @param onClickListener
+     */
+    public native final void addOnClickListener(OnClickListener onClickListener)/*-{
+        var callback=function(event){
+            onClickListener.@org.vaadin.gwtol3.client.map.OnClickListener::onClick(Lorg/vaadin/gwtol3/client/Coordinate;)(event.coordinate);
+        };
+        this.on("click", $entry(callback),this);
     }-*/;
 }

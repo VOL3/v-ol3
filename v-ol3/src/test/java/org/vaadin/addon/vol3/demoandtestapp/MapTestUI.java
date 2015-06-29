@@ -49,6 +49,7 @@ public class MapTestUI extends UI {
         addView("InteractionTest", InteractionMap.class);
         addView("ExtentTest", ExtentTestMap.class);
         addView("WMTSMap", WMTSMap.class);
+        addView("ClickHandler", ClickHandlerTestMap.class);
     }
 
     private void addView(String label, Class<? extends View> implementation){
