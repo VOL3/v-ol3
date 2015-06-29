@@ -3,6 +3,8 @@ package org.vaadin.addon.vol3.client;
 import com.vaadin.shared.AbstractComponentState;
 import org.vaadin.addon.vol3.client.control.*;
 
+import java.util.Map;
+
 /**
  * State for the map
  */
@@ -11,6 +13,8 @@ public class OLMapState extends AbstractComponentState {
     public OLRendererType renderer;
     public Double pixelRatio;
     public OLDeviceOptions deviceOptions;
+    // coordinate system definitions
+    public Map<String,String> coordinateSystemDefinitions;
     // controls added to the map
     public OLAttributionControl attributionControl;
     public OLFullScreenControl fullScreenControl;

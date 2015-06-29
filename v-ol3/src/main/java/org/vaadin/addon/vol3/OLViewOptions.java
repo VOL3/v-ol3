@@ -94,7 +94,7 @@ public class OLViewOptions {
         return mapProjection;
     }
 
-    /** Sets the projection used on the map layers. Default is EPSG:3857 (Spherical Mercator). This MUST match the projection used by your map server
+    /** Sets the projection used on the map layers. Default is EPSG:3857 (Spherical Mercator). This MUST match the projection used by your map server. The EPSG:3857 and EPSG:4326 are supported out of the box. Others must be enabled from map options passed to the OLMap on creation.
      *
      * @param mapProjection the map projection
      */

@@ -85,6 +85,11 @@ public class BasicMap extends VerticalLayout implements View {
         return view;
     }
 
+    protected void resetView(){
+        map.getView().setCenter(0,0);
+        map.getView().setZoom(1);
+    }
+
     protected AbstractLayout createControls() {
         HorizontalLayout controls=new HorizontalLayout();
 		controls.setSpacing(true);
@@ -93,8 +98,7 @@ public class BasicMap extends VerticalLayout implements View {
         button.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                map.getView().setCenter(0,0);
-                map.getView().setZoom(1);
+                resetView();
             }
         });
         controls.addComponent(button);

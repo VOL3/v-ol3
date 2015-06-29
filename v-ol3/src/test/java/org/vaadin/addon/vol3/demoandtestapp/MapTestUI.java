@@ -50,6 +50,7 @@ public class MapTestUI extends UI {
         addView("ExtentTest", ExtentTestMap.class);
         addView("WMTSMap", WMTSMap.class);
         addView("ClickHandler", ClickHandlerTestMap.class);
+        addView("Proj4jsMap", Proj4jsMap.class);
     }
 
     private void addView(String label, Class<? extends View> implementation){

@@ -20,6 +20,7 @@ import org.vaadin.gwtol3.client.map.OnClickListener;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -137,6 +138,8 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
      *
      */
     private void initMap() {
+        // register projections
+        this.updateCoordinateSystemDefinitions();
         MapOptions options=MapOptions.create();
         if(getState().showOl3Logo!=null){
             options.setOl3Logo(getState().showOl3Logo);
@@ -173,6 +176,14 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     @Override
     public void onElementResize(ElementResizeEvent e) {
         getWidget().getMap().updateSize();
+    }
+
+    void updateCoordinateSystemDefinitions(){
+        if(getState().coordinateSystemDefinitions!=null){
+            for(Map.Entry<String,String> entry : getState().coordinateSystemDefinitions.entrySet()){
+                Proj4js.define(entry.getKey(), entry.getValue());
+            }
+        }
     }
 
     @OnStateChange("attributionControl")

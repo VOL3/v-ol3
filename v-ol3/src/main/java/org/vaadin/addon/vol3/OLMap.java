@@ -9,10 +9,7 @@ import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
@@ -296,7 +293,7 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     /**
-     * Adds given listener to the list
+     * Adds a click listener that will be notified when the user clicks on the map
      * @param onClickListener
      */
     public void addListener(OnClickListener onClickListener){
@@ -304,7 +301,8 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     /**
-     * @param listeners listener to set
+     * Sets click listeners that are notified when the user clicks on the map
+     * @param listeners listeners to set
      */
     public void setListeners(List<OnClickListener> listeners) {
         this.listeners = listeners;
@@ -319,6 +317,7 @@ public class OLMap extends AbstractComponentContainer{
         getState().renderer=options.getRenderer();
         getState().pixelRatio=options.getPixelRatio();
         getState().deviceOptions=options.getDeviceOptions();
+        getState().coordinateSystemDefinitions=options.getCoordinateSystemDefinitions();
     }
 
     private void addDefaultControls() {
@@ -328,9 +327,13 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     /**
-     * Needed register a click event on the map
+     * Click listener interface for map click listeners
      */
     public interface OnClickListener {
+        /** Called when user clicks on a map
+         *
+         * @param centerPoint
+         */
         void onClickListener(OLCoordinate centerPoint);
     }
 
