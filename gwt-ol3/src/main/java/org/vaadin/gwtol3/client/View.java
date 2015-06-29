@@ -256,15 +256,15 @@ public class View extends JavaScriptObject {
 			this.on("change:rotation", fireRotationChanged, this);
 		}
         var changeListener = {
-			 centerChanged: function(){
-				 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::centerChanged()());
-			 },
-			 resolutionChanged: function(){
-                 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::resolutionChanged()());
-			 },
-             rotationChanged: function(){
-                 $entry(listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::rotationChanged()());
-             }
+			 centerChanged: $entry(function(){
+                 listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::centerChanged()();
+                 }),
+			 resolutionChanged: $entry(function(){
+                 listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::resolutionChanged()();
+             }),
+             rotationChanged: $entry(function(){
+                 listener.@org.vaadin.gwtol3.client.view.StatusChangeListener::rotationChanged()();
+             })
 		 };
 		 this.statusChangeListeners.push(changeListener);
 	}-*/;

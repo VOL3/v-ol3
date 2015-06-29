@@ -49,9 +49,9 @@ public class Feature extends JavaScriptObject {
 
     public native final void addFeatureChangeListener(FeatureChangeListener listener)/*-{
         var that=this;
-        var callback=function(){
-            $entry(listener.@org.vaadin.gwtol3.client.feature.FeatureChangeListener::featureChanged(Lorg/vaadin/gwtol3/client/feature/Feature;)(that));
-        };
+        var callback=$entry(function(){
+            listener.@org.vaadin.gwtol3.client.feature.FeatureChangeListener::featureChanged(Lorg/vaadin/gwtol3/client/feature/Feature;)(that);
+        });
         this.on("change",callback,this);
     }-*/;
 }

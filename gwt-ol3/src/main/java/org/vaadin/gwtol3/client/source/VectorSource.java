@@ -37,12 +37,12 @@ public class VectorSource extends AbstractVectorSource{
      */
     public native final JavaScriptObject addFeatureSetChangeListener(FeatureSetChangeListener listener)/*-{
         var changeListener = {
-            featureAdded: function(feature){
-                $entry(listener.@org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener::featureAdded(Lorg/vaadin/gwtol3/client/feature/Feature;)(feature));
-            },
-            featureDeleted : function(feature){
-                $entry(listener.@org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener::featureDeleted(Lorg/vaadin/gwtol3/client/feature/Feature;)(feature));
-            }
+            featureAdded: $entry(function(feature) {
+                    listener.@org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener::featureAdded(Lorg/vaadin/gwtol3/client/feature/Feature;)(feature);
+            }),
+            featureDeleted : $entry(function(feature) {
+                listener.@org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener::featureDeleted(Lorg/vaadin/gwtol3/client/feature/Feature;)(feature);
+            })
         };
         this.featureSetChangeListeners.push(changeListener);
     }-*/;
