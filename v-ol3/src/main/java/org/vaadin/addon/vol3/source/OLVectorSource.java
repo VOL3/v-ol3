@@ -42,6 +42,7 @@ public class OLVectorSource extends OLSource{
     private void setOptions(OLVectorSourceOptions options) {
         this.getState().attributions=options.getAttributions();
         this.getState().logo=options.getLogo();
+        this.getState().inputProjection=options.getInputProjection();
     }
 
     /** Adds feature to the source. The id is generated automatically for the feature

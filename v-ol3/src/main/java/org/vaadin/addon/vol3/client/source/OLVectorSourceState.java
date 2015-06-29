@@ -7,4 +7,5 @@ public class OLVectorSourceState extends OLSourceState{
     public String state;
     public String [] attributions;
     public String logo;
+    public String inputProjection;
 }

@@ -175,8 +175,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
     }
 
     private String getInputProjection(){
-//        return getState().inputProjection != null ? getState().inputProjection : Projections.EPSG4326;
-        return Projections.EPSG4326;
+        return getState().inputProjection != null ? getState().inputProjection : Projections.EPSG4326;
     }
 
     /** Returns the currently used view projection

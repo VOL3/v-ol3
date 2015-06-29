@@ -6,8 +6,6 @@ package org.vaadin.addon.vol3.source;
 public class OLSourceOptions {
     private String [] attributions;
     private String logo;
-    // crs name of the projection
-    private String projection;
 
     public String[] getAttributions() {
         return attributions;

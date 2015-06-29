@@ -7,11 +7,14 @@ import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLExtent;
+import org.vaadin.addon.vol3.feature.OLFeature;
+import org.vaadin.addon.vol3.feature.OLPoint;
+import org.vaadin.addon.vol3.interaction.OLModifyInteraction;
+import org.vaadin.addon.vol3.interaction.OLModifyInteractionOptions;
 import org.vaadin.addon.vol3.layer.OLImageLayer;
 import org.vaadin.addon.vol3.layer.OLLayer;
-import org.vaadin.addon.vol3.source.OLImageWMSSource;
-import org.vaadin.addon.vol3.source.OLImageWMSSourceOptions;
-import org.vaadin.addon.vol3.source.OLSource;
+import org.vaadin.addon.vol3.layer.OLVectorLayer;
+import org.vaadin.addon.vol3.source.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +35,31 @@ public class Proj4jsMap extends BasicMap {
 		map.addLayer(layer);
 		map.setView(createView());
 		map.setSizeFull();
+		// test also vector layer conversions
+		OLVectorLayer vectorLayer=createVectorLayer();
+		map.addLayer(vectorLayer);
+		// create modify interaction
+		OLModifyInteraction modify=new OLModifyInteraction(vectorLayer,new OLModifyInteractionOptions());
+		map.addInteraction(modify);
 		return map;
+	}
+
+	private OLVectorLayer createVectorLayer(){
+		OLVectorSourceOptions vectorOptions=new OLVectorSourceOptions();
+		vectorOptions.setInputProjection("EPSG:4326");
+		OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
+		vectorSource.addFeature(createPointFeature("feature-a-1",8,45));
+		vectorSource.addFeature(createPointFeature("feature-a-2",8,46));
+		vectorSource.addFeature(createPointFeature("feature-a-3",8,47));
+		OLVectorLayer vectorLayer=new OLVectorLayer(vectorSource);
+		vectorLayer.setLayerVisible(true);
+		return vectorLayer;
+	}
+
+	private OLFeature createPointFeature(String id, double x, double y){
+		OLFeature testFeature=new OLFeature(id);
+		testFeature.setGeometry(new OLPoint(x,y));
+		return testFeature;
 	}
 
 	@Override
