@@ -317,7 +317,7 @@ public class OLMap extends AbstractComponentContainer{
         getState().renderer=options.getRenderer();
         getState().pixelRatio=options.getPixelRatio();
         getState().deviceOptions=options.getDeviceOptions();
-        getState().coordinateSystemDefinitions=options.getCoordinateSystemDefinitions();
+        getState().coordinateSystemDefinitions=options.getProjectionDefinitions();
     }
 
     private void addDefaultControls() {

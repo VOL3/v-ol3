@@ -13,8 +13,9 @@ public class OLOSMSourceOptions {
      *
      * @param showAttributions
      */
-    public void setShowAttributions(Boolean showAttributions) {
+    public OLOSMSourceOptions setShowAttributions(Boolean showAttributions) {
         this.showAttributions = showAttributions;
+        return this;
     }
 
     public Boolean getShowAttributions() {
@@ -29,8 +30,9 @@ public class OLOSMSourceOptions {
      *
      * @param customAttributions
      */
-    public void setCustomAttributions(String[] customAttributions) {
+    public OLOSMSourceOptions setCustomAttributions(String[] customAttributions) {
         this.customAttributions = customAttributions;
+        return this;
     }
 
     public Integer getMaxZoom() {
@@ -41,8 +43,9 @@ public class OLOSMSourceOptions {
      *
      * @param maxZoom
      */
-    public void setMaxZoom(Integer maxZoom) {
+    public OLOSMSourceOptions setMaxZoom(Integer maxZoom) {
         this.maxZoom = maxZoom;
+        return this;
     }
 
     public String getCrossOriginPolicy() {
@@ -53,7 +56,8 @@ public class OLOSMSourceOptions {
      *
      * @param crossOriginPolicy
      */
-    public void setCrossOriginPolicy(String crossOriginPolicy) {
+    public OLOSMSourceOptions setCrossOriginPolicy(String crossOriginPolicy) {
         this.crossOriginPolicy = crossOriginPolicy;
+        return this;
     }
 }

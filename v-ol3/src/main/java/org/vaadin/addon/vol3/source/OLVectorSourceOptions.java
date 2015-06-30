@@ -14,7 +14,8 @@ public class OLVectorSourceOptions extends OLSourceOptions {
 	 *
 	 * @param inputProjection the input projection to be used. EPSG:4326 by default.
 	 */
-	public void setInputProjection(String inputProjection) {
+	public OLVectorSourceOptions setInputProjection(String inputProjection) {
 		this.inputProjection = inputProjection;
+		return this;
 	}
 }

@@ -42,135 +42,152 @@ public class OLWMTSSourceOptions {
 		return attributions;
 	}
 
-	public void setAttributions(String[] attributions) {
+	public OLWMTSSourceOptions setAttributions(String[] attributions) {
 		this.attributions = attributions;
+		return this;
 	}
 
 	public String getCrossOriginPolicy() {
 		return crossOriginPolicy;
 	}
 
-	public void setCrossOriginPolicy(String crossOriginPolicy) {
+	public OLWMTSSourceOptions setCrossOriginPolicy(String crossOriginPolicy) {
 		this.crossOriginPolicy = crossOriginPolicy;
+		return this;
 	}
 
 	public String getLogo() {
 		return logo;
 	}
 
-	public void setLogo(String logo) {
+	public OLWMTSSourceOptions setLogo(String logo) {
 		this.logo = logo;
+		return this;
 	}
 
 	public OLTileGrid getTileGrid() {
 		return tileGrid;
 	}
 
-	public void setTileGrid(OLTileGrid tileGrid) {
+	public OLWMTSSourceOptions setTileGrid(OLTileGrid tileGrid) {
 		this.tileGrid = tileGrid;
+		return this;
 	}
 
 	public String getProjection() {
 		return projection;
 	}
 
-	public void setProjection(String projection) {
+	public OLWMTSSourceOptions setProjection(String projection) {
 		this.projection = projection;
+		return this;
 	}
 
 	public String getRequestEncoding() {
 		return requestEncoding;
 	}
 
-	public void setRequestEncoding(String requestEncoding) {
+	public OLWMTSSourceOptions setRequestEncoding(String requestEncoding) {
 		this.requestEncoding = requestEncoding;
+		return this;
 	}
 
 	public String getLayer() {
 		return layer;
 	}
 
-	public void setLayer(String layer) {
+	public OLWMTSSourceOptions setLayer(String layer) {
 		this.layer = layer;
+		return this;
 	}
 
 	public String getStyle() {
 		return style;
 	}
 
-	public void setStyle(String style) {
+	public OLWMTSSourceOptions setStyle(String style) {
 		this.style = style;
+		return this;
 	}
 
 	public Double getTilePixelRatio() {
 		return tilePixelRatio;
 	}
 
-	public void setTilePixelRatio(Double tilePixelRatio) {
+	public OLWMTSSourceOptions setTilePixelRatio(Double tilePixelRatio) {
 		this.tilePixelRatio = tilePixelRatio;
+		return this;
 	}
 
 	public String getVersion() {
 		return version;
 	}
 
-	public void setVersion(String version) {
+	public OLWMTSSourceOptions setVersion(String version) {
 		this.version = version;
+		return this;
 	}
 
 	public String getFormat() {
 		return format;
 	}
 
-	public void setFormat(String format) {
+	public OLWMTSSourceOptions setFormat(String format) {
 		this.format = format;
+		return this;
 	}
 
 	public String getMatrixSet() {
 		return matrixSet;
 	}
 
-	public void setMatrixSet(String matrixSet) {
+	public OLWMTSSourceOptions setMatrixSet(String matrixSet) {
 		this.matrixSet = matrixSet;
+		return this;
 	}
 
 	public String getUrl() {
 		return url;
 	}
 
-	public void setUrl(String url) {
+	public OLWMTSSourceOptions setUrl(String url) {
 		this.url = url;
+		return this;
 	}
 
 	public Double getMaxZoom() {
 		return maxZoom;
 	}
 
-	public void setMaxZoom(Double maxZoom) {
+	public OLWMTSSourceOptions setMaxZoom(Double maxZoom) {
 		this.maxZoom = maxZoom;
+		return this;
 	}
 
 	public String[] getUrls() {
 		return urls;
 	}
 
-	public void setUrls(String[] urls) {
+	public OLWMTSSourceOptions setUrls(String[] urls) {
 		this.urls = urls;
+		return this;
 	}
 
 	public Boolean getWrapX() {
 		return wrapX;
 	}
 
-	public void setWrapX(Boolean wrapX) {
+	public OLWMTSSourceOptions setWrapX(Boolean wrapX) {
 		this.wrapX = wrapX;
+		return this;
 	}
 
 	public Boolean getOpaque() {
 		return opaque;
 	}
 
-	public void setOpaque(Boolean opaque) {
+	public OLWMTSSourceOptions setOpaque(Boolean opaque) {
 		this.opaque = opaque;
+		return this;
 	}
 }

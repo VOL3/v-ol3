@@ -25,8 +25,9 @@ public class OLModifyInteractionOptions {
      *
      * @param pixelTolerance
      */
-    public void setPixelTolerance(Double pixelTolerance) {
+    public OLModifyInteractionOptions setPixelTolerance(Double pixelTolerance) {
         this.pixelTolerance = pixelTolerance;
+        return this;
     }
 
     /** Gets the FeatureOverlay style
@@ -41,7 +42,8 @@ public class OLModifyInteractionOptions {
      *
      * @param styles
      */
-    public void setStyles(List<OLStyle> styles) {
+    public OLModifyInteractionOptions setStyles(List<OLStyle> styles) {
         this.styles = styles;
+        return this;
     }
 }

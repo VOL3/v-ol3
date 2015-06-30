@@ -26,8 +26,9 @@ public class OLViewOptions {
      *
      * @param enableRotation
      */
-    public void setEnableRotation(Boolean enableRotation) {
+    public OLViewOptions setEnableRotation(Boolean enableRotation) {
         this.enableRotation = enableRotation;
+        return this;
     }
 
     public OLExtent getExtent() {
@@ -38,8 +39,9 @@ public class OLViewOptions {
      *
      * @param extent
      */
-    public void setExtent(OLExtent extent) {
+    public OLViewOptions setExtent(OLExtent extent) {
         this.extent = extent;
+        return this;
     }
 
     public Double getMaxResolution() {
@@ -50,8 +52,9 @@ public class OLViewOptions {
      *
      * @param maxResolution
      */
-    public void setMaxResolution(Double maxResolution) {
+    public OLViewOptions setMaxResolution(Double maxResolution) {
         this.maxResolution = maxResolution;
+        return this;
     }
 
     public Double getMinResolution() {
@@ -62,8 +65,9 @@ public class OLViewOptions {
      *
      * @param minResolution
      */
-    public void setMinResolution(Double minResolution) {
+    public OLViewOptions setMinResolution(Double minResolution) {
         this.minResolution = minResolution;
+        return this;
     }
 
     public Integer getMaxZoom() {
@@ -74,8 +78,9 @@ public class OLViewOptions {
      *
      * @param maxZoom
      */
-    public void setMaxZoom(Integer maxZoom) {
+    public OLViewOptions setMaxZoom(Integer maxZoom) {
         this.maxZoom = maxZoom;
+        return this;
     }
 
     public Integer getMinZoom() {
@@ -86,8 +91,9 @@ public class OLViewOptions {
      *
      * @param minZoom
      */
-    public void setMinZoom(Integer minZoom) {
+    public OLViewOptions setMinZoom(Integer minZoom) {
         this.minZoom = minZoom;
+        return this;
     }
 
     public String getMapProjection() {
@@ -98,8 +104,9 @@ public class OLViewOptions {
      *
      * @param mapProjection the map projection
      */
-    public void setMapProjection(String mapProjection) {
+    public OLViewOptions setMapProjection(String mapProjection) {
         this.mapProjection = mapProjection;
+        return this;
     }
 
     public String getInputProjection(){
@@ -110,8 +117,9 @@ public class OLViewOptions {
      * automatic conversion is done by the wrapper. The default is the value of the map projection.
      * @param inputProjection the input projection
      */
-    public void setInputProjection(String inputProjection){
+    public OLViewOptions setInputProjection(String inputProjection){
         this.inputProjection=inputProjection;
+        return this;
     }
 
     public Double getZoomFactor() {
@@ -123,8 +131,9 @@ public class OLViewOptions {
      *
      * @param zoomFactor
      */
-    public void setZoomFactor(Double zoomFactor) {
+    public OLViewOptions setZoomFactor(Double zoomFactor) {
         this.zoomFactor = zoomFactor;
+        return this;
     }
 
     public OLRotationConstraint getRotationConstraint() {
@@ -135,7 +144,8 @@ public class OLViewOptions {
      *
      * @param rotationConstraint
      */
-    public void setRotationConstraint(OLRotationConstraint rotationConstraint) {
+    public OLViewOptions setRotationConstraint(OLRotationConstraint rotationConstraint) {
         this.rotationConstraint = rotationConstraint;
+        return this;
     }
 }

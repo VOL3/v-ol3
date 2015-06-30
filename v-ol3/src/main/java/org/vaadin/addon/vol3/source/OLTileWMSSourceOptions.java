@@ -32,8 +32,9 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
         return crossOriginPolicy;
     }
 
-    public void setCrossOriginPolicy(String crossOriginPolicy) {
+    public OLTileWMSSourceOptions setCrossOriginPolicy(String crossOriginPolicy) {
         this.crossOriginPolicy = crossOriginPolicy;
+        return this;
     }
 
     public Boolean getHidpi() {
@@ -44,8 +45,9 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param hidpi
      */
-    public void setHidpi(Boolean hidpi) {
+    public OLTileWMSSourceOptions setHidpi(Boolean hidpi) {
         this.hidpi = hidpi;
+        return this;
     }
 
     public String getServerType() {
@@ -56,8 +58,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param serverType
      */
-     public void setServerType(String serverType) {
+    public OLTileWMSSourceOptions setServerType(String serverType) {
         this.serverType = serverType;
+        return this;
+
     }
 
     public String getUrl() {
@@ -68,8 +72,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param url
      */
-     public void setUrl(String url) {
+    public OLTileWMSSourceOptions setUrl(String url) {
         this.url = url;
+        return this;
+
     }
 
     public String[] getUrls() {
@@ -80,8 +86,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param urls
      */
-     public void setUrls(String[] urls) {
+    public OLTileWMSSourceOptions setUrls(String[] urls) {
         this.urls = urls;
+        return this;
+
     }
 
     public Double getGutter() {
@@ -92,8 +100,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param gutter
      */
-     public void setGutter(Double gutter) {
+    public OLTileWMSSourceOptions setGutter(Double gutter) {
         this.gutter = gutter;
+        return this;
+
     }
 
     public Double getMaxZoom() {
@@ -104,8 +114,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param maxZoom
      */
-     public void setMaxZoom(Double maxZoom) {
+    public OLTileWMSSourceOptions setMaxZoom(Double maxZoom) {
         this.maxZoom = maxZoom;
+        return this;
+
     }
 
     public Map<String, String> getParams() {
@@ -116,17 +128,21 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param params
      */
-    public void setParams(Map<String, String> params) {
+    public OLTileWMSSourceOptions setParams(Map<String, String> params) {
         this.params = params;
+        return this;
+
     }
 
-	public OLTileGrid getTileGrid() {
-		return tileGrid;
-	}
+    public OLTileGrid getTileGrid() {
+        return tileGrid;
+    }
 
-	public void setTileGrid(OLTileGrid tileGrid) {
-		this.tileGrid = tileGrid;
-	}
+    public OLTileWMSSourceOptions setTileGrid(OLTileGrid tileGrid) {
+        this.tileGrid = tileGrid;
+        return this;
+
+    }
 
     public String getProjection() {
         return projection;
@@ -136,8 +152,10 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
      *
      * @param projection
      */
-    public void setProjection(String projection) {
+    public OLTileWMSSourceOptions setProjection(String projection) {
         this.projection = projection;
+        return this;
+
     }
 
 }

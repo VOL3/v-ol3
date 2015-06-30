@@ -30,8 +30,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param projection
      */
-    public void setProjection(String projection) {
+    public OLImageWMSSourceOptions setProjection(String projection) {
         this.projection = projection;
+        return this;
     }
 
 
@@ -39,8 +40,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
         return crossOriginPolicy;
     }
 
-    public void setCrossOriginPolicy(String crossOriginPolicy) {
+    public OLImageWMSSourceOptions setCrossOriginPolicy(String crossOriginPolicy) {
         this.crossOriginPolicy = crossOriginPolicy;
+        return this;
     }
 
     public Boolean getHidpi() {
@@ -51,8 +53,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param hidpi
      */
-     public void setHidpi(Boolean hidpi) {
+    public OLImageWMSSourceOptions setHidpi(Boolean hidpi) {
         this.hidpi = hidpi;
+        return this;
     }
 
     public String getServerType() {
@@ -63,8 +66,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param serverType
      */
-    public void setServerType(String serverType) {
+    public OLImageWMSSourceOptions setServerType(String serverType) {
         this.serverType = serverType;
+        return this;
     }
 
     public Double getRatio() {
@@ -75,8 +79,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      * Ratio. 1 means image requests are the size of the map viewport, 2 means twice the size of the map viewport, and so on. Default is 1.5.
      * @param ratio
      */
-     public void setRatio(Double ratio) {
+    public OLImageWMSSourceOptions setRatio(Double ratio) {
         this.ratio = ratio;
+        return this;
     }
 
     public double[] getResolutions() {
@@ -87,8 +92,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param resolutions
      */
-     public void setResolutions(double[] resolutions) {
+    public OLImageWMSSourceOptions setResolutions(double[] resolutions) {
         this.resolutions = resolutions;
+        return this;
     }
 
     public String getUrl() {
@@ -99,8 +105,9 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param url
      */
-     public void setUrl(String url) {
+    public OLImageWMSSourceOptions setUrl(String url) {
         this.url = url;
+        return this;
     }
 
     public Map<String, String> getParams() {
@@ -111,7 +118,8 @@ public class OLImageWMSSourceOptions extends OLSourceOptions {
      *
      * @param params
      */
-     public void setParams(Map<String, String> params) {
+    public OLImageWMSSourceOptions setParams(Map<String, String> params) {
         this.params = params;
+        return this;
     }
 }

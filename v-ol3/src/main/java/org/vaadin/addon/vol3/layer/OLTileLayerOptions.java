@@ -19,8 +19,9 @@ public class OLTileLayerOptions extends OLLayerOptions{
      *
      * @param preload
      */
-    public void setPreload(Integer preload) {
+    public OLTileLayerOptions setPreload(Integer preload) {
         this.preload = preload;
+        return this;
     }
 
     /** Returns true if interim tiles are used on error
@@ -35,7 +36,8 @@ public class OLTileLayerOptions extends OLLayerOptions{
      *
      * @param useInterimTilesOnError
      */
-    public void setUseInterimTilesOnError(Boolean useInterimTilesOnError) {
+    public OLTileLayerOptions setUseInterimTilesOnError(Boolean useInterimTilesOnError) {
         this.useInterimTilesOnError = useInterimTilesOnError;
+        return this;
     }
 }

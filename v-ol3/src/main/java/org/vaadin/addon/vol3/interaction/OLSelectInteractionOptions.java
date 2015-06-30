@@ -23,8 +23,9 @@ public class OLSelectInteractionOptions {
     /** Sets the layers where selections can be made. If not set, all visible layers are available for selection.
      * @param layers
      */
-    public void setLayers(List<OLLayer> layers) {
+    public OLSelectInteractionOptions setLayers(List<OLLayer> layers) {
         this.layers = layers;
+        return this;
     }
 
     /** Gets the styles used for the selected features
@@ -39,7 +40,8 @@ public class OLSelectInteractionOptions {
      *
      * @param styles
      */
-    public void setStyles(List<OLStyle> styles) {
+    public OLSelectInteractionOptions setStyles(List<OLStyle> styles) {
         this.styles = styles;
+        return this;
     }
 }

@@ -28,8 +28,9 @@ public class OLMapOptions {
      *
      * @param showOl3Logo
      */
-    public void setShowOl3Logo(Boolean showOl3Logo) {
+    public OLMapOptions setShowOl3Logo(Boolean showOl3Logo) {
         this.showOl3Logo = showOl3Logo;
+        return this;
     }
 
     public OLRendererType getRenderer() {
@@ -40,8 +41,9 @@ public class OLMapOptions {
      *
      * @param renderer
      */
-    public void setRenderer(OLRendererType renderer) {
+    public OLMapOptions setRenderer(OLRendererType renderer) {
         this.renderer = renderer;
+        return this;
     }
 
     public Double getPixelRatio() {
@@ -52,8 +54,9 @@ public class OLMapOptions {
      *
      * @param pixelRatio
      */
-    public void setPixelRatio(Double pixelRatio) {
+    public OLMapOptions setPixelRatio(Double pixelRatio) {
         this.pixelRatio = pixelRatio;
+        return this;
     }
 
     public OLDeviceOptions getDeviceOptions() {
@@ -64,8 +67,9 @@ public class OLMapOptions {
      *
      * @param deviceOptions
      */
-    public void setDeviceOptions(OLDeviceOptions deviceOptions) {
+    public OLMapOptions setDeviceOptions(OLDeviceOptions deviceOptions) {
         this.deviceOptions = deviceOptions;
+        return this;
     }
 
     /** Activates the given projection using the proj4js library. You must activate the projection before you can use it in your views and data sources. Please note that the proj4js library is not included in the add-on. If you need other coordinate systems, you need to do include proj4js manually using the @JavaScript annotation. See the test code in Proj4jsMap for details.
@@ -90,7 +94,7 @@ public class OLMapOptions {
      *
      * @return
      */
-    public Map<String, String> getCoordinateSystemDefinitions() {
+    public Map<String, String> getProjectionDefinitions() {
         return coordinateSystemDefinitions;
     }
 }

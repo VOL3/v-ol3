@@ -11,15 +11,17 @@ public class OLSourceOptions {
         return attributions;
     }
 
-    public void setAttributions(String[] attributions) {
+    public OLSourceOptions setAttributions(String[] attributions) {
         this.attributions = attributions;
+        return this;
     }
 
     public String getLogo() {
         return logo;
     }
 
-    public void setLogo(String logo) {
+    public OLSourceOptions setLogo(String logo) {
         this.logo = logo;
+        return this;
     }
 }

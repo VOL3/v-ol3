@@ -36,8 +36,9 @@ public class OLDrawInteractionOptions {
      *
      * @param snapTolerance
      */
-    public void setSnapTolerance(Double snapTolerance) {
+    public OLDrawInteractionOptions setSnapTolerance(Double snapTolerance) {
         this.snapTolerance = snapTolerance;
+        return this;
     }
 
     /** Gets the drawing type
@@ -52,8 +53,9 @@ public class OLDrawInteractionOptions {
      *
      * @param type
      */
-    public void setType(DrawingType type) {
+    public OLDrawInteractionOptions setType(DrawingType type) {
         this.type = type;
+        return this;
     }
 
     /** Gets the number of points that must be drawn before a polygon ring can be finished.
@@ -68,8 +70,9 @@ public class OLDrawInteractionOptions {
      *
      * @param minPointsPerRing
      */
-    public void setMinPointsPerRing(Double minPointsPerRing) {
+    public OLDrawInteractionOptions setMinPointsPerRing(Double minPointsPerRing) {
         this.minPointsPerRing = minPointsPerRing;
+        return this;
     }
 
     /** Gets the style used for the sketch features
@@ -84,9 +87,10 @@ public class OLDrawInteractionOptions {
      *
      * @param styles
      */
-     public void setStyles(List<OLStyle> styles) {
+     public OLDrawInteractionOptions setStyles(List<OLStyle> styles) {
         this.styles = styles;
-    }
+        return this;
+     }
 
     /** Gets geometry name for the drawn features
      *
@@ -100,8 +104,9 @@ public class OLDrawInteractionOptions {
      *
      * @param geometryName
      */
-    public void setGeometryName(String geometryName) {
+    public OLDrawInteractionOptions setGeometryName(String geometryName) {
         this.geometryName = geometryName;
+        return this;
     }
 
     static String getTypeAsString(DrawingType type){
