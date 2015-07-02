@@ -91,6 +91,7 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             for(String id : featureIds){
                 removeFeatureById(source,id);
             }
+            removeTemporaryFeatures();
         }
 
         private void removeFeatureById(VectorSource source, String id){
