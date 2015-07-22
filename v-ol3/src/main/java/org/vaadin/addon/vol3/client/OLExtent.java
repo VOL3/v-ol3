@@ -71,4 +71,15 @@ public class OLExtent implements Serializable {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return "OLExtent{" +
+                "minX=" + minX +
+                ", minY=" + minY +
+                ", maxX=" + maxX +
+                ", maxY=" + maxY +
+                ", empty=" + empty +
+                '}';
+    }
 }
