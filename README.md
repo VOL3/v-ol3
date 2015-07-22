@@ -1,4 +1,5 @@
 # Open Layers 3 wrapper for Vaadin 7
+## Introduction
 
 This project provides GWT and Vaadin 7 wrappers for a subset of features in the OpenLayers 3 JavaScript api. The project is a multi module Maven project with separate modules for the GWT and Vaadin wrapper.
 
@@ -10,7 +11,7 @@ As said, only a subset of the features of the OpenLayers 3 library is wrapped. I
 
 License: Apache License 2.0
 
-# build v-ol3
+## build v-ol3
 
 The v-ol3 is a maven handled project. It can be build easily:
 ```shell
