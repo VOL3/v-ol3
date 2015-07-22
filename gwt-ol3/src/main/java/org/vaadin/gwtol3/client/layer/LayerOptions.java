@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.layer;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.source.Source;
 
 /**
@@ -44,5 +45,9 @@ public abstract class LayerOptions extends JavaScriptObject {
 
     public final native void setSource(Source source)/*-{
         this.source=source;
+    }-*/;
+
+    public final native void setExtent(Extent extent)/*-{
+        this.extent=extent;
     }-*/;
 }

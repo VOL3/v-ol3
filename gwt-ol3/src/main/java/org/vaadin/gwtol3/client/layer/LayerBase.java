@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.layer;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import org.vaadin.gwtol3.client.Extent;
 
 /**
  * Base class for the layers
@@ -50,6 +51,14 @@ public abstract class LayerBase extends JavaScriptObject {
     public native final Boolean getVisible()/*-{
 		var res = this.getVisible();
         return res == null ? null : @java.lang.Boolean::valueOf(Z)(res);
+    }-*/;
+
+    public native final Extent getExtent()/*-{
+        return this.getExtent();
+    }-*/;
+
+    public native final void setExtent(Extent extent)/*-{
+        this.setExtent(extent);
     }-*/;
 
     public native final void setBrightness(double brightness)/*-{

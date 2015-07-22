@@ -12,10 +12,15 @@ import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayerOptions;
 import org.vaadin.addon.vol3.source.OLSource;
 
+import java.util.logging.Logger;
+
 /**
  * Map with constrained view extent
  */
 public class ConstrainedMap extends BasicMap {
+
+    private static final Logger logger= Logger.getLogger(ConstrainedMap.class.getName());
+
 
     protected OLMap createMap(){
         OLMapOptions mapOpts=new OLMapOptions();
@@ -36,24 +41,29 @@ public class ConstrainedMap extends BasicMap {
         OLTileLayerOptions opts=new OLTileLayerOptions();
         opts.setPreload(4);
         opts.setUseInterimTilesOnError(false);
+        opts.setInputProjection(Projections.EPSG4326);
+        opts.setExtent(createExtent());
         return new OLTileLayer(source,opts);
     }
 
     protected OLView createView(){
         OLViewOptions viewOpts=new OLViewOptions();
-        viewOpts.setMinZoom(3);
+        viewOpts.setMinZoom(5);
         viewOpts.setMaxZoom(20);
         viewOpts.setZoomFactor(2d);
         viewOpts.setInputProjection(Projections.EPSG4326);
+        viewOpts.setExtent(createExtent());
+        OLView view=new OLView(viewOpts);
+        view.fitExtent(createExtent());
+        return view;
+    }
+
+    private OLExtent createExtent(){
         OLExtent extent=new OLExtent();
         extent.minX=19.0;
         extent.maxX=32.0;
         extent.minY=60.0;
         extent.maxY=70.0;
-        viewOpts.setExtent(extent);
-        OLView view=new OLView(viewOpts);
-        view.setZoom(8);
-        view.setCenter(22.299801, 60.452372);
-        return view;
+        return extent;
     }
 }

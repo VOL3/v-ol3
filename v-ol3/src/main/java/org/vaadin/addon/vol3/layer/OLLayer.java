@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.layer;
 
 import com.vaadin.ui.AbstractSingleComponentContainer;
 import com.vaadin.ui.Component;
+import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.layer.OLLayerState;
 import org.vaadin.addon.vol3.source.OLSource;
 
@@ -38,6 +39,8 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         setOpacity(options.getOpacity());
         setSaturation(options.getSaturation());
         setLayerVisible(options.getVisible());
+        setExtent(options.getExtent());
+        getState().inputProjection=options.getInputProjection();
     }
 
     @Override
@@ -117,5 +120,13 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
 
     public void setLayerVisible(Boolean visible) {
         getState().visible=visible;
+    }
+
+    public OLExtent getExtent(){
+        return getState(false).extent;
+    }
+
+    public void setExtent(OLExtent extent){
+        getState().extent=extent;
     }
 }

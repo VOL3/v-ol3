@@ -1,5 +1,7 @@
 package org.vaadin.addon.vol3.layer;
 
+import org.vaadin.addon.vol3.client.OLExtent;
+
 /**
  * Options common for all layer types
  */
@@ -13,6 +15,8 @@ public class OLLayerOptions {
     private Double opacity;
     private Double saturation;
     private Boolean visible;
+    private OLExtent extent;
+    private String inputProjection;
 
     public Double getBrightness() {
         return brightness;
@@ -83,6 +87,24 @@ public class OLLayerOptions {
 
     public OLLayerOptions setVisible(Boolean visible) {
         this.visible = visible;
+        return this;
+    }
+
+    public OLExtent getExtent() {
+        return extent;
+    }
+
+    public OLLayerOptions setExtent(OLExtent extent) {
+        this.extent = extent;
+        return this;
+    }
+
+    public String getInputProjection() {
+        return inputProjection;
+    }
+
+    public OLLayerOptions setInputProjection(String inputProjection) {
+        this.inputProjection = inputProjection;
         return this;
     }
 }

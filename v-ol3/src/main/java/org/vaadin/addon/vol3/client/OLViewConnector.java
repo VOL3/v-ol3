@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.client;
 
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -174,8 +175,13 @@ public class OLViewConnector extends AbstractComponentConnector{
         }
 
 		@Override
-		public void fitExtent(OLExtent extent) {
-            getView().fitExtent(Extent.create(extent.minX, extent.minY, extent.maxX, extent.maxY), getMap().getSize());
+		public void fitExtent(final OLExtent extent) {
+            Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+                @Override
+                public void execute() {
+                    getView().fitExtent(Extent.create(extent.minX, extent.minY, extent.maxX, extent.maxY), getMap().getSize());
+                }
+            });
 		}
     }
 }

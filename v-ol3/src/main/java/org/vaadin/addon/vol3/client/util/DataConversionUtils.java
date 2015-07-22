@@ -5,6 +5,7 @@ import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.Extent;
 
 /**
  * Utility class for performing data type conversions
@@ -35,4 +36,8 @@ public class DataConversionUtils {
 		}
 		return coordinateArray;
 	}
+
+	public static native final Extent transformExtent(String sourceProjection, String targetProjection, Extent extent)/*-{
+        return $wnd.ol.proj.transformExtent(extent, sourceProjection, targetProjection);
+	}-*/;
 }

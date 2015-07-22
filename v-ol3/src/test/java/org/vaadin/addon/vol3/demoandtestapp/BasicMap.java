@@ -41,22 +41,12 @@ public class BasicMap extends VerticalLayout implements View {
         map.addLayer(layer);
         map.setView(createView());
         map.setSizeFull();
+        addViewChangeListener();
         return map;
     }
 
-    protected OLSource createSource(){
-        return new OLMapQuestSource(OLMapQuestLayerName.OSM);
-    }
-
-    protected OLLayer createLayer(OLSource source){
-        return new OLTileLayer(source);
-    }
-
-    protected OLView createView(){
-        OLView view=new OLView();
-        view.setZoom(1);
-        view.setCenter(0,0);
-        view.addViewChangeListener(new OLView.ViewChangeListener() {
+    private void addViewChangeListener() {
+        map.getView().addViewChangeListener(new OLView.ViewChangeListener() {
             @Override
             public void resolutionChanged(Double newResolution) {
                 logger.info("resolution changed "+newResolution);
@@ -82,6 +72,20 @@ public class BasicMap extends VerticalLayout implements View {
                 logger.info("extent changed "+extent.minX+","+extent.minY+","+extent.maxX+","+extent.maxY);
             }
         });
+    }
+
+    protected OLSource createSource(){
+        return new OLMapQuestSource(OLMapQuestLayerName.OSM);
+    }
+
+    protected OLLayer createLayer(OLSource source){
+        return new OLTileLayer(source);
+    }
+
+    protected OLView createView(){
+        OLView view=new OLView();
+        view.setZoom(1);
+        view.setCenter(0,0);
         return view;
     }
 

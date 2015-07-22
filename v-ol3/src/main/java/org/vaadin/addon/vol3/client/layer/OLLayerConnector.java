@@ -6,14 +6,21 @@ import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.annotations.OnStateChange;
 import com.vaadin.client.ui.AbstractSingleComponentContainerConnector;
+import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.source.OLSourceConnector;
+import org.vaadin.addon.vol3.client.util.DataConversionUtils;
+import org.vaadin.gwtol3.client.Extent;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.source.Source;
+
+import java.util.logging.Logger;
 
 /**
  * Abstract base class for client-side connectors of the layers
  */
 public abstract class OLLayerConnector extends AbstractSingleComponentContainerConnector {
+
+    private static final Logger logger= Logger.getLogger(OLLayerConnector.class.getName());
 
     // we create a dummy widget since this connector is used
     // only to handle layer state serialization
@@ -135,6 +142,26 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
     void updateVisible(){
         if(getState().visible!=null){
             getLayer().setVisible(getState().visible.booleanValue());
+        }
+    }
+
+    @OnStateChange("extent")
+    void updateExtent(){
+        if(getState().extent!=null){
+            logger.info("Updating extent");
+            OLExtent ext=getState().extent;
+            Extent extent=Extent.create(ext.minX,ext.minY, ext.maxX, ext.maxY);
+            if(getState().inputProjection!=null){
+                String sourceProjection=getSource().getProjection().getCode();
+                if(sourceProjection!=null && !sourceProjection.equals(getState().inputProjection)){
+                    // we need to transform the extent
+                    logger.info("Converting extent from "+getState().inputProjection+" to "+sourceProjection);
+                    getLayer().setExtent(DataConversionUtils.transformExtent(getState().inputProjection, sourceProjection, extent));
+                }
+            } else{
+                logger.info("No need to convert, just set the extent");
+                getLayer().setExtent(extent);
+            }
         }
     }
 }
