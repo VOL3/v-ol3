@@ -63,6 +63,15 @@ public class OLVectorSource extends OLSource{
         updateFeatureInternal(feature, true);
     }
 
+    /** Updates all features on the source. Very handy if changing style of layer.
+     *
+     */
+    public void updateAllFeatures(){
+        for (OLFeature olFeature : features.values()) {
+            updateFeature(olFeature);
+        }
+    }
+
     /** Adds the specified feature to the source
      *
      * @param feature the feature to be added
