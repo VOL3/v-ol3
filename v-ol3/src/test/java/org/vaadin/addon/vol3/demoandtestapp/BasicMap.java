@@ -26,6 +26,8 @@ public class BasicMap extends VerticalLayout implements View {
     public BasicMap() {
         this.setSizeFull();
         map=createMap();
+
+        this.addViewChangeListener();
         this.addComponent(map);
         this.setExpandRatio(this.iterator().next(),1.0f);
         this.addComponent(createControls());
@@ -41,7 +43,6 @@ public class BasicMap extends VerticalLayout implements View {
         map.addLayer(layer);
         map.setView(createView());
         map.setSizeFull();
-        addViewChangeListener();
         return map;
     }
 
