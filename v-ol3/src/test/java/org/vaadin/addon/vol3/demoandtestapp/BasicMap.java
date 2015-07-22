@@ -31,6 +31,7 @@ public class BasicMap extends VerticalLayout implements View {
         this.addComponent(map);
         this.setExpandRatio(this.iterator().next(),1.0f);
         this.addComponent(createControls());
+        addViewChangeListener();
     }
 
     @Override
@@ -50,27 +51,27 @@ public class BasicMap extends VerticalLayout implements View {
         map.getView().addViewChangeListener(new OLView.ViewChangeListener() {
             @Override
             public void resolutionChanged(Double newResolution) {
-                logger.info("resolution changed "+newResolution);
+                logger.info("resolution changed " + newResolution);
             }
 
             @Override
             public void rotationChanged(Double rotation) {
-                logger.info("rotation changed "+rotation);
+                logger.info("rotation changed " + rotation);
             }
 
             @Override
             public void centerChanged(OLCoordinate centerPoint) {
-                logger.info("center changed "+centerPoint.toText());
+                logger.info("center changed " + centerPoint.toText());
             }
 
             @Override
             public void zoomChanged(Integer zoom) {
-                logger.info("zoom changed "+zoom);
+                logger.info("zoom changed " + zoom);
             }
 
             @Override
             public void extentChanged(OLExtent extent) {
-                logger.info("extent changed "+extent.minX+","+extent.minY+","+extent.maxX+","+extent.maxY);
+                logger.info("extent changed " + extent.minX + "," + extent.minY + "," + extent.maxX + "," + extent.maxY);
             }
         });
     }
