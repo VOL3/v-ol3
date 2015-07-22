@@ -4,7 +4,7 @@ import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 
 /**
- * Created by martin on 22.07.15.
+ * Map for testing ViewPort information on BasicMap
  */
 public class ViewPortMap extends BasicMap {
 
