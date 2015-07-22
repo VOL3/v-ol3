@@ -38,6 +38,7 @@ public class MapTestUI extends UI {
 
     private void addViews() {
         addView("Basic",BasicMap.class);
+        addView("ViewPort",ViewPortMap.class);
         addView("Constrained", ConstrainedMap.class);
         addView("Multilayer", MultiLayerMap.class);
         addView("OpenStreetMap", OSMMap.class);
