@@ -105,13 +105,21 @@ public class OLView extends AbstractComponent {
 		return resolution;
 	}
 
-	/** Gets the last know zoom level of the view
+	/** Gets the last known zoom level of the view
 	 *
 	 * @return
 	 */
 	public Integer getZoom() {
 		return zoom;
 	}
+
+    /** Gets the last known viewport extent of the view
+     *
+      * @return the last known viewport extent of the view
+     */
+    public OLExtent getViewportExtent(){
+        return this.extent;
+    }
 
 	@Override
     protected OLViewState getState() {
