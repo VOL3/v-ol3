@@ -17,7 +17,7 @@ public class ClickHandlerTestMap extends BasicMap {
             @Override
             public void onClickListener(OLCoordinate centerPoint) {
                 System.out.println(centerPoint.toString());
-                Notification.show(centerPoint.toText());
+                Notification.show(centerPoint.toString());
             }
         });
 
