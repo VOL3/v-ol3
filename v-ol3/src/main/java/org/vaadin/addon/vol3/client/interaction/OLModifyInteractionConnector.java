@@ -1,6 +1,7 @@
 package org.vaadin.addon.vol3.client.interaction;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.client.layer.OLVectorLayerConnector;
 import org.vaadin.addon.vol3.client.source.OLVectorSourceConnector;
@@ -59,7 +60,14 @@ public class OLModifyInteractionConnector extends OLInteractionConnector impleme
         listenerKey=vectorSource.addFeatureSetChangeListener(this);
         // create collection of features that is updated when features are added
         // or removed from the associated vector layer
-        targetFeatures=Collection.create(vectorSource.getFeatures());
+        logger.info("state: " + this.getState().toString());
+        if(this.getState().featureId == null){
+            targetFeatures=Collection.create(vectorSource.getFeatures());
+        } else{
+            Collection<Feature> featureCollection = Collection.create();
+            featureCollection.push(vectorSource.getFeatureById(this.getState().featureId));
+            targetFeatures = featureCollection;
+        }
         opts.setFeatures(targetFeatures);
         ModifyInteraction modify=ModifyInteraction.create(opts);
         return modify;

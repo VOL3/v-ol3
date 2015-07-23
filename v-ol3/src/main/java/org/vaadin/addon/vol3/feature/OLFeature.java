@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.feature;
 
+import com.vaadin.ui.AbstractSingleComponentContainer;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 
 import java.io.Serializable;
