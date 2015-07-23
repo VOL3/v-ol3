@@ -5,9 +5,11 @@ import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.interaction.*;
+import org.vaadin.addon.vol3.source.OLSource;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Map for testing interactions
@@ -15,6 +17,8 @@ import java.util.List;
 public class InteractionMap extends VectorLayerMap {
 
     private NativeSelect markerType;
+    private static final Logger logger= Logger.getLogger(InteractionMap.class.getName());
+
 
     @Override
     protected OLMap createMap() {
@@ -51,10 +55,21 @@ public class InteractionMap extends VectorLayerMap {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 clearInteractions();
+                //logger.info(((OLVectorSource) vectorLayer.getSource()).getFeatures().toString());
                 map.addInteraction(createModifyInteraction());
             }
         });
         layout.addComponent(modifyButton);
+
+        Button modifyRectButton=new Button("modifyOnlyRectFeature");
+        modifyRectButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                clearInteractions();
+                map.addInteraction(createModifyRectInteraction());
+            }
+        });
+        layout.addComponent(modifyRectButton);
 
         Button drawButton=new Button("drawMode");
         drawButton.addClickListener(new Button.ClickListener() {
@@ -104,6 +119,15 @@ public class InteractionMap extends VectorLayerMap {
         // create modify interaction
         OLModifyInteractionOptions modOpts=new OLModifyInteractionOptions();
         OLModifyInteraction modify=new OLModifyInteraction(vectorLayer,modOpts);
+        return modify;
+    }
+
+    private OLModifyInteraction createModifyRectInteraction(){
+        // create modify interaction
+        OLModifyInteractionOptions modOpts=new OLModifyInteractionOptions();
+        OLFeature rectFeature = ((OLVectorSource) vectorLayer.getSource()).getFeatureById("rect");
+        //logger.info(rectFeature.toString());
+        OLModifyInteraction modify=new OLModifyInteraction(vectorLayer, rectFeature, modOpts);
         return modify;
     }
 
