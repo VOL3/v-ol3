@@ -26,4 +26,11 @@ public abstract class OLGeometry<T> {
     public void setElements(List<T> elements){
         this.elements=elements;
     }
+
+    @Override
+    public String toString() {
+        return "OLGeometry{" +
+                "elements=" + elements +
+                '}';
+    }
 }

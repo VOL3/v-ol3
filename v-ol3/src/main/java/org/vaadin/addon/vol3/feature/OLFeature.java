@@ -79,4 +79,13 @@ public class OLFeature implements Serializable{
         this.styles.clear();
         this.styles.addAll(styles);
     }
+
+    @Override
+    public String toString() {
+        return "OLFeature{" +
+                "id='" + id + '\'' +
+                ", geometry=" + geometry +
+                ", styles=" + styles +
+                '}';
+    }
 }
