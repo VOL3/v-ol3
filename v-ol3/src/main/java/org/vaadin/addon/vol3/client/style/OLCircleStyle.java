@@ -10,4 +10,14 @@ public class OLCircleStyle implements Serializable {
     public Double radius;
     public Boolean snapToPixel;
     public OLStrokeStyle stroke;
+
+    @Override
+    public String toString() {
+        return "OLCircleStyle{" +
+                "fill=" + fill +
+                ", radius=" + radius +
+                ", snapToPixel=" + snapToPixel +
+                ", stroke=" + stroke +
+                '}';
+    }
 }

@@ -16,4 +16,20 @@ public class OLTextStyle implements Serializable{
     public String textBaseline;
     public OLFillStyle fill;
     public OLStrokeStyle stroke;
+
+    @Override
+    public String toString() {
+        return "OLTextStyle{" +
+                "font='" + font + '\'' +
+                ", offsetX=" + offsetX +
+                ", offsetY=" + offsetY +
+                ", scale=" + scale +
+                ", rotation=" + rotation +
+                ", text='" + text + '\'' +
+                ", textAlign='" + textAlign + '\'' +
+                ", textBaseline='" + textBaseline + '\'' +
+                ", fill=" + fill +
+                ", stroke=" + stroke +
+                '}';
+    }
 }
