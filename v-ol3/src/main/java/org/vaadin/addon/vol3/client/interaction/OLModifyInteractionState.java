@@ -25,7 +25,7 @@ public class OLModifyInteractionState extends AbstractComponentState {
                 "pixelTolerance=" + pixelTolerance +
                 ", featureStyles=" + featureStyles +
                 ", layer=" + layer +
-                ", featureIds='" + featureIds.toString() + '\'' +
+                ", featureIds='" + featureIds + '\'' +
                 '}';
     }
 }
