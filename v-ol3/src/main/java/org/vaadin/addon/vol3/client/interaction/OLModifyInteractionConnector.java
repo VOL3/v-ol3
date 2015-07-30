@@ -1,7 +1,6 @@
 package org.vaadin.addon.vol3.client.interaction;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsArray;
 import com.vaadin.shared.ui.Connect;
 import org.vaadin.addon.vol3.client.layer.OLVectorLayerConnector;
 import org.vaadin.addon.vol3.client.source.OLVectorSourceConnector;

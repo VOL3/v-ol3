@@ -1,22 +1,17 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
 
-import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
 import org.vaadin.addon.vol3.client.OLCoordinate;
-import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.client.style.OLFillStyle;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.feature.OLPoint;
 import org.vaadin.addon.vol3.feature.OLPolygon;
-import org.vaadin.addon.vol3.layer.OLLayer;
-import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
-import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.source.OLVectorSourceOptions;
 import org.vaadin.addon.vol3.util.StyleUtils;

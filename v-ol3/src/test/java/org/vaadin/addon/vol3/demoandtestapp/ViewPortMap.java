@@ -1,7 +1,6 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.ui.*;
-import org.vaadin.addon.vol3.client.OLCoordinate;
 
 /**
  * Map for testing ViewPort information on BasicMap
