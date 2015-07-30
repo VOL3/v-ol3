@@ -127,7 +127,7 @@ public class InteractionMap extends VectorLayerMap {
         OLModifyInteractionOptions modOpts=new OLModifyInteractionOptions();
         OLFeature rectFeature = ((OLVectorSource) vectorLayer.getSource()).getFeatureById("rect");
         //logger.info(rectFeature.toString());
-        OLModifyInteraction modify=new OLModifyInteraction(vectorLayer, rectFeature, modOpts);
+        OLModifyInteraction modify=new OLModifyInteraction(vectorLayer, modOpts, rectFeature);
         return modify;
     }
 

@@ -17,7 +17,7 @@ public class OLModifyInteractionState extends AbstractComponentState {
     // the layer the modify interaction works on
     public Connector layer;
     // the feature the modify interaction works on
-    public String featureId;
+    public String[] featureIds;
 
     @Override
     public String toString() {
@@ -25,7 +25,7 @@ public class OLModifyInteractionState extends AbstractComponentState {
                 "pixelTolerance=" + pixelTolerance +
                 ", featureStyles=" + featureStyles +
                 ", layer=" + layer +
-                ", featureId='" + featureId + '\'' +
+                ", featureIds='" + featureIds.toString() + '\'' +
                 '}';
     }
 }

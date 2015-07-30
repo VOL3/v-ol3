@@ -14,6 +14,8 @@ import org.vaadin.gwtol3.client.interaction.ModifyInteractionOptions;
 import org.vaadin.gwtol3.client.source.VectorSource;
 import org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Logger;
 
 /**
@@ -61,11 +63,15 @@ public class OLModifyInteractionConnector extends OLInteractionConnector impleme
         // create collection of features that is updated when features are added
         // or removed from the associated vector layer
         logger.info("state: " + this.getState().toString());
-        if(this.getState().featureId == null){
+        if(this.getState().featureIds == null){
             targetFeatures=Collection.create(vectorSource.getFeatures());
         } else{
             Collection<Feature> featureCollection = Collection.create();
-            featureCollection.push(vectorSource.getFeatureById(this.getState().featureId));
+
+            ArrayList<String> featureIds = new ArrayList<String>(Arrays.asList(this.getState().featureIds));
+            for (String featureId : featureIds) {
+                featureCollection.push(vectorSource.getFeatureById(featureId));
+            }
             targetFeatures = featureCollection;
         }
         opts.setFeatures(targetFeatures);
