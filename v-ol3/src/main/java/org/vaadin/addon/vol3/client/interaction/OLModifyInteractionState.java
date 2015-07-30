@@ -4,6 +4,7 @@ import com.vaadin.shared.AbstractComponentState;
 import com.vaadin.shared.Connector;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public class OLModifyInteractionState extends AbstractComponentState {
                 "pixelTolerance=" + pixelTolerance +
                 ", featureStyles=" + featureStyles +
                 ", layer=" + layer +
-                ", featureIds='" + featureIds + '\'' +
+                ", featureIds='" + Arrays.toString(featureIds) + '\'' +
                 '}';
     }
 }
