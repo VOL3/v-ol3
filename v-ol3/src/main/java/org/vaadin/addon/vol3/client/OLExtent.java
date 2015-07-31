@@ -45,9 +45,8 @@ public class OLExtent implements Serializable {
      * fail if bounds values are not correctly initialized
      */
     public void extend(OLCoordinate... coordinates) {
-        for (int i = 0; i < coordinates.length; i++) {
-            OLCoordinate p = coordinates[i];
-            extend(p);
+        for (OLCoordinate coordinate : coordinates) {
+            extend(coordinate);
         }
     }
 
