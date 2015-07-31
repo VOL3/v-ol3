@@ -10,13 +10,12 @@ import java.util.logging.Logger;
  */
 public class GeometrySerializer {
 
-    private static final Logger logger= Logger.getLogger(GeometrySerializer.class.getName());
+    private static final Logger logger = Logger.getLogger(GeometrySerializer.class.getName());
 
     private static final GeoJSONFormat serializer=GeoJSONFormat.create();
 
     public static Geometry readGeometry(String serializedGeometry, String sourceProjection, String targetProjection){
-        Geometry geometry=serializer.readGeometry(serializedGeometry, sourceProjection, targetProjection);
-        return geometry;
+        return serializer.readGeometry(serializedGeometry, sourceProjection, targetProjection);
     }
 
     /** We always write the geometry in EPSG4326
