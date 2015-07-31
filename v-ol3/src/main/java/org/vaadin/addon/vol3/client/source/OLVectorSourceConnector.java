@@ -56,7 +56,6 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
 
         @Override
         public void createOrUpdateFeatures(List<SerializedFeature> features) {
-            VectorSource source=getSource();
             for(SerializedFeature serializedFeature : features){
                 Feature oldFeature=getSource().getFeatureById(serializedFeature.id);
                 Feature newFeature=createFeature(serializedFeature);
