@@ -11,6 +11,11 @@ As said, only a subset of the features of the OpenLayers 3 library is wrapped. I
 
 License: Apache License 2.0
 
+## wiki
+
+An in-detail guide will be provided on the local wiki:
+https://github.com/VOL3/v-ol3/wiki
+
 ## build v-ol3
 
 The v-ol3 is a maven handled project. It can be build easily:
