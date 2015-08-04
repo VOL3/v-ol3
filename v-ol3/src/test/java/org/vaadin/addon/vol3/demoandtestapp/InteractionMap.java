@@ -4,6 +4,7 @@ import com.vaadin.data.Property;
 import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
+import org.vaadin.addon.vol3.interaction.*;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 
 import java.util.List;
