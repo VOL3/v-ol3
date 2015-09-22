@@ -13,4 +13,15 @@ public class OLStyle implements Serializable {
     public OLTextStyle textStyle;
     public Integer zIndex;
 
+    @Override
+    public String toString() {
+        return "OLStyle{" +
+                "fillStyle=" + fillStyle +
+                ", iconStyle=" + iconStyle +
+                ", circleStyle=" + circleStyle +
+                ", strokeStyle=" + strokeStyle +
+                ", textStyle=" + textStyle +
+                ", zIndex=" + zIndex +
+                '}';
+    }
 }

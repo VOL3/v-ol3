@@ -19,8 +19,12 @@ public class OLCoordinate implements Serializable{
         x=xCoord;
         y=yCoord;
     }
-    
-    public String toText(){
-        return String.valueOf(x)+":"+String.valueOf(y);
+
+    @Override
+    public String toString() {
+        return "OLCoordinate{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

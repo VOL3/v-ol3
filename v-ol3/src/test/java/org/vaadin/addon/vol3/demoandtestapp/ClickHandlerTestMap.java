@@ -16,7 +16,7 @@ public class ClickHandlerTestMap extends BasicMap {
         map.addClickListener(new OLMap.ClickListener() {
             @Override
             public void onClick(OLClickEvent event) {
-                Notification.show(event.getEventType()+" "+event.getCoordinate().toText());
+                Notification.show(event.getEventType()+" "+event.getCoordinate().toString());
             }
         });
 

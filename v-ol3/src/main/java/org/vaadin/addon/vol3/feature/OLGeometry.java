@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.feature;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,5 +26,12 @@ public abstract class OLGeometry<T> {
 
     public void setElements(List<T> elements){
         this.elements=elements;
+    }
+
+    @Override
+    public String toString() {
+        return "OLGeometry{" +
+                "elements=" + elements +
+                '}';
     }
 }

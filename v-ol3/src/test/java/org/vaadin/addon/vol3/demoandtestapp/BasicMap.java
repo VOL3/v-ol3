@@ -29,6 +29,8 @@ public class BasicMap extends VerticalLayout implements View {
     public BasicMap() {
         this.setSizeFull();
         map=createMap();
+
+        this.addViewChangeListener();
         this.addComponent(map);
         this.setExpandRatio(this.iterator().next(),1.0f);
         this.addComponent(createControls());
@@ -68,7 +70,7 @@ public class BasicMap extends VerticalLayout implements View {
 
             @Override
             public void centerChanged(OLCoordinate centerPoint) {
-                logger.info("center changed " + centerPoint.toText());
+                logger.info("center changed " + centerPoint.toString());
             }
 
             @Override
@@ -123,7 +125,7 @@ public class BasicMap extends VerticalLayout implements View {
 			public void buttonClick(Button.ClickEvent event) {
 				OLCoordinate center=map.getView().getCenter();
 				StringBuilder message=new StringBuilder();
-				message.append("center: ").append(center.toText()).append("\n");
+				message.append("center: ").append(center.toString()).append("\n");
 				message.append("rotation: ").append(map.getView().getRotation()).append("\n");
 				message.append("zoom: ").append(map.getView().getZoom()).append("\n");
 				message.append("resolution: ").append(map.getView().getResolution()).append("\n");

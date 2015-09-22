@@ -38,12 +38,14 @@ public class MapTestUI extends UI {
 
     private void addViews() {
         addView("Basic",BasicMap.class);
+        addView("ViewPort",ViewPortMap.class);
         addView("Constrained", ConstrainedMap.class);
         addView("Multilayer", MultiLayerMap.class);
         addView("OpenStreetMap", OSMMap.class);
         addView("ImageWMSMap",ImageWMSMap.class);
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
+        addView("VectorModifying", VectorModifyingMap.class);
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);
         addView("InteractionTest", InteractionMap.class);

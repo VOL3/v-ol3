@@ -17,4 +17,11 @@ public class OLFillStyle implements Serializable{
     }
 
     public String color;
+
+    @Override
+    public String toString() {
+        return "OLFillStyle{" +
+                "color='" + color + '\'' +
+                '}';
+    }
 }

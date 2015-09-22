@@ -4,6 +4,7 @@ import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
+import org.vaadin.addon.vol3.client.style.OLStyle;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.feature.OLLineString;
 import org.vaadin.addon.vol3.feature.OLPoint;
@@ -41,6 +42,7 @@ public class VectorLayerMap extends BasicMap{
 
     private OLFeature createPointFeature(String id, double x, double y){
         OLFeature testFeature=new OLFeature(id);
+        testFeature.setStyle(new OLStyle());
         testFeature.setGeometry(new OLPoint(x,y));
         return testFeature;
     }

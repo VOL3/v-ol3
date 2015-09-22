@@ -58,7 +58,7 @@ public class OLClickEvent implements Serializable {
 	}
 
 	public String toString(){
-		String representation=this.eventType+" "+coordinate.toText();
+		String representation=this.eventType+" "+coordinate.toString();
 		if(featureInfoUrls!=null && featureInfoUrls.size()>0){
 			representation+=" featureInfoUrls: "+featureInfoUrls;
 		}
