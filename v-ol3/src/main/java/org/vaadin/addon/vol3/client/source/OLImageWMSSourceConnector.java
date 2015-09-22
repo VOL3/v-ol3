@@ -5,8 +5,12 @@ import com.google.gwt.core.client.JsArrayNumber;
 import com.vaadin.client.FastStringMap;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.shared.ui.Connect;
+import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.source.OLImageWMSSource;
 import org.vaadin.gwtol3.client.Attribution;
+import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.proj.Projection;
+import org.vaadin.gwtol3.client.source.GetFeatureInfoOptions;
 import org.vaadin.gwtol3.client.source.ImageWMSSource;
 import org.vaadin.gwtol3.client.source.ImageWMSSourceOptions;
 import org.vaadin.gwtol3.client.source.Source;
@@ -18,7 +22,7 @@ import java.util.Set;
  * Client-side connector for the ImageWMSSource
  */
 @Connect(OLImageWMSSource.class)
-public class OLImageWMSSourceConnector extends OLSourceConnector {
+public class OLImageWMSSourceConnector extends OLSourceConnector implements HasFeatureInfoUrl{
     private ImageWMSSource source;
 
     @Override
@@ -96,4 +100,18 @@ public class OLImageWMSSourceConnector extends OLSourceConnector {
         }
         getSource().updateParams(map);
     }
+
+    @Override
+    public String getGetFeatureInfoUrl(OLCoordinate coordinate, double resolution, Projection projection) {
+        GetFeatureInfoOptions opts=GetFeatureInfoOptions.create();
+        opts.set("INFO_FORMAT", "application/json");
+        opts.set("FEATURE_COUNT", "10");
+        if(getState().getFeatureInfoParams!=null){
+            for(Map.Entry<String,String> entry : getState().getFeatureInfoParams.entrySet()){
+                opts.set(entry.getKey(), entry.getValue());
+            }
+        }
+        return getSource().getGetFeatureInfoUrl(Coordinate.create(coordinate.x, coordinate.y), resolution, projection, opts);
+    }
+
 }

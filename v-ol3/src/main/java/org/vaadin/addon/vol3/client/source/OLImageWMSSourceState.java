@@ -23,4 +23,6 @@ public class OLImageWMSSourceState extends OLSourceState {
     public String url;
     // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version < 1.3.0) will be set dynamically.
     public Map<String,String> params;
+    // Get feature info parameters. If not specified, defaults are used (INFO_FORMAT=application/json, FEATURE_COUNT=10)
+    public Map<String,String> getFeatureInfoParams;
 }

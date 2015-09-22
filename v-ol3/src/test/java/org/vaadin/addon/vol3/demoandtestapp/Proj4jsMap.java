@@ -9,8 +9,6 @@ import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.feature.OLPoint;
-import org.vaadin.addon.vol3.interaction.OLModifyInteraction;
-import org.vaadin.addon.vol3.interaction.OLModifyInteractionOptions;
 import org.vaadin.addon.vol3.layer.OLImageLayer;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
@@ -35,24 +33,21 @@ public class Proj4jsMap extends BasicMap {
 		map.addLayer(layer);
 		map.setView(createView());
 		map.setSizeFull();
-		// test also vector layer conversions
+		// test also vector layer
 		OLVectorLayer vectorLayer=createVectorLayer();
 		map.addLayer(vectorLayer);
-		// create modify interaction
-		OLModifyInteraction modify=new OLModifyInteraction(vectorLayer,new OLModifyInteractionOptions());
-		map.addInteraction(modify);
 		return map;
 	}
 
 	private OLVectorLayer createVectorLayer(){
 		OLVectorSourceOptions vectorOptions=new OLVectorSourceOptions();
+		// Since we would use the view projection by default, we change the input projection here to lat/lon
 		vectorOptions.setInputProjection("EPSG:4326");
 		OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
 		vectorSource.addFeature(createPointFeature("feature-a-1",8,45));
 		vectorSource.addFeature(createPointFeature("feature-a-2",8,46));
 		vectorSource.addFeature(createPointFeature("feature-a-3",8,47));
 		OLVectorLayer vectorLayer=new OLVectorLayer(vectorSource);
-		vectorLayer.setLayerVisible(true);
 		return vectorLayer;
 	}
 

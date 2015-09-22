@@ -13,4 +13,6 @@ public interface OnClickListener {
      */
     void onClick(Coordinate coordinate);
 
+    void onDblClick(Coordinate coordinate);
+
 }

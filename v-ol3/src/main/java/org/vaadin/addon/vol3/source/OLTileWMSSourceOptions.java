@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.source;
 
 import org.vaadin.addon.vol3.client.source.OLTileGrid;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,6 +24,9 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
     private Double maxZoom;
     // WMS request parameters. At least a LAYERS param is required. STYLES is '' by default. VERSION is 1.3.0 by default. WIDTH, HEIGHT, BBOX and CRS (SRS for WMS version &lt; 1.3.0) will be set dynamically.
     private Map<String,String> params;
+
+    // Get feature info parameters. If not specified, defaults are used (INFO_FORMAT=application/json, FEATURE_COUNT=10)
+    public Map<String,String> getFeatureInfoParams=new HashMap<String, String>();
 
     private OLTileGrid tileGrid;
 
@@ -158,4 +162,16 @@ public class OLTileWMSSourceOptions extends OLSourceOptions {
 
     }
 
+    public Map<String, String> getGetFeatureInfoParams() {
+        return getFeatureInfoParams;
+    }
+
+    /**
+     * Sets the parameters for getFeatureInfo url construction. If not specified, defaults are used (INFO_FORMAT=application/json, FEATURE_COUNT=10)
+     * the feature info parameters are used when building the feature info urls to be included in map click events in case the map contains WMS layers.
+     * @param getFeatureInfoParams
+     */
+    public void setGetFeatureInfoParams(Map<String, String> getFeatureInfoParams) {
+        this.getFeatureInfoParams = getFeatureInfoParams;
+    }
 }

@@ -1,6 +1,7 @@
 package org.vaadin.addon.vol3.client;
 
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.Timer;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.annotations.OnStateChange;
@@ -13,12 +14,14 @@ import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
+import org.vaadin.addon.vol3.client.source.HasFeatureInfoUrl;
 import org.vaadin.gwtol3.client.*;
 import org.vaadin.gwtol3.client.control.*;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.map.OnClickListener;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -162,10 +165,59 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             @Override
             public void onClick(Coordinate coordinate) {
                 OLCoordinate olCoordinate = new OLCoordinate(coordinate.getX(), coordinate.getY());
-                getRpcProxy(OLOnClickListenerRpc.class).onClick(olCoordinate);
+                pendingClick=new OLClickEvent(olCoordinate, OLClickEvent.EventType.SINGLE_CLICK);
+                // let's wait a bit since this may actually be a double click
+                sendDeferred();
+            }
+
+            @Override
+            public void onDblClick(Coordinate coordinate) {
+                OLCoordinate olCoordinate = new OLCoordinate(coordinate.getX(), coordinate.getY());
+                pendingClick=new OLClickEvent(olCoordinate, OLClickEvent.EventType.DOUBLE_CLICK);
+                // force sending now since this is a double click
+                sendPendingClick();
             }
         });
+    }
 
+    private OLClickEvent pendingClick;
+    private Timer clickTimer=new Timer() {
+        @Override
+        public void run() {
+            sendPendingClick();
+        }
+    };
+
+    private void sendPendingClick(){
+        if(pendingClick!=null){
+            // check if there are WMS layer that need the feature info url to be send to the server
+            for(OLLayerConnector c : getLayers()){
+                if(c.getSourceConnector() instanceof HasFeatureInfoUrl){
+                    HasFeatureInfoUrl wmsSource=(HasFeatureInfoUrl) c.getSourceConnector();
+                    View view = getWidget().getMap().getView();
+                    String featureInfoUrl=wmsSource.getGetFeatureInfoUrl(pendingClick.getCoordinate(), view.getResolution(), view.getProjection());
+                    pendingClick.addFeatureInfoUrl(featureInfoUrl);
+                }
+            }
+            getRpcProxy(OLOnClickListenerRpc.class).onClick(pendingClick);
+        }
+        pendingClick=null;
+        clickTimer.cancel();
+    }
+
+    private void sendDeferred(){
+        clickTimer.schedule(200);
+    }
+
+    public List<OLLayerConnector> getLayers(){
+        List<OLLayerConnector> layers=new ArrayList<OLLayerConnector>();
+        List<ComponentConnector> childComponents = this.getChildComponents();
+        for(ComponentConnector c : childComponents){
+            if(c instanceof OLLayerConnector){
+                layers.add((OLLayerConnector) c);
+            }
+        }
+        return layers;
     }
 
     @Override

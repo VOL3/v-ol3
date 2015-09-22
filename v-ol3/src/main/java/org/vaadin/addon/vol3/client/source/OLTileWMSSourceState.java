@@ -27,4 +27,8 @@ public class OLTileWMSSourceState extends OLSourceState{
     public Map<String,String> params;
     // tilegrid for the source
     public OLTileGrid tileGrid;
+
+    // Get feature info parameters. If not specified, defaults are used (INFO_FORMAT=application/json, FEATURE_COUNT=10)
+    public Map<String,String> getFeatureInfoParams;
+
 }

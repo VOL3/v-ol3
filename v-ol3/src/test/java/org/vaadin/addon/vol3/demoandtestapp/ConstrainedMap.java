@@ -5,7 +5,6 @@ import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
 import org.vaadin.addon.vol3.client.OLDeviceOptions;
-import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
@@ -58,12 +57,4 @@ public class ConstrainedMap extends BasicMap {
         return view;
     }
 
-    private OLExtent createExtent(){
-        OLExtent extent=new OLExtent();
-        extent.minX=19.0;
-        extent.maxX=32.0;
-        extent.minY=60.0;
-        extent.maxY=70.0;
-        return extent;
-    }
 }

@@ -28,8 +28,13 @@ public class TileWMSSource extends TileImageSource {
      * @param params GetFeatureInfo params. INFO_FORMAT at least should be provided. If QUERY_LAYERS is not provided then the layers specified in the LAYERS parameter will be used. VERSION should not be specified here.
      * @return
      */
-    public final native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection, JavaScriptObject params)/*-{
-        return this.getGetFeatureInfoUrl(coordinate,resolution, projection, params);
+    public final native String getGetFeatureInfoUrl(Coordinate coordinate, double resolution, Projection projection, GetFeatureInfoOptions params)/*-{
+        var url = this.getGetFeatureInfoUrl(coordinate,resolution, projection, params);
+        if(typeof(url) == 'undefined'){
+            return null;
+        } else{
+            return url;
+        }
     }-*/;
 
     /** Get the user-provided params, i.e. those passed to the constructor through the "params" option, and possibly updated using the updateParams method

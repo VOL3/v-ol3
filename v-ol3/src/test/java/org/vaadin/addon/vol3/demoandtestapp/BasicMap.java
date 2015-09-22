@@ -5,8 +5,11 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
+import org.vaadin.addon.vol3.OLViewOptions;
+import org.vaadin.addon.vol3.client.OLClickEvent;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLExtent;
+import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
@@ -42,6 +45,12 @@ public class BasicMap extends VerticalLayout implements View {
         map.addLayer(layer);
         map.setView(createView());
         map.setSizeFull();
+        map.addClickListener(new OLMap.ClickListener() {
+            @Override
+            public void onClick(OLClickEvent clickEvent) {
+                System.out.println(clickEvent.toString());
+            }
+        });
         return map;
     }
 
@@ -83,7 +92,9 @@ public class BasicMap extends VerticalLayout implements View {
     }
 
     protected OLView createView(){
-        OLView view=new OLView();
+        OLViewOptions opts=new OLViewOptions();
+        opts.setInputProjection(Projections.EPSG4326);
+        OLView view=new OLView(opts);
         view.setZoom(1);
         view.setCenter(0,0);
         return view;
@@ -128,7 +139,25 @@ public class BasicMap extends VerticalLayout implements View {
             }
         });
         controls.addComponent(button);
+        button=new Button("Fit extent");
+        button.addClickListener(new Button.ClickListener(){
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                map.getView().fitExtent(createExtent());
+            }
+        });
+        controls.addComponent(button);
         return controls;
+    }
+
+
+    protected OLExtent createExtent(){
+        OLExtent extent=new OLExtent();
+        extent.minX=19.0;
+        extent.maxX=32.0;
+        extent.minY=60.0;
+        extent.maxY=70.0;
+        return extent;
     }
 
 }

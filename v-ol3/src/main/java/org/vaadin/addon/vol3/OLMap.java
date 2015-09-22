@@ -2,14 +2,17 @@ package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
-import org.vaadin.addon.vol3.client.OLCoordinate;
+import org.vaadin.addon.vol3.client.OLClickEvent;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.layer.OLLayer;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
@@ -18,7 +21,7 @@ import java.util.*;
 public class OLMap extends AbstractComponentContainer{
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
-    private List<OnClickListener> listeners = new ArrayList<OnClickListener>();
+    private List<ClickListener> listeners = new ArrayList<ClickListener>();
 
     /** Creates a new instance of the map
      *
@@ -294,21 +297,21 @@ public class OLMap extends AbstractComponentContainer{
 
     /**
      * Adds a click listener that will be notified when the user clicks on the map
-     * @param onClickListener
+     * @param clickListener
      */
-    public void addListener(OnClickListener onClickListener){
-        this.listeners.add(onClickListener);
+    public void addClickListener(ClickListener clickListener){
+        this.listeners.add(clickListener);
     }
 
     /**
      * Sets click listeners that are notified when the user clicks on the map
-     * @param listeners listeners to set
+     * @param clickListeners click listeners to set
      */
-    public void setListeners(List<OnClickListener> listeners) {
+    public void setClickListeners(List<ClickListener> clickListeners) {
         this.listeners = listeners;
     }
 
-    public List<OnClickListener> getListeners() {
+    public List<ClickListener> getClickListeners() {
         return listeners;
     }
 
@@ -329,20 +332,20 @@ public class OLMap extends AbstractComponentContainer{
     /**
      * Click listener interface for map click listeners
      */
-    public interface OnClickListener {
+    public interface ClickListener {
         /** Called when user clicks on a map
          *
-         * @param centerPoint
+         * @param clickEvent
          */
-        void onClickListener(OLCoordinate centerPoint);
+        void onClick(org.vaadin.addon.vol3.client.OLClickEvent clickEvent);
     }
 
     private class OLOnClickListenerRpcImpl implements OLOnClickListenerRpc {
 
         @Override
-        public void onClick(OLCoordinate coordinate) {
-            for (OnClickListener listener : getListeners()) {
-                listener.onClickListener(coordinate);
+        public void onClick(OLClickEvent clickEvent) {
+            for (ClickListener listener : getClickListeners()) {
+                listener.onClick(clickEvent);
             }
         }
     }

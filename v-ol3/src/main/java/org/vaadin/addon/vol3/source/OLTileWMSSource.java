@@ -48,6 +48,7 @@ public class OLTileWMSSource extends OLSource {
         getState().maxZoom=options.getMaxZoom();
         getState().params=options.getParams();
         getState().tileGrid=options.getTileGrid();
+        getState().getFeatureInfoParams=options.getFeatureInfoParams;
     }
 
     public String[] getAttributions() {

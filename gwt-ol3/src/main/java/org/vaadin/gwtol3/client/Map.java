@@ -5,7 +5,6 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
-import org.vaadin.gwtol3.client.interaction.SelectionChangeListener;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
@@ -281,9 +280,14 @@ public class Map extends JavaScriptObject{
      * @param onClickListener
      */
     public native final void addOnClickListener(OnClickListener onClickListener)/*-{
-        var callback=function(event){
+        var clickCallback=function(event){
             onClickListener.@org.vaadin.gwtol3.client.map.OnClickListener::onClick(Lorg/vaadin/gwtol3/client/Coordinate;)(event.coordinate);
         };
-        this.on("click", $entry(callback),this);
+        this.on("click", $entry(clickCallback),this);
+        var dblClickCallback=function(event){
+            onClickListener.@org.vaadin.gwtol3.client.map.OnClickListener::onDblClick(Lorg/vaadin/gwtol3/client/Coordinate;)(event.coordinate);
+            event.preventDefault();
+        };
+        this.on("dblclick", $entry(dblClickCallback),this);
     }-*/;
 }

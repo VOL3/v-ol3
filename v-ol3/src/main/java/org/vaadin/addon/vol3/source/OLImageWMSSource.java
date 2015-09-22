@@ -36,6 +36,7 @@ public class OLImageWMSSource extends OLSource {
         getState().params=options.getParams();
         getState().ratio=options.getRatio();
         getState().resolutions=options.getResolutions();
+        getState().getFeatureInfoParams=options.getFeatureInfoParams;
     }
 
     @Override

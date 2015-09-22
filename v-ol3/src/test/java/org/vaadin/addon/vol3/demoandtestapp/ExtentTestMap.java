@@ -17,9 +17,6 @@ import org.vaadin.addon.vol3.source.OLSource;
  */
 public class ExtentTestMap extends BasicMap {
 
-    private OLCoordinate[] GRAcoordinateList;
-    private OLExtent GRAextent;
-
     protected OLMap createMap(){
         map = super.createMap();
 
@@ -51,9 +48,8 @@ public class ExtentTestMap extends BasicMap {
         viewOpts.setMinZoom(3);
         viewOpts.setMaxZoom(20);
         viewOpts.setZoomFactor(2d);
-        initDemoCoordinates();
         //viewOpts.setProjection("EPSG:4326");
-        viewOpts.setExtent(GRAextent);
+        viewOpts.setExtent(createExtent());
         viewOpts.setInputProjection(Projections.EPSG4326);
         OLView view=new OLView(viewOpts);
         view.setZoom(10);
@@ -63,13 +59,17 @@ public class ExtentTestMap extends BasicMap {
         return view;
     }
 
-    private void initDemoCoordinates() {
-        /*
+    @Override
+    protected OLExtent createExtent() {
+        return new OLExtent(GRAcoordinateList);
+    }
+
+    /*
          * Note that we intentionally place overlays 10 meter above ground. This
          * way above base layers in google earth.
          */
         // ROME GRA "EPSG:4326"
-        GRAcoordinateList = new OLCoordinate[] {
+    private OLCoordinate [] GRAcoordinateList = new OLCoordinate[] {
                 new OLCoordinate(12.380218505365, 41.885921026773),
                 new OLCoordinate(12.387084960443, 41.916585114853),
                 new OLCoordinate(12.384338378412, 41.958979493725),
@@ -94,17 +94,5 @@ public class ExtentTestMap extends BasicMap {
                 new OLCoordinate(12.39120483349, 41.81840820477),
                 new OLCoordinate(12.372665404779, 41.864958764445),
                 new OLCoordinate(12.372665404779, 41.865470120935),
-                new OLCoordinate(12.380218505365, 41.885921026773) };
-
-//        // ROME GRA "EPSG:3857"
-//        GRAcoordinateList = new OLCoordinate[] {
-//                new OLCoordinate(1389679.0894, 5145161.7486),
-//                new OLCoordinate(1392621.9150, 5159340.8173),
-//                new OLCoordinate(1404354.9988, 5147454.8594),
-//                new OLCoordinate(1393042.3187, 5130103.6540),
-//                new OLCoordinate(1377219.8538, 5140651.9639) };
-
-        // compute bounds to use later
-        GRAextent = new OLExtent(GRAcoordinateList);
-    }
+                new OLCoordinate(12.380218505365, 41.885921026773)};
 }

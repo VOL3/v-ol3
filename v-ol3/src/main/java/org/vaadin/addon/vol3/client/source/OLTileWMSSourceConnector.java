@@ -5,10 +5,13 @@ import com.google.gwt.core.client.JsArrayString;
 import com.vaadin.client.FastStringMap;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.shared.ui.Connect;
-import org.vaadin.addon.vol3.source.OLTileWMSSource;
+import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.util.DataConversionUtils;
+import org.vaadin.addon.vol3.source.OLTileWMSSource;
 import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.proj.Projection;
+import org.vaadin.gwtol3.client.source.GetFeatureInfoOptions;
 import org.vaadin.gwtol3.client.source.Source;
 import org.vaadin.gwtol3.client.source.TileWMSSource;
 import org.vaadin.gwtol3.client.source.TileWMSSourceOptions;
@@ -23,7 +26,7 @@ import java.util.Set;
  * Client-side connector for the OLTileWMSSource
  */
 @Connect(OLTileWMSSource.class)
-public class OLTileWMSSourceConnector extends OLSourceConnector {
+public class OLTileWMSSourceConnector extends OLSourceConnector implements HasFeatureInfoUrl {
 
     @Override
     protected Source createSource() {
@@ -135,5 +138,18 @@ public class OLTileWMSSourceConnector extends OLSourceConnector {
             map.put(entry.getKey(),entry.getValue());
         }
         getSource().updateParams(map);
+    }
+
+    @Override
+    public String getGetFeatureInfoUrl(OLCoordinate coordinate, double resolution, Projection projection) {
+        GetFeatureInfoOptions opts=GetFeatureInfoOptions.create();
+        opts.set("INFO_FORMAT", "application/json");
+        opts.set("FEATURE_COUNT", "10");
+        if(getState().getFeatureInfoParams!=null){
+            for(Map.Entry<String,String> entry : getState().getFeatureInfoParams.entrySet()){
+                opts.set(entry.getKey(), entry.getValue());
+            }
+        }
+        return getSource().getGetFeatureInfoUrl(Coordinate.create(coordinate.x, coordinate.y), resolution, projection, opts);
     }
 }
