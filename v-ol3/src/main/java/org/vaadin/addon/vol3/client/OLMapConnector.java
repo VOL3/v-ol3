@@ -1,9 +1,9 @@
 package org.vaadin.addon.vol3.client;
 
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.user.client.Timer;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
+import com.vaadin.client.MouseEventDetailsBuilder;
 import com.vaadin.client.annotations.OnStateChange;
 import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
@@ -17,7 +17,9 @@ import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.client.source.HasFeatureInfoUrl;
 import org.vaadin.gwtol3.client.*;
 import org.vaadin.gwtol3.client.control.*;
+import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.layer.Layer;
+import org.vaadin.gwtol3.client.map.ClickEvent;
 import org.vaadin.gwtol3.client.map.OnClickListener;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
@@ -160,53 +162,6 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         // clear default controls
         options.setControls(Collection.create());
         getWidget().initMap(options);
-
-        getWidget().getMap().addOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(Coordinate coordinate) {
-                OLCoordinate olCoordinate = new OLCoordinate(coordinate.getX(), coordinate.getY());
-                pendingClick=new OLClickEvent(olCoordinate, OLClickEvent.EventType.SINGLE_CLICK);
-                // let's wait a bit since this may actually be a double click
-                sendDeferred();
-            }
-
-            @Override
-            public void onDblClick(Coordinate coordinate) {
-                OLCoordinate olCoordinate = new OLCoordinate(coordinate.getX(), coordinate.getY());
-                pendingClick=new OLClickEvent(olCoordinate, OLClickEvent.EventType.DOUBLE_CLICK);
-                // force sending now since this is a double click
-                sendPendingClick();
-            }
-        });
-    }
-
-    private OLClickEvent pendingClick;
-    private Timer clickTimer=new Timer() {
-        @Override
-        public void run() {
-            sendPendingClick();
-        }
-    };
-
-    private void sendPendingClick(){
-        if(pendingClick!=null){
-            // check if there are WMS layer that need the feature info url to be send to the server
-            for(OLLayerConnector c : getLayers()){
-                if(c.getSourceConnector() instanceof HasFeatureInfoUrl){
-                    HasFeatureInfoUrl wmsSource=(HasFeatureInfoUrl) c.getSourceConnector();
-                    View view = getWidget().getMap().getView();
-                    String featureInfoUrl=wmsSource.getGetFeatureInfoUrl(pendingClick.getCoordinate(), view.getResolution(), view.getProjection());
-                    pendingClick.addFeatureInfoUrl(featureInfoUrl);
-                }
-            }
-            getRpcProxy(OLOnClickListenerRpc.class).onClick(pendingClick);
-        }
-        pendingClick=null;
-        clickTimer.cancel();
-    }
-
-    private void sendDeferred(){
-        clickTimer.schedule(200);
     }
 
     public List<OLLayerConnector> getLayers(){
@@ -333,4 +288,41 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             getWidget().getMap().addControl(this.zoomToExtentControl);
         }
     }
+
+    @OnStateChange("hasClickListeners")
+    void updateEventListener() {
+        if (getState().hasClickListeners) {
+            getWidget().getMap().addOnClickListener(listener);
+        } else {
+            getWidget().getMap().removeOnClickListener(listener);
+        }
+    }
+
+
+    private OnClickListener listener=new OnClickListener() {
+        @Override
+        public void onClick(ClickEvent event) {
+            OLCoordinate olCoordinate = new OLCoordinate(event.getCoordinate().getX(), event.getCoordinate().getY());
+            OLPixel pixel = new OLPixel(event.getPixel().getX().intValue(), event.getPixel().getY().intValue());
+            String eventType = event.getType().name();
+            String details = MouseEventDetailsBuilder.buildMouseEventDetails(event.getNativeEvent()).serialize();
+            // check if there are WMS layer that need the feature info url to be send to the server
+            List<String> featureInfoUrls=new ArrayList<String>();
+            for (OLLayerConnector c : getLayers()) {
+                if (c.getSourceConnector() instanceof HasFeatureInfoUrl) {
+                    HasFeatureInfoUrl wmsSource = (HasFeatureInfoUrl) c.getSourceConnector();
+                    View view = getWidget().getMap().getView();
+                    String featureInfoUrl = wmsSource.getGetFeatureInfoUrl(olCoordinate, view.getResolution(), view.getProjection());
+                    featureInfoUrls.add(featureInfoUrl);
+                }
+            }
+            // check if there are features at the clicked point
+            List<String> featureIds=new ArrayList<String>();
+            Collection<Feature> features = getWidget().getMap().getFeaturesFromPixel(event.getPixel());
+            for (int i = 0; i < features.getLength(); i++) {
+                featureIds.add(features.item(i).getId());
+            }
+            getRpcProxy(OLOnClickListenerRpc.class).onClick(olCoordinate, pixel, eventType, featureInfoUrls, featureIds, details);
+        }
+    };
 }

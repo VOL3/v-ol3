@@ -6,7 +6,6 @@ import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
-import org.vaadin.addon.vol3.client.OLClickEvent;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLExtent;
 import org.vaadin.addon.vol3.client.Projections;
@@ -49,7 +48,7 @@ public class BasicMap extends VerticalLayout implements View {
         map.setSizeFull();
         map.addClickListener(new OLMap.ClickListener() {
             @Override
-            public void onClick(OLClickEvent clickEvent) {
+            public void onClick(OLMap.OLClickEvent clickEvent) {
                 System.out.println(clickEvent.toString());
             }
         });

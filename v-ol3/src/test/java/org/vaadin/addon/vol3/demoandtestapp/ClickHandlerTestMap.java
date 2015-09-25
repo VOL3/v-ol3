@@ -2,7 +2,6 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.ui.Notification;
 import org.vaadin.addon.vol3.OLMap;
-import org.vaadin.addon.vol3.client.OLClickEvent;
 
 /**
  * Created by Martin Stypinski
@@ -15,8 +14,8 @@ public class ClickHandlerTestMap extends BasicMap {
 
         map.addClickListener(new OLMap.ClickListener() {
             @Override
-            public void onClick(OLClickEvent event) {
-                Notification.show(event.getEventType()+" "+event.getCoordinate().toString());
+            public void onClick(OLMap.OLClickEvent event) {
+               Notification.show(event.getEventType()+" "+event.getCoordinate().toString());
             }
         });
 

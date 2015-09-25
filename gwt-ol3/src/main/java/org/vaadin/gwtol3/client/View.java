@@ -102,7 +102,7 @@ public class View extends JavaScriptObject {
 
 
     public native final void fitExtent(Extent extent, Size size)/*-{
-        this.fitExtent(this.__transformInputExtent(extent), size);
+        this.fit(this.__transformInputExtent(extent), size);
     }-*/;
 
     /**

@@ -43,7 +43,7 @@ public class Collection<T extends JavaScriptObject> extends JavaScriptObject{
         return this.pop();
     }-*/;
 
-    public native final JavaScriptObject item(int index) /*-{
+    public native final T item(int index) /*-{
         return this.item(index);
     }-*/;
 

@@ -24,4 +24,5 @@ public class OLMapState extends AbstractComponentState {
     public OLZoomControl zoomControl;
     public OLZoomSliderControl zoomSliderControl;
     public OLZoomToExtentControl zoomToExtentControl;
+    public boolean hasClickListeners;
 }

@@ -1,9 +1,11 @@
 package org.vaadin.addon.vol3;
 
+import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
-import org.vaadin.addon.vol3.client.OLClickEvent;
+import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
+import org.vaadin.addon.vol3.client.OLPixel;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
@@ -21,7 +23,7 @@ import java.util.List;
 public class OLMap extends AbstractComponentContainer{
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
-    private List<ClickListener> listeners = new ArrayList<ClickListener>();
+    private List<ClickListener> listeners = new LinkedList<ClickListener>();
 
     /** Creates a new instance of the map
      *
@@ -301,18 +303,28 @@ public class OLMap extends AbstractComponentContainer{
      */
     public void addClickListener(ClickListener clickListener){
         this.listeners.add(clickListener);
+        updateClickListenerState();
     }
 
-    /**
-     * Sets click listeners that are notified when the user clicks on the map
-     * @param clickListeners click listeners to set
+    /** Remove the specified click listener from the map
+     *
+     * @param clickListener
      */
-    public void setClickListeners(List<ClickListener> clickListeners) {
-        this.listeners = listeners;
+    public void removeClickListener(ClickListener clickListener){
+        this.listeners.remove(clickListener);
+        updateClickListenerState();
     }
 
-    public List<ClickListener> getClickListeners() {
-        return listeners;
+    /** Remove all click listeners from the map
+     *
+     */
+    public void removeAllClickListeners(){
+        this.listeners.clear();
+        updateClickListenerState();
+    }
+
+    private void updateClickListenerState() {
+        this.getState().hasClickListeners=this.listeners.size()>0;
     }
 
     private void setOptions(OLMapOptions options) {
@@ -337,16 +349,132 @@ public class OLMap extends AbstractComponentContainer{
          *
          * @param clickEvent
          */
-        void onClick(org.vaadin.addon.vol3.client.OLClickEvent clickEvent);
+        void onClick(org.vaadin.addon.vol3.OLMap.OLClickEvent clickEvent);
     }
 
     private class OLOnClickListenerRpcImpl implements OLOnClickListenerRpc {
 
         @Override
-        public void onClick(OLClickEvent clickEvent) {
-            for (ClickListener listener : getClickListeners()) {
-                listener.onClick(clickEvent);
+        public void onClick(OLCoordinate coordinate, OLPixel pixel, String eventType, List<String> featureInfoUrls, List<String> featureIds, String details) {
+            OLClickEvent event=new OLClickEvent(coordinate, OLClickEvent.EventType.valueOf(eventType));
+            event.setPixel(pixel);
+            event.setFeatureInfoUrls(featureInfoUrls);
+            event.setFeatureIds(featureIds);
+            event.setDetails(MouseEventDetails.deSerialize(details));
+            for (ClickListener listener : listeners) {
+                listener.onClick(event);
             }
+        }
+    }
+
+    public static class OLClickEvent {
+
+        public static enum EventType{
+            LEFT_CLICK, RIGHT_CLICK, DOUBLE_CLICK;
+        }
+
+        private OLCoordinate coordinate;
+        private OLPixel pixel;
+        private EventType eventType;
+        // List of feature info urls in case there are visible WMS layers displayed on the map
+        private List<String> featureInfoUrls;
+        // List of feature ids in case there are features displayed on the click point
+        private List<String> featureIds;
+        // Native mouse event details
+        private MouseEventDetails details;
+
+        public OLClickEvent(){
+
+        }
+
+        public OLClickEvent(OLCoordinate coordinate, EventType type){
+            this.coordinate=coordinate;
+            this.eventType=type;
+        }
+
+        public OLCoordinate getCoordinate() {
+            return coordinate;
+        }
+
+        public void setCoordinate(OLCoordinate coordinate) {
+            this.coordinate = coordinate;
+        }
+
+        public OLPixel getPixel() {
+            return pixel;
+        }
+
+        public void setPixel(OLPixel pixel) {
+            this.pixel = pixel;
+        }
+
+        public EventType getEventType() {
+            return eventType;
+        }
+
+        public void setEventType(EventType eventType) {
+            this.eventType = eventType;
+        }
+
+        public List<String> getFeatureInfoUrls() {
+            return featureInfoUrls;
+        }
+
+        public void setFeatureInfoUrls(List<String> featureInfoUrls) {
+            this.featureInfoUrls = featureInfoUrls;
+        }
+
+        public void addFeatureInfoUrl(String url){
+            if(this.featureInfoUrls==null){
+                this.featureInfoUrls=new ArrayList<String>();
+            }
+            this.featureInfoUrls.add(url);
+        }
+
+        public void addFeatureId(String id){
+            if(this.featureIds==null){
+                this.featureIds=new ArrayList<String>();
+            }
+            this.featureIds.add(id);
+        }
+
+        public List<String> getFeatureIds() {
+            return featureIds;
+        }
+
+        public void setFeatureIds(List<String> featureIds) {
+            this.featureIds = featureIds;
+        }
+
+        public MouseEventDetails getDetails() {
+            return this.details;
+        }
+
+        public void setDetails(MouseEventDetails details) {
+            this.details = details;
+        }
+
+        public boolean isLeftClick(){
+            return this.eventType.equals(EventType.LEFT_CLICK);
+        }
+
+        public boolean isRightClick(){
+            return this.eventType.equals(EventType.RIGHT_CLICK);
+        }
+
+        public boolean isDoubleClick(){
+            return this.eventType.equals(EventType.DOUBLE_CLICK);
+        }
+
+        public String toString(){
+            String representation=this.eventType+" "+pixel.toString()+" "+coordinate.toString();
+            if(featureInfoUrls!=null && featureInfoUrls.size()>0){
+                representation+=" featureInfoUrls: "+featureInfoUrls;
+            }
+            if(featureIds!=null && featureIds.size()>0){
+                representation+=" featureIds: "+featureIds;
+            }
+            return representation;
         }
     }
 }

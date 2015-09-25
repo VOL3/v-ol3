@@ -22,9 +22,6 @@ public class OLCoordinate implements Serializable{
 
     @Override
     public String toString() {
-        return "OLCoordinate{" +
-                "x=" + x +
-                ", y=" + y +
-                '}';
+        return "OLCoordinate{" + "x=" + x +", y=" + y +"}";
     }
 }

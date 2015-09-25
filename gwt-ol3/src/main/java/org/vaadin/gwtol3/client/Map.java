@@ -4,6 +4,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import org.vaadin.gwtol3.client.control.Control;
+import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.interaction.Interaction;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
@@ -275,19 +276,62 @@ public class Map extends JavaScriptObject{
         this.updateSize();
     }-*/;
 
+    public native final Collection<Feature> getFeaturesFromPixel(Pixel pixel)/*-{
+        var features = new $wnd.ol.Collection();
+        this.forEachFeatureAtPixel(pixel, function(feature, layer){
+            if(typeof(feature)!='undefined'){
+                features.push(feature);
+            }
+        });
+        return features;
+    }-*/;
+
     /**
      * Add given listener to the map
      * @param onClickListener
      */
     public native final void addOnClickListener(OnClickListener onClickListener)/*-{
-        var clickCallback=function(event){
-            onClickListener.@org.vaadin.gwtol3.client.map.OnClickListener::onClick(Lorg/vaadin/gwtol3/client/Coordinate;)(event.coordinate);
-        };
-        this.on("click", $entry(clickCallback),this);
-        var dblClickCallback=function(event){
-            onClickListener.@org.vaadin.gwtol3.client.map.OnClickListener::onDblClick(Lorg/vaadin/gwtol3/client/Coordinate;)(event.coordinate);
-            event.preventDefault();
-        };
-        this.on("dblclick", $entry(dblClickCallback),this);
+        // for the first time we need to register as event listener as well, we are never removing ourselves though
+        if(!this.__registered){
+            var that=this;
+            // listen for singleclick
+            var clickCallback=function(event){
+                var clickEvent={pixel : event.pixel, coordinate: event.coordinate, type: "leftclick", nativeEvent : event.originalEvent};
+                that.__notifyClickListeners(clickEvent);
+            };
+            this.on("singleclick", $entry(clickCallback),this);
+            // listen for doubleclick
+            var dblClickCallback=function(event){
+                var clickEvent={pixel : event.pixel, coordinate: event.coordinate, type: "doubleclick", nativeEvent: event.originalEvent};
+                that.__notifyClickListeners(clickEvent);
+                event.preventDefault();
+            };
+            this.on("dblclick", $entry(dblClickCallback),this);
+            // listen for right click
+            var rightClickCallback=function(event){
+
+                var clickEvent={pixel: that.getEventPixel(event), coordinate: that.getEventCoordinate(event), type: "rightclick", nativeEvent: event};
+                that.__notifyClickListeners(clickEvent);
+                event.preventDefault();
+            };
+            this.getViewport().addEventListener('contextmenu', $entry(rightClickCallback));
+            this.__registered=true;
+            this.__clickListeners=[];
+            this.__notifyClickListeners = function(clickEvent){
+                var length=this.__clickListeners.length;
+                for(var i=0; i<length; i++){
+                    var listener = this.__clickListeners[i];
+                    listener.@org.vaadin.gwtol3.client.map.OnClickListener::onClick(Lorg/vaadin/gwtol3/client/map/ClickEvent;)(clickEvent);
+                }
+            };
+        }
+        this.__clickListeners.push(onClickListener);
+    }-*/;
+
+    public native final void removeOnClickListener(OnClickListener listener) /*-{
+        var index = this.__clickListeners.indexOf(listener);
+        if (index > -1) {
+            this.__clickListeners.splice(index, 1);
+        }
     }-*/;
 }
