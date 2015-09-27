@@ -10,6 +10,7 @@ import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
 import org.vaadin.gwtol3.client.map.OnClickListener;
+import org.vaadin.gwtol3.client.map.OnMoveListener;
 
 /**
  * Wrapper for the OpenLayers map
@@ -332,6 +333,37 @@ public class Map extends JavaScriptObject{
         var index = this.__clickListeners.indexOf(listener);
         if (index > -1) {
             this.__clickListeners.splice(index, 1);
+        }
+    }-*/;
+    
+    public native final void addOnMoveListener(OnMoveListener onMoveListener) /*-{
+        if (!this.__onMoveRegistered) {
+            var that=this;
+            // listen for right click
+            var moveCallback=function(event){
+
+                var moveEvent={pixel: that.getEventPixel(event), coordinate: that.getEventCoordinate(event), type: "mousemove", nativeEvent: event};
+                that.__notifyMoveListeners(moveEvent);
+                event.preventDefault();
+            };
+            this.getViewport().addEventListener('mousemove', $entry(moveCallback));
+            this.__onMoveRegistered=true;
+            this.__moveListeners=[];
+            this.__notifyMoveListeners = function(moveEvent){
+                var length=this.__moveListeners.length;
+                for(var i=0; i<length; i++){
+                    var listener = this.__moveListeners[i];
+                    listener.@org.vaadin.gwtol3.client.map.OnMoveListener::onMove(Lorg/vaadin/gwtol3/client/map/MoveEvent;)(moveEvent);
+                }
+            };
+        }
+        this.__moveListeners.push(onMoveListener);
+    }-*/;
+    
+    public native final void removeOnMoveListener(OnMoveListener listener) /*-{
+        var index = this.__moveListeners.indexOf(listener);
+        if (index > -1) {
+            this.__moveListeners.splice(index, 1);
         }
     }-*/;
 }
