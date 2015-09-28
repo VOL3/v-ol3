@@ -24,23 +24,23 @@ public class OverviewMapControlOptions extends JavaScriptObject {
         this.className=className;
     }-*/;
     
-    public static final native void setCollapsed(boolean collapsed) /*-{
+    public final native void setCollapsed(boolean collapsed) /*-{
             this.collapsed = collapsed;
     }-*/;
     
-    public static final native void setCollapseLabel(String collapseLabel) /*-{
+    public final native void setCollapseLabel(String collapseLabel) /*-{
         //
     }-*/;
     
-    public static final native void setCollapsible(boolean collapsible) /*-{
+    public final native void setCollapsible(boolean collapsible) /*-{
         this.collapsible = collapsible;
     }-*/;
     
-    public static final native void setLabel(String label) /*-{
+    public final native void setLabel(String label) /*-{
         this.label = label;
     }-*/;
     
-    public static final native void setTipLabel(String tipLabel) /*-{
+    public final native void setTipLabel(String tipLabel) /*-{
         this.tipLabel = tipLabel;
     }-*/;
 }
