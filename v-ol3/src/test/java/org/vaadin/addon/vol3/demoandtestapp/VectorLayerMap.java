@@ -40,14 +40,14 @@ public class VectorLayerMap extends BasicMap{
         return map;
     }
 
-    private OLFeature createPointFeature(String id, double x, double y){
+    protected OLFeature createPointFeature(String id, double x, double y){
         OLFeature testFeature=new OLFeature(id);
         testFeature.setStyle(new OLStyle());
         testFeature.setGeometry(new OLPoint(x,y));
         return testFeature;
     }
 
-    private OLFeature createRectangleFeature(String id, double x, double y, double width, double height){
+    protected OLFeature createRectangleFeature(String id, double x, double y, double width, double height){
         OLFeature testFeature=new OLFeature(id);
         OLLineString lineString=new OLLineString();
         lineString.add(new OLCoordinate(x,y));

@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
+import com.vaadin.annotations.Theme;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.server.Page;
@@ -12,6 +13,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  * The map demo UI. Contains a number of test maps as navigator views.
  */
+@Theme("reindeer")
 public class MapTestUI extends UI {
 
     private Navigator navigator;
@@ -45,6 +47,7 @@ public class MapTestUI extends UI {
         addView("ImageWMSMap",ImageWMSMap.class);
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
+        addView("VectorLayerWithIcons", IconFeatureMap.class);
         addView("VectorModifying", VectorModifyingMap.class);
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);

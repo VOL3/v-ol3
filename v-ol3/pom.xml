@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
 	<packaging>bundle</packaging>
-	<version>0.1.9</version>
+	<version>1.0</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
@@ -94,13 +94,18 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>0.1.9</version>
+            <version>1.0</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>
             <groupId>de.grundid.opendatalab</groupId>
             <artifactId>geojson-jackson</artifactId>
             <version>1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.vaadin.addons</groupId>
+            <artifactId>contextmenu</artifactId>
+            <version>4.5</version>
         </dependency>
     </dependencies>
 
@@ -138,6 +143,7 @@
                     <excludes>
                         <!-- Remove resources included due to gwt compilation -->
                         <exclude>**/demoandtestapp/*</exclude>
+                        <exclude>VAADIN/img/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -167,6 +173,30 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <!-- here the phase you need -->
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/testwebapp/VAADIN/img/</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>${project.basedir}/src/test/resources/VAADIN/img/</directory>
+                                    <filtering>true</filtering>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
 
             <!-- This creates a zip file of jar and sources jar. When publishing in
             the Directory this makes sources available to maven users automatically.

@@ -3,6 +3,7 @@ package org.vaadin.addon.vol3;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
+import javafx.scene.control.ContextMenu;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLPixel;
@@ -20,16 +21,17 @@ import java.util.List;
  * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
  *
  */
-public class OLMap extends AbstractComponentContainer{
+public class OLMap extends AbstractComponentContainer {
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
-    private List<ClickListener> listeners = new LinkedList<ClickListener>();
+    private List<ClickListener> clickListeners = new LinkedList<ClickListener>();
+    private ContextMenu contextMenu;
 
     /** Creates a new instance of the map
      *
      */
     public OLMap(){
-        this(null,null);
+        this(null, null);
     }
 
     /** Creates a new instance of the map with the specified view
@@ -302,7 +304,7 @@ public class OLMap extends AbstractComponentContainer{
      * @param clickListener
      */
     public void addClickListener(ClickListener clickListener){
-        this.listeners.add(clickListener);
+        this.clickListeners.add(clickListener);
         updateClickListenerState();
     }
 
@@ -311,7 +313,7 @@ public class OLMap extends AbstractComponentContainer{
      * @param clickListener
      */
     public void removeClickListener(ClickListener clickListener){
-        this.listeners.remove(clickListener);
+        this.clickListeners.remove(clickListener);
         updateClickListenerState();
     }
 
@@ -319,12 +321,14 @@ public class OLMap extends AbstractComponentContainer{
      *
      */
     public void removeAllClickListeners(){
-        this.listeners.clear();
+        this.clickListeners.clear();
         updateClickListenerState();
     }
 
+
+
     private void updateClickListenerState() {
-        this.getState().hasClickListeners=this.listeners.size()>0;
+        this.getState().hasClickListeners=this.clickListeners.size()>0;
     }
 
     private void setOptions(OLMapOptions options) {
@@ -342,14 +346,14 @@ public class OLMap extends AbstractComponentContainer{
     }
 
     /**
-     * Click listener interface for map click listeners
+     * Click listener interface for map click clickListeners
      */
     public interface ClickListener {
         /** Called when user clicks on a map
          *
          * @param clickEvent
          */
-        void onClick(org.vaadin.addon.vol3.OLMap.OLClickEvent clickEvent);
+        void onClick(OLClickEvent clickEvent);
     }
 
     private class OLOnClickListenerRpcImpl implements OLOnClickListenerRpc {
@@ -361,7 +365,7 @@ public class OLMap extends AbstractComponentContainer{
             event.setFeatureInfoUrls(featureInfoUrls);
             event.setFeatureIds(featureIds);
             event.setDetails(MouseEventDetails.deSerialize(details));
-            for (ClickListener listener : listeners) {
+            for (ClickListener listener : clickListeners) {
                 listener.onClick(event);
             }
         }

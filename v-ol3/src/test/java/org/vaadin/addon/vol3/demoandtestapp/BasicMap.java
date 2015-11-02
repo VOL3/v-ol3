@@ -14,6 +14,7 @@ import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
+import org.vaadin.addon.vol3.util.SimpleContextMenu;
 
 import java.util.logging.Logger;
 
@@ -28,6 +29,7 @@ public class BasicMap extends VerticalLayout implements View {
     public BasicMap() {
         this.setSizeFull();
         map=createMap();
+        createContextMenu();
 
         this.addViewChangeListener();
         this.addComponent(map);
@@ -159,6 +161,16 @@ public class BasicMap extends VerticalLayout implements View {
         extent.minY=60.0;
         extent.maxY=70.0;
         return extent;
+    }
+
+    protected void createContextMenu(){
+        SimpleContextMenu simpleContextMenu = new SimpleContextMenu(map);
+        simpleContextMenu.addItem("Test context menu item", new SimpleContextMenu.Command() {
+            @Override
+            public void execute() {
+                Notification.show("context item clicked");
+            }
+        });
     }
 
 }
