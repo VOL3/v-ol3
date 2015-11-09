@@ -23,5 +23,6 @@ public class OLViewState extends AbstractComponentState {
     public Integer maxZoom;
     public Integer minZoom;
     public Double zoomFactor;
-
+    // resolutions for the map. If not specified, the resolutions will be calculated by ol3
+    public double[] resolutions;
 }

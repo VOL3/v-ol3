@@ -69,7 +69,7 @@ public class ExtentTestMap extends BasicMap {
          * way above base layers in google earth.
          */
         // ROME GRA "EPSG:4326"
-    private OLCoordinate [] GRAcoordinateList = new OLCoordinate[] {
+    private static OLCoordinate [] GRAcoordinateList = new OLCoordinate[] {
                 new OLCoordinate(12.380218505365, 41.885921026773),
                 new OLCoordinate(12.387084960443, 41.916585114853),
                 new OLCoordinate(12.384338378412, 41.958979493725),

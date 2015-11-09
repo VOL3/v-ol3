@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArrayNumber;
 
 /**
  * Options passed to the view on creation
@@ -61,6 +62,14 @@ public class ViewOptions extends JavaScriptObject{
     public native final void setProjection(String projection)/*-{
         this.projection=projection;
     }-*/;
+
+    /**
+     * Resolutions to determine the resolution constraint. If set the maxResolution, minResolution, minZoom, maxZoom, and zoomFactor options are ignored.
+     */
+    public native final void setResolutions(JsArrayNumber resolutions)/*-{
+        this.resolutions=resolutions;
+    }-*/;
+
 
     /**
      * Toggles automatic coordinate transformation. By setting input projection, you can interact with the view by passing coordinates and extents in chosen projection instead of the map projection.
