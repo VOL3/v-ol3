@@ -213,6 +213,7 @@ public class OLView extends AbstractComponent {
         getState().zoomFactor=options.getZoomFactor();
         getState().mapProjection=options.getMapProjection();
         getState().inputProjection=options.getInputProjection();
+        getState().resolutions=options.getResolutions();
     }
 
 	private void registerRpc(){

@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.client;
 
+import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.ui.Label;
@@ -94,6 +95,13 @@ public class OLViewConnector extends AbstractComponentConnector{
         }
         if(getState().inputProjection!=null){
             options.setInputProjection(getState().inputProjection);
+        }
+        if(getState().resolutions!=null){
+            JsArrayNumber jsResolutions=JsArrayNumber.createArray().cast();
+            for(double res : getState().resolutions){
+                jsResolutions.push(res);
+                options.setResolutions(jsResolutions);
+            }
         }
         View view=View.create(options);
 		view.addStatusChangeListener(new StatusChangeListener() {

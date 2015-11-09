@@ -17,6 +17,7 @@ public class OLViewOptions {
     private Double zoomFactor;
     private String mapProjection;
     private String inputProjection;
+    private double [] resolutions;
 
     public Boolean getEnableRotation() {
         return enableRotation;
@@ -127,7 +128,7 @@ public class OLViewOptions {
 
     }
 
-    /** The projection. Default is EPSG:3857 (Spherical Mercator).
+    /** The zoom factor used to determine the resolution constraint. Default is 2
      *
      * @param zoomFactor
      */
@@ -147,5 +148,18 @@ public class OLViewOptions {
     public OLViewOptions setRotationConstraint(OLRotationConstraint rotationConstraint) {
         this.rotationConstraint = rotationConstraint;
         return this;
+    }
+
+
+    public double[] getResolutions() {
+        return resolutions;
+    }
+
+    /** Resolutions to determine the resolution constraint. If set the maxResolution, minResolution, minZoom, maxZoom, and zoomFactor options are ignored
+     *
+     * @param resolutions
+     */
+    public void setResolutions(double[] resolutions) {
+        this.resolutions = resolutions;
     }
 }
