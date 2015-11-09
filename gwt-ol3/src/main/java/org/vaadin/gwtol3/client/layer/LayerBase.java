@@ -11,6 +11,26 @@ public abstract class LayerBase extends JavaScriptObject {
     protected LayerBase(){
 
     }
+    
+    public native final String getId() /*-{
+        if (this.id === undefined) {
+            var d = new Date().getTime();
+            this.id = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = (d + Math.random()*16)%16 | 0;
+                d = Math.floor(d/16);
+                return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+            });
+        }
+        return this.id;
+    }-*/;
+    
+    public native final void set(String key, String value) /*-{
+        this.set(key, value);
+    }-*/;
+    
+    public native final String get(String key) /*-{
+        return this.get(key);
+    }-*/;
 
     public native final Double getBrightness()/*-{
 		var res = this.getBrightness();
@@ -92,6 +112,33 @@ public abstract class LayerBase extends JavaScriptObject {
     public native final void setVisible(boolean visible)/*-{
         this.setVisible(visible);
     }-*/;
-
-
+    
+    public native final void addOnLayerChangeListener(OnLayerChangeListener onLayerChangeListener) /*-{
+        if(!this.__onChangeRegistered){
+            var that = this;
+            var visibleCallback = function(event) {
+                var visibleEvent = {type: "visible", layer: that, nativeEvent: event};
+                that.__notifyChangeListeners(visibleEvent);
+            };
+            this.on("change:visible", $entry(visibleCallback), this);
+            
+            this.__onChangeRegistered=true;
+            this.__changeListeners=[];
+            this.__notifyChangeListeners = function(changeEvent) {
+                var length=this.__changeListeners.length;
+                for(var i=0; i<length; i++){
+                    var listener = this.__changeListeners[i];
+                    listener.@org.vaadin.gwtol3.client.layer.OnLayerChangeListener::onLayerChange(Lorg/vaadin/gwtol3/client/layer/LayerChangeEvent;)(changeEvent);
+                }
+            };
+        }
+        this.__changeListeners.push(onLayerChangeListener);
+    }-*/;
+    
+    public native final void removeOnLayerChangeListener(OnLayerChangeListener onLayerChangeListener) /*-{
+        var index = this.__changeListeners.indexOf(onLayerChangeListener);
+        if (index > -1) {
+            this.__changeListeners.splice(index, 1);
+        }
+    }-*/;
 }

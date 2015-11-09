@@ -54,5 +54,4 @@ public class Collection<T extends JavaScriptObject> extends JavaScriptObject{
     public native final int getLength() /*-{
         return this.getLength();
     }-*/;
-
 }

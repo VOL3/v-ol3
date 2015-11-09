@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.source;
 
 import com.google.gwt.core.client.JsArray;
+import org.vaadin.gwtol3.client.Collection;
 import org.vaadin.gwtol3.client.feature.Feature;
 
 /**
@@ -20,4 +21,7 @@ public class VectorSourceOptions extends AbstractVectorSourceOptions{
     }-*/;
 
 
+    public final native void setFeatures(Collection<Feature> features) /*-{
+        this.features = features;
+    }-*/;
 }

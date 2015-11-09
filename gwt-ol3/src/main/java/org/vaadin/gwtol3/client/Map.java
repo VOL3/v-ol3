@@ -10,6 +10,7 @@ import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.layer.LayerBase;
 import org.vaadin.gwtol3.client.layer.LayerGroup;
 import org.vaadin.gwtol3.client.map.OnClickListener;
+import org.vaadin.gwtol3.client.map.OnMapChangeListener;
 import org.vaadin.gwtol3.client.map.OnMoveListener;
 
 /**
@@ -365,5 +366,34 @@ public class Map extends JavaScriptObject{
         if (index > -1) {
             this.__moveListeners.splice(index, 1);
         }
+    }-*/;
+    
+    public native final void addOnMapChangeListener(OnMapChangeListener onMapChangeListener) /*-{
+        if (!this.__onChangeRegistered) {
+            var that = this;
+            
+            var sizeCallback = function(event) {
+                var sizeEvent = {size: this.getSize(), type: "size", nativeEvent: event.originalEvent};
+                that.__notifyChangeListeners(sizeEvent);
+            };
+            this.on("change:size", $entry(sizeCallback), this);
+            
+            var layerGroupCallback = function(event) {
+                var layerGroupEvent = {type: "layergroup", nativeEvent: event.originalEvent};
+                that.__notifyChangeListeners(layerGroupEvent);
+            };
+            this.on("change:layergroup", $entry(layerGroupCallback), this);
+            
+            this.__onChangeRegistered=true;
+            this.__changeListeners=[];
+            this.__notifyChangeListeners = function(changeEvent) {
+                var length=this.__changeListeners.length;
+                for(var i=0; i<length; i++){
+                    var listener = this.__changeListeners[i];
+                    listener.@org.vaadin.gwtol3.client.map.OnMapChangeListener::onMapChange(Lorg/vaadin/gwtol3/client/map/MapChangeEvent;)(changeEvent);
+                }
+            };
+        }
+        this.__changeListeners.push(onMapChangeListener);
     }-*/;
 }

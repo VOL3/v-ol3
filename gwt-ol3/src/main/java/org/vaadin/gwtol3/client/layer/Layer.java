@@ -6,8 +6,8 @@ import org.vaadin.gwtol3.client.source.Source;
  * Base class for the layers
  */
 public abstract class Layer extends LayerBase {
-
     protected Layer() {
+        
     }
 
     /** Gets the source for the layer data
