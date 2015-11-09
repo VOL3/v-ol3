@@ -19,7 +19,7 @@ public class LinearRing extends SimpleGeometry {
     
     public static final native LinearRing create(JsArray<Coordinate> coordinates) /*-{
         return new $wnd.ol.geom.LinearRing(coordinates);
-    */;
+    }-*/;
     
     public final native JsArray<Coordinate> getCoordinates() /*-{
         return this.getCoordinates();

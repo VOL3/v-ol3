@@ -47,5 +47,5 @@ public class Circle extends SimpleGeometry {
     
     public native final void setCeneterAndRadius(Coordinate center, Double radius) /*-{
         this.setCenterAndRadius(center, radius);
-    */;
+    }-*/;
 }

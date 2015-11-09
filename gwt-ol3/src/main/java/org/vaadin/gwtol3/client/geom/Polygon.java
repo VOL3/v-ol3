@@ -25,7 +25,7 @@ public class Polygon extends SimpleGeometry {
     
     public static final native Polygon circular(Sphere sphere, Coordinate center, Double radius) /*-{
         return new $wnd.ol.geo,Polygon.circular(sphere, center, radius);
-    */;
+    }-*/;
     
     public static final native Polygon fromCircle(Circle circle, Integer sides, Double angle) /*-{
         if (sides == undefined) {
