@@ -3,7 +3,6 @@ package org.vaadin.addon.vol3;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
-import javafx.scene.control.ContextMenu;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLPixel;
@@ -25,7 +24,6 @@ public class OLMap extends AbstractComponentContainer {
     private List<Component> components=new ArrayList<Component>();
     private OLView view;
     private List<ClickListener> clickListeners = new LinkedList<ClickListener>();
-    private ContextMenu contextMenu;
 
     /** Creates a new instance of the map
      *
