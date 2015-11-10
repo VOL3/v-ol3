@@ -41,4 +41,26 @@ public class SelectInteraction extends Interaction{
         };
         this.getFeatures().on("change:length",$entry(callback),this);
     }-*/;
+    
+    public native final void addOnSelectInteractionListener(OnSelectInteractionListener onSelectInteractionListener) /*-{
+        if (!this.__onSelectRegistered) {
+            var that = this;
+            var selectCallback = function(event) {
+                var selectEvent = {deselected: event.deselected, selected: event.selected, nativeEvent: event.originalEvent};
+                that.__notifySelectListeners(selectEvent);
+            };
+            this.on("select", $entry(selectCallback), this);            
+            
+            this.__onSelectRegistered=true;
+            this.__selectListeners=[];
+            this.__notifySelectListeners = function(selectEvent) {
+                var length = this.__selectListeners.length;
+                for(var i=0; i<length; i++){
+                    var listener = this.__selectListeners[i];
+                    listener.@org.vaadin.gwtol3.client.interaction.OnSelectInteractionListener::onSelectInteraction(Lorg/vaadin/gwtol3/client/interaction/SelectInteractionEvent;)(selectEvent);
+                }
+            };
+        }
+        this.__selectListeners.push(onSelectInteractionListener);
+    }-*/;
 }
