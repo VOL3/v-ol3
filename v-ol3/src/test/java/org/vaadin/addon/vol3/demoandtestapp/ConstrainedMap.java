@@ -4,7 +4,6 @@ import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
-import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
@@ -23,10 +22,8 @@ public class ConstrainedMap extends BasicMap {
 
     protected OLMap createMap(){
         OLMapOptions mapOpts=new OLMapOptions();
-        OLDeviceOptions dopts=new OLDeviceOptions();
-        dopts.loadTilesWhileAnimating=false;
-        dopts.loadTilesWhileInteracting=false;
-        mapOpts.setDeviceOptions(dopts);
+        mapOpts.setLoadTilesWhileAnimating(false);
+        mapOpts.setLoadTilesWhileInteracting(false);
         mapOpts.setShowOl3Logo(false);
         OLMap map=new OLMap(mapOpts);
         OLLayer layer=createLayer(createSource());

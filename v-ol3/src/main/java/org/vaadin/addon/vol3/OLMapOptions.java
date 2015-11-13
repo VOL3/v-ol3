@@ -1,6 +1,5 @@
 package org.vaadin.addon.vol3;
 
-import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLRendererType;
 
 import java.util.HashMap;
@@ -16,8 +15,9 @@ public class OLMapOptions {
     private Boolean showOl3Logo;
     private OLRendererType renderer;
     private Double pixelRatio;
-    private OLDeviceOptions deviceOptions;
     private Map<String,String> coordinateSystemDefinitions;
+    private Boolean loadTilesWhileAnimating;
+    private Boolean loadTilesWhileInteracting;
 
 
     public Boolean getShowOl3Logo() {
@@ -59,16 +59,30 @@ public class OLMapOptions {
         return this;
     }
 
-    public OLDeviceOptions getDeviceOptions() {
-        return deviceOptions;
+
+    public Boolean getLoadTilesWhileAnimating() {
+        return loadTilesWhileAnimating;
     }
 
-    /** Set device options related to loading map tiles
-     *
-     * @param deviceOptions
+    /**
+     * When set to true, tiles will be loaded during animations. This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is false
+     * @param loadTilesWhileAnimating
      */
-    public OLMapOptions setDeviceOptions(OLDeviceOptions deviceOptions) {
-        this.deviceOptions = deviceOptions;
+    public OLMapOptions setLoadTilesWhileAnimating(Boolean loadTilesWhileAnimating) {
+        this.loadTilesWhileAnimating = loadTilesWhileAnimating;
+        return this;
+    }
+
+    public Boolean getLoadTilesWhileInteracting() {
+        return loadTilesWhileInteracting;
+    }
+
+    /**
+     * When set to true, tiles will be loaded while interacting with the map. This may improve the user experience, but can also make map panning and zooming choppy on devices with slow memory. Default is false.
+     * @param loadTilesWhileInteracting
+     */
+    public OLMapOptions setLoadTilesWhileInteracting(Boolean loadTilesWhileInteracting) {
+        this.loadTilesWhileInteracting = loadTilesWhileInteracting;
         return this;
     }
 

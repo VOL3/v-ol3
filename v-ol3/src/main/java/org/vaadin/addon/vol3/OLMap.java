@@ -333,7 +333,8 @@ public class OLMap extends AbstractComponentContainer {
         getState().showOl3Logo=options.getShowOl3Logo();
         getState().renderer=options.getRenderer();
         getState().pixelRatio=options.getPixelRatio();
-        getState().deviceOptions=options.getDeviceOptions();
+        getState().loadTilesWhileInteracting=options.getLoadTilesWhileInteracting();
+        getState().loadTilesWhileAnimating=options.getLoadTilesWhileAnimating();
         getState().coordinateSystemDefinitions=options.getProjectionDefinitions();
     }
 

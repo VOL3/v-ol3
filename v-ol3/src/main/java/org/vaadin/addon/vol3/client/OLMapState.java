@@ -12,7 +12,6 @@ public class OLMapState extends AbstractComponentState {
     public Boolean showOl3Logo;
     public OLRendererType renderer;
     public Double pixelRatio;
-    public OLDeviceOptions deviceOptions;
     // coordinate system definitions
     public Map<String,String> coordinateSystemDefinitions;
     // controls added to the map
@@ -25,4 +24,6 @@ public class OLMapState extends AbstractComponentState {
     public OLZoomSliderControl zoomSliderControl;
     public OLZoomToExtentControl zoomToExtentControl;
     public boolean hasClickListeners;
+    public Boolean loadTilesWhileAnimating;
+    public Boolean loadTilesWhileInteracting;
 }

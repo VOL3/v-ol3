@@ -2,9 +2,12 @@ package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
+import javafx.beans.binding.When;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
 import org.vaadin.gwtol3.client.layer.Layer;
+
+import javax.validation.groups.Default;
 
 /**
  * Options passed to Map on creation
@@ -30,11 +33,19 @@ public class MapOptions extends JavaScriptObject{
     }-*/;
 
     /**
-     * Device options for the map
-     *
+     * When set to true, tiles will be loaded during animations. This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is false
+     * @param loadTilesWhileAnimating
      */
-    public native final void setDeviceOptions(DeviceOptions options)/*-{
-        this.deviceOptions=options;
+    public native final void setLoadTilesWhileAnimating(boolean loadTilesWhileAnimating)/*-{
+        this.loadTilesWhileAnimating=loadTilesWhileAnimating;
+    }-*/;
+
+    /**
+     * When set to true, tiles will be loaded while interacting with the map. This may improve the user experience, but can also make map panning and zooming choppy on devices with slow memory. Default is false.
+     * @param loadTilesWhileInteracting
+     */
+    public native final void setLoadTilesWhileInteracting(boolean loadTilesWhileInteracting)/*-{
+        this.loadTilesWhileInteracting = loadTilesWhileInteracting;
     }-*/;
 
     /**
@@ -72,7 +83,7 @@ public class MapOptions extends JavaScriptObject{
      * @param show
      */
     public native final void setOl3Logo(boolean show)/*-{
-        this.ol3Logo = show;
+        this.logo = show;
     }-*/;
 
     /** Overlays initially added to the map. By default, no overlays are added.

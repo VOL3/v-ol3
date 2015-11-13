@@ -406,6 +406,10 @@
                                 <argument>${basedir}/../gwt-ol3/src/main/java</argument>
                                 <argument>-src</argument>
                                 <argument>${basedir}/../gwt-ol3/src/main/resources</argument>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../v-ol3/src/main/java</argument>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../v-ol3/src/main/resources</argument>
                                 <argument>org.vaadin.addon.vol3.demoandtestapp.TestWidgetSet</argument>
                             </arguments>
                             <classpathScope>test</classpathScope>
