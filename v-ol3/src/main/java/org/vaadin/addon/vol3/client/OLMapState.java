@@ -3,6 +3,7 @@ package org.vaadin.addon.vol3.client;
 import com.vaadin.shared.AbstractComponentState;
 import org.vaadin.addon.vol3.client.control.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,4 +28,5 @@ public class OLMapState extends AbstractComponentState {
     public Boolean loadTilesWhileAnimating;
     public Boolean loadTilesWhileInteracting;
     public String inputProjection;
+    public List<OLOverlay> overlays;
 }

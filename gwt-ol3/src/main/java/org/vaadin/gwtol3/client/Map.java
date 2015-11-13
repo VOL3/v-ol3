@@ -85,7 +85,9 @@ public class Map extends JavaScriptObject{
      *
      * @param overlay
      */
-    public native final void addOverlay(Overlay overlay)/*-{
+    public native final void addOverlay(Coordinate position, Overlay overlay)/*-{
+        var transformed=this.__transformInputCoordinate(position);
+        overlay.setPosition(transformed);
         this.addOverlay(overlay);
     }-*/;
 
