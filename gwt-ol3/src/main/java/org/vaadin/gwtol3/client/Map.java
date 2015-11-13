@@ -329,9 +329,11 @@ public class Map extends JavaScriptObject{
     }-*/;
 
     public native final void removeOnClickListener(OnClickListener listener) /*-{
-        var index = this.__clickListeners.indexOf(listener);
-        if (index > -1) {
-            this.__clickListeners.splice(index, 1);
+        if(this.__clickListeners){
+            var index = this.__clickListeners.indexOf(listener);
+            if (index > -1) {
+                this.__clickListeners.splice(index, 1);
+            }
         }
     }-*/;
 }
