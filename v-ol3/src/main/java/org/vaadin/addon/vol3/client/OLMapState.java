@@ -26,4 +26,5 @@ public class OLMapState extends AbstractComponentState {
     public boolean hasClickListeners;
     public Boolean loadTilesWhileAnimating;
     public Boolean loadTilesWhileInteracting;
+    public String inputProjection;
 }

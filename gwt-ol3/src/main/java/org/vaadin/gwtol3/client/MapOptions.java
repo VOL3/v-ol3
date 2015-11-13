@@ -115,4 +115,13 @@ public class MapOptions extends JavaScriptObject{
     public native final void setView(View view)/*-{
         this.view=view;
     }-*/;
+
+    /**
+     * Toggles automatic coordinate transformation. By setting input projection, you can interact with the map by passing coordinates and extents in chosen projection instead of the map projection.
+     * @param projection the input / output projections for coordinates and extents.
+     */
+    public native final void setInputProjection(String projection)/*-{
+        this.__inputProjection=projection;
+    }-*/;
+
 }

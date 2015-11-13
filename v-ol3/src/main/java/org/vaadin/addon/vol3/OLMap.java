@@ -336,6 +336,7 @@ public class OLMap extends AbstractComponentContainer {
         getState().loadTilesWhileInteracting=options.getLoadTilesWhileInteracting();
         getState().loadTilesWhileAnimating=options.getLoadTilesWhileAnimating();
         getState().coordinateSystemDefinitions=options.getProjectionDefinitions();
+        getState().inputProjection=options.getInputProjection();
     }
 
     private void addDefaultControls() {

@@ -18,6 +18,7 @@ public class OLMapOptions {
     private Map<String,String> coordinateSystemDefinitions;
     private Boolean loadTilesWhileAnimating;
     private Boolean loadTilesWhileInteracting;
+    private String inputProjection;
 
 
     public Boolean getShowOl3Logo() {
@@ -91,7 +92,7 @@ public class OLMapOptions {
      * @param epsgCode the epsgCode for the projection
      * @param proj4jsString the proj4jsString to define the projection. You can use for example the epsg.io to come up with this one. Just type in your EPSG code to the search page and look below for the proj4js in the export section.
      */
-    public void defineProjection(String epsgCode, String proj4jsString){
+    public OLMapOptions defineProjection(String epsgCode, String proj4jsString){
         if(epsgCode==null){
             throw new IllegalArgumentException("epsgCode can not be null");
         }
@@ -102,6 +103,7 @@ public class OLMapOptions {
             coordinateSystemDefinitions=new HashMap<String,String>();
         }
         coordinateSystemDefinitions.put(epsgCode, proj4jsString);
+        return this;
     }
 
     /** Returns the additional coordinate system definitions that should be enabled using proj4js
@@ -110,5 +112,19 @@ public class OLMapOptions {
      */
     public Map<String, String> getProjectionDefinitions() {
         return coordinateSystemDefinitions;
+    }
+
+
+    public String getInputProjection() {
+        return inputProjection;
+    }
+
+    /** Sets the projection used when interpreting Coordinates and Extents passed in api calls. If the inputProjection differs from map projection,
+     * automatic conversion is done by the wrapper. The default is the value of the map projection.
+     * @param inputProjection the input projection
+     */
+    public OLMapOptions setInputProjection(String inputProjection) {
+        this.inputProjection = inputProjection;
+        return this;
     }
 }

@@ -161,6 +161,9 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         if(getState().loadTilesWhileInteracting!=null){
             options.setLoadTilesWhileInteracting(getState().loadTilesWhileInteracting);
         }
+        if(getState().inputProjection!=null){
+            options.setInputProjection(getState().inputProjection);
+        }
         // clear default controls
         options.setControls(Collection.create());
         getWidget().initMap(options);

@@ -44,7 +44,7 @@ public class BasicMap extends VerticalLayout implements View {
     }
 
     protected OLMap createMap(){
-        OLMap map=new OLMap(new OLMapOptions().setShowOl3Logo(true));
+        OLMap map=new OLMap(new OLMapOptions().setShowOl3Logo(true).setInputProjection(Projections.EPSG4326));
         OLLayer layer=createLayer(createSource());
         map.addLayer(layer);
         map.setView(createView());
