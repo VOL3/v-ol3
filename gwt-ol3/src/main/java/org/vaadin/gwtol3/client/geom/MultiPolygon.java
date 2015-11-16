@@ -27,6 +27,9 @@ public class MultiPolygon extends SimpleGeometry {
     }-*/;
     
     public final native JsArray<JsArray<JsArray<Coordinate>>> getCoordinates(Boolean right) /*-{
+        if (right == undefined || right == null) {
+            right = false;
+        }
         return this.getCoordinates(right);
     }-*/;
     
@@ -34,9 +37,9 @@ public class MultiPolygon extends SimpleGeometry {
         return this.getInteriorPoints();
     }-*/;
     
-    public final native Polygon getPolygon(Integer index) /*-{
-        return this.getPolygon(index);
-    }-*/;
+//    public final native Polygon getPolygon(Integer index) /*-{
+//        return this.getPolygon(index);
+//    }-*/;
     
     public final native JsArray<Polygon> getPolygons() /*-{
         return this.getPolygons();
@@ -48,5 +51,9 @@ public class MultiPolygon extends SimpleGeometry {
     
     public final native void setCoordinates(JsArray<JsArray<JsArray<Coordinate>>> coordinates) /*-{
         this.setCoordinates(coordinates);
+    }-*/;
+    
+    public final native Double getArea() /*-{
+        return this.getArea();
     }-*/;
 }

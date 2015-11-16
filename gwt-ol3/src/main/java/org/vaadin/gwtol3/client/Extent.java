@@ -30,4 +30,11 @@ public class Extent extends JavaScriptObject{
         return this[3];
     }-*/;
 
+    public final native Coordinate getCenter() /*-{
+        return $wnd.ol.extent.getCenter(this);
+    }-*/;
+    
+    public static final native Coordinate getCenter(Extent extent) /*-{
+        return $wnd.ol.extent.getCenter(extent);
+    }-*/;
 }

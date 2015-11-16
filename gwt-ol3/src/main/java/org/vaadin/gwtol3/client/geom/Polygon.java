@@ -72,4 +72,8 @@ public class Polygon extends SimpleGeometry {
     public final native Boolean intersectsExtent(Extent extent) /*-{
         return this.intersectsExtent(extent);
     }-*/;
+    
+    public final native Double getArea() /*-{
+        return this.getArea();
+    }-*/;
 }

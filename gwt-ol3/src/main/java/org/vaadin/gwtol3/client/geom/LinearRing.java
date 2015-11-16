@@ -28,4 +28,8 @@ public class LinearRing extends SimpleGeometry {
     public final native void setCoordinates(JsArray<Coordinate> coordinates) /*-{
         this.setCoordinates(coordinates);
     }-*/;
+    
+    public final native Double getArea() /*-{
+        return this.getArea();
+    }-*/;
 }

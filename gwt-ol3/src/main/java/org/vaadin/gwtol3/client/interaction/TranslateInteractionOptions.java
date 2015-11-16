@@ -25,4 +25,8 @@ public class TranslateInteractionOptions extends JavaScriptObject {
     public final native void setFeatures(Collection<Feature> features) /*-{
         this.features = features;
     }-*/;
+    
+    public final native void setActive(boolean active) /*-{
+        this.active = active;
+    }-*/;
 }

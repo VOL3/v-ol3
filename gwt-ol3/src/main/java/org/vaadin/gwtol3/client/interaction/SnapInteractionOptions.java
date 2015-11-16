@@ -19,6 +19,10 @@ public class SnapInteractionOptions extends JavaScriptObject {
         //
     }
     
+    public static final native SnapInteractionOptions create() /*-{
+        return {};
+    }-*/;
+    
     public final native void setFeatures(Collection<Feature> features) /*-{
         this.features = features;
     }-*/;
