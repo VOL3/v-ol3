@@ -52,6 +52,7 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     private ZoomControl zoomControl;
     private ZoomSliderControl zoomSliderControl;
     private ZoomToExtentControl zoomToExtentControl;
+    private List<MapInitializedListener> mapInitializedListeners;
 
     @Override
     protected void init() {
@@ -130,6 +131,7 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                 layerIndex++;
             }
         }
+        fireMapInitialized();
     }
 
     private void deferredAddInteraction(final OLInteractionConnector interaction){
@@ -368,4 +370,38 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             getRpcProxy(OLOnClickListenerRpc.class).onClick(olCoordinate, pixel, eventType, featureInfoUrls, featureIds, details);
         }
     };
+
+    private void fireMapInitialized(){
+        if(this.mapInitializedListeners!=null){
+            for(MapInitializedListener listener : mapInitializedListeners){
+                listener.mapInitialized();
+            }
+        }
+        // clean up the listeners since those are not needed anymore
+        this.mapInitializedListeners.clear();
+        this.mapInitializedListeners=null;
+    }
+
+    public void addMapInitializationListener(MapInitializedListener listener){
+        if(this.mapInitializedListeners==null){
+            this.mapInitializedListeners=new ArrayList<MapInitializedListener>();
+        }
+        this.mapInitializedListeners.add(listener);
+    }
+
+    public void removeMapInitializationListener(MapInitializedListener listener){
+        this.mapInitializedListeners.remove(listener);
+    }
+
+    /** Interface for listening the map initialization event. The event is fired only once. To be used mainly by extensions.
+     *
+     */
+    public static interface MapInitializedListener{
+        /** Called when the map is initialized (after connector hierarchy changes have been processed)
+         *
+         */
+        public void mapInitialized();
+    }
 }
+
+
