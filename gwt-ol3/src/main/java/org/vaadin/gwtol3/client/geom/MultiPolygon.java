@@ -53,7 +53,7 @@ public class MultiPolygon extends SimpleGeometry {
         this.setCoordinates(coordinates);
     }-*/;
     
-    public final native Double getArea() /*-{
+    public final native double getArea() /*-{
         return this.getArea();
     }-*/;
 }

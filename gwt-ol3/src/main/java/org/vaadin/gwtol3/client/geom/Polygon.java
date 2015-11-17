@@ -73,7 +73,7 @@ public class Polygon extends SimpleGeometry {
         return this.intersectsExtent(extent);
     }-*/;
     
-    public final native Double getArea() /*-{
+    public final native double getArea() /*-{
         return this.getArea();
     }-*/;
 }
