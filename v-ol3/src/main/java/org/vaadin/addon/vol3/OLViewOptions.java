@@ -159,7 +159,8 @@ public class OLViewOptions {
      *
      * @param resolutions
      */
-    public void setResolutions(double[] resolutions) {
+    public OLViewOptions setResolutions(double[] resolutions) {
         this.resolutions = resolutions;
+        return this;
     }
 }

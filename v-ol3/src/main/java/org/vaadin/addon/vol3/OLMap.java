@@ -5,6 +5,7 @@ import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
+import org.vaadin.addon.vol3.client.OLOverlay;
 import org.vaadin.addon.vol3.client.OLPixel;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
@@ -323,6 +324,37 @@ public class OLMap extends AbstractComponentContainer {
         updateClickListenerState();
     }
 
+    /** Adds the specified overlay to the map
+     *
+     * @param overlay the overlay to be added
+     */
+    public void addOverlay(OLOverlay overlay){
+        if(getState().overlays==null){
+            getState().overlays=new ArrayList<OLOverlay>();
+        }
+        getState().overlays.add(overlay);
+    }
+
+    /** Removes the specified overlay from the map
+     *
+     * @param overlay the overlay to be removed
+     */
+    public void removeOverlay(OLOverlay overlay){
+        if(getState().overlays!=null){
+            getState().overlays.remove(overlay);
+            if(getState().overlays.size()==0){
+                getState().overlays=null;
+            }
+        }
+    }
+
+    /** Removes all overlays from the map
+     *
+     */
+    public void removeOverlays(){
+        getState().overlays=null;
+    }
+
 
 
     private void updateClickListenerState() {
@@ -333,8 +365,10 @@ public class OLMap extends AbstractComponentContainer {
         getState().showOl3Logo=options.getShowOl3Logo();
         getState().renderer=options.getRenderer();
         getState().pixelRatio=options.getPixelRatio();
-        getState().deviceOptions=options.getDeviceOptions();
+        getState().loadTilesWhileInteracting=options.getLoadTilesWhileInteracting();
+        getState().loadTilesWhileAnimating=options.getLoadTilesWhileAnimating();
         getState().coordinateSystemDefinitions=options.getProjectionDefinitions();
+        getState().inputProjection=options.getInputProjection();
     }
 
     private void addDefaultControls() {

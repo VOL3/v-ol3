@@ -1,6 +1,5 @@
 package org.vaadin.addon.vol3;
 
-import org.vaadin.addon.vol3.client.OLDeviceOptions;
 import org.vaadin.addon.vol3.client.OLRendererType;
 
 import java.util.HashMap;
@@ -16,8 +15,10 @@ public class OLMapOptions {
     private Boolean showOl3Logo;
     private OLRendererType renderer;
     private Double pixelRatio;
-    private OLDeviceOptions deviceOptions;
     private Map<String,String> coordinateSystemDefinitions;
+    private Boolean loadTilesWhileAnimating;
+    private Boolean loadTilesWhileInteracting;
+    private String inputProjection;
 
 
     public Boolean getShowOl3Logo() {
@@ -59,16 +60,30 @@ public class OLMapOptions {
         return this;
     }
 
-    public OLDeviceOptions getDeviceOptions() {
-        return deviceOptions;
+
+    public Boolean getLoadTilesWhileAnimating() {
+        return loadTilesWhileAnimating;
     }
 
-    /** Set device options related to loading map tiles
-     *
-     * @param deviceOptions
+    /**
+     * When set to true, tiles will be loaded during animations. This may improve the user experience, but can also make animations stutter on devices with slow memory. Default is false
+     * @param loadTilesWhileAnimating
      */
-    public OLMapOptions setDeviceOptions(OLDeviceOptions deviceOptions) {
-        this.deviceOptions = deviceOptions;
+    public OLMapOptions setLoadTilesWhileAnimating(Boolean loadTilesWhileAnimating) {
+        this.loadTilesWhileAnimating = loadTilesWhileAnimating;
+        return this;
+    }
+
+    public Boolean getLoadTilesWhileInteracting() {
+        return loadTilesWhileInteracting;
+    }
+
+    /**
+     * When set to true, tiles will be loaded while interacting with the map. This may improve the user experience, but can also make map panning and zooming choppy on devices with slow memory. Default is false.
+     * @param loadTilesWhileInteracting
+     */
+    public OLMapOptions setLoadTilesWhileInteracting(Boolean loadTilesWhileInteracting) {
+        this.loadTilesWhileInteracting = loadTilesWhileInteracting;
         return this;
     }
 
@@ -77,7 +92,7 @@ public class OLMapOptions {
      * @param epsgCode the epsgCode for the projection
      * @param proj4jsString the proj4jsString to define the projection. You can use for example the epsg.io to come up with this one. Just type in your EPSG code to the search page and look below for the proj4js in the export section.
      */
-    public void defineProjection(String epsgCode, String proj4jsString){
+    public OLMapOptions defineProjection(String epsgCode, String proj4jsString){
         if(epsgCode==null){
             throw new IllegalArgumentException("epsgCode can not be null");
         }
@@ -88,6 +103,7 @@ public class OLMapOptions {
             coordinateSystemDefinitions=new HashMap<String,String>();
         }
         coordinateSystemDefinitions.put(epsgCode, proj4jsString);
+        return this;
     }
 
     /** Returns the additional coordinate system definitions that should be enabled using proj4js
@@ -96,5 +112,19 @@ public class OLMapOptions {
      */
     public Map<String, String> getProjectionDefinitions() {
         return coordinateSystemDefinitions;
+    }
+
+
+    public String getInputProjection() {
+        return inputProjection;
+    }
+
+    /** Sets the projection used when interpreting Coordinates and Extents passed in api calls. If the inputProjection differs from map projection,
+     * automatic conversion is done by the wrapper. The default is the value of the map projection.
+     * @param inputProjection the input projection
+     */
+    public OLMapOptions setInputProjection(String inputProjection) {
+        this.inputProjection = inputProjection;
+        return this;
     }
 }

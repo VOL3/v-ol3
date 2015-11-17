@@ -4,6 +4,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
+import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
 import org.vaadin.addon.vol3.OLViewOptions;
 import org.vaadin.addon.vol3.client.OLCoordinate;
@@ -43,7 +44,7 @@ public class BasicMap extends VerticalLayout implements View {
     }
 
     protected OLMap createMap(){
-        OLMap map=new OLMap();
+        OLMap map=new OLMap(new OLMapOptions().setShowOl3Logo(true).setInputProjection(Projections.EPSG4326));
         OLLayer layer=createLayer(createSource());
         map.addLayer(layer);
         map.setView(createView());

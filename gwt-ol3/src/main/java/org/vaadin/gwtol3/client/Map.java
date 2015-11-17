@@ -41,7 +41,18 @@ public class Map extends JavaScriptObject{
      */
     public static native Map create(MapOptions options)
     /*-{
-        return new $wnd.ol.Map(options);
+        var map=new $wnd.ol.Map(options);
+        if(typeof options.__inputProjection !== 'undefined'){
+            map.__inputProjection=options.__inputProjection;
+        }
+        map.__transformOutputCoordinate = function(coordinate){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(coordinate, this.getView().getProjection(), this.__inputProjection) : coordinate;
+        };
+        map.__transformInputCoordinate = function(coordinate){
+            return typeof this.__inputProjection !== 'undefined' ? $wnd.ol.proj.transform(coordinate, this.__inputProjection, this.getView().getProjection()) : coordinate;
+        };
+
+        return map;
     }-*/;
 
     /**
@@ -76,7 +87,9 @@ public class Map extends JavaScriptObject{
      *
      * @param overlay
      */
-    public native final void addOverlay(Overlay overlay)/*-{
+    public native final void addOverlay(Coordinate position, Overlay overlay)/*-{
+        var transformed=this.__transformInputCoordinate(position);
+        overlay.setPosition(transformed);
         this.addOverlay(overlay);
     }-*/;
 
@@ -93,7 +106,7 @@ public class Map extends JavaScriptObject{
     }-*/;
 
     public native final Coordinate getCoordinateFromPixel(Pixel pixel)/*-{
-        return this.getCoordinateFromPixel()
+        return this.__transformOutputCoordinate(this.getCoordinateFromPixel(pixel));
     }-*/;
 
     /**
@@ -103,7 +116,7 @@ public class Map extends JavaScriptObject{
      * @return
      */
     public native final Coordinate getEventCoordinate(NativeEvent event)/*-{
-        return this.getEventCoordinate(event);
+        return this.__transformOutputCoordinate(this.getEventCoordinate(event));
     }-*/;
 
     /**
@@ -147,7 +160,7 @@ public class Map extends JavaScriptObject{
     }-*/;
 
     public native final Pixel getPixelFromCoordinate(Coordinate coordinate)/*-{
-        return this.getPixelFromCoordinate(coordinate);
+        return this.getPixelFromCoordinate(this.__transformInputCoordinate(coordinate));
     }-*/;
 
     /**
@@ -298,21 +311,23 @@ public class Map extends JavaScriptObject{
             var that=this;
             // listen for singleclick
             var clickCallback=function(event){
-                var clickEvent={pixel : event.pixel, coordinate: event.coordinate, type: "leftclick", nativeEvent : event.originalEvent};
+                var coordinate = that.__transformOutputCoordinate(event.coordinate);
+                var clickEvent={pixel : event.pixel, coordinate: coordinate, type: "leftclick", nativeEvent : event.originalEvent};
                 that.__notifyClickListeners(clickEvent);
             };
             this.on("singleclick", $entry(clickCallback),this);
             // listen for doubleclick
             var dblClickCallback=function(event){
-                var clickEvent={pixel : event.pixel, coordinate: event.coordinate, type: "doubleclick", nativeEvent: event.originalEvent};
+                var coordinate = that.__transformOutputCoordinate(event.coordinate);
+                var clickEvent={pixel : event.pixel, coordinate: coordinate, type: "doubleclick", nativeEvent: event.originalEvent};
                 that.__notifyClickListeners(clickEvent);
                 event.preventDefault();
             };
             this.on("dblclick", $entry(dblClickCallback),this);
             // listen for right click
             var rightClickCallback=function(event){
-
-                var clickEvent={pixel: that.getEventPixel(event), coordinate: that.getEventCoordinate(event), type: "rightclick", nativeEvent: event};
+                var coordinate = that.__transformOutputCoordinate(that.getEventCoordinate(event));
+                var clickEvent={pixel: that.getEventPixel(event), coordinate: coordinate, type: "rightclick", nativeEvent: event};
                 that.__notifyClickListeners(clickEvent);
                 event.preventDefault();
             };
@@ -331,9 +346,11 @@ public class Map extends JavaScriptObject{
     }-*/;
 
     public native final void removeOnClickListener(OnClickListener listener) /*-{
-        var index = this.__clickListeners.indexOf(listener);
-        if (index > -1) {
-            this.__clickListeners.splice(index, 1);
+        if(this.__clickListeners){
+            var index = this.__clickListeners.indexOf(listener);
+            if (index > -1) {
+                this.__clickListeners.splice(index, 1);
+            }
         }
     }-*/;
     

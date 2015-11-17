@@ -1,6 +1,7 @@
 package org.vaadin.addon.vol3.client;
 
 import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.user.client.DOM;
 import com.vaadin.client.ComponentConnector;
 import com.vaadin.client.ConnectorHierarchyChangeEvent;
 import com.vaadin.client.MouseEventDetailsBuilder;
@@ -15,6 +16,7 @@ import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.client.source.HasFeatureInfoUrl;
+import org.vaadin.addon.vol3.client.util.DataConversionUtils;
 import org.vaadin.gwtol3.client.*;
 import org.vaadin.gwtol3.client.control.*;
 import org.vaadin.gwtol3.client.feature.Feature;
@@ -155,9 +157,14 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         if(getState().renderer!=null){
             options.setRenderer(getState().renderer.name().toLowerCase());
         }
-        if(getState().deviceOptions!=null){
-            DeviceOptions opts=DeviceOptions.create(getState().deviceOptions.loadTilesWhileAnimating, getState().deviceOptions.loadTilesWhileInteracting);
-            options.setDeviceOptions(opts);
+        if(getState().loadTilesWhileAnimating!=null){
+            options.setLoadTilesWhileAnimating(getState().loadTilesWhileAnimating);
+        }
+        if(getState().loadTilesWhileInteracting!=null){
+            options.setLoadTilesWhileInteracting(getState().loadTilesWhileInteracting);
+        }
+        if(getState().inputProjection!=null){
+            options.setInputProjection(getState().inputProjection);
         }
         // clear default controls
         options.setControls(Collection.create());
@@ -295,6 +302,42 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             getWidget().getMap().addOnClickListener(listener);
         } else {
             getWidget().getMap().removeOnClickListener(listener);
+        }
+    }
+
+    @OnStateChange("overlays")
+    void updateOverlays(){
+        if(getWidget().getMap().getOverlays()!=null){
+            getWidget().getMap().getOverlays().clear();
+        }
+        if(getState().overlays!=null){
+            for(OLOverlay olOverlay : getState().overlays){
+                OverlayOptions options=OverlayOptions.create();
+                if(olOverlay.offset!=null){
+                    options.setOffset(DataConversionUtils.toJsArrayInteger(olOverlay.offset));
+                }
+                if(olOverlay.insertFirst!=null){
+                    options.setInsertFirst(olOverlay.insertFirst);
+                }
+                if(olOverlay.stopEvent!=null){
+                    options.setStopEvent(olOverlay.stopEvent);
+                }
+                if(olOverlay.htmlContent!=null){
+                    com.google.gwt.dom.client.Element div = DOM.createDiv();
+                    div.setInnerHTML(olOverlay.htmlContent);
+                    if(olOverlay.classNames!=null){
+                        div.setClassName(olOverlay.classNames);
+                    }
+                    options.setElement(div);
+                }
+                if(olOverlay.positioning!=null){
+                    options.setPositioning(olOverlay.positioning);
+                }
+                if(olOverlay.position!=null){
+                    Coordinate coordinate = Coordinate.create(olOverlay.position.x, olOverlay.position.y);
+                    getWidget().getMap().addOverlay(coordinate, Overlay.create(options));
+                }
+            }
         }
     }
 

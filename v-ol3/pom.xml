@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
@@ -86,15 +86,29 @@
 			<scope>test</scope>
 		</dependency>
         <dependency>
-            <groupId>org.eclipse.jetty</groupId>
-            <artifactId>jetty-webapp</artifactId>
-            <version>7.2.2.v20101205</version>
+            <groupId>com.vaadin</groupId>
+            <artifactId>vaadin-client-compiler</artifactId>
+            <version>${vaadin.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!--        <dependency>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>jetty-webapp</artifactId>
+                    <version>7.2.2.v20101205</version>
+                    <scope>test</scope>
+                </dependency>
+                -->
+        <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>
@@ -363,5 +377,46 @@
         </pluginManagement>
 
     </build>
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <property>
+                    <name>dev</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.4.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>java</goal>
+                                </goals>
+                            </execution>
+                        </executions>
 
+                        <configuration>
+                            <mainClass>com.google.gwt.dev.codeserver.CodeServer</mainClass>
+                            <arguments>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../gwt-ol3/src/main/java</argument>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../gwt-ol3/src/main/resources</argument>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../v-ol3/src/main/java</argument>
+                                <argument>-src</argument>
+                                <argument>${basedir}/../v-ol3/src/main/resources</argument>
+                                <argument>org.vaadin.addon.vol3.demoandtestapp.TestWidgetSet</argument>
+                            </arguments>
+                            <classpathScope>test</classpathScope>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

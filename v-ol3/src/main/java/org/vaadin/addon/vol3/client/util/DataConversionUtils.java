@@ -1,6 +1,7 @@
 package org.vaadin.addon.vol3.client.util;
 
 import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayInteger;
 import com.google.gwt.core.client.JsArrayNumber;
 import com.google.gwt.core.client.JsArrayString;
 import org.vaadin.addon.vol3.client.OLCoordinate;
@@ -21,6 +22,15 @@ public class DataConversionUtils {
 		return jsArray;
 	}
 
+	public static JsArrayInteger toJsArrayInteger(int [] array) {
+		JsArrayInteger jsArray = JsArrayInteger.createArray().cast();
+		for (int value : array) {
+			jsArray.push(value);
+		}
+		return jsArray;
+	}
+
+
 	public static JsArrayString toJsArrayString(String [] array){
 		JsArrayString jsArray = JsArrayString.createArray().cast();
 		for(String value : array){
@@ -40,4 +50,9 @@ public class DataConversionUtils {
 	public static native final Extent transformExtent(String sourceProjection, String targetProjection, Extent extent)/*-{
         return $wnd.ol.proj.transformExtent(extent, sourceProjection, targetProjection);
 	}-*/;
+
+	public static native final Coordinate transformCoordinate(String sourceProjection, String targetProjection, Coordinate coordinate)/*-{
+        return $wnd.ol.proj.transformExtent(coordinate, sourceProjection, targetProjection);
+    }-*/;
+
 }

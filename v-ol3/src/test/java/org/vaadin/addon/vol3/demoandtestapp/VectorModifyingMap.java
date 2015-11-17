@@ -92,11 +92,13 @@ public class VectorModifyingMap extends BasicMap{
 
             @Override
             public void buttonClick(Button.ClickEvent event) {
-
-                OLPolygon newPoly=new OLPolygon(new OLCoordinate[]{new OLCoordinate(7.1, 46.9),new OLCoordinate(7.5, 47),new OLCoordinate(7.5, 47.5),new OLCoordinate(7.1, 46.9)});
-                featurePoly.setGeometry(newPoly);
-
-                ((OLVectorSource)vectorLayer.getSource()).updateAllFeatures();
+                if(featurePoly==null){
+                    Notification.show("Please create the poly first");
+                } else{
+                    OLPolygon newPoly=new OLPolygon(new OLCoordinate[]{new OLCoordinate(7.1, 46.9),new OLCoordinate(7.5, 47),new OLCoordinate(7.5, 47.5),new OLCoordinate(7.1, 46.9)});
+                    featurePoly.setGeometry(newPoly);
+                    ((OLVectorSource)vectorLayer.getSource()).updateAllFeatures();
+                }
 
             }
         });
@@ -107,13 +109,15 @@ public class VectorModifyingMap extends BasicMap{
 
             @Override
             public void buttonClick(Button.ClickEvent event) {
-
-                OLStyle olStyle =StyleUtils.createDefaultStyle();
-                olStyle.fillStyle=new OLFillStyle("red");
-                featurePoly.setStyle(olStyle);
-
-                ((OLVectorSource)vectorLayer.getSource()).updateAllFeatures();
-
+                if(featurePoly==null){
+                    Notification.show("Please create the poly first");
+                }
+                else{
+                    OLStyle olStyle =StyleUtils.createDefaultStyle();
+                    olStyle.fillStyle=new OLFillStyle("red");
+                    featurePoly.setStyle(olStyle);
+                    ((OLVectorSource)vectorLayer.getSource()).updateAllFeatures();
+                }
             }
         });
         controls.addComponent(colorizePolyButton);
