@@ -70,6 +70,48 @@ public class PopupOverlay extends Overlay {
         popup.style.opacity = opacity;
     }-*/;
     
+    public final native void setSize(int width, int height) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.width  = width + 'px';
+        popup.style.height = height + 'px';
+            
+        var content = popup.getElementsByClassName('ol-popup-content')[0];
+        content.style.width  = width + 'px';
+        content.style.height = height + 'px';
+    }-*/;
+    
+    public final native void setMinSize(int minWidth, int minHeight) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.minWidth  = minWidth + 'px';
+        popup.style.minHeight = minHeight + 'px';
+    }-*/;
+    
+    public final native void setWidth(int width) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.width  = width + 'px';
+            
+        var content = popup.getElementsByClassName('ol-popup-content')[0];
+        content.style.width  = width + 'px';
+    }-*/;
+    
+    public final native void setHeight(int height) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.height = height + 'px';
+            
+        var content = popup.getElementsByClassName('ol-popup-content')[0];
+        content.style.height = height + 'px';
+    }-*/;
+    
+    public final native void setMinWidth(int minWidth) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.minWidth = minWidth + 'px';
+    }-*/;
+    
+    public final native void setMinHeight(int minHeight) /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        popup.style.minHeight = minHeight + 'px';
+    }-*/;
+    
     public final native void show() /*-{
         var popup = $wnd.document.getElementById('popup_' + this.get('id'));
         popup.style.display = '';

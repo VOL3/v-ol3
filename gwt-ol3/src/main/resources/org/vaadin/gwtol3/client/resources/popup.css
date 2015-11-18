@@ -43,7 +43,7 @@
 
 .ol-popup-content {
   /*width: 200px;*/
-  height: 100px;
+  /*height: 100px;*/
   overflow-y: scroll;
   overflow: auto;
   font-family: Verdana, Tahoma, "DejaVu Sans", sans-serif;
