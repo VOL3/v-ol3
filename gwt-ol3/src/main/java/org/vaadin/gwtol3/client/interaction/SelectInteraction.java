@@ -3,6 +3,7 @@ package org.vaadin.gwtol3.client.interaction;
 import org.vaadin.gwtol3.client.Collection;
 import org.vaadin.gwtol3.client.Map;
 import org.vaadin.gwtol3.client.feature.Feature;
+import org.vaadin.gwtol3.client.layer.VectorLayer;
 
 /**
  * Interaction that handles selection of vector data
@@ -17,6 +18,15 @@ public class SelectInteraction extends Interaction{
 
     public static final native SelectInteraction create(SelectInteractionOptions options)/*-{
         return new $wnd.ol.interaction.Select(options);
+    }-*/;
+    
+    /**
+     * Returns the associated vectorlayer of the (last) selected feature. Note that this will not work with any programmatic method like pushing features to collection.
+     * @param feature
+     * @return associated vectorlayer of the (last) selected feature
+     */
+    public native final VectorLayer getLayer(Feature feature) /*-{
+        return this.getLayer(feature);
     }-*/;
 
     /** Gets the selected features

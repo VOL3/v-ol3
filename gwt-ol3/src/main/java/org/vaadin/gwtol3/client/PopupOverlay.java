@@ -122,6 +122,11 @@ public class PopupOverlay extends Overlay {
         popup.style.display = 'none';
     }-*/;
     
+    public final native boolean getVisible() /*-{
+        var popup = $wnd.document.getElementById('popup_' + this.get('id'));
+        return (popup.style.display != 'none');
+    }-*/;
+    
     public final native void addOnPopupOverlayCloserListener(OnPopupOverlayCloserListener onPopupOverlayCloserListener) /*-{
         var popup = $wnd.document.getElementById('popup_' + this.get('id'));
         var closer = popup.getElementsByClassName('ol-popup-closer')[0];
