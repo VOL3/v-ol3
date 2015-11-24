@@ -57,6 +57,24 @@ public abstract class LayerBase extends JavaScriptObject {
         return this.getExtent();
     }-*/;
 
+    public native final String getTitle(String title)/*-{
+        return this.get("title");
+    }-*/;
+
+    public native final String getStringProperty(String key)/*-{
+        return this.get(key);
+    }-*/;
+
+    public native final Double getDoubleProperty(String key)/*-{
+        var val = this.get(key);
+        return val == null ? null : @java.lang.Double::valueOf(D)(val);
+    }-*/;
+
+    public native final Boolean getBooleanProperty(String key)/*-{
+        var val = this.get(key);
+        return val == null ? null : @java.lang.Boolean::valueOf(Z)(val);
+    }-*/;
+
     public native final void setExtent(Extent extent)/*-{
         this.setExtent(extent);
     }-*/;
@@ -93,5 +111,19 @@ public abstract class LayerBase extends JavaScriptObject {
         this.setVisible(visible);
     }-*/;
 
+    public native final void setTitle(String title)/*-{
+        this.set("title", title);
+    }-*/;
 
+    public native final void setStringProperty(String key, String value)/*-{
+        this.set(key, value);
+    }-*/;
+
+    public native final void setDoubleProperty(String key, double value)/*-{
+        this.set(key, value);
+    }-*/;
+
+    public native final void setBooleanProperty(String key, boolean value)/*-{
+        this.set(key, value);
+    }-*/;
 }

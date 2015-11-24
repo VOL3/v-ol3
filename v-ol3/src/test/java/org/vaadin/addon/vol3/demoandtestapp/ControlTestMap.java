@@ -18,6 +18,7 @@ public class ControlTestMap extends BasicMap {
         map.setScaleLineControl(new OLScaleLineControl());
         map.setZoomSliderControl(new OLZoomSliderControl());
         map.setZoomToExtentControl(new OLZoomToExtentControl());
+        map.setLayerSwitcherControl(new OLLayerSwitcherControl());
         return map;
     }
 }

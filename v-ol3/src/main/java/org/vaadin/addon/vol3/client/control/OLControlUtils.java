@@ -1,10 +1,26 @@
 package org.vaadin.addon.vol3.client.control;
 
-import org.vaadin.gwtol3.client.Extent;
-import org.vaadin.gwtol3.client.control.*;
-import org.vaadin.gwtol3.client.proj.Projection;
-
 import java.util.logging.Logger;
+
+import org.vaadin.gwtol3.client.Extent;
+import org.vaadin.gwtol3.client.control.AttributionControl;
+import org.vaadin.gwtol3.client.control.FullScreenControl;
+import org.vaadin.gwtol3.client.control.FullScreenControlOptions;
+import org.vaadin.gwtol3.client.control.LayerSwitcherControl;
+import org.vaadin.gwtol3.client.control.LayerSwitcherControlOptions;
+import org.vaadin.gwtol3.client.control.MousePositionControl;
+import org.vaadin.gwtol3.client.control.MousePositionControlOptions;
+import org.vaadin.gwtol3.client.control.RotateControl;
+import org.vaadin.gwtol3.client.control.RotateControlOptions;
+import org.vaadin.gwtol3.client.control.ScaleLineControl;
+import org.vaadin.gwtol3.client.control.ScaleLineControlOptions;
+import org.vaadin.gwtol3.client.control.ZoomControl;
+import org.vaadin.gwtol3.client.control.ZoomControlOptions;
+import org.vaadin.gwtol3.client.control.ZoomSliderControl;
+import org.vaadin.gwtol3.client.control.ZoomSliderControlOptions;
+import org.vaadin.gwtol3.client.control.ZoomToExtentControl;
+import org.vaadin.gwtol3.client.control.ZoomToExtentControlOptions;
+import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
  * Utility methods for dealing with controls
@@ -131,5 +147,13 @@ public class OLControlUtils {
             opts.setExtent(Extent.create(zoom.extent.minX,zoom.extent.minY, zoom.extent.maxX, zoom.extent.maxY));
         }
         return ZoomToExtentControl.create(opts);
+    }
+
+    public static final LayerSwitcherControl createLayerSwitcherControl(OLLayerSwitcherControl layerSwitcher){
+        LayerSwitcherControlOptions opts= LayerSwitcherControlOptions.create();
+        if(layerSwitcher.tipLabel!=null){
+            opts.setTipLabel(layerSwitcher.tipLabel);
+        }
+        return LayerSwitcherControl.create(opts);
     }
 }

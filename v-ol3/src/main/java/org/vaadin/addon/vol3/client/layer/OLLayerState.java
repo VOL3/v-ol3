@@ -18,4 +18,5 @@ public class OLLayerState extends AbstractComponentState{
     public Boolean visible;
     public OLExtent extent;
     public String inputProjection;
+    public String title;
 }

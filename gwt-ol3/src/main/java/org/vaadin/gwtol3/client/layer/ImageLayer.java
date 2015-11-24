@@ -14,7 +14,7 @@ public class ImageLayer extends Layer {
         return new $wnd.ol.layer.Image({source: src});
     }-*/;
 
-    public static native TileLayer create(ImageOptions options)
+    public static native ImageLayer create(ImageOptions options)
     /*-{
         return new $wnd.ol.layer.Image(options);
     }-*/;

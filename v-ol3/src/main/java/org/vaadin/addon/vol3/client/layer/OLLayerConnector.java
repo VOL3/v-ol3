@@ -164,4 +164,11 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
             }
         }
     }
+
+    @OnStateChange("title")
+    void updateTitle(){
+        if(getState().title!=null){
+            getLayer().setTitle(getState().title);
+        }
+    }
 }

@@ -52,6 +52,7 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
     private ZoomControl zoomControl;
     private ZoomSliderControl zoomSliderControl;
     private ZoomToExtentControl zoomToExtentControl;
+    private LayerSwitcherControl layerSwitcherControl;
     private List<MapInitializedListener> mapInitializedListeners;
 
     @Override
@@ -295,6 +296,18 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         if(ctrl!=null){
             this.zoomToExtentControl=OLControlUtils.createZoomToExtentControl(ctrl);
             getWidget().getMap().addControl(this.zoomToExtentControl);
+        }
+    }
+
+    @OnStateChange("layerSwitcherControl")
+    void updateLayerSwitcherControl(){
+        OLLayerSwitcherControl ctrl=getState().layerSwitcherControl;
+        // remove old control
+        getWidget().getMap().removeControl(this.layerSwitcherControl);
+        this.layerSwitcherControl=null;
+        if(ctrl!=null){
+            this.layerSwitcherControl=OLControlUtils.createLayerSwitcherControl(ctrl);
+            getWidget().getMap().addControl(this.layerSwitcherControl);
         }
     }
 

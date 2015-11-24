@@ -3,6 +3,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLOverlay;
+import org.vaadin.addon.vol3.client.control.OLLayerSwitcherControl;
 import org.vaadin.addon.vol3.client.style.OLIconStyle;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 import org.vaadin.addon.vol3.feature.OLFeature;
@@ -25,6 +26,8 @@ public class IconFeatureMap extends VectorLayerMap {
 	@Override
 	protected OLMap createMap() {
 		final OLMap map = super.createMap();
+        vectorLayer.setTitle("Feature Layer");
+        map.setLayerSwitcherControl(new OLLayerSwitcherControl());
 		map.addClickListener(new OLMap.ClickListener() {
 			@Override
 			public void onClick(OLMap.OLClickEvent clickEvent) {

@@ -50,4 +50,8 @@ public abstract class LayerOptions extends JavaScriptObject {
     public final native void setExtent(Extent extent)/*-{
         this.extent=extent;
     }-*/;
+
+    public native final void setTitle(String title)/*-{
+        this.title = title;
+    }-*/;
 }
