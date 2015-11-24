@@ -17,6 +17,7 @@ public class OLLayerOptions {
     private Boolean visible;
     private OLExtent extent;
     private String inputProjection;
+    private String title;
 
     public Double getBrightness() {
         return brightness;
@@ -105,6 +106,15 @@ public class OLLayerOptions {
 
     public OLLayerOptions setInputProjection(String inputProjection) {
         this.inputProjection = inputProjection;
+        return this;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public OLLayerOptions setTitle(String title) {
+        this.title = title;
         return this;
     }
 }

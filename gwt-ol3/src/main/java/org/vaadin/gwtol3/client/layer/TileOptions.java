@@ -22,8 +22,4 @@ public class TileOptions extends LayerOptions {
     public final native void setUseInterimTilesOnError(boolean enabled)/*-{
         this.useInterimTilesOnError = enabled;
     }-*/;
-
-    public native final void setTitle(String title)/*-{
-        this.title = title;
-    }-*/;
 }

@@ -40,6 +40,7 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         setSaturation(options.getSaturation());
         setLayerVisible(options.getVisible());
         setExtent(options.getExtent());
+        setTitle(options.getTitle());
         getState().inputProjection=options.getInputProjection();
     }
 
@@ -128,5 +129,13 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
 
     public void setExtent(OLExtent extent){
         getState().extent=extent;
+    }
+
+    public String getTitle() {
+        return getState().title;
+    }
+
+    public void setTitle(String title) {
+        getState().title = title;
     }
 }
