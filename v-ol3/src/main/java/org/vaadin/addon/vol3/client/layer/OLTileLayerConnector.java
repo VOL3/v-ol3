@@ -21,6 +21,9 @@ public class OLTileLayerConnector extends OLLayerConnector {
         if(getState().preload!=null){
             opts.setPreload(getState().preload);
         }
+        if (getState().title != null) {
+            opts.setTitle(getState().title);
+        }
         opts.setSource(source);
         return TileLayer.create(opts);
     }

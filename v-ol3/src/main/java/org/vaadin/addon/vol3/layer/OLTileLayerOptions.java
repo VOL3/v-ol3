@@ -4,6 +4,7 @@ package org.vaadin.addon.vol3.layer;
  * Options that can be passed to OLTileLayer on construction time
  */
 public class OLTileLayerOptions extends OLLayerOptions{
+    private String title;
     private Integer preload;
     private Boolean useInterimTilesOnError;
 
@@ -38,6 +39,15 @@ public class OLTileLayerOptions extends OLLayerOptions{
      */
     public OLTileLayerOptions setUseInterimTilesOnError(Boolean useInterimTilesOnError) {
         this.useInterimTilesOnError = useInterimTilesOnError;
+        return this;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public OLTileLayerOptions setTitle(String title) {
+        this.title = title;
         return this;
     }
 }

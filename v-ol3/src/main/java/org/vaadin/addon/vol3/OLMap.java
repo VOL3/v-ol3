@@ -3,19 +3,28 @@ package org.vaadin.addon.vol3;
 import com.vaadin.shared.MouseEventDetails;
 import com.vaadin.ui.AbstractComponentContainer;
 import com.vaadin.ui.Component;
-import org.vaadin.addon.vol3.client.OLCoordinate;
-import org.vaadin.addon.vol3.client.OLMapState;
-import org.vaadin.addon.vol3.client.OLOverlay;
-import org.vaadin.addon.vol3.client.OLPixel;
-import org.vaadin.addon.vol3.client.control.*;
-import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
-import org.vaadin.addon.vol3.interaction.OLInteraction;
-import org.vaadin.addon.vol3.layer.OLLayer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+
+import org.vaadin.addon.vol3.client.OLCoordinate;
+import org.vaadin.addon.vol3.client.OLMapState;
+import org.vaadin.addon.vol3.client.OLOverlay;
+import org.vaadin.addon.vol3.client.OLPixel;
+import org.vaadin.addon.vol3.client.control.OLAttributionControl;
+import org.vaadin.addon.vol3.client.control.OLFullScreenControl;
+import org.vaadin.addon.vol3.client.control.OLLayerSwitcherControl;
+import org.vaadin.addon.vol3.client.control.OLMousePositionControl;
+import org.vaadin.addon.vol3.client.control.OLRotateControl;
+import org.vaadin.addon.vol3.client.control.OLScaleLineControl;
+import org.vaadin.addon.vol3.client.control.OLZoomControl;
+import org.vaadin.addon.vol3.client.control.OLZoomSliderControl;
+import org.vaadin.addon.vol3.client.control.OLZoomToExtentControl;
+import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
+import org.vaadin.addon.vol3.interaction.OLInteraction;
+import org.vaadin.addon.vol3.layer.OLLayer;
 
 /**
  * The core of the wrapper. Interact with this one to add OpenLayers 3 maps to your Vaadin application
@@ -296,6 +305,18 @@ public class OLMap extends AbstractComponentContainer {
      */
     public void setZoomToExtentControl(OLZoomToExtentControl zoomToExtentControl) {
         getState().zoomToExtentControl = zoomToExtentControl;
+    }
+
+    public OLLayerSwitcherControl getLayerSwitcherControl() {
+        return getState().layerSwitcherControl;
+    }
+
+    /** Sets control to the map that allows selecting layers to view/hide
+     *
+     * @param layerSwitcherControl
+     */
+    public void setLayerSwitcherControl(OLLayerSwitcherControl layerSwitcherControl) {
+        getState().layerSwitcherControl = layerSwitcherControl;
     }
 
     /**

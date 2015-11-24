@@ -2,7 +2,15 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.*;
+import com.vaadin.ui.AbstractLayout;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.VerticalLayout;
+
+import java.util.logging.Logger;
+
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
@@ -13,11 +21,10 @@ import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.source.OLMapQuestLayerName;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLTileLayer;
+import org.vaadin.addon.vol3.layer.OLTileLayerOptions;
 import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 import org.vaadin.addon.vol3.util.SimpleContextMenu;
-
-import java.util.logging.Logger;
 
 /**
  * Basic map view
@@ -45,7 +52,7 @@ public class BasicMap extends VerticalLayout implements View {
 
     protected OLMap createMap(){
         OLMap map=new OLMap(new OLMapOptions().setShowOl3Logo(true).setInputProjection(Projections.EPSG4326));
-        OLLayer layer=createLayer(createSource());
+        OLLayer layer=createLayer(createSource(), new OLTileLayerOptions().setTitle("MapQuest OSM"));
         map.addLayer(layer);
         map.setView(createView());
         map.setSizeFull();
@@ -93,6 +100,9 @@ public class BasicMap extends VerticalLayout implements View {
 
     protected OLLayer createLayer(OLSource source){
         return new OLTileLayer(source);
+    }
+    protected OLLayer createLayer(OLSource source, OLTileLayerOptions options){
+        return new OLTileLayer(source, options);
     }
 
     protected OLView createView(){

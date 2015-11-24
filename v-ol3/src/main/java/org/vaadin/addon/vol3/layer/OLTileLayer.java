@@ -36,6 +36,15 @@ public class OLTileLayer extends OLLayer {
         return (OLTileLayerState) super.getState(markAsDirty);
     }
 
+    @Override
+    protected void setOptions(OLLayerOptions options) {
+        if (options instanceof OLTileLayerOptions) {
+            this.setOptions((OLTileLayerOptions)options);
+        } else {
+            super.setOptions(options);
+        }
+    }
+
     /** Applies the layer options
      *
      * @param options
@@ -44,6 +53,7 @@ public class OLTileLayer extends OLLayer {
         super.setOptions(options);
         getState().useInterimTilesOnError=options.getUseInterimTilesOnError();
         getState().preload=options.getPreload();
+        getState().title=options.getTitle();
     }
 
     /** Returns true if the interim tiles are loaded on error
@@ -62,4 +72,11 @@ public class OLTileLayer extends OLLayer {
         return getState(false).preload;
     }
 
+    public String getTitle() {
+        return getState().title;
+    }
+
+    public void setTitle(String title) {
+        getState().title = title;
+    }
 }

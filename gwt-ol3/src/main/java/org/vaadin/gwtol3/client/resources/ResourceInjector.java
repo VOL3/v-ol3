@@ -22,7 +22,9 @@ public class ResourceInjector {
      */
     protected void injectResources() {
         bundle.css().ensureInjected();
+        bundle.layerSwitcherCss().ensureInjected();
         injectScript(bundle.javaScript().getText());
+        injectScript(bundle.layerSwitcherJavaScript().getText());
     }
 
     private static native void injectScript(String script)
