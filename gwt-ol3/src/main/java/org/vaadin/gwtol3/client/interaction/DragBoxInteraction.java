@@ -8,7 +8,8 @@ package org.vaadin.gwtol3.client.interaction;
 import org.vaadin.gwtol3.client.geom.Polygon;
 
 /**
- * Some strange, errors in JS, on this time not working
+ * Some strange, errors in JS, on this time not working - FIXED!
+ * Need add DragZoomInteraction by default to map!
  * @author iserge
  */
 public class DragBoxInteraction extends PointerInteraction {
@@ -16,11 +17,11 @@ public class DragBoxInteraction extends PointerInteraction {
         //
     }
     
-    public static final native DragBoxInteraction create() /*-{
+    public static native DragBoxInteraction create() /*-{
         return new $wnd.ol.interaction.DragBox();
     }-*/;
     
-    public static final native DragBoxInteraction create(DragBoxInteractionOptions options) /*-{
+    public static native DragBoxInteraction create(DragBoxInteractionOptions options) /*-{
         return new $wnd.ol.interaction.DragBox(options);
     }-*/;
     
