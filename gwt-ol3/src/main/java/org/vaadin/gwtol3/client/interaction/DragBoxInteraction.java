@@ -33,17 +33,17 @@ public class DragBoxInteraction extends PointerInteraction {
         if (!this.__onDragBoxInteractionRegistered) {
             var that = this;
             
-            var dragendCallback = function(event) {
-                var drawendEvent = {type: "dragend", coordinate: this.coordinate, nativeEvent: event.originalEvent};
-                that.__notifyDragBoxInteractionListeners(dragendEvent);
+            var boxendCallback = function(event) {
+                var boxendEvent = {type: "boxend", geometry: that.getGeometry(), nativeEvent: event.originalEvent};
+                that.__notifyDragBoxInteractionListeners(boxendEvent);
             };
-            this.on("dragend", $entry(dragendCallback), this);
+            this.on("boxend", $entry(boxendCallback), this);
             
-            var dragtartCallback = function(event) {
-                var dragstartEvent = {type: "dragstart", coordinate: this.coordinate, nativeEvent: event.originalEvent};
-                that.__notifyDragBoxInteractionListeners(dragstartEvent);
+            var boxstartCallback = function(event) {
+                var boxstartEvent = {type: "boxstart", geometry: that.getGeometry(), nativeEvent: event.originalEvent};
+                that.__notifyDragBoxInteractionListeners(boxstartEvent);
             };
-            this.on("dragstart", $entry(dragstartCallback), this);
+            this.on("boxstart", $entry(boxstartCallback), this);
             
             this.__onDragBoxInteractionRegistered=true;
             this.__dragBoxInteractionListeners=[];

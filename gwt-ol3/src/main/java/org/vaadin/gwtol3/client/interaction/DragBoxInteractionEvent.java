@@ -7,6 +7,7 @@ package org.vaadin.gwtol3.client.interaction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.geom.Polygon;
 
 /**
  *
@@ -31,8 +32,12 @@ public class DragBoxInteractionEvent extends JavaScriptObject {
         }
     }
     
-    public native final Coordinate getCoordinate() /*-{
-        return this.coordinate;
+    /**
+     * The coordinate of the drag event.
+     * @return The coordinate of the drag event.
+     */
+    public native final Polygon getGeometry() /*-{
+        return this.geometry;
     }-*/;
     
     private native final String getTypeNative()/*-{
