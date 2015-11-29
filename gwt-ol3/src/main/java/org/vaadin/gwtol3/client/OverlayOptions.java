@@ -3,6 +3,7 @@ package org.vaadin.gwtol3.client;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayInteger;
 import com.google.gwt.dom.client.Element;
+import org.vaadin.gwtol3.client.animation.PanOptions;
 
 /**
  * Created by Vaadin Ltd / mjhosio on 13/11/15.
@@ -45,5 +46,17 @@ public class OverlayOptions extends JavaScriptObject {
 	public native final void setInsertFirst(boolean insertFirst)
     /*-{
         this.insertFirst = insertFirst;
+    }-*/;
+        
+    public final native void setAutoPan(Boolean autoPan) /*-{
+        this.autoPan = autoPan;
+    }-*/;
+    
+    public final native void setAutoPanMargin(Integer autoPanMargin) /*-{
+        this.autoPanMargin = autoPanMargin;
+    }-*/;
+    
+    public final native void setAutoPanAnimation(PanOptions panOptions) /*-{
+        this.autoPanAnimation = panOptions;
     }-*/;
 }

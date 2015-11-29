@@ -20,7 +20,7 @@ public class Overlay extends JavaScriptObject {
     public static final String POSITION_TOP_RIGHT="top-right";
 
     protected Overlay(){
-
+        //
     }
 
     public static native Overlay create()
@@ -88,5 +88,4 @@ public class Overlay extends JavaScriptObject {
     /*-{
         return this.getPositioning();
     }-*/;
-
 }

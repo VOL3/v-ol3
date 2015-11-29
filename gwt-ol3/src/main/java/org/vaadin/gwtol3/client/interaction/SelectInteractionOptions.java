@@ -2,6 +2,8 @@ package org.vaadin.gwtol3.client.interaction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
+import org.vaadin.gwtol3.client.Collection;
+import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.style.Style;
 
@@ -31,5 +33,16 @@ public class SelectInteractionOptions extends JavaScriptObject {
     public final native void setStyles(JsArray<Style> styles)/*-{
         this.styles=styles;
     }-*/;
+    
+    public final native void setFeatures(Collection<Feature> features) /*-{
+        this.features = features;
+    }-*/;
 
+    public final native void setMulti(Boolean multi) /*-{
+        this.multi = multi;
+    }-*/;
+    
+    public final native void setActive(boolean active) /*-{
+        this.active = active;
+    }-*/;
 }
