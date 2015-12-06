@@ -2,15 +2,7 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.AbstractLayout;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.VerticalLayout;
-
-import java.util.logging.Logger;
-
+import com.vaadin.ui.*;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.OLMapOptions;
 import org.vaadin.addon.vol3.OLView;
@@ -24,6 +16,8 @@ import org.vaadin.addon.vol3.layer.OLTileLayer;
 import org.vaadin.addon.vol3.source.OLMapQuestSource;
 import org.vaadin.addon.vol3.source.OLSource;
 import org.vaadin.addon.vol3.util.SimpleContextMenu;
+
+import java.util.logging.Logger;
 
 /**
  * Basic map view

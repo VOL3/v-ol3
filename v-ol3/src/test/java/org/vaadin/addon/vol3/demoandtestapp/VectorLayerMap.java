@@ -2,10 +2,6 @@ package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
-
-import java.util.Collections;
-import java.util.List;
-
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.style.OLStyle;
@@ -16,6 +12,9 @@ import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.source.OLVectorSourceOptions;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Map for testing vector layer

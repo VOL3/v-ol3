@@ -1,7 +1,6 @@
 package org.vaadin.addon.vol3.client.layer;
 
 import com.vaadin.shared.ui.Connect;
-
 import org.vaadin.addon.vol3.layer.OLImageLayer;
 import org.vaadin.gwtol3.client.layer.ImageLayer;
 import org.vaadin.gwtol3.client.layer.ImageOptions;

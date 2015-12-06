@@ -1,19 +1,10 @@
 package org.vaadin.addon.vol3.client;
 
 import com.vaadin.shared.AbstractComponentState;
+import org.vaadin.addon.vol3.client.control.*;
 
 import java.util.List;
 import java.util.Map;
-
-import org.vaadin.addon.vol3.client.control.OLAttributionControl;
-import org.vaadin.addon.vol3.client.control.OLFullScreenControl;
-import org.vaadin.addon.vol3.client.control.OLLayerSwitcherControl;
-import org.vaadin.addon.vol3.client.control.OLMousePositionControl;
-import org.vaadin.addon.vol3.client.control.OLRotateControl;
-import org.vaadin.addon.vol3.client.control.OLScaleLineControl;
-import org.vaadin.addon.vol3.client.control.OLZoomControl;
-import org.vaadin.addon.vol3.client.control.OLZoomSliderControl;
-import org.vaadin.addon.vol3.client.control.OLZoomToExtentControl;
 
 /**
  * State for the map

@@ -5,8 +5,6 @@
  */
 package org.vaadin.gwtol3.client.control;
 
-import org.vaadin.gwtol3.client.Map;
-
 /**
  * Need set size for map! (_mapWidget.getMap().setSize(Size.create(1, 1));)
  * @author iserge

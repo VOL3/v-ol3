@@ -1,16 +1,10 @@
 package org.vaadin.addon.vol3;
 
 import com.vaadin.ui.AbstractComponent;
+import org.vaadin.addon.vol3.client.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.vaadin.addon.vol3.client.OLCoordinate;
-import org.vaadin.addon.vol3.client.OLExtent;
-import org.vaadin.addon.vol3.client.OLRotationConstraint;
-import org.vaadin.addon.vol3.client.OLViewClientRpc;
-import org.vaadin.addon.vol3.client.OLViewServerRpc;
-import org.vaadin.addon.vol3.client.OLViewState;
 
 /**
  * The view associated with a map. The view provides api for controlling things like zoom (resolution), rotation and extent

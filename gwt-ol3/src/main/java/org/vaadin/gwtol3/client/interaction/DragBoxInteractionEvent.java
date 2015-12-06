@@ -6,7 +6,6 @@
 package org.vaadin.gwtol3.client.interaction;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import org.vaadin.gwtol3.client.Coordinate;
 import org.vaadin.gwtol3.client.geom.Polygon;
 
 /**
