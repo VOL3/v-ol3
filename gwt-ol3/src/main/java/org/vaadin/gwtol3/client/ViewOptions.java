@@ -35,6 +35,10 @@ public class ViewOptions extends JavaScriptObject{
         this.extent=extent;
     }-*/;
 
+    public native final void setRestrictedExtent(Extent extent)/*-{
+        this.restrictedExtent=extent;
+    }-*/;
+
     public native final void setMaxResolution(double maxResolution)/*-{
         this.maxResolution=maxResolution;
     }-*/;

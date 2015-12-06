@@ -18,6 +18,8 @@ public class OLViewState extends AbstractComponentState {
     public OLRotationConstraint rotationConstraint;
     // The extent that constrains the center, in other words, center cannot be set outside this extent.
     public OLExtent extent;
+    // The extent that constrains the view, in other words, panning cannot go outside this extent
+    public OLExtent restrictedExtent;
     public Double maxResolution;
     public Double minResolution;
     public Integer maxZoom;

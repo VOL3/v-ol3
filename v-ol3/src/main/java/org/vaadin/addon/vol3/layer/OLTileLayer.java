@@ -61,5 +61,4 @@ public class OLTileLayer extends OLLayer {
     public Integer getPreload(){
         return getState(false).preload;
     }
-
 }

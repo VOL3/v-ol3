@@ -27,9 +27,42 @@ public class View extends JavaScriptObject {
                 options.extent=$wnd.ol.proj.transformExtent(options.extent, options.__inputProjection, projection);
             }
         }
+
+        if (typeof options.__restrictedExtent !== 'undefined') {
+            var maxVaadinExtent = options.__restrictedExtent;
+            options.constrainCenter = function (center, resolution) {
+                if (center !== undefined && resolution !== undefined) {
+                    var mapSize = (map.getSize()); // @type {ol.Size}
+                    var viewResolution = resolution;
+                    var mapHalfWidth = (mapSize[0] * viewResolution) / 2.0;
+                    var mapHalfHeight = (mapSize[1] * viewResolution) / 2.0;
+                    var maxExtent = this.__restrictedExtent;
+                    if (maxExtent === undefined && maxVaadinExtent !== undefined) {
+                        maxExtent = maxVaadinExtent;
+                    }
+                    if (center[0] - mapHalfWidth < maxExtent[0]) {
+                        center[0] = maxExtent[0] + mapHalfWidth;
+                    } else if (center[0] + mapHalfWidth > maxExtent[2]) {
+                        center[0] = maxExtent[2] - mapHalfWidth;
+                    }
+                    if (center[1] - mapHalfHeight < maxExtent[1]) {
+                        center[1] = maxExtent[1] + mapHalfHeight;
+                    } else if (center[1] + mapHalfHeight > maxExtent[3]) {
+                        center[1] = maxExtent[3] - mapHalfHeight;
+                    }
+                }
+                return center;
+            }
+        }
         var view = new $wnd.ol.View(options);
         if(typeof options.__inputProjection !== 'undefined'){
             view.__inputProjection=options.__inputProjection;
+        }
+        if(typeof options.extent !== 'undefined'){
+            view.extent=options.extent;
+        }
+        if(typeof options.__restrictedExtent !== 'undefined'){
+            view.__restrictedExtent=options.__restrictedExtent;
         }
         // add projection helpers
         view.__transformInputCoordinate = function(coordinate){
@@ -69,12 +102,21 @@ public class View extends JavaScriptObject {
         this.centerOn(this.__transformInputCoordinate(coordinate), size, pixel);
     }-*/;
 
+/*
     /** Gets the constrained center of this view
      *
      * @param coordinate
+    public native final Coordinate constrainCenter(Coordinate coordinate)*//*-{
+        return this.constrainCenter(coordinate, this.getResolution());
+    }-*//*;
+*/
+    /** Gets the constrained center of this view
+     *
+     * @param coordinate
+     * @param resolution
      */
-    public native final Coordinate constrainCenter(Coordinate coordinate)/*-{
-        return this.constrainCenter(this.__transformInputCoordinate(coordinate));
+    public native final Coordinate constrainCenter(Coordinate coordinate, double resolution)/*-{
+        return this.constrainCenter(this.__transformInputCoordinate(coordinate), resolution);
     }-*/;
 
     /** Get the constrained resolution of this view.
