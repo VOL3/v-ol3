@@ -1,9 +1,9 @@
 package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import org.vaadin.gwtol3.client.view.StatusChangeListener;
 import org.vaadin.gwtol3.client.geom.SimpleGeometry;
 import org.vaadin.gwtol3.client.proj.Projection;
+import org.vaadin.gwtol3.client.view.StatusChangeListener;
 
 /**
  * View of the map

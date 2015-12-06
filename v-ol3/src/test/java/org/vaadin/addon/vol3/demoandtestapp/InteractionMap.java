@@ -1,7 +1,10 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
 import com.vaadin.data.Property;
-import com.vaadin.ui.*;
+import com.vaadin.ui.AbstractLayout;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.NativeSelect;
+import com.vaadin.ui.Notification;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.interaction.*;

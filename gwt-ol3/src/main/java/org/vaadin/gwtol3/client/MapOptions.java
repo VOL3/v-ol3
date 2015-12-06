@@ -2,12 +2,9 @@ package org.vaadin.gwtol3.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
-import javafx.beans.binding.When;
 import org.vaadin.gwtol3.client.control.Control;
 import org.vaadin.gwtol3.client.interaction.Interaction;
 import org.vaadin.gwtol3.client.layer.Layer;
-
-import javax.validation.groups.Default;
 
 /**
  * Options passed to Map on creation
