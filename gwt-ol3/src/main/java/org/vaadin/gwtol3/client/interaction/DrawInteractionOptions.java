@@ -73,5 +73,12 @@ public class DrawInteractionOptions extends PointerInteraction{
     public final native void setGeometryName(String geometryName)/*-{
         this.geometryName=geometryName;
     }-*/;
-
+    
+    public final native void setMaxPoints(int maxPoints) /*-{
+            this.maxPoints = maxPoints;
+    }-*/;
+    
+    public final native void setMinPoints(int minPoints) /*-{
+            this.minPoints = minPoints;
+    }-*/;
 }

@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.geom;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import org.vaadin.gwtol3.client.Extent;
 
 /**
  * Wrapper for the geometry of a feature
@@ -21,4 +22,7 @@ public class Geometry extends JavaScriptObject {
         return this.getType();
     }-*/;
 
+    public final native Extent getExtent() /*-{
+        return this.getExtent();
+    }-*/;
 }
