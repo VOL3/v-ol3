@@ -93,7 +93,5 @@ public class OLModifyInteractionConnector extends OLInteractionConnector impleme
     }
 
     @Override
-    public void featureAdded(Feature feature) {
-        targetFeatures.push(feature);
-    }
+    public void featureAdded(Feature feature) { }
 }
