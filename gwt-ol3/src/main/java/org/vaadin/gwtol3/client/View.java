@@ -15,7 +15,7 @@ public class View extends JavaScriptObject {
     }
 
     public static final native View create()/*-{
-		var view = $wnd.ol.View({});
+		var view = new $wnd.ol.View({});
         return view;
     }-*/;
 
