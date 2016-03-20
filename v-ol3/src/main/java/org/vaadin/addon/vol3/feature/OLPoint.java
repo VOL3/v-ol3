@@ -42,7 +42,7 @@ public class OLPoint extends OLGeometry<OLCoordinate> {
 
     public Double getLatitude() {
         OLCoordinate coordinate = this.getElements().get(0);
-        return coordinate.x;
+        return coordinate.y;
     }
 
     public void setLongitude(double longitude) {
