@@ -59,6 +59,7 @@ public class MapTestUI extends UI {
         addView("ClickHandler", ClickHandlerTestMap.class);
         addView("Proj4jsMap", Proj4jsMap.class);
         addView("Resolutions", ResolutionsTestMap.class);
+        addView("GeoJSON", GeoJsonMap.class);
     }
 
     private void addView(String label, Class<? extends View> implementation){
