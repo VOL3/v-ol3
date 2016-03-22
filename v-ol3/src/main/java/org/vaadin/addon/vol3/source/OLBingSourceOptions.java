@@ -1,8 +1,5 @@
 package org.vaadin.addon.vol3.source;
 
-import org.vaadin.addon.vol3.client.source.OLBingImageryType;
-import org.vaadin.addon.vol3.client.source.OLBingImageryType;
-
 /**
  * Options provided to the osm tile source on creation
  * Created by Martin Stypinski 20/03/2016
@@ -21,40 +18,14 @@ public class OLBingSourceOptions {
         return this.key;
     }
 
-    public void setImageryType(OLBingImageryType type){
-        switch (type) {
-            case ROAD:
-                this.imageryType = "Road";
-                break;
-
-            case AERIAL:
-                this.imageryType = "Aerial";
-                break;
-
-            case AERIAL_WITH_LABELS:
-                this.imageryType = "AerialWithLabels";
-                break;
-
-            case COLLINS_BART:
-                this.imageryType = "collinsBart";
-                break;
-
-            case ORDONANCE_SURVEY:
-                this.imageryType = "ordnanceSurvey";
-                break;
-
-            default:
-                this.imageryType = "Road";
-                break;
-        }
-    }
+    public void setImageryType(String type){ this.imageryType = type; }
 
     public String getImageryType(){
-        return imageryType;
+        return this.imageryType;
     }
 
     public String getCulture(){
-        return culture;
+        return this.culture;
     }
 
     public void setCulture(String culture){

@@ -15,7 +15,7 @@ public class BingSourceOptions extends JavaScriptObject {
         return {};
     }-*/;
 
-     /** Sets the cross origin setting for image requests. Default is 'anonymous'
+     /** Sets the API-Token to get access to Bing-maps
      *
      * @param key API-Token for access to Bing-maps
      */
@@ -23,7 +23,7 @@ public class BingSourceOptions extends JavaScriptObject {
         this.key = key;
     }-*/;
 
-    /** Sets the max zoom level for the source
+    /** Chooses BaseMap, Strings according to: https://msdn.microsoft.com/en-us/library/gg427625.aspx
      *
      * @param imagerySet to chose which basemap
      */
@@ -31,7 +31,8 @@ public class BingSourceOptions extends JavaScriptObject {
         this.imagerySet = imagerySet;
     }-*/;
 
-    /** Sets the max zoom level for the source
+    /** Adjust language of map, according to: https://msdn.microsoft.com/en-us/library/hh441729.aspx
+     *  Default is 'en-us'
      *
      * @param culture to chose rendering language
      */

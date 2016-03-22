@@ -1,7 +1,6 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
 
-import org.vaadin.addon.vol3.client.source.OLBingImageryType;
 import org.vaadin.addon.vol3.source.*;
 
 /**
@@ -18,7 +17,7 @@ public class BingMap extends BasicMap {
 
         // Please provide your own Key!
         olBingSourceOptions.setKey("");
-        olBingSourceOptions.setImageryType(OLBingImageryType.ROAD);
+        olBingSourceOptions.setImageryType("Road");
         olBingSourceOptions.setCulture("en-us");
 
         return new OLBingSource(olBingSourceOptions);
