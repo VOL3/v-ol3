@@ -29,6 +29,9 @@ public class OLFeatureSerializer {
         if(feature.getGeometry()!=null) {
             serialized.serializedGeometry=serializeGeometry(feature.getGeometry());
         }
+        if(feature.getProperties().size()>0){
+            serialized.properties=feature.getProperties();
+        }
         return serialized;
     }
 
@@ -115,6 +118,7 @@ public class OLFeatureSerializer {
         OLFeature feature=new OLFeature(serializedFeature.id);
         feature.setStyles(serializedFeature.styles);
         feature.setGeometry(deSerializeGeometry(serializedFeature.serializedGeometry));
+        feature.setProperties(serializedFeature.properties);
         return feature;
     }
 
