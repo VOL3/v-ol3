@@ -13,6 +13,7 @@ public class MapWidget extends Widget {
     public MapWidget(){
         setElement(Document.get().createDivElement());
         setStylePrimaryName(getElement(), "ol3map");
+        getElement().setId("ol3map");
     }
 
     public void initMap(MapOptions options){
@@ -20,6 +21,7 @@ public class MapWidget extends Widget {
         if(isAttached()){
             attachMapToWidget();
         }
+        getElement().setPropertyObject("map", map);
     }
 
     public boolean isMapInitialized(){
@@ -37,9 +39,11 @@ public class MapWidget extends Widget {
 
     private void attachMapToWidget(){
         map.setTarget(getElement());
+        getElement().setPropertyObject("map", map);
     }
 
     private void detachMapFromWidget(){
+        //getElement().setPropertyObject("map", null);
         map.setTarget(null);
         map=null;
     }
