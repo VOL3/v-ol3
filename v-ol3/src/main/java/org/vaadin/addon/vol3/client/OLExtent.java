@@ -71,6 +71,12 @@ public class OLExtent implements Serializable {
         }
     }
 
+    public void extend(OLExtent extent) {
+        if (extent.empty)
+            return;
+        extend(new OLCoordinate(extent.minX, extent.minY), new OLCoordinate(extent.maxX, extent.maxY));
+    }
+
     @Override
     public String toString() {
         return "OLExtent{" +
