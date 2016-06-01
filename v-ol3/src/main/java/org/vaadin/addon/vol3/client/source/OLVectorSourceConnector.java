@@ -4,7 +4,9 @@ import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
 import com.vaadin.client.ServerConnector;
 import com.vaadin.shared.ui.Connect;
+
 import org.vaadin.addon.vol3.client.OLMapConnector;
+import org.vaadin.addon.vol3.client.OLObjectPropertiesConverter;
 import org.vaadin.addon.vol3.client.Projections;
 import org.vaadin.addon.vol3.client.feature.GeometrySerializer;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
@@ -65,6 +67,9 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
                     if(newFeature.getStyles()!=null){
                         oldFeature.setStyles(newFeature.getStyles());
                     }
+                    if(newFeature.getProperties()!=null){
+                        oldFeature.setProperties(newFeature.getProperties());
+                    }
                 } else{
                     // add new one
                     getSource().addFeature(newFeature);
@@ -80,6 +85,9 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             f.setGeometry(geom);
             if(feature.styles!=null){
                 f.setStyles(OLStyleConverter.convert(feature.styles));
+            }
+            if(feature.properties!=null){
+                f.setProperties(OLObjectPropertiesConverter.convert(feature.properties));
             }
             return f;
         }
