@@ -1,6 +1,5 @@
 package org.vaadin.gwtol3.client.feature;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.geom.Geometry;
 import org.vaadin.gwtol3.client.style.Style;
@@ -8,7 +7,7 @@ import org.vaadin.gwtol3.client.style.Style;
 /**
  * A vector object for geographical features with a geometry and other attribute properties, similar to the features in vector file formats like GeoJSON. Features can be styled individually or use the style of their vector layer.
  */
-public class Feature extends JavaScriptObject {
+public class Feature extends org.vaadin.gwtol3.client.Object {
 
     public static final String TEMP_ID="TEMP_ID";
 
@@ -54,5 +53,6 @@ public class Feature extends JavaScriptObject {
         });
         this.on("change",callback,this);
     }-*/;
+
 }
 

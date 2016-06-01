@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.feature;
 
+import org.vaadin.addon.vol3.OLObject;
 import org.vaadin.addon.vol3.client.style.OLStyle;
 
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Feature implementation for the vector layer. Used for adding custom markup on the vector layer.
  */
-public class OLFeature implements Serializable{
+public class OLFeature extends OLObject implements Serializable{
     // id of the feature
     private String id;
     // geometry of the feature (the marker drawn on the map)
