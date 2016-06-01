@@ -20,6 +20,7 @@ public class MapWidget extends Widget {
         if(isAttached()){
             attachMapToWidget();
         }
+        getElement().setPropertyObject("map", map);
     }
 
     public boolean isMapInitialized(){
@@ -32,6 +33,7 @@ public class MapWidget extends Widget {
         if(map!=null && map.getTarget()!=getElement()){
             map.setTarget(getElement());
             map.updateSize();
+            getElement().setPropertyObject("map", map);
         }
     }
 
@@ -40,6 +42,7 @@ public class MapWidget extends Widget {
     }
 
     private void detachMapFromWidget(){
+        getElement().setPropertyObject("map", null);
         map.setTarget(null);
         map=null;
     }
