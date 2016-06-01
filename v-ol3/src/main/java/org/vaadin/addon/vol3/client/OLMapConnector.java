@@ -389,10 +389,10 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             for(MapInitializedListener listener : mapInitializedListeners){
                 listener.mapInitialized();
             }
+            // clean up the listeners since those are not needed anymore
+            this.mapInitializedListeners.clear();
+            this.mapInitializedListeners=null;
         }
-        // clean up the listeners since those are not needed anymore
-        this.mapInitializedListeners.clear();
-        this.mapInitializedListeners=null;
     }
 
     public void addMapInitializationListener(MapInitializedListener listener){
