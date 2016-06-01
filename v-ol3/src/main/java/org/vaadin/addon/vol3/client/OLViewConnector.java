@@ -75,11 +75,11 @@ public class OLViewConnector extends AbstractComponentConnector{
             Extent extent=Extent.create(ext.minX,ext.minY, ext.maxX, ext.maxY);
             options.setExtent(extent);
         }
-        if(getState().restrictedExtent!=null){
-            OLExtent ext=getState().restrictedExtent;
-            Extent extent=Extent.create(ext.minX,ext.minY, ext.maxX, ext.maxY);
-            options.setRestrictedExtent(extent);
-        }
+//        if(getState().restrictedExtent!=null){
+//            OLExtent ext=getState().restrictedExtent;
+//            Extent extent=Extent.create(ext.minX,ext.minY, ext.maxX, ext.maxY);
+//            options.setRestrictedExtent(extent);
+//        }
         if(getState().maxResolution!=null){
             options.setMaxResolution(getState().maxResolution);
         }

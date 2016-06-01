@@ -143,9 +143,9 @@ public class OLView extends AbstractComponent {
         return getState(false).extent;
     }
 
-    public OLExtent getRestrictedExtent() {
-        return getState(false).restrictedExtent;
-    }
+//    public OLExtent getRestrictedExtent() {
+//        return getState(false).restrictedExtent;
+//    }
 
     public Double getMaxResolution() {
         return getState(false).maxResolution;
@@ -210,7 +210,7 @@ public class OLView extends AbstractComponent {
         getState().enableRotation=options.getEnableRotation();
         getState().rotationConstraint=options.getRotationConstraint();
         getState().extent=options.getExtent();
-        getState().restrictedExtent=options.getRestrictedExtent();
+//        getState().restrictedExtent=options.getRestrictedExtent();
         getState().minResolution=options.getMinResolution();
         getState().maxResolution=options.getMaxResolution();
         getState().minZoom=options.getMinZoom();

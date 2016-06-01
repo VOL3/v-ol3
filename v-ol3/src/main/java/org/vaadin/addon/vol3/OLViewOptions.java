@@ -46,18 +46,18 @@ public class OLViewOptions {
         return this;
     }
 
-    public OLExtent getRestrictedExtent() {
-        return restrictedExtent;
-    }
-
-    /** The extent that constrains the view, in other words, panning cannot go outside this extent.
-     *
-     * @param extent
-     */
-    public OLViewOptions setRestrictedExtent(OLExtent extent) {
-        this.restrictedExtent = extent;
-        return this;
-    }
+//    public OLExtent getRestrictedExtent() {
+//        return restrictedExtent;
+//    }
+//
+//    /** The extent that constrains the view, in other words, panning cannot go outside this extent.
+//     *
+//     * @param extent
+//     */
+//    public OLViewOptions setRestrictedExtent(OLExtent extent) {
+//        this.restrictedExtent = extent;
+//        return this;
+//    }
 
     public Double getMaxResolution() {
         return maxResolution;
