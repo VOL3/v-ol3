@@ -3,7 +3,7 @@ package org.vaadin.gwtol3.client.format;
 /**
  * Reader/Writer for GML features
  */
-public class GMLFormat extends FeatureFormat {
+public class GMLFormat extends GMLBaseFormat{
     protected GMLFormat() {
     }
 

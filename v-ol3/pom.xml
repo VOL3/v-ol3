@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.1</version>
+	<version>1.2-SNAPSHOT</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
@@ -108,7 +108,7 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>1.1</version>
+            <version>1.2-SNAPSHOT</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>

@@ -1,12 +1,17 @@
 package org.vaadin.gwtol3.client.source;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import org.vaadin.gwtol3.client.Coordinate;
+import org.vaadin.gwtol3.client.Extent;
+import org.vaadin.gwtol3.client.feature.Feature;
+import org.vaadin.gwtol3.client.format.FeatureFormat;
 import org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener;
 
 /**
  * Base class for vector sources
  */
-public class VectorSource extends AbstractVectorSource{
+public class VectorSource extends Source{
     protected VectorSource() {
     }
 
@@ -57,4 +62,62 @@ public class VectorSource extends AbstractVectorSource{
         }
     }-*/;
 
+
+    public final native void addFeature(Feature feature)/*-{
+        this.addFeature(feature);
+    }-*/;
+
+    public final native void addFeatures(JsArray<Feature> features)/*-{
+        this.addFeatures(features);
+    }-*/;
+
+	/** Removes all the features in this source
+     *
+     * @param fast if true, skip dispatching removefeature events
+     */
+    public final native void clear(boolean fast)/*-{
+        this.clear(fast);
+    }-*/;
+
+
+    public final native Feature getClosestFeatureToCoordinate(Coordinate coordinate)/*-{
+        return this.getClosestFeatureToCoordinate(coordinate);
+    }-*/;
+
+    public final native Extent getExtent()/*-{
+        return this.getExtent();
+    }-*/;
+
+    /** Get a feature by its identifier (the value returned by feature.getId()).
+     *
+     * @param id
+     * @return
+     */
+    public final native Feature getFeatureById(String id)/*-{
+        return this.getFeatureById(id);
+    }-*/;
+
+    public final native JsArray<Feature> getFeatures()/*-{
+        return this.getFeatures();
+    }-*/;
+
+    public final native JsArray<Feature> getFeaturesAtCoordinate(Coordinate coordinate)/*-{
+        return this.getFeaturesAtCoordinate(coordinate);
+    }-*/;
+
+    public final native JsArray<Feature> getFeaturesInExtent(Extent extent)/*-{
+        return this.getFeaturesInExtent(extent);
+    }-*/;
+
+    public final native FeatureFormat getFormat()/*-{
+        return this.getFormat();
+    }-*/;
+
+    public final native String getUrl()/*-{
+        return this.getUrl();
+    }-*/;
+
+    public final native void removeFeature(Feature feature)/*-{
+        return this.removeFeature(feature);
+    }-*/;
 }

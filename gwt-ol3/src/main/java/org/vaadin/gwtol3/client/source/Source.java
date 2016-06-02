@@ -1,15 +1,15 @@
 package org.vaadin.gwtol3.client.source;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.Logo;
+import org.vaadin.gwtol3.client.OpenLayersObject;
 import org.vaadin.gwtol3.client.proj.Projection;
 
 /**
  * Abstract base class; normally only used for creating subclasses and not instantiated in apps. Base class for layer sources.
  */
-public abstract class Source extends JavaScriptObject{
+public abstract class Source extends OpenLayersObject{
 
     public static final String STATE_LOADING="loading";
     public static final String STATE_READY="ready";
@@ -47,7 +47,13 @@ public abstract class Source extends JavaScriptObject{
         return this.getProjection();
     }-*/;
 
-
+	/** Refreshes the source and dispatches a change event
+     *
+     * @return
+     */
+    public final native void refresh()/*-{
+        return this.refresh();
+    }-*/;
 
 
 

@@ -36,4 +36,13 @@ public class WFSFormatOptions extends JavaScriptObject{
     public final native void setSchemaLocation(String schemaLocation)/*-{
         this.schemaLocation=schemaLocation;
     }-*/;
+
+    /** The GML format to use to parse the response. Default is ol.format.GML3.
+     *
+     * @param gmlFormat
+     */
+    public final native void setGmlFormat(GMLBaseFormat gmlFormat)/*-{
+        this.gmlFormat=gmlFormat;
+    }-*/;
+
 }
