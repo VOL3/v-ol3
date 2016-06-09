@@ -89,27 +89,6 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
         // no-op
     }
 
-    @OnStateChange("brightness")
-    void updateBrightness(){
-        if(getState().brightness!=null){
-            getLayer().setBrightness(getState().brightness.doubleValue());
-        }
-    }
-
-    @OnStateChange("contrast")
-    void updateContrast(){
-        if(getState().contrast!=null){
-            getLayer().setContrast(getState().contrast.doubleValue());
-        }
-    }
-
-    @OnStateChange("hue")
-    void updateHue(){
-        if(getState().hue!=null){
-            getLayer().setHue(getState().hue.doubleValue());
-        }
-    }
-
     @OnStateChange("maxResolution")
     void updateMaxResolution(){
         if(getState().maxResolution!=null){
@@ -128,13 +107,6 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
     void updateOpacity(){
         if(getState().opacity!=null){
             getLayer().setOpacity(getState().opacity.doubleValue());
-        }
-    }
-
-    @OnStateChange("saturation")
-    void updateSaturation(){
-        if(getState().saturation!=null){
-            getLayer().setSaturation(getState().saturation.doubleValue());
         }
     }
 
@@ -171,4 +143,12 @@ public abstract class OLLayerConnector extends AbstractSingleComponentContainerC
             getLayer().setTitle(getState().title);
         }
     }
+
+    @OnStateChange("zIndex")
+    void updateZIndex(){
+        if(getState().zIndex!=null){
+            getLayer().setZIndex(getState().zIndex);
+        }
+    }
+
 }

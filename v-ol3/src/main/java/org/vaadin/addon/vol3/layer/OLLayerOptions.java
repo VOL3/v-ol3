@@ -7,44 +7,14 @@ import org.vaadin.addon.vol3.client.OLExtent;
  */
 public class OLLayerOptions {
 
-    private Double brightness;
-    private Double contrast;
-    private Double hue;
     private Double maxResolution;
     private Double minResolution;
     private Double opacity;
-    private Double saturation;
     private Boolean visible;
     private OLExtent extent;
     private String inputProjection;
+    private int zIndex;
     private String title;
-
-    public Double getBrightness() {
-        return brightness;
-    }
-
-    public OLLayerOptions setBrightness(Double brightness) {
-        this.brightness = brightness;
-        return this;
-    }
-
-    public Double getContrast() {
-        return contrast;
-    }
-
-    public OLLayerOptions setContrast(Double contrast) {
-        this.contrast = contrast;
-        return this;
-    }
-
-    public Double getHue() {
-        return hue;
-    }
-
-    public OLLayerOptions setHue(Double hue) {
-        this.hue = hue;
-        return this;
-    }
 
     public Double getMaxResolution() {
         return maxResolution;
@@ -70,15 +40,6 @@ public class OLLayerOptions {
 
     public OLLayerOptions setOpacity(Double opacity) {
         this.opacity = opacity;
-        return this;
-    }
-
-    public Double getSaturation() {
-        return saturation;
-    }
-
-    public OLLayerOptions setSaturation(Double saturation) {
-        this.saturation = saturation;
         return this;
     }
 
@@ -115,6 +76,15 @@ public class OLLayerOptions {
 
     public OLLayerOptions setTitle(String title) {
         this.title = title;
+        return this;
+    }
+
+    public int getZIndex() {
+        return zIndex;
+    }
+
+    public OLLayerOptions setZIndex(int zIndex) {
+        this.zIndex = zIndex;
         return this;
     }
 }

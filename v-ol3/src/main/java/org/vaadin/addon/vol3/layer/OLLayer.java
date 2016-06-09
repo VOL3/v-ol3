@@ -31,16 +31,13 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
      * @param options the options for the layer
      */
     protected void setOptions(OLLayerOptions options) {
-        setBrightness(options.getBrightness());
-        setContrast(options.getContrast());
-        setHue(options.getHue());
         setMinResolution(options.getMinResolution());
         setMaxResolution(options.getMaxResolution());
         setOpacity(options.getOpacity());
-        setSaturation(options.getSaturation());
         setLayerVisible(options.getVisible());
         setExtent(options.getExtent());
         setTitle(options.getTitle());
+        setZIndex(options.getZIndex());
         getState().inputProjection=options.getInputProjection();
     }
 
@@ -57,30 +54,6 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
     @Override
     protected OLLayerState getState(boolean markAsDirty) {
         return (OLLayerState) super.getState(markAsDirty);
-    }
-
-    public Double getBrightness() {
-        return getState(false).brightness;
-    }
-
-    public void setBrightness(Double brightness) {
-        getState().brightness=brightness;
-    }
-
-    public Double getContrast() {
-        return getState(false).contrast;
-    }
-
-    public void setContrast(Double contrast) {
-        getState().contrast = contrast;
-    }
-
-    public Double getHue() {
-        return getState(false).hue;
-    }
-
-    public void setHue(Double hue) {
-        getState().hue = hue;
     }
 
     public Double getMaxResolution() {
@@ -107,14 +80,6 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
         getState().opacity = opacity;
     }
 
-    public Double getSaturation() {
-        return getState(false).saturation;
-    }
-
-    public void setSaturation(Double saturation) {
-        getState().saturation = saturation;
-    }
-
     public Boolean isLayerVisible() {
         return getState(false).visible;
     }
@@ -138,4 +103,12 @@ public abstract class OLLayer extends AbstractSingleComponentContainer{
     public void setTitle(String title) {
         getState().title = title;
     }
+
+    public void setZIndex(Integer zIndex) { getState().zIndex = zIndex; }
+
+    public Integer getZIndex() {
+        return getState().zIndex;
+    }
+
+
 }
