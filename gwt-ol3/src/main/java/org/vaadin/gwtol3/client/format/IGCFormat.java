@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -14,6 +15,11 @@ public class IGCFormat extends TextFeatureFormat{
     public static final native IGCFormat create()/*-{
         return new $wnd.ol.format.IGC();
     }-*/;
+
+    public static final native IGCFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.IGC(opts);
+    }-*/;
+
 
     public static final native IGCFormat create(String altitudeMode)/*-{
         return new $wnd.ol.format.IGC({altitudeMode: altitudeMode});

@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -15,6 +16,9 @@ public class TopoJSONFormat extends JSONFeatureFormat{
         return new $wnd.ol.format.TopoJSON();
     }-*/;
 
+    public static final native TopoJSONFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.TopoJSON(opts);
+    }-*/;
 
     public static final native TopoJSONFormat create(String defaultDataProjection)/*-{
         return new $wnd.ol.format.TopoJSON({defaultDataProjection: defaultDataProjection});

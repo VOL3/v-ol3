@@ -3,7 +3,7 @@ package org.vaadin.addon.vol3.source;
 /**
  * Options passed to OLVectorSource on creation
  */
-public class OLVectorSourceOptions extends OLSourceOptions {
+public class OLVectorSourceOptions extends OLAbstractVectorSourceOptions {
 	private String inputProjection;
 
 	public String getInputProjection() {
@@ -17,5 +17,13 @@ public class OLVectorSourceOptions extends OLSourceOptions {
 	public OLVectorSourceOptions setInputProjection(String inputProjection) {
 		this.inputProjection = inputProjection;
 		return this;
+	}
+
+	public OLVectorSourceOptions setWrapX(Boolean wrapX) {
+		return (OLVectorSourceOptions) super.setWrapX(wrapX);
+	}
+
+	public OLVectorSourceOptions setUseSpatialIndex(Boolean useSpatialIndex) {
+		return (OLVectorSourceOptions) super.setUseSpatialIndex(useSpatialIndex);
 	}
 }

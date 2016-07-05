@@ -1,6 +1,7 @@
 package org.vaadin.gwtol3.client.format;
 
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -16,6 +17,11 @@ public class WFSFormat extends XMLFeatureFormat{
     public static final native WFSFormat create()/*-{
         return new $wnd.ol.format.WFS();
     }-*/;
+
+    public static final native WFSFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.WFS(opts);
+    }-*/;
+
 
     public static final native WFSFormat create(WFSFormatOptions options)/*-{
         return new $wnd.ol.format.WFS(options);

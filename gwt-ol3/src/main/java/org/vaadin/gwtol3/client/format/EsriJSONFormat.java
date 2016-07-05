@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.geom.Geometry;
@@ -15,6 +16,10 @@ public class EsriJSONFormat extends JSONFeatureFormat {
 
 	public static final native EsriJSONFormat create()/*-{
         return new $wnd.ol.format.EsriJSON();
+    }-*/;
+
+	public static final native EsriJSONFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.EsriJSON(opts);
     }-*/;
 
 	public static final native EsriJSONFormat create(String geometryName)/*-{

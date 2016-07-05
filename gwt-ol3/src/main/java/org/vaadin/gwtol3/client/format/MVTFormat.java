@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayString;
 import org.vaadin.gwtol3.client.feature.Feature;
@@ -17,6 +18,11 @@ public class MVTFormat extends FeatureFormat{
 	public static final native MVTFormat create()/*-{
         return new $wnd.ol.format.MVT();
     }-*/;
+
+	public static final native MVTFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.MVT(opts);
+    }-*/;
+
 
 	public static final native MVTFormat create(boolean editable)/*-{
 		if(editable){

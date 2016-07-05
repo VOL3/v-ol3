@@ -19423,9 +19423,9 @@ goog.math.average = function(var_args) {
 /**
  * Returns the unbiased sample variance of the arguments. For a definition,
  * see e.g. http://en.wikipedia.org/wiki/Variance
- * @param {...number} var_args Number samples to analyze.
+ * @param {...number} var_args Number VAADIN.samples to analyze.
  * @return {number} The unbiased sample variance of the arguments (0 if fewer
- *     than two samples were provided, or {@code NaN} if any of the samples is
+ *     than two VAADIN.samples were provided, or {@code NaN} if any of the VAADIN.samples is
  *     not a valid number).
  */
 goog.math.sampleVariance = function(var_args) {
@@ -19448,9 +19448,9 @@ goog.math.sampleVariance = function(var_args) {
  * Returns the sample standard deviation of the arguments.  For a definition of
  * sample standard deviation, see e.g.
  * http://en.wikipedia.org/wiki/Standard_deviation
- * @param {...number} var_args Number samples to analyze.
+ * @param {...number} var_args Number VAADIN.samples to analyze.
  * @return {number} The sample standard deviation of the arguments (0 if fewer
- *     than two samples were provided, or {@code NaN} if any of the samples is
+ *     than two VAADIN.samples were provided, or {@code NaN} if any of the VAADIN.samples is
  *     not a valid number).
  */
 goog.math.standardDeviation = function(var_args) {

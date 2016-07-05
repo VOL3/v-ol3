@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -15,6 +16,9 @@ public class OSMXMLFormat extends XMLFeatureFormat {
         return new $wnd.ol.format.OSMXML();
     }-*/;
 
+    public static final native OSMXMLFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.OSMXML(opts);
+    }-*/;
 
     public final native Projection readProjection(String OSMXMLString)/*-{
         return this.readProjection(OSMXMLString);

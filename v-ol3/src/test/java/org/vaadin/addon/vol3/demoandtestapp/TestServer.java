@@ -3,15 +3,18 @@ package org.vaadin.addon.vol3.demoandtestapp;
 import com.vaadin.server.*;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
+import org.eclipse.jetty.http.HttpURI;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletHolder;
+import org.eclipse.jetty.servlets.ProxyServlet;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -126,9 +129,30 @@ public class TestServer {
         context.setWar(file.getPath());
         context.setContextPath("/");
 
+        // create proxy servlet for wfs
+        createProxy("http://sg.geodatenzentrum.de/", "/proxyserver_wfs", context);
+        // and the vaadin servlet
         context.addServlet(servletHolder, "/*");
+
         server.setHandler(context);
         server.start();
         return server;
+    }
+
+    private static void createProxy(String destination, String prefix, WebAppContext context){
+        ProxyServlet.Transparent proxyServlet=new ProxyServlet.Transparent(){
+            @Override
+            protected HttpURI proxyHttpURI(String scheme, String serverName, int serverPort, String uri) throws MalformedURLException {
+                System.out.println("proxying");
+                HttpURI proxied= super.proxyHttpURI(scheme, serverName, serverPort, uri);
+                System.out.println(proxied);
+                return proxied;
+            }
+        };
+        ServletHolder wfsProxyHolder=new ServletHolder(proxyServlet);
+        wfsProxyHolder.setInitParameter("Prefix", prefix);
+        wfsProxyHolder.setInitParameter("ProxyTo", destination);
+        context.addServlet(wfsProxyHolder, prefix+"/*");
+
     }
 }

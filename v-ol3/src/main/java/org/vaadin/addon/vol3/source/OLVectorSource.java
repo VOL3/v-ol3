@@ -14,7 +14,7 @@ import java.util.*;
  * Vector source implementation that provides api for adding features. NOTE: the coordinates for the shapes of the features
  * must always be expressed in EPSG:4326 / WGS84 (lon/lat). The wrapper handles the conversion to the projection set for the view automatically.
  */
-public class OLVectorSource extends OLSource{
+public class OLVectorSource extends OLAbstractVectorSource{
 
     private Map<String, OLFeature> features=new HashMap <String,OLFeature>();
     private Set<String> dirtyFeatures=new HashSet<String>();
@@ -39,10 +39,9 @@ public class OLVectorSource extends OLSource{
         setOptions(options);
     }
 
-    private void setOptions(OLVectorSourceOptions options) {
-        this.getState().attributions=options.getAttributions();
-        this.getState().logo=options.getLogo();
-        this.getState().inputProjection=options.getInputProjection();
+    protected void setOptions(OLVectorSourceOptions options) {
+        super.setOptions(options);
+        getState().inputProjection=options.getInputProjection();
     }
 
     /** Adds feature to the source. The id is generated automatically for the feature

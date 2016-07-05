@@ -27,7 +27,7 @@ public class VectorLayer extends Layer {
     public native final JsArray<Style> getStyles()/*-{
         return this.getStyle();
     }-*/;
-    
+
     public native final VectorSource getVectorSource() /*-{
         return this.getSource();
     }-*/;

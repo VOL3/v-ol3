@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -15,6 +16,11 @@ public class KMLFormat extends XMLFeatureFormat{
     public static final native KMLFormat create()/*-{
         return new $wnd.ol.format.KML();
     }-*/;
+
+    public static final native KMLFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.KML(opts);
+    }-*/;
+
 
     public static final native KMLFormat create(boolean extractStyles, boolean showPointNames)/*-{
         return new $wnd.ol.format.KML({extractStyles: extractStyles, showPointNames: showPointNames});

@@ -31,10 +31,10 @@ public class GMLFormatOptions extends JavaScriptObject {
 
     /** Sets srsName to use when writing geometries
      *
-     * @param srcName
+     * @param srsName
      */
-    public final native void setSrcName(String srcName)/*-{
-        this.srcName=srcName;
+    public final native void setSrcName(String srsName)/*-{
+        this.srsName=srsName;
     }-*/;
 
     /** Write gml:Surface instead of gml:Polygon elements. This also affects the elements in multi-part geometries. Default is false

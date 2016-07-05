@@ -158,6 +158,7 @@
                         <!-- Remove resources included due to gwt compilation -->
                         <exclude>**/demoandtestapp/*</exclude>
                         <exclude>VAADIN/img/*</exclude>
+                        <exclude>VAADIN.samples/*</exclude>
                     </excludes>
                 </configuration>
             </plugin>
@@ -199,10 +200,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/testwebapp/VAADIN/img/</outputDirectory>
+                            <outputDirectory>${project.build.directory}/testwebapp/VAADIN/</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${project.basedir}/src/test/resources/VAADIN/img/</directory>
+                                    <directory>${project.basedir}/src/test/resources/VAADIN/</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>

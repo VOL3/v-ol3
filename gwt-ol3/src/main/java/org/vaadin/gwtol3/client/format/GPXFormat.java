@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.proj.Projection;
@@ -14,6 +15,11 @@ public class GPXFormat extends FeatureFormat{
     public static final native GPXFormat create()/*-{
         return new $wnd.ol.format.GPX();
     }-*/;
+
+    public static final native GPXFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.GPX(opts);
+    }-*/;
+
 
     public final native Feature readFeature(String GPXString, String dataProjection, String featureProjection)/*-{
         return this.readFeature(GPXString,{dataProjection: dataProjection, featureProjection: featureProjection});

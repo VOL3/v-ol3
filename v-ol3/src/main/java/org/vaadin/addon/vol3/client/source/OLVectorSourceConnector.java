@@ -1,10 +1,8 @@
 package org.vaadin.addon.vol3.client.source;
 
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.user.client.Timer;
 import com.vaadin.client.ServerConnector;
 import com.vaadin.shared.ui.Connect;
-
 import org.vaadin.addon.vol3.client.OLMapConnector;
 import org.vaadin.addon.vol3.client.OLObjectPropertiesConverter;
 import org.vaadin.addon.vol3.client.Projections;
@@ -12,13 +10,11 @@ import org.vaadin.addon.vol3.client.feature.GeometrySerializer;
 import org.vaadin.addon.vol3.client.feature.SerializedFeature;
 import org.vaadin.addon.vol3.client.style.OLStyleConverter;
 import org.vaadin.addon.vol3.source.OLVectorSource;
-import org.vaadin.gwtol3.client.Attribution;
 import org.vaadin.gwtol3.client.View;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.feature.FeatureChangeListener;
 import org.vaadin.gwtol3.client.geom.Geometry;
 import org.vaadin.gwtol3.client.source.VectorSource;
-import org.vaadin.gwtol3.client.source.VectorSourceOptions;
 import org.vaadin.gwtol3.client.source.vector.FeatureSetChangeListener;
 
 import java.util.HashSet;
@@ -30,7 +26,7 @@ import java.util.Set;
  * Client-side connector for the OLVectorSource
  */
 @Connect(OLVectorSource.class)
-public class OLVectorSourceConnector extends OLSourceConnector implements FeatureSetChangeListener, FeatureChangeListener {
+public class OLVectorSourceConnector extends OLAbstractVectorSourceConnector implements FeatureSetChangeListener, FeatureChangeListener {
 
     private Timer sendTimer;
     private static final int MODIFY_THRESHOLD=200; // milliseconds to wait for modifications before they are flushed to server
@@ -109,33 +105,8 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
         }
     }
 
-    @Override
-    protected VectorSource createSource() {
-        VectorSourceOptions options=VectorSourceOptions.create();
-        if(getState().attributions!=null){
-            JsArray<Attribution> jsArray= JsArray.createArray().cast();
-            for(String attribution : getState().attributions){
-                jsArray.push(Attribution.create(attribution));
-            }
-            options.setAttributions(jsArray);
-        }
-        if(getState().logo!=null){
-            options.setLogo(getState().logo);
-        }
-        VectorSource source=VectorSource.create(options);
-        source.addFeatureSetChangeListener(this);
-        return source;
-    }
 
-    @Override
-    public OLVectorSourceState getState() {
-        return (OLVectorSourceState) super.getState();
-    }
 
-    @Override
-    public VectorSource getSource() {
-        return (VectorSource) super.getSource();
-    }
 
     private void sendModifiedFeature(Feature feature) {
         // delay execution since we will get plenty of these
@@ -209,5 +180,12 @@ public class OLVectorSourceConnector extends OLSourceConnector implements Featur
             }
         }
         return viewProjection;
+    }
+
+    @Override
+    protected VectorSource createSource() {
+        VectorSource source = super.createSource();
+        source.addFeatureSetChangeListener(this);
+        return source;
     }
 }

@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.geom.Geometry;
@@ -15,6 +16,11 @@ public class PolylineFormat extends TextFeatureFormat{
     public static final native PolylineFormat create()/*-{
         return new $wnd.ol.format.Polyline();
     }-*/;
+
+    public static final native PolylineFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.Polyline(opts);
+    }-*/;
+
 
     /** creates a new polyline format
      *

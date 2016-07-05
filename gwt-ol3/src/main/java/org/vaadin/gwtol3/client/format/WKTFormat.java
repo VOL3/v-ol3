@@ -1,5 +1,6 @@
 package org.vaadin.gwtol3.client.format;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.geom.Geometry;
@@ -14,6 +15,11 @@ public class WKTFormat extends FeatureFormat{
     public static final native WKTFormat create()/*-{
         return new $wnd.ol.format.WKT();
     }-*/;
+
+    public static final native WKTFormat create(JavaScriptObject opts)/*-{
+        return new $wnd.ol.format.WKT(opts);
+    }-*/;
+
 
     public static final native WKTFormat create(boolean splitCollection)/*-{
         return new $wnd.ol.format.WKT({splitCollection: splitCollection});
