@@ -33,6 +33,7 @@ public class OLVectorSourceConnector extends OLAbstractVectorSourceConnector imp
     private Set<Feature> modifiedFeatures=new HashSet<Feature>();
     private List<Feature> tempFeatures=new LinkedList<Feature>();
     private String viewProjection;
+    private Feature silentlyDeleted;
 
     @Override
     protected void init() {
@@ -100,6 +101,7 @@ public class OLVectorSourceConnector extends OLAbstractVectorSourceConnector imp
         private void removeFeatureById(VectorSource source, String id){
             Feature removed=source.getFeatureById(id);
             if(removed!=null){
+                silentlyDeleted = removed;
                 source.removeFeature(removed);
             }
         }
@@ -125,7 +127,7 @@ public class OLVectorSourceConnector extends OLAbstractVectorSourceConnector imp
 
     @Override
     public void featureDeleted(Feature feature) {
-        if(feature.getId()!=null){ // do not send temp features
+        if(feature.getId()!=null && feature!=silentlyDeleted){ // do not send temp features
             sendDeletedFeature(feature);
         }
     }

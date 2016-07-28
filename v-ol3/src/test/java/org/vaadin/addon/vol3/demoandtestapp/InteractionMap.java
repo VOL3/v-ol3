@@ -20,6 +20,7 @@ public class InteractionMap extends VectorLayerMap {
 
     private NativeSelect markerType;
     private static final Logger logger= Logger.getLogger(InteractionMap.class.getName());
+    public List<String> selection;
 
 
     @Override
@@ -98,15 +99,31 @@ public class InteractionMap extends VectorLayerMap {
             }
         });
         layout.addComponent(markerType);
+        Button deleteButton = new Button("delete selected");
+        deleteButton.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                if(selection!=null){
+                    OLVectorSource source = (OLVectorSource) vectorLayer.getSource();
+                    for(String id : selection){
+                        source.removeFeatureById(id);
+                    }
+                    selection.clear();
+                }
+            }
+        });
+        layout.addComponent(deleteButton);
         return layout;
     }
 
     private OLSelectInteraction createSelectInteraction(){
         final OLSelectInteraction select = new OLSelectInteraction();
         select.addSelectionChangeListener(new OLSelectInteraction.SelectionChangeListener() {
+
             @Override
             public void selectionChanged(List<String> selectedFeatures) {
                 Notification.show("Feature(s) selected: "+selectedFeatures);
+                selection=selectedFeatures;
             }
         });
         return select;

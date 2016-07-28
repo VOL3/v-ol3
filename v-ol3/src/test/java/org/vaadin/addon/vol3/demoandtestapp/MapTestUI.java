@@ -44,7 +44,6 @@ public class MapTestUI extends UI {
         addView("ViewPort",ViewPortMap.class);
         addView("Constrained (center)", ConstrainedMap.class);
 //        addView("Constrained (panning)", PanningConstrainedMap.class);
-        addView("Multilayer", MultiLayerMap.class);
         addView("OpenStreetMap", OSMMap.class);
         addView("ImageWMSMap",ImageWMSMap.class);
         addView("TileWMSMap", TileWMSMap.class);

@@ -7,7 +7,6 @@ public class OLWFSFormatOptions extends OLFeatureFormatOptions {
 	private String featureNS;
 	private String featureType;
 	private String schemaLocation;
-	private String gmlFormat;
 
 	public String getFeatureNS() {
 		return featureNS;
@@ -31,13 +30,5 @@ public class OLWFSFormatOptions extends OLFeatureFormatOptions {
 
 	public void setSchemaLocation(String schemaLocation) {
 		this.schemaLocation = schemaLocation;
-	}
-
-	public String getGmlFormat() {
-		return gmlFormat;
-	}
-
-	public void setGmlFormat(String gmlFormat) {
-		this.gmlFormat = gmlFormat;
 	}
 }

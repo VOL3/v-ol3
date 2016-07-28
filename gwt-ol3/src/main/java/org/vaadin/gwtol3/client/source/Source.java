@@ -49,7 +49,6 @@ public abstract class Source extends OpenLayersObject{
 
 	/** Refreshes the source and dispatches a change event
      *
-     * @return
      */
     public final native void refresh()/*-{
         return this.refresh();
