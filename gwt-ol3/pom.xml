@@ -9,7 +9,7 @@
 	<name>OpenLayers 3 Wrapper for GWT</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <vaadin.version>7.3.0</vaadin.version>
+        <vaadin.version>7.7.6</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
         <!-- ZIP Manifest fields -->
