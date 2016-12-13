@@ -18,10 +18,19 @@ public class OLOverlay implements Serializable {
 	public static final String POSITION_TOP_RIGHT="top-right";
 
 	public String htmlContent;
+	public String id;
 	public int [] offset;
 	public OLCoordinate position;
 	public String positioning;
 	public Boolean stopEvent;
 	public Boolean insertFirst;
 	public String classNames;
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof OLOverlay) {
+			return id != null && ((OLOverlay)obj).id != null && id.equals(((OLOverlay)obj).id);
+		}
+		return false;
+	}
 }
