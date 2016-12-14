@@ -30,4 +30,7 @@ public class OLMapState extends AbstractComponentState {
     public Boolean loadTilesWhileInteracting;
     public String inputProjection;
     public List<OLOverlay> overlays;
+
+    // The implementation of a custom projection
+    public List<OLProjection> customProjection;
 }

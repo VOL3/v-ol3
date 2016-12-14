@@ -23,6 +23,7 @@ import org.vaadin.gwtol3.client.feature.Feature;
 import org.vaadin.gwtol3.client.layer.Layer;
 import org.vaadin.gwtol3.client.map.ClickEvent;
 import org.vaadin.gwtol3.client.map.OnClickListener;
+import org.vaadin.gwtol3.client.proj.Projection;
 import org.vaadin.gwtol3.client.resources.ResourceInjector;
 
 import java.util.ArrayList;
@@ -199,6 +200,11 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
         if(getState().coordinateSystemDefinitions!=null){
             for(Map.Entry<String,String> entry : getState().coordinateSystemDefinitions.entrySet()){
                 Proj4js.define(entry.getKey(), entry.getValue());
+            }
+        }
+        if (getState().customProjection != null) {
+            for (OLProjection projection : getState().customProjection) {
+                Projection.createCustom(projection.code, projection.units, Extent.create(DataConversionUtils.toJsArrayNumber(projection.extent)));
             }
         }
     }

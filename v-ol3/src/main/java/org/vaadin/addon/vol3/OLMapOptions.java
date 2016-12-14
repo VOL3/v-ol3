@@ -1,8 +1,11 @@
 package org.vaadin.addon.vol3;
 
+import org.vaadin.addon.vol3.client.OLProjection;
 import org.vaadin.addon.vol3.client.OLRendererType;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -20,6 +23,7 @@ public class OLMapOptions {
     private Boolean loadTilesWhileInteracting;
     private String inputProjection;
 
+    public List<OLProjection> customProjection;
 
     public Boolean getShowOl3Logo() {
         return showOl3Logo;
@@ -104,6 +108,18 @@ public class OLMapOptions {
         }
         coordinateSystemDefinitions.put(epsgCode, proj4jsString);
         return this;
+    }
+
+    public OLMapOptions addCustomProjection(OLProjection projection) {
+        if(customProjection == null) {
+            customProjection = new LinkedList<OLProjection>();
+        }
+        customProjection.add(projection);
+        return this;
+    }
+
+    public List<OLProjection> getCustomProjections() {
+        return customProjection;
     }
 
     /** Returns the additional coordinate system definitions that should be enabled using proj4js
