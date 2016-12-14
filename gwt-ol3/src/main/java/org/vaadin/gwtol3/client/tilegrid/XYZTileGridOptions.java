@@ -1,19 +1,19 @@
 package org.vaadin.gwtol3.client.tilegrid;
 
-import org.vaadin.gwtol3.client.Extent;
+import com.google.gwt.core.client.JsArrayString;
 
 /**
  * Created by mjhosio on 23/02/15.
  */
 public class XYZTileGridOptions extends TileGridOptions {
-	protected XYZTileGridOptions(){
-	}
+    protected XYZTileGridOptions() {
+    }
 
-	public static final native XYZTileGridOptions create()/*-{
+    public static final native XYZTileGridOptions create()/*-{
         return {};
     }-*/;
 
-	public final native void setExtent(Extent extent)/*-{
-        this.extent = extent;
+    public final native void setMatrixIds(JsArrayString matrixIds)/*-{
+        this.matrixIds = matrixIds;
     }-*/;
 }
