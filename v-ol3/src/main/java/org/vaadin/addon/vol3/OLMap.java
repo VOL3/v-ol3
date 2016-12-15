@@ -191,6 +191,10 @@ public class OLMap extends AbstractComponentContainer {
         vaadinOverlays.put(overlay.getOverlay(), overlay);
     }
 
+    public void removeVaadinOverlay(VaadinOverlay overlay) {
+        removeOverlay(overlay.getOverlay());
+    }
+
     @Override
     public void removeComponent(Component c) {
         if(c instanceof OLLayer || c instanceof OLInteraction){
