@@ -77,6 +77,14 @@ public class OLExtent implements Serializable {
         }
     }
 
+    public OLCoordinate getCenter() {
+        return new OLCoordinate((maxX-minX)/2, (maxY-minY)/2);
+    }
+
+    public double[] toArray() {
+        return new double[]{minX, minY, maxX, maxY};
+    }
+
     @Override
     public String toString() {
         return "OLExtent{" +
@@ -86,5 +94,9 @@ public class OLExtent implements Serializable {
                 ", maxY=" + maxY +
                 ", empty=" + empty +
                 '}';
+    }
+
+    public boolean contains(Double x, Double y) {
+        return minX <= x && maxX >= x && minY <= y && maxY >= y;
     }
 }
