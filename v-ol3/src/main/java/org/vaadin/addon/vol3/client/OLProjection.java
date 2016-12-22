@@ -19,4 +19,9 @@ public class OLProjection implements Serializable {
         this.extent = extent;
     }
 
+    public OLProjection(String code, String units, OLExtent extent) {
+        this.code = code;
+        this.units = units;
+        this.extent = extent.toArray();
+    }
 }

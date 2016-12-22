@@ -7,6 +7,7 @@ import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.OLMapState;
 import org.vaadin.addon.vol3.client.OLOverlay;
 import org.vaadin.addon.vol3.client.OLPixel;
+import org.vaadin.addon.vol3.client.OLProjection;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
@@ -381,6 +382,13 @@ public class OLMap extends AbstractComponentContainer {
         getState().loadTilesWhileAnimating=options.getLoadTilesWhileAnimating();
         getState().coordinateSystemDefinitions=options.getProjectionDefinitions();
         getState().inputProjection=options.getInputProjection();
+    }
+
+    public void addCustomProjection(OLProjection projection) {
+        if(getState().customProjection == null) {
+            getState().customProjection = new LinkedList<OLProjection>();
+        }
+        getState().customProjection.add(projection);
     }
 
     private void addDefaultControls() {
