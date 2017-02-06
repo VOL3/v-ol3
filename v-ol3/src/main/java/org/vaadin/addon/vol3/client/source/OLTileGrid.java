@@ -7,16 +7,16 @@ import java.io.Serializable;
 /**
  * Created by mjhosio on 23/02/15.
  */
-public class OLTileGrid implements Serializable{
+public class OLTileGrid implements Serializable {
 
-	public Double minZoom;
-	public Double maxZoom;
-	public OLCoordinate origin;
-	public OLCoordinate [] origins;
-	public double [] resolutions;
-	public Double tileSize;
-	public double [] tileSizes;
-	public String[] matrixIds;
+    public Double minZoom;
+    public Double maxZoom;
+    public OLCoordinate origin;
+    public OLCoordinate[] origins;
+    public double[] resolutions;
+    public Double tileSize;
+    public double[] tileSizes;
+    public String[] matrixIds;
 //
 //	@Override
 //	public String toString() {
