@@ -10,7 +10,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<vaadin.version>7.6.0</vaadin.version>
+		<vaadin.version>7.7.6</vaadin.version>
 		<vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
 		<!-- ZIP Manifest fields -->
@@ -20,6 +20,7 @@
 		<Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
 		<Vaadin-License-Title>Apache License 2.0</Vaadin-License-Title>
 		<Vaadin-Addon>${artifactId}-${project.version}.jar</Vaadin-Addon>
+        <skipTests>true</skipTests>
 	</properties>
 
 	<licenses>
@@ -60,6 +61,18 @@
 		</pluginRepository>
 	</pluginRepositories>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.vaadin</groupId>
@@ -98,13 +111,19 @@
             <scope>test</scope>
         </dependency>
 
-        <!--        <dependency>
-                    <groupId>org.eclipse.jetty</groupId>
-                    <artifactId>jetty-webapp</artifactId>
-                    <version>7.2.2.v20101205</version>
-                    <scope>test</scope>
-                </dependency>
-                -->
+         <!--<dependency>-->
+                    <!--<groupId>org.eclipse.jetty</groupId>-->
+                    <!--<artifactId>jetty-webapp</artifactId>-->
+                    <!--<version>7.2.2.v20101205</version>-->
+                    <!--<scope>test</scope>-->
+                <!--</dependency>-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-client</artifactId>
+            <version>7.6.17.v20150415</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
@@ -321,7 +340,8 @@
                         <!-- If you do lots of e.g. plain css changes and don't wish to use
                         hosted mode, you can force compile easily with uncommenting following rule -->
                         <!-- 						<force>true</force> -->
-                        <strict>true</strict>
+                        <!--<strict>true</strict>-->
+                        <enforceStrictResources>true</enforceStrictResources>
                     </configuration>
                 </plugin>
                 <plugin>
