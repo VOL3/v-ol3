@@ -17,6 +17,10 @@ public interface OL3ClientBundle extends ClientBundle {
     @CssResource.NotStrict
     CssResource css();
 
+    @Source("popup.css")
+    @CssResource.NotStrict
+    CssResource popupCss();
+
     @Source ("ol3-layerswitcher.js")
     TextResource layerSwitcherJavaScript();
 

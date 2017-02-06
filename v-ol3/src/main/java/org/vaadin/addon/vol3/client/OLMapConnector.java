@@ -15,6 +15,7 @@ import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
 import org.vaadin.addon.vol3.client.layer.OLLayerConnector;
 import org.vaadin.addon.vol3.client.map.OLOnClickListenerRpc;
+import org.vaadin.addon.vol3.client.popup.VaadinOverlayConnector;
 import org.vaadin.addon.vol3.client.source.HasFeatureInfoUrl;
 import org.vaadin.addon.vol3.client.util.DataConversionUtils;
 import org.vaadin.gwtol3.client.*;
@@ -99,6 +100,11 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                     OLInteractionConnector interaction= (OLInteractionConnector) oldConnector;
                     getWidget().getMap().removeInteraction(interaction.getInteraction());
                 }
+                if (oldConnector instanceof VaadinOverlayConnector) {
+                    if (oldConnector.getWidget().getElement().getParentElement().equals(getWidget().getElement()))
+                        getWidget().getElement().removeChild(oldConnector.getWidget().getElement());
+                    ((VaadinOverlayConnector) oldConnector).detach();
+                }
             }
         }
         // add new layers, interactions and view
@@ -117,6 +123,9 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                     // on initialization
                     deferredAddInteraction(interaction);
                 }
+            }
+            if(connector instanceof VaadinOverlayConnector) {
+                ((VaadinOverlayConnector)connector).attach(!oldChildren.contains(connector));
             }
         }
         // ensure layer ordering

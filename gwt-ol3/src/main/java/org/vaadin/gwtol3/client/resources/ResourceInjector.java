@@ -23,6 +23,7 @@ public class ResourceInjector {
     protected void injectResources() {
         bundle.css().ensureInjected();
         bundle.layerSwitcherCss().ensureInjected();
+        bundle.popupCss().ensureInjected();
         injectScript(bundle.javaScript().getText());
         injectScript(bundle.layerSwitcherJavaScript().getText());
     }
