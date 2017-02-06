@@ -45,8 +45,8 @@ public class OLVectorSourceConnector extends OLAbstractVectorSourceConnector imp
                 for (Feature feature : modifiedFeatures) {
                     String serializedGeometry = GeometrySerializer.writeGeometry(feature.getGeometry(), getViewProjection(), getInputProjection());
                     getRpcProxy(OLVectorSourceServerRpc.class).featureModified(feature.getId(), serializedGeometry);
-                    modifiedFeatures.clear();
                 }
+                modifiedFeatures.clear();
             }
         };
     }
