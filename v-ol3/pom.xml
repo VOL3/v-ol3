@@ -5,7 +5,7 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>v-ol3</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.2</version>
+	<version>1.3</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
 
 	<properties>
@@ -127,7 +127,7 @@
         <dependency>
             <groupId>org.vaadin</groupId>
             <artifactId>gwt-ol3</artifactId>
-            <version>1.2</version>
+            <version>1.3</version>
         </dependency>
         <!-- for serializing features as geojson -->
         <dependency>
@@ -258,9 +258,9 @@
                         <goals>
                             <goal>compile</goal>
                         </goals>
-                        <configuration>
-                            <skip>${skipTests}</skip>
-                        </configuration>
+                        <!--<configuration>-->
+                            <!--<skip>${skipTests}</skip>-->
+                        <!--</configuration>-->
                     </execution>
                 </executions>
             </plugin>
@@ -341,7 +341,6 @@
                         hosted mode, you can force compile easily with uncommenting following rule -->
                         <!-- 						<force>true</force> -->
                         <!--<strict>true</strict>-->
-                        <enforceStrictResources>true</enforceStrictResources>
                     </configuration>
                 </plugin>
                 <plugin>
