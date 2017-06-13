@@ -1,13 +1,17 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
-import com.vaadin.data.Property;
 import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Notification;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
-import org.vaadin.addon.vol3.interaction.*;
+import org.vaadin.addon.vol3.interaction.OLDrawInteraction;
+import org.vaadin.addon.vol3.interaction.OLDrawInteractionOptions;
+import org.vaadin.addon.vol3.interaction.OLInteraction;
+import org.vaadin.addon.vol3.interaction.OLModifyInteraction;
+import org.vaadin.addon.vol3.interaction.OLModifyInteractionOptions;
+import org.vaadin.addon.vol3.interaction.OLSelectInteraction;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 
 import java.util.List;
@@ -86,11 +90,22 @@ public class InteractionMap extends VectorLayerMap {
         });
         layout.addComponent(drawButton);
         markerType=new NativeSelect();
-        markerType.addItem(OLDrawInteractionOptions.DrawingType.POINT);
+        markerType.setItems(OLDrawInteractionOptions.DrawingType.POINT,
+                OLDrawInteractionOptions.DrawingType.LINESTRING,
+                OLDrawInteractionOptions.DrawingType.POLYGON);
+        /*markerType.addItem(OLDrawInteractionOptions.DrawingType.POINT);
         markerType.addItem(OLDrawInteractionOptions.DrawingType.LINESTRING);
         markerType.addItem(OLDrawInteractionOptions.DrawingType.POLYGON);
         markerType.setNullSelectionAllowed(false);
+        */
+
         markerType.setValue(OLDrawInteractionOptions.DrawingType.POINT);
+
+        markerType.addValueChangeListener(event -> {
+            clearInteractions();
+            map.addInteraction(createDrawInteraction());
+        });
+        /*
         markerType.addValueChangeListener(new Property.ValueChangeListener() {
             @Override
             public void valueChange(Property.ValueChangeEvent event) {
@@ -98,6 +113,7 @@ public class InteractionMap extends VectorLayerMap {
                 map.addInteraction(createDrawInteraction());
             }
         });
+        */
         layout.addComponent(markerType);
         Button deleteButton = new Button("delete selected");
         deleteButton.addClickListener(new Button.ClickListener() {
