@@ -5,7 +5,8 @@
 	<!-- Inherit DefaultWidgetSet -->
 	<inherits name="com.vaadin.DefaultWidgetSet" />
     <inherits name="org.vaadin.gwtol3.WidgetSet" />
-	<inherits name="org.vaadin.peter.contextmenu.ContextmenuWidgetset" />
+	<inherits name="com.vaadin.contextmenu.WidgetSet" />
+	<!--<inherits name="org.vaadin.peter.contextmenu.ContextmenuWidgetset" />-->
 	<!-- Widget styles in public -directory -->
 	<stylesheet src="vol3/styles.css"/>
 

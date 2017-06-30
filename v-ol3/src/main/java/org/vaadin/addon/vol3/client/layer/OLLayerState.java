@@ -1,12 +1,12 @@
 package org.vaadin.addon.vol3.client.layer;
 
-import com.vaadin.shared.AbstractComponentState;
+import com.vaadin.shared.ui.AbstractSingleComponentContainerState;
 import org.vaadin.addon.vol3.client.OLExtent;
 
 /**
  * Base class for layer states
  */
-public class OLLayerState extends AbstractComponentState{
+public class OLLayerState extends AbstractSingleComponentContainerState {
 
     public Double maxResolution;
     public Double minResolution;

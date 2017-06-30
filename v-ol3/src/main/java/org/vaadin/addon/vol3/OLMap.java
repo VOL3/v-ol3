@@ -384,7 +384,7 @@ public class OLMap extends AbstractComponentContainer {
                 getState().overlays=null;
             }
         }
-        if(vaadinOverlays.containsKey(overlay)) {
+        if(vaadinOverlays!=null && vaadinOverlays.containsKey(overlay)) {
             super.removeComponent(vaadinOverlays.get(overlay));
             components.remove(vaadinOverlays.get(overlay));
             this.markAsDirty();
@@ -397,12 +397,14 @@ public class OLMap extends AbstractComponentContainer {
      */
     public void removeOverlays(){
         getState().overlays=null;
-        for(VaadinOverlay voverlay: vaadinOverlays.values()) {
-            super.removeComponent(voverlay);
-            components.remove(voverlay);
-            this.markAsDirty();
+        if (vaadinOverlays!=null) {
+            for (VaadinOverlay voverlay : vaadinOverlays.values()) {
+                super.removeComponent(voverlay);
+                components.remove(voverlay);
+                this.markAsDirty();
+            }
+            vaadinOverlays.clear();
         }
-        vaadinOverlays.clear();
     }
 
 
