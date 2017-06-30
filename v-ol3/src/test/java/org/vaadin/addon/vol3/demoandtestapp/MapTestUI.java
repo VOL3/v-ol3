@@ -13,7 +13,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  * The map demo UI. Contains a number of test maps as navigator views.
  */
-@Theme("reindeer")
+@Theme("valo")
 public class MapTestUI extends UI {
 
     private Navigator navigator;

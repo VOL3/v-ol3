@@ -3,18 +3,16 @@ package org.vaadin.addon.vol3.demoandtestapp;
 import com.vaadin.server.*;
 import com.vaadin.ui.AbstractComponent;
 import com.vaadin.ui.Component;
-import org.eclipse.jetty.http.HttpURI;
+import org.eclipse.jetty.proxy.ProxyServlet;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.nio.SelectChannelConnector;
+import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.servlet.ServletHolder;
-import org.eclipse.jetty.servlets.ProxyServlet;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.SocketException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -41,7 +39,7 @@ public class TestServer {
 
         Server server = new Server();
 
-        final Connector connector = new SelectChannelConnector();
+        final ServerConnector connector = new ServerConnector(server);
 
         connector.setPort(port);
         server.setConnectors(new Connector[] { connector });
@@ -140,18 +138,10 @@ public class TestServer {
     }
 
     private static void createProxy(String destination, String prefix, WebAppContext context){
-        ProxyServlet.Transparent proxyServlet=new ProxyServlet.Transparent(){
-            @Override
-            protected HttpURI proxyHttpURI(String scheme, String serverName, int serverPort, String uri) throws MalformedURLException {
-                System.out.println("proxying");
-                HttpURI proxied= super.proxyHttpURI(scheme, serverName, serverPort, uri);
-                System.out.println(proxied);
-                return proxied;
-            }
-        };
+        ProxyServlet.Transparent proxyServlet=new ProxyServlet.Transparent();
         ServletHolder wfsProxyHolder=new ServletHolder(proxyServlet);
-        wfsProxyHolder.setInitParameter("Prefix", prefix);
-        wfsProxyHolder.setInitParameter("ProxyTo", destination);
+        wfsProxyHolder.setInitParameter("prefix", prefix);
+        wfsProxyHolder.setInitParameter("proxyTo", destination);
         context.addServlet(wfsProxyHolder, prefix+"/*");
 
     }
