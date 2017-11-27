@@ -10,6 +10,7 @@ import com.vaadin.client.ui.AbstractHasComponentsConnector;
 import com.vaadin.client.ui.layout.ElementResizeEvent;
 import com.vaadin.client.ui.layout.ElementResizeListener;
 import com.vaadin.shared.ui.Connect;
+
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.control.*;
 import org.vaadin.addon.vol3.client.interaction.OLInteractionConnector;
@@ -80,19 +81,22 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
 
     @Override
     public void onConnectorHierarchyChange(ConnectorHierarchyChangeEvent connectorHierarchyChangeEvent) {
-        if(!getWidget().isAttached()){
+    	
+    	if(!getWidget().isAttached()){
             // ignore the hierarchy change event when we are removing the map all together
             return;
         }
+    	
         if(!getWidget().isMapInitialized()){
             initMap();
         }
         List<ComponentConnector> oldChildren=connectorHierarchyChangeEvent.getOldChildren();
         List<ComponentConnector> currentChildren=getChildComponents();
         for(ComponentConnector oldConnector : oldChildren){
-            if(!currentChildren.contains(oldConnector)){
+            if(currentChildren.contains(oldConnector)){
                 // remove old layers
                 if(oldConnector instanceof OLLayerConnector){
+                	
                     OLLayerConnector layer=(OLLayerConnector) oldConnector;
                     getWidget().getMap().removeLayer(layer.getLayer());
                 }

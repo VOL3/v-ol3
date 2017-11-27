@@ -106,6 +106,7 @@ public class OLStyleConverter {
         setIfNotNull(opts, "anchorOrigin", iconStyle.anchorOrigin);
         setIfNotNull(opts, "anchorXUnits", iconStyle.anchorXUnits);
         setIfNotNull(opts, "anchorYUnits", iconStyle.anchorYUnits);
+        setIfNotNull(opts, "color", iconStyle.color);
         setIfNotNull(opts, "crossOrigin", iconStyle.crossOrigin);
         setIfNotNull(opts, "offset", toJsArray(iconStyle.offset));
         setIfNotNull(opts, "offsetOrigin", iconStyle.offsetOrigin);

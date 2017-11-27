@@ -39,4 +39,8 @@ public class IconStyle extends ImageStyle {
     public final native String getSrc() /*-{
         return this.getSrc();
     }-*/;
+    
+    public final native String getColor() /*-{
+        return this.getColor();
+    }-*/;
 }
