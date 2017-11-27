@@ -18,7 +18,7 @@ public class IconFeatureMap extends VectorLayerMap {
 		OLStyle style= new OLStyle();
 		style.iconStyle=new OLIconStyle();
 		style.iconStyle.crossOrigin="anonymous";
-		style.iconStyle.color = "#000000";
+		style.iconStyle.color = "blue";
 		style.iconStyle.size=new double[]{32.0,32.0};
 		style.iconStyle.src = "VAADIN/img/flag.png";
 		pointFeature.setStyle(style);

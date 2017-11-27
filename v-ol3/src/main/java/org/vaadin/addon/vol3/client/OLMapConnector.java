@@ -91,9 +91,10 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
             initMap();
         }
         List<ComponentConnector> oldChildren=connectorHierarchyChangeEvent.getOldChildren();
-        List<ComponentConnector> currentChildren=getChildComponents();
+        List<ComponentConnector> currentChildren=this.getChildComponents();
+
         for(ComponentConnector oldConnector : oldChildren){
-            if(currentChildren.contains(oldConnector)){
+            if(!currentChildren.contains(oldConnector)){
                 // remove old layers
                 if(oldConnector instanceof OLLayerConnector){
                 	
@@ -141,7 +142,8 @@ public class OLMapConnector extends AbstractHasComponentsConnector implements El
                 OLLayerConnector layerConnector= (OLLayerConnector) connector;
                 if(layers.item(layerIndex) != layerConnector.getLayer()){
                     logger.info("setting layer to index "+layerIndex);
-                    layers.setAt(layerIndex, layerConnector.getLayer());
+                    layers.remove(layerConnector.getLayer());
+                    layers.insertAt(layerIndex, layerConnector.getLayer());
                 }
                 layerIndex++;
             }
