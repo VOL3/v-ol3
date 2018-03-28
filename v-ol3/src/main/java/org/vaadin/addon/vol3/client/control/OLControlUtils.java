@@ -14,7 +14,26 @@ public class OLControlUtils {
     private static final Logger logger= Logger.getLogger(OLControlUtils.class.getName());
 
     public static final AttributionControl createAttributionControl(OLAttributionControl attribution){
-        return attribution.className!=null ? AttributionControl.create(attribution.className) : AttributionControl.create();
+        AttributionControlOptions opts = AttributionControlOptions.create();
+        if (attribution.className != null) {
+            opts.setClassName(attribution.className);
+        }
+        if (attribution.collapsible != null) {
+            opts.setCollapsible(attribution.collapsible);
+        }
+        if (attribution.collapsed != null) {
+            opts.setCollapsed(attribution.collapsed);
+        }
+        if (attribution.tipLabel != null) {
+            opts.setTipLabel(attribution.tipLabel);
+        }
+        if (attribution.label != null) {
+            opts.setLabel(attribution.label);
+        }
+        if (attribution.collapseLabel != null) {
+            opts.setCollapseLabel(attribution.collapseLabel);
+        }
+        return AttributionControl.create(opts);
     }
 
     public static final FullScreenControl createFullScreenControl(OLFullScreenControl fullScreen){

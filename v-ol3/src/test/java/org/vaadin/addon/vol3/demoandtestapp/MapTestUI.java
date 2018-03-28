@@ -61,6 +61,7 @@ public class MapTestUI extends UI {
         addView("GeoJSON", GeoJsonMap.class);
         addView("WFS", WFSTestMap.class);
         addView("KML", KMLTestMap.class);
+        addView("AttributionsMap", AttributionsMap.class);
     }
 
     private void addView(String label, Class<? extends View> implementation){

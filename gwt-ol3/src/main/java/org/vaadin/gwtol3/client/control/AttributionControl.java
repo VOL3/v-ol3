@@ -20,5 +20,14 @@ public class AttributionControl extends Control{
     public static final native AttributionControl create(String className)/*-{
         return new $wnd.ol.control.Attribution({className: className});
     }-*/;
-
+    
+    /**
+     * Creates the control with given options.
+     *
+     * @param options AttributionControlOptions
+     * @return AttributionControl
+     */
+    public static final native AttributionControl create(AttributionControlOptions options)/*-{
+        return new $wnd.ol.control.Attribution(options);
+    }-*/;
 }
