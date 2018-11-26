@@ -7,7 +7,10 @@
 	<packaging>bundle</packaging>
 	<version>2.1</version>
 	<name>OpenLayers 3 Wrapper for Vaadin</name>
-
+    <organization>
+        <name>VOL3</name>
+        <url>http://vaadin.com</url>
+    </organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 

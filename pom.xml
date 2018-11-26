@@ -12,5 +12,8 @@
 		<module>gwt-ol3</module>
 		<module>v-ol3</module>
 	</modules>
-
+	<organization>
+		<name>Matti Hosio</name>
+		<url>http://vaadin.com</url>
+	</organization>
 </project>

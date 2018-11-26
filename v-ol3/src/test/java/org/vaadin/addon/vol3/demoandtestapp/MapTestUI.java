@@ -49,6 +49,7 @@ public class MapTestUI extends UI {
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
         addView("VectorLayerWithIcons", IconFeatureMap.class);
+        addView("VectorLayerWithUpdates", MovingIconFeatureMap.class);
         addView("VectorModifying", VectorModifyingMap.class);
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);

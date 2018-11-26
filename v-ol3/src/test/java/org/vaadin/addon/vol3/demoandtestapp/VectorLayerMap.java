@@ -22,12 +22,13 @@ import java.util.List;
 public class VectorLayerMap extends BasicMap{
 
     protected OLVectorLayer vectorLayer;
+    protected OLVectorSource vectorSource;
 
     @Override
     protected OLMap createMap() {
         OLMap map=super.createMap();
         OLVectorSourceOptions vectorOptions=new OLVectorSourceOptions();
-        OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
+        vectorSource=new OLVectorSource(vectorOptions);
         for(int i=0;i<=5;i++){
             int coordinate=i*10;
             vectorSource.addFeature(createPointFeature("feature-a-"+i,coordinate,coordinate));
