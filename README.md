@@ -1,3 +1,10 @@
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-openlayers%203%20wrapper%20for%20Vaadin-00b4f0.svg)](https://vaadin.com/directory/component/openlayers-3-wrapper-for-vaadin)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/openlayers-3-wrapper-for-vaadin.svg)](https://vaadin.com/directory/component/openlayers-3-wrapper-for-vaadin)
+
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-openlayers%203%20wrapper%20for%20gwt-00b4f0.svg)](https://vaadin.com/directory/component/openlayers-3-wrapper-for-gwt)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/openlayers-3-wrapper-for-gwt.svg)](https://vaadin.com/directory/component/openlayers-3-wrapper-for-gwt)  
+
+
 # Open Layers 3 wrapper for Vaadin 8
 ## Introduction
 
