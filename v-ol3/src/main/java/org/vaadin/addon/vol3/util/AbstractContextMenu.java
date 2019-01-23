@@ -2,6 +2,7 @@ package org.vaadin.addon.vol3.util;
 
 import com.vaadin.contextmenu.ContextMenu;
 import com.vaadin.server.Resource;
+import com.vaadin.ui.MenuBar;
 import org.vaadin.addon.vol3.OLMap;
 
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public abstract class AbstractContextMenu implements OLMap.ClickListener{
 	protected ContextMenu menu;
 	protected OLMap map;
 
-	private Map<MenuItem, com.vaadin.contextmenu.MenuItem> items = new HashMap<>();
+	private Map<MenuItem, MenuBar.MenuItem> items = new HashMap<>();
 
 	public AbstractContextMenu(OLMap map){
 		this.map=map;
