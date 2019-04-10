@@ -66,6 +66,13 @@ public class OLStyleConverter {
         setIfNotNull(opts, "text", textStyle.text);
         setIfNotNull(opts, "textAlign", textStyle.textAlign);
         setIfNotNull(opts, "textBaseline", textStyle.textBaseline);
+        setIfNotNull(opts, "maxAngle", textStyle.maxAngle);
+        setIfNotNull(opts, "overflow", textStyle.overflow);
+        setIfNotNull(opts, "rotateWithView", textStyle.rotateWithView);
+        setIfNotNull(opts, "placement", textStyle.rotateWithView);
+        setIfNotNull(opts, "backgroundFill", convertFillStyle(textStyle.backgroundFill));
+        setIfNotNull(opts, "backgroundStroke", convertStrokeStyle(textStyle.backgroundStroke));
+        setIfNotNull(opts, "padding", toJsArray(textStyle.padding));
         return TextStyle.create(opts);
     }
 

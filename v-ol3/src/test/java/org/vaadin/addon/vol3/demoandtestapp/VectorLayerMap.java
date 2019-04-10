@@ -33,8 +33,8 @@ public class VectorLayerMap extends BasicMap{
             vectorSource.addFeature(createPointFeature("feature-a-"+i,coordinate,coordinate));
             vectorSource.addFeature(createPointFeature("feature-b-"+i,-coordinate,coordinate));
         }
-        vectorSource.addFeature(createRectangleFeature("rect",-150,-50,200,100));
-        vectorSource.addFeature(createMultipolygon("mpolygon",-50,0));
+        vectorSource.addFeature(createRectangleFeature("rect",-150,-50,50,50));
+        vectorSource.addFeature(createMultipolygon("mpolygon",-50,0, 50, 50));
         vectorLayer=new OLVectorLayer(vectorSource);
         vectorLayer.setLayerVisible(true);
         map.addLayer(vectorLayer);
@@ -60,14 +60,14 @@ public class VectorLayerMap extends BasicMap{
         return testFeature;
     }
 
-    protected OLFeature createMultipolygon(String id, double x, double y){
+    protected OLFeature createMultipolygon(String id, double x, double y, double width, double height){
         OLFeature testFeature=new OLFeature(id);
         OLMultiPolygon mpolygon=new OLMultiPolygon();
         OLPolygon polygon = new OLPolygon();
         List points = new ArrayList<OLCoordinate>();
-        points.add(new OLCoordinate(x+100d,y));
-        points.add(new OLCoordinate(x+100d,y+50d));
-        points.add(new OLCoordinate(x,y+50d));
+        points.add(new OLCoordinate(x+width,y));
+        points.add(new OLCoordinate(x+width,y+height));
+        points.add(new OLCoordinate(x,y+height));
         points.add(new OLCoordinate(x,y));
         polygon.add(points);
         mpolygon.add(polygon);
