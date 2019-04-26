@@ -10,6 +10,8 @@ import java.util.List;
  * Shared state for the select interaction
  */
 public class OLSelectInteractionState extends AbstractComponentState{
+	// The selection condition 
+	public String condition;
     // Style for selected features
     public List<OLStyle> featureStyles;
     // Layers where the selection is enabled. If not specified, all visible layers are available for selection.
