@@ -11,6 +11,7 @@ public class OLIconStyle implements Serializable {
     public String anchorOrigin;
     public String anchorXUnits;
     public String anchorYUnits;
+    public String color;
     public String crossOrigin;
     public double [] offset;
     public String offsetOrigin;
@@ -28,6 +29,7 @@ public class OLIconStyle implements Serializable {
                 ", anchorOrigin='" + anchorOrigin + '\'' +
                 ", anchorXUnits='" + anchorXUnits + '\'' +
                 ", anchorYUnits='" + anchorYUnits + '\'' +
+                ", color='" + color + '\'' +
                 ", crossOrigin='" + crossOrigin + '\'' +
                 ", offset=" + Arrays.toString(offset) +
                 ", offsetOrigin='" + offsetOrigin + '\'' +

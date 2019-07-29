@@ -5,12 +5,15 @@
 	<groupId>org.vaadin.addon</groupId>
 	<artifactId>ol3-wrapper</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0-vaadin8</version>
+	<version>2.2</version>
 	<name>Open Layers 3 Vaadin wrapper Add-on</name>
 
 	<modules>
 		<module>gwt-ol3</module>
 		<module>v-ol3</module>
 	</modules>
-
+	<organization>
+		<name>Matti Hosio</name>
+		<url>http://vaadin.com</url>
+	</organization>
 </project>

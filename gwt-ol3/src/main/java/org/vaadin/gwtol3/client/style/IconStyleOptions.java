@@ -108,6 +108,13 @@ public class IconStyleOptions extends JavaScriptObject {
     public final native void setSrc(String src) /*-{
         this.src=src;
     }-*/;
-
-
+    
+    /**
+     * Sets icon color
+     * 
+     * @param color
+     */
+    public final native void setColor(String color) /*-{
+        this.color=color;
+    }-*/;
 }

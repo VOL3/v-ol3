@@ -5,14 +5,13 @@ import com.vaadin.ui.Button;
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.client.OLCoordinate;
 import org.vaadin.addon.vol3.client.style.OLStyle;
-import org.vaadin.addon.vol3.feature.OLFeature;
-import org.vaadin.addon.vol3.feature.OLLineString;
-import org.vaadin.addon.vol3.feature.OLPoint;
+import org.vaadin.addon.vol3.feature.*;
 import org.vaadin.addon.vol3.layer.OLLayer;
 import org.vaadin.addon.vol3.layer.OLVectorLayer;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 import org.vaadin.addon.vol3.source.OLVectorSourceOptions;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,18 +21,20 @@ import java.util.List;
 public class VectorLayerMap extends BasicMap{
 
     protected OLVectorLayer vectorLayer;
+    protected OLVectorSource vectorSource;
 
     @Override
     protected OLMap createMap() {
         OLMap map=super.createMap();
         OLVectorSourceOptions vectorOptions=new OLVectorSourceOptions();
-        OLVectorSource vectorSource=new OLVectorSource(vectorOptions);
+        vectorSource=new OLVectorSource(vectorOptions);
         for(int i=0;i<=5;i++){
             int coordinate=i*10;
             vectorSource.addFeature(createPointFeature("feature-a-"+i,coordinate,coordinate));
             vectorSource.addFeature(createPointFeature("feature-b-"+i,-coordinate,coordinate));
         }
-        vectorSource.addFeature(createRectangleFeature("rect",-50,0,100,50));
+        vectorSource.addFeature(createRectangleFeature("rect",-150,-50,50,50));
+        vectorSource.addFeature(createMultipolygon("mpolygon",-50,0, 50, 50));
         vectorLayer=new OLVectorLayer(vectorSource);
         vectorLayer.setLayerVisible(true);
         map.addLayer(vectorLayer);
@@ -56,6 +57,29 @@ public class VectorLayerMap extends BasicMap{
         lineString.add(new OLCoordinate(x,y+height));
         lineString.add(new OLCoordinate(x,y));
         testFeature.setGeometry(lineString);
+        return testFeature;
+    }
+
+    protected OLFeature createMultipolygon(String id, double x, double y, double width, double height){
+        OLFeature testFeature=new OLFeature(id);
+        OLMultiPolygon mpolygon=new OLMultiPolygon();
+        OLPolygon polygon = new OLPolygon();
+        List points = new ArrayList<OLCoordinate>();
+        points.add(new OLCoordinate(x+width,y));
+        points.add(new OLCoordinate(x+width,y+height));
+        points.add(new OLCoordinate(x,y+height));
+        points.add(new OLCoordinate(x,y));
+        polygon.add(points);
+        mpolygon.add(polygon);
+        OLPolygon polygon2 = new OLPolygon();
+        List points2 = new ArrayList<OLCoordinate>();
+        points2.add(new OLCoordinate(x-100d,y));
+        points2.add(new OLCoordinate(x-100d,y-50d));
+        points2.add(new OLCoordinate(x,y-50d));
+        points2.add(new OLCoordinate(x,y));
+        polygon2.add(points2);
+        mpolygon.add(polygon2);
+        testFeature.setGeometry(mpolygon);
         return testFeature;
     }
 

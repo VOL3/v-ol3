@@ -13,7 +13,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  * The map demo UI. Contains a number of test maps as navigator views.
  */
-@Theme("reindeer")
+@Theme("valo")
 public class MapTestUI extends UI {
 
     private Navigator navigator;
@@ -49,6 +49,7 @@ public class MapTestUI extends UI {
         addView("TileWMSMap", TileWMSMap.class);
         addView("VectorLayer", VectorLayerMap.class);
         addView("VectorLayerWithIcons", IconFeatureMap.class);
+        addView("VectorLayerWithUpdates", MovingIconFeatureMap.class);
         addView("VectorModifying", VectorModifyingMap.class);
         addView("StyleTest", StyleTestMap.class);
         addView("ControlTest", ControlTestMap.class);

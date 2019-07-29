@@ -66,6 +66,13 @@ public class OLStyleConverter {
         setIfNotNull(opts, "text", textStyle.text);
         setIfNotNull(opts, "textAlign", textStyle.textAlign);
         setIfNotNull(opts, "textBaseline", textStyle.textBaseline);
+        setIfNotNull(opts, "maxAngle", textStyle.maxAngle);
+        setIfNotNull(opts, "overflow", textStyle.overflow);
+        setIfNotNull(opts, "rotateWithView", textStyle.rotateWithView);
+        setIfNotNull(opts, "placement", textStyle.rotateWithView);
+        setIfNotNull(opts, "backgroundFill", convertFillStyle(textStyle.backgroundFill));
+        setIfNotNull(opts, "backgroundStroke", convertStrokeStyle(textStyle.backgroundStroke));
+        setIfNotNull(opts, "padding", toJsArray(textStyle.padding));
         return TextStyle.create(opts);
     }
 
@@ -106,6 +113,7 @@ public class OLStyleConverter {
         setIfNotNull(opts, "anchorOrigin", iconStyle.anchorOrigin);
         setIfNotNull(opts, "anchorXUnits", iconStyle.anchorXUnits);
         setIfNotNull(opts, "anchorYUnits", iconStyle.anchorYUnits);
+        setIfNotNull(opts, "color", iconStyle.color);
         setIfNotNull(opts, "crossOrigin", iconStyle.crossOrigin);
         setIfNotNull(opts, "offset", toJsArray(iconStyle.offset));
         setIfNotNull(opts, "offsetOrigin", iconStyle.offsetOrigin);
