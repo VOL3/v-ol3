@@ -17,7 +17,7 @@ public abstract class AbstractContextMenu implements OLMap.ClickListener{
 	protected ContextMenu menu;
 	protected OLMap map;
 
-	private Map<MenuItem, com.vaadin.contextmenu.MenuItem> items = new HashMap<>();
+	private Map<MenuItem, com.vaadin.ui.MenuBar.MenuItem> items = new HashMap<>();
 
 	public AbstractContextMenu(OLMap map){
 		this.map=map;
@@ -51,9 +51,10 @@ public abstract class AbstractContextMenu implements OLMap.ClickListener{
 		items.clear();
 		menu.removeItems();
 		for(MenuItem item : getItems(event)){
-			items.put(item, menu.addItem(item.getCaption(), item.getIcon(), menuItem -> {
-				item.getCommand().execute();
-			}));
+			items.put(
+					item,
+					menu.addItem(item.getCaption(), item.getIcon(), menuItem -> item.getCommand().execute())
+			);
 		}
 	}
 
