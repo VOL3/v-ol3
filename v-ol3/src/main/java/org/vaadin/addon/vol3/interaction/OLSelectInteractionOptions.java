@@ -9,8 +9,27 @@ import java.util.List;
  * Options for the select interaction
  */
 public class OLSelectInteractionOptions {
+	private String condition;
     private List<OLLayer> layers;
     private List<OLStyle> styles;
+    
+    /** Gets the string specifying the OpenLayers condition that determines when the feature selection changes
+     * 
+     * @return
+     */
+    public String getCondition() {
+    	return condition;
+    }
+    
+    /** Sets the OpenLayers condition that determines when the feature selection changes. 
+     * 
+     * @param condition The name of the OpenLayers condition (eg altKeyOnly, pointerMove, etc)
+     * @return
+     */
+    public OLSelectInteractionOptions setCondition(String condition) {
+    	this.condition = condition;
+    	return this;
+    }
 
     /** Gets the layers where selections can be made.
      *

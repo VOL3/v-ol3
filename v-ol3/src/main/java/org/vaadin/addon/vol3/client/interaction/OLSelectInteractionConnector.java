@@ -42,6 +42,9 @@ public class OLSelectInteractionConnector extends OLInteractionConnector impleme
     private SelectInteraction createInteraction(){
         SelectInteractionOptions opts=SelectInteractionOptions.create();
         opts.setStyles(OLStyleConverter.convert(getState().featureStyles));
+        if (getState().condition != null) {
+            opts.setCondition(getState().condition.toString());
+        }
         if(getState().layers!=null){
             JsArray<Layer> layers=JsArray.createArray().cast();
             for(Connector layerConnector : getState().layers){

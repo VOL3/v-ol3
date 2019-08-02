@@ -45,4 +45,30 @@ public class SelectInteractionOptions extends JavaScriptObject {
     public final native void setActive(boolean active) /*-{
         this.active = active;
     }-*/;
+    
+    public final native void setCondition(String condition) /*-{
+	    if (condition === "altKeyOnly") {
+	        this.condition = $wnd.ol.events.condition.altKeyOnly;
+	    } else if (condition === "altShiftKeysOnly") {
+	        this.condition = $wnd.ol.events.condition.altShiftKeysOnly;
+	    } else if (condition === "always") {
+	        this.condition = $wnd.ol.events.condition.always;
+	    } else if (condition === "never") {
+	        this.condition = $wnd.ol.events.condition.never;
+	    } else if (condition === "pointerMove") {
+	        this.condition = $wnd.ol.events.condition.pointerMove;
+	    } else if (condition === "singleClick") {
+	        this.condition = $wnd.ol.events.condition.singleClick;
+	    } else if (condition === "noModifierKeys") {
+	        this.condition = $wnd.ol.events.condition.noModifierKeys;
+	    } else if (condition === "platformModifierKeyOnly") {
+	        this.condition = $wnd.ol.events.condition.platformModifierKeyOnly;
+	    } else if (condition === "shiftKeyOnly") {
+	        this.condition = $wnd.ol.events.condition.shiftKeyOnly;
+	    } else if (condition === "targetNotEditable") {
+	        this.condition = $wnd.ol.events.condition.targetNotEditable;
+	    } else if (condition === "mouseOnly") {
+	        this.condition = $wnd.ol.events.condition.mouseOnly;
+	    }
+	}-*/;
 }

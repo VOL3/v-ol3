@@ -33,6 +33,7 @@ public class OLSelectInteraction extends OLInteraction {
                 getState().layers=new ArrayList<Connector>();
                 getState().layers.addAll(options.getLayers());
             }
+            getState().condition = options.getCondition();
             getState().featureStyles=options.getStyles();
         }
         this.registerRpc(new OLSelectInteractionSRPCImpl(), OLSelectInteractionSRPC.class);
