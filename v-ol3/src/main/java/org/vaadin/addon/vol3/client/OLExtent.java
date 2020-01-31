@@ -33,7 +33,7 @@ public class OLExtent implements Serializable {
         minX = first.x;
         minY = first.y;
         maxX = first.x;
-        minY = first.y;
+        maxY = first.y;
         empty = false;
     }
 
@@ -78,7 +78,7 @@ public class OLExtent implements Serializable {
     }
 
     public OLCoordinate getCenter() {
-        return new OLCoordinate((maxX-minX)/2, (maxY-minY)/2);
+        return new OLCoordinate((maxX+minX)/2, (maxY+minY)/2);
     }
 
     public double[] toArray() {
