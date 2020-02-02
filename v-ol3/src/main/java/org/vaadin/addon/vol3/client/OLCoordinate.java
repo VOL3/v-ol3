@@ -5,23 +5,32 @@ import java.io.Serializable;
 /**
  * Models a coordinate in some projection units
  */
-public class OLCoordinate implements Serializable{
+public class OLCoordinate implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-    public OLCoordinate(){
-        x=0.0;
-        y=0.0;
-    }
+	public double x;
+	public double y;
+	
+	public OLCoordinate() {
+		x = 0.0;
+		y = 0.0;
+	}
 
-    public Double x;
-    public Double y;
+	public OLCoordinate(double lon, double lat) {
+		x = lon;
+		y = lat;
+	}
 
-    public OLCoordinate(double xCoord, double yCoord){
-        x=xCoord;
-        y=yCoord;
-    }
+	public double getLon() {
+		return x;
+	}
 
-    @Override
-    public String toString() {
-        return "OLCoordinate{" + "x=" + x +", y=" + y +"}";
-    }
+	public double getLat() {
+		return y;
+	}
+
+	@Override
+	public String toString() {
+		return "OLCoordinate{" + "x=" + x + ", y=" + y + "}";
+	}
 }
