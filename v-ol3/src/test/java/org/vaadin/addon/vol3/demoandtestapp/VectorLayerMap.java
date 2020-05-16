@@ -64,7 +64,7 @@ public class VectorLayerMap extends BasicMap{
         OLFeature testFeature=new OLFeature(id);
         OLMultiPolygon mpolygon=new OLMultiPolygon();
         OLPolygon polygon = new OLPolygon();
-        List points = new ArrayList<OLCoordinate>();
+        List<OLCoordinate> points = new ArrayList<OLCoordinate>();
         points.add(new OLCoordinate(x+width,y));
         points.add(new OLCoordinate(x+width,y+height));
         points.add(new OLCoordinate(x,y+height));
@@ -72,7 +72,7 @@ public class VectorLayerMap extends BasicMap{
         polygon.add(points);
         mpolygon.add(polygon);
         OLPolygon polygon2 = new OLPolygon();
-        List points2 = new ArrayList<OLCoordinate>();
+        List<OLCoordinate> points2 = new ArrayList<OLCoordinate>();
         points2.add(new OLCoordinate(x-100d,y));
         points2.add(new OLCoordinate(x-100d,y-50d));
         points2.add(new OLCoordinate(x,y-50d));

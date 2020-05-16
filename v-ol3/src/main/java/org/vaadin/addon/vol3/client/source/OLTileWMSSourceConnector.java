@@ -55,7 +55,7 @@ public class OLTileWMSSourceConnector extends OLSourceConnector implements HasFe
             options.setMaxZoom(state.maxZoom);
         }
         if(state.params!=null){
-            FastStringMap map = (FastStringMap) FastStringMap.createObject();
+            FastStringMap<String> map = FastStringMap.create();
             Set<Map.Entry<String, String>> entries = state.params.entrySet();
             for(Map.Entry<String,String> entry : entries){
                 map.put(entry.getKey(),entry.getValue());
@@ -132,7 +132,7 @@ public class OLTileWMSSourceConnector extends OLSourceConnector implements HasFe
     }
 
     private void updateParams(){
-        FastStringMap map = (FastStringMap) FastStringMap.createObject();
+        FastStringMap<String> map = FastStringMap.create();
         Set<Map.Entry<String, String>> entries = getState().params.entrySet();
         for(Map.Entry<String,String> entry : entries){
             map.put(entry.getKey(),entry.getValue());

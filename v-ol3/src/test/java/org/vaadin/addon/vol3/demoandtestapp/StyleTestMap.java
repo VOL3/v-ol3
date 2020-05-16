@@ -39,7 +39,7 @@ public class StyleTestMap extends VectorLayerMap {
     protected OLFeature createPolygon(String id, double x, double y, double width, double height){
         OLFeature testFeature=new OLFeature(id);
         OLPolygon polygon = new OLPolygon();
-        List points = new ArrayList<OLCoordinate>();
+        List<OLCoordinate> points = new ArrayList<OLCoordinate>();
         points.add(new OLCoordinate(x+width,y));
         points.add(new OLCoordinate(x+width,y+height));
         points.add(new OLCoordinate(x,y+height));

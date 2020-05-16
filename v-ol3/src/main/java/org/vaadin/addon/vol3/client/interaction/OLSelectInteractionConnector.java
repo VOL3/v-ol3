@@ -72,7 +72,7 @@ public class OLSelectInteractionConnector extends OLInteractionConnector impleme
 
     private void updateSelectedFeatures(){
         List<String> selectedFeatures=new ArrayList<String>();
-        Collection collection=interaction.getFeatures();
+        Collection<Feature> collection=interaction.getFeatures();
         for(int i=0;i<collection.getLength();i++){
             Feature f=collection.item(i).cast();
             selectedFeatures.add(f.getId());

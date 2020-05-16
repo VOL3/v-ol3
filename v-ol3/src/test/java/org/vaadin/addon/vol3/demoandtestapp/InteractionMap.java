@@ -1,28 +1,31 @@
 package org.vaadin.addon.vol3.demoandtestapp;
 
-import com.vaadin.ui.AbstractLayout;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.NativeSelect;
-import com.vaadin.ui.Notification;
+import java.util.List;
+import java.util.logging.Logger;
+
 import org.vaadin.addon.vol3.OLMap;
 import org.vaadin.addon.vol3.feature.OLFeature;
 import org.vaadin.addon.vol3.interaction.OLDrawInteraction;
 import org.vaadin.addon.vol3.interaction.OLDrawInteractionOptions;
+import org.vaadin.addon.vol3.interaction.OLDrawInteractionOptions.DrawingType;
 import org.vaadin.addon.vol3.interaction.OLInteraction;
 import org.vaadin.addon.vol3.interaction.OLModifyInteraction;
 import org.vaadin.addon.vol3.interaction.OLModifyInteractionOptions;
 import org.vaadin.addon.vol3.interaction.OLSelectInteraction;
 import org.vaadin.addon.vol3.source.OLVectorSource;
 
-import java.util.List;
-import java.util.logging.Logger;
+import com.vaadin.ui.AbstractLayout;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.NativeSelect;
+import com.vaadin.ui.Notification;
 
 /**
  * Map for testing interactions
  */
 public class InteractionMap extends VectorLayerMap {
+	private static final long serialVersionUID = 1L;
 
-    private NativeSelect markerType;
+	private NativeSelect<DrawingType> markerType;
     private static final Logger logger= Logger.getLogger(InteractionMap.class.getName());
     public List<String> selection;
 
@@ -50,46 +53,36 @@ public class InteractionMap extends VectorLayerMap {
     protected AbstractLayout createControls() {
         AbstractLayout layout= super.createControls();
         Button selectButton=new Button("selectMode");
-        selectButton.addClickListener(new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
+        selectButton.addClickListener(e ->  {
                 clearInteractions();
                 map.addInteraction(createSelectInteraction());
-            }
-        });
+        	});
         layout.addComponent(selectButton);
 
         Button modifyButton=new Button("modifyMode");
-        modifyButton.addClickListener(new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
+        modifyButton.addClickListener(e ->  {
+            
                 clearInteractions();
-                //logger.info(((OLVectorSource) vectorLayer.getSource()).getFeatures().toString());
+                logger.fine(((OLVectorSource) vectorLayer.getSource()).getFeatures().toString());
                 map.addInteraction(createModifyInteraction());
-            }
-        });
+            
+        	});
         layout.addComponent(modifyButton);
 
         Button modifyRectButton=new Button("modifyOnlyRectFeature");
-        modifyRectButton.addClickListener(new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
+        modifyRectButton.addClickListener(e ->  {
                 clearInteractions();
                 map.addInteraction(createModifyRectInteraction());
-            }
-        });
+        	});
         layout.addComponent(modifyRectButton);
 
         Button drawButton=new Button("drawMode");
-        drawButton.addClickListener(new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
+        drawButton.addClickListener(e ->  {
                 clearInteractions();
                 map.addInteraction(createDrawInteraction());
-            }
-        });
+        	});
         layout.addComponent(drawButton);
-        markerType=new NativeSelect();
+        markerType=new NativeSelect<>();
         markerType.setItems(OLDrawInteractionOptions.DrawingType.POINT,
                 OLDrawInteractionOptions.DrawingType.LINESTRING,
                 OLDrawInteractionOptions.DrawingType.POLYGON);
@@ -116,9 +109,7 @@ public class InteractionMap extends VectorLayerMap {
         */
         layout.addComponent(markerType);
         Button deleteButton = new Button("delete selected");
-        deleteButton.addClickListener(new Button.ClickListener() {
-            @Override
-            public void buttonClick(Button.ClickEvent event) {
+        deleteButton.addClickListener(e ->  {
                 if(selection!=null){
                     OLVectorSource source = (OLVectorSource) vectorLayer.getSource();
                     for(String id : selection){
@@ -126,8 +117,7 @@ public class InteractionMap extends VectorLayerMap {
                     }
                     selection.clear();
                 }
-            }
-        });
+        	});
         layout.addComponent(deleteButton);
         return layout;
     }
@@ -163,7 +153,7 @@ public class InteractionMap extends VectorLayerMap {
         // create modify interaction
         OLModifyInteractionOptions modOpts=new OLModifyInteractionOptions();
         OLFeature rectFeature = ((OLVectorSource) vectorLayer.getSource()).getFeatureById("rect");
-        //logger.info(rectFeature.toString());
+        logger.fine(rectFeature.toString());
         OLModifyInteraction modify=new OLModifyInteraction(vectorLayer, modOpts, rectFeature);
         return modify;
     }
