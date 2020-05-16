@@ -99,4 +99,8 @@ public class OLExtent implements Serializable {
     public boolean contains(Double x, Double y) {
         return minX <= x && maxX >= x && minY <= y && maxY >= y;
     }
+    
+    public boolean isEmpty() {
+		return empty;
+	}
 }
