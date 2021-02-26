@@ -2,3 +2,6 @@
 ol3-wrapper.iml
 *.iml
 target
+.classpath
+.project
+.settings

@@ -1,5 +1,6 @@
 package org.vaadin.addon.vol3.feature;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +11,12 @@ public abstract class OLGeometry<T> {
     protected List<T> elements=new LinkedList<T>();
 
     public OLGeometry(T... elements){
+        for(T element : elements){
+            this.elements.add(element);
+        }
+    }
+    
+    public OLGeometry(Collection<T> elements){
         for(T element : elements){
             this.elements.add(element);
         }

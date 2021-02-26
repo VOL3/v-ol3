@@ -23,7 +23,8 @@ import java.util.Set;
  */
 @Connect(OLImageWMSSource.class)
 public class OLImageWMSSourceConnector extends OLSourceConnector implements HasFeatureInfoUrl{
-    private ImageWMSSource source;
+	private static final long serialVersionUID = 1L;
+	//private ImageWMSSource source;
 
     @Override
     protected Source createSource() {
@@ -46,7 +47,7 @@ public class OLImageWMSSourceConnector extends OLSourceConnector implements HasF
             options.setLogo(state.logo);
         }
         if(state.params!=null){
-            FastStringMap map = (FastStringMap) FastStringMap.createObject();
+			FastStringMap<String> map = FastStringMap.create();
             Set<Map.Entry<String, String>> entries = state.params.entrySet();
             for(Map.Entry<String,String> entry : entries){
                 map.put(entry.getKey(),entry.getValue());
@@ -93,7 +94,7 @@ public class OLImageWMSSourceConnector extends OLSourceConnector implements HasF
     }
 
     private void updateParams(){
-        FastStringMap map = (FastStringMap) FastStringMap.createObject();
+        FastStringMap<String> map = FastStringMap.create();
         Set<Map.Entry<String, String>> entries = getState().params.entrySet();
         for(Map.Entry<String,String> entry : entries){
             map.put(entry.getKey(),entry.getValue());
